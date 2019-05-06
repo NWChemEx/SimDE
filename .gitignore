@@ -1,0 +1,14 @@
+#This is the clang-format script downloaded by the pre-commit hook
+.clang-format
+
+#These are configuration files for CLion
+.idea/
+
+#These are common build directory names
+Debug/
+Release/
+cmake-build-debug/
+cmake-build-release/
+
+#This is the typical tool
+toolchain.cmake
