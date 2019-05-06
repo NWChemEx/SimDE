@@ -1,5 +1,7 @@
 #pragma once
+#include <LibChemist/AOBasisSet.hpp>
 #include <LibChemist/Molecule.hpp>
+#include <LibChemist/OrbitalSpace.hpp>
 #include <tamm/tamm.hpp>
 
 /** @file types.hpp
@@ -12,13 +14,16 @@ namespace property_types {
 namespace type {
 
 ///Typedef of the class used for tensors
-template<typename T> using tensor_type = tamm::Tensor<T>;
+template<typename T> using tensor = tamm::Tensor<T>;
 
 ///Typedef of the class used to describe a molecule
 using molecule = LibChemist::Molecule;
 
 ///Typedef of the class used to describe an AO basis set
-using basis_set = LibChemist::AOBasisset;
+using basis_set = LibChemist::AOBasisSet;
+
+///Typedef of the class modeling the orbital space
+template<typename T> using orbitals = LibChemist::OrbitalSpace<T>;
 
 ///Type of a non-negative counting number
 using size = std::size_t;

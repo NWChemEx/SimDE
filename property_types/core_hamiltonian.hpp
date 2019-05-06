@@ -1,36 +1,45 @@
 #pragma once
+#include "property_types/types.hpp"
+#include <SDE/PropertyType.hpp>
 
-namespace {
+namespace property_types {
 
 /**
- * @brief The base class for modules that build the core Hamiltonian in the AO
- * basis set.
+ * @brief The property type for modules that build the core Hamiltonian in the
+ *        AO basis set.
  *
+ * @tparam ElementType The type of the elements in the returned tensor
  */
-template<typename element_type = double>
-struct CoreHamiltonian : public SDE::PropertyType<CoreHamiltonian<element_type>> {
-    using tensor_type    = tamm::Tensor<element_type>;
-    using molecule_type  = Molecule;
-    using basis_set_type = AOBasisSet;
-    using size_type      = std::size_t;
+template<typename ElementType = double>
+struct CoreHamiltonian : SDE::PropertyType<CoreHamiltonian<ElementType>> {
+    ///The type of the returned tensor, accounting for ElementType
+    using tensor_type = type::tensor<ElementType>;
+    ///Generates the input fields required by this property type
+    auto inputs_();
+    ///Generates the result fields required by this property type
+    auto results_();
+}; // class CoreHamiltonian
 
-    auto inputs_() {
-        auto rv = SDE::declare_input().add_field<const molecule_type&>("Molecule")
-          .add_field<const basis_set_type&>("Bra")
-          .add_field<const basis_set_type&>("Ket")
-          .add_field<size_type>("Derivative");
-        rv["Molecule"].set_description("The molecule for which the Core Hamiltonian matrix is build");
-        rv["Bra"].set_description("The basis set used for the bra of the Core Hamiltonian matrix");
-        rv["Ket"].set_description("The basis set used for the ket of the Core Hamiltonian matrix");
-        rv["Derivative"].set_description("The derivative order of the Core Hamiltonian matrix");
-        return rv;
-    }
+//---------------------------Implementations------------------------------------
+template<typename ElementType>
+auto CoreHamiltonian<ElementType>::inputs_() {
+    auto rv = SDE::declare_input()
+      .add_field<const type::molecule&>("Molecule")
+      .add_field<const type::basis_set&>("Bra")
+      .add_field<const type::basis_set&>("Ket")
+      .add_field<type::size>("Derivative");
+    rv["Molecule"].set_description("The molecular system");
+    rv["Bra"].set_description("The basis set for the bra");
+    rv["Ket"].set_description("The basis set for the ket");
+    rv["Derivative"].set_description("The derivative order");
+    return rv;
+}
 
-    auto results_() {
-        auto rv = SDE::declare_result().add_field<tensor_type>("Core Hamiltonian");
-        rv["Core Hamiltonian"].set_description("The matrix of the computed Core Hamiltonian");
-        return rv;
-    }
+template<typename ElementType>
+auto CoreHamiltonian<ElementType>::results_() {
+    auto rv = SDE::declare_result().add_field<tensor_type>("Core Hamiltonian");
+    rv["Core Hamiltonian"].set_description("The computed Core Hamiltonian");
+    return rv;
+}
 
-
-} //End namespace
+} // namespace property_types

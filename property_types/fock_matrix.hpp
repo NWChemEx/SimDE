@@ -1,41 +1,53 @@
 #pragma once
+#include "property_types/types.hpp"
+#include <SDE/PropertyType.hpp>
 
 namespace property_types {
 
-/**
- * @brief The base class for modules that build Fock matrices in the AO
- * basis set.
+/** @brief The property type for modules that build Fock matrices in the AO
+ *  basis set.
  *
+ *  The Fock matrix (or Kohn-Sham matrix for DFT) is an effective one-electron
+ *  potential. Modules that satisfy this property type are capable of computing
+ *  the Fock matrix in the AO basis set.
+ *
+ *  @tparam ElementType The type of the elements in the returned tensor.
  */
+template<typename ElementType = double>
+struct FockMatrix : public SDE::PropertyType<FockMatrix<ElementType>> {
+    ///Type of the returned tensor that accounts for ElementType
+    using tensor_type  = type::tensor<ElementType>;
+    ///Type of the MOs that accounts for ElementType
+    using orbital_type = type::orbitals<ElementType>;
+    ///Generates the input fields required by this property type
+    auto inputs_();
+    ///Generates the result fields required by this property type
+    auto results_();
+}; //class FockMatrix
 
-template<typename element_type = double>
-struct FockBuilder : public SDE::PropertyType<FockBuilder<element_type>> {
-    using tensor_type    = tamm::Tensor<element_type>;
-    using molecule_type  = Molecule;
-    using orbital_type   = OrbitalSpace<element_type>;
-    using basis_set_type = AOBasisSet;
-    using size_type      = std::size_t;
+//-------------------------------------Implementations--------------------------
 
-    auto inputs_() {
-        auto rv = SDE::declare_input().add_field<const molecule_type&>("Molecule")
-          .add_field<const orbital_type&>("Molecular Orbitals")
-          .template add_field<const basis_set_type&>("Bra")
-          .template add_field<const basis_set_type&>("Ket")
-          .template add_field<size_type>("Derivative");
-        rv["Molecule"].set_description("The molecule for which the Fock Matrix is build");
-        rv["Molecular Orbitals"].set_description("The molecular orbitals used to build the Fock Matrix");
-        rv["Bra"].set_description("The basis set used for the bra of the matrices and integrals");
-        rv["Ket"].set_description("The basis set used for the ket of the matrices and integrals");
-        rv["Derivative"].set_description("The derivative order of the Fock Matrix");
-        return rv;
-    }
+template<typename ElementType>
+auto FockMatrix<ElementType>::inputs_() {
+    auto rv = SDE::declare_input()
+      .add_field<const type::molecule&>("Molecule")
+      .add_field<const orbital_type&>("Molecular Orbitals")
+      .template add_field<const type::basis_set&>("Bra")
+      .template add_field<const type::basis_set&>("Ket")
+      .template add_field<type::size>("Derivative");
+    rv["Molecule"].set_description("The molecular system");
+    rv["Molecular Orbitals"].set_description("The molecular orbitals");
+    rv["Bra"].set_description("The basis set used for the bra");
+    rv["Ket"].set_description("The basis set used for the ket");
+    rv["Derivative"].set_description("The derivative order to compute");
+    return rv;
+}
 
-    auto results_() {
-        auto rv = SDE::declare_result().add_field<tensor_type>("Fock Matrix");
-        rv["Fock Matrix"].set_description("The computed Fock Matrix");
-        return rv;
-    }
-
-};
+template<typename ElementType>
+auto FockMatrix<ElementType>::results_() {
+    auto rv = SDE::declare_result().add_field<tensor_type>("Fock Matrix");
+    rv["Fock Matrix"].set_description("The computed Fock Matrix");
+    return rv;
+}
 
 } //namespace property_types

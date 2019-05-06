@@ -5,7 +5,7 @@
 namespace property_types {
 
 /**
- * @brief The base class for modules that build tensors filled with AO
+ * @brief The property type for modules that build tensors filled with AO
  * integrals.
  *
  * Most electronic structure methods start by computing some integrals in the
@@ -22,10 +22,14 @@ namespace property_types {
  *                     `double`.
  */
 template<type::size NBases, typename ElementType = double>
-struct AOIntegral : public SDE::PropertyType<AOIntegral<NBases, element_type>> {
+struct AOIntegral : public SDE::PropertyType<AOIntegral<NBases, ElementType>> {
     ///The type of an std::array of basis sets
     using basis_array_type = std::array<type::basis_set, NBases>;
+    ///The type of a tensor accounting for ElementType
+    using tensor_type = type::tensor<ElementType>;
+    ///Generates the input fields required by this property type
     auto inputs_();
+    ///Generates the result fields required by this property type
     auto results_();
 }; //class AOIntegral
 
@@ -36,7 +40,7 @@ auto AOIntegral<NBases, ElementType>::inputs_() {
     auto rv = SDE::declare_input()
               .add_field<const type::molecule&>("Molecule")
               .add_field<const basis_array_type&>("Basis Sets")
-              .add_field<type::size>("Derivative");
+              .template add_field<type::size>("Derivative");
     rv["Molecule"]
     .set_description("The molecule for which the AO integrals are computed");
     rv["Basis Sets"]
@@ -48,8 +52,7 @@ auto AOIntegral<NBases, ElementType>::inputs_() {
 
 template<type::size NBases, typename ElementType>
 auto AOIntegral<NBases, ElementType>::results_() {
-    auto rv = SDE::declare_result()
-              .add_field<type::tensor<ElementType>>("AO Integrals");
+    auto rv = SDE::declare_result().add_field<tensor_type>("AO Integrals");
     rv["AO Integrals"].set_description("The requested AO integrals");
     return rv;
 }
