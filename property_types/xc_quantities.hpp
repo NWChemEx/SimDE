@@ -27,9 +27,9 @@ namespace property_types {
         auto rv = SDE::declare_input()
           .add_field<const type::molecule&>("Molecule")
           .add_field<const orbital_type&>("Molecular Orbitals")
-          .add_field<const type::basis_set&>("Bra")
-          .add_field<const type::basis_set&>("Ket")
-          .add_field<type::size>("Derivative");
+          .template add_field<const type::basis_set&>("Bra")
+          .template add_field<const type::basis_set&>("Ket")
+          .template add_field<type::size>("Derivative");
         rv["Molecule"].set_description("The molecular system");
         rv["Molecular Orbitals"].set_description("The molecular orbitals");
         rv["Bra"].set_description("The basis set used for the bra");
@@ -42,7 +42,7 @@ namespace property_types {
     auto XCQuantities<ElementType>::results_() {
         auto rv = SDE::declare_result()
           .add_field<tensor_type>("VXC Matrix")
-          .add_field<tensor_type>("EXC Energy");
+          .template add_field<tensor_type>("EXC Energy");
         rv["VXC Matrix"].set_description("The computed VXC Matrix");
         rv["EXC Energy"].set_description("The computed EXC Energy");
         return rv;

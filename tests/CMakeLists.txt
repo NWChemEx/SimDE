@@ -7,7 +7,10 @@ set(TEST_SRCS test_main.cpp
               j.cpp
               k.cpp
               reference_wavefunction.cpp
+              scf_iteration.cpp
               update_guess.cpp
+              update_mos.cpp
+              xc_quantities.cpp
 )
 
 cpp_add_executable(

@@ -6,7 +6,7 @@ using namespace property_types;
 TEST_CASE("XCQuantities"){
     SECTION("Inputs") {
         auto inputs = XCQuantities<>::inputs();
-        for(auto fields : {"Molecule", "Molecular Orbitals" "Bra", "Ket", "Derivative"})
+        for(auto fields : {"Molecule", "Molecular Orbitals", "Bra", "Ket", "Derivative"})
             SECTION(fields){ REQUIRE(inputs.count(fields) == 1); }
     }
     SECTION("Results") {

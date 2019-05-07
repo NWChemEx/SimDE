@@ -5,12 +5,12 @@ using namespace property_types;
 
 TEST_CASE("UpdateMOs"){
     SECTION("Inputs") {
-        auto inputs = UpdateGuess<>::inputs();
+        auto inputs = UpdateMOs<>::inputs();
         for(auto fields : {"Molecule", "Basis Set", "Fock Matrix", "Previous OrbitalSpace"})
             SECTION(fields){ REQUIRE(inputs.count(fields) == 1); }
     }
     SECTION("Results") {
-        auto outputs = UpdateGuess<>::results();
+        auto outputs = UpdateMOs<>::results();
         for(auto fields : {"Orbital Space"})
             SECTION(fields){ REQUIRE(outputs.count(fields) == 1); }
     }

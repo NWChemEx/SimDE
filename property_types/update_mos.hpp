@@ -27,7 +27,7 @@ namespace property_types {
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set&>("Basis Set")
                 .add_field<const tensor_type&>("Fock Matrix")
-                .add_field<const orbital_type&>("Previous OrbitalSpace");
+                .template add_field<const orbital_type&>("Previous OrbitalSpace");
         rv["Molecule"].set_description("The molecule associated with the density");
         rv["Basis Set"].set_description("The basis set used for the density");
         rv["Fock Matrix"].set_description("The Fock matrix used for the density update");
