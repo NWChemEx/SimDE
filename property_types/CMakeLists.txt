@@ -18,3 +18,4 @@ cpp_add_library(
     DEPENDS sde::sde CMakeBuild tamm libchemist::chemist
 )
 
+cpp_install(TARGETS property_types)
