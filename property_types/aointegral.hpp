@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <SDE/PropertyType.hpp>
+#include <sde/property_type.hpp>
 
 namespace property_types {
 
@@ -22,7 +22,7 @@ namespace property_types {
  *                     `double`.
  */
 template<type::size NBases, typename ElementType = double>
-struct AOIntegral : public SDE::PropertyType<AOIntegral<NBases, ElementType>> {
+struct AOIntegral : public sde::PropertyType<AOIntegral<NBases, ElementType>> {
     /// The type of an std::array of basis sets
     using basis_array_type = std::array<type::basis_set, NBases>;
     /// The type of a tensor accounting for ElementType
@@ -37,7 +37,7 @@ struct AOIntegral : public SDE::PropertyType<AOIntegral<NBases, ElementType>> {
 
 template<type::size NBases, typename ElementType>
 auto AOIntegral<NBases, ElementType>::inputs_() {
-    auto rv = SDE::declare_input()
+    auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_array_type&>("Basis Sets")
                 .template add_field<type::size>("Derivative");
@@ -52,7 +52,7 @@ auto AOIntegral<NBases, ElementType>::inputs_() {
 
 template<type::size NBases, typename ElementType>
 auto AOIntegral<NBases, ElementType>::results_() {
-    auto rv = SDE::declare_result().add_field<tensor_type>("AO Integrals");
+    auto rv = sde::declare_result().add_field<tensor_type>("AO Integrals");
     rv["AO Integrals"].set_description("The requested AO integrals");
     return rv;
 }

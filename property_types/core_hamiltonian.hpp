@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <SDE/PropertyType.hpp>
+#include <sde/property_type.hpp>
 
 namespace property_types {
 
@@ -11,7 +11,7 @@ namespace property_types {
  * @tparam ElementType The type of the elements in the returned tensor
  */
 template<typename ElementType = double>
-struct CoreHamiltonian : SDE::PropertyType<CoreHamiltonian<ElementType>> {
+struct CoreHamiltonian : sde::PropertyType<CoreHamiltonian<ElementType>> {
     /// The type of the returned tensor, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -23,7 +23,7 @@ struct CoreHamiltonian : SDE::PropertyType<CoreHamiltonian<ElementType>> {
 //---------------------------Implementations------------------------------------
 template<typename ElementType>
 auto CoreHamiltonian<ElementType>::inputs_() {
-    auto rv = SDE::declare_input()
+    auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set&>("Bra")
                 .add_field<const type::basis_set&>("Ket")
@@ -37,7 +37,7 @@ auto CoreHamiltonian<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto CoreHamiltonian<ElementType>::results_() {
-    auto rv = SDE::declare_result().add_field<tensor_type>("Core Hamiltonian");
+    auto rv = sde::declare_result().add_field<tensor_type>("Core Hamiltonian");
     rv["Core Hamiltonian"].set_description("The computed Core Hamiltonian");
     return rv;
 }

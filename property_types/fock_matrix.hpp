@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <SDE/PropertyType.hpp>
+#include <sde/property_type.hpp>
 
 namespace property_types {
 
@@ -14,7 +14,7 @@ namespace property_types {
  *  @tparam ElementType The type of the elements in the returned tensor.
  */
 template<typename ElementType = double>
-struct FockMatrix : public SDE::PropertyType<FockMatrix<ElementType>> {
+struct FockMatrix : public sde::PropertyType<FockMatrix<ElementType>> {
     /// Type of the returned tensor that accounts for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Type of the MOs that accounts for ElementType
@@ -29,7 +29,7 @@ struct FockMatrix : public SDE::PropertyType<FockMatrix<ElementType>> {
 
 template<typename ElementType>
 auto FockMatrix<ElementType>::inputs_() {
-    auto rv = SDE::declare_input()
+    auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const orbital_type&>("Molecular Orbitals")
                 .template add_field<const type::basis_set&>("Bra")
@@ -45,7 +45,7 @@ auto FockMatrix<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto FockMatrix<ElementType>::results_() {
-    auto rv = SDE::declare_result().add_field<tensor_type>("Fock Matrix");
+    auto rv = sde::declare_result().add_field<tensor_type>("Fock Matrix");
     rv["Fock Matrix"].set_description("The computed Fock Matrix");
     return rv;
 }

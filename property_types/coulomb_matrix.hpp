@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <SDE/PropertyType.hpp>
+#include <sde/property_type.hpp>
 
 namespace property_types {
 
@@ -18,7 +18,7 @@ namespace property_types {
  *  @tparam ElementType The type of the elements in the returned tensor.
  */
 template<typename ElementType = double>
-struct CoulombMatrix : SDE::PropertyType<CoulombMatrix<ElementType>> {
+struct CoulombMatrix : sde::PropertyType<CoulombMatrix<ElementType>> {
     /// Type of the MOs that accounts for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// Type of the returned tesnor that accounts for ElementType
@@ -33,7 +33,7 @@ struct CoulombMatrix : SDE::PropertyType<CoulombMatrix<ElementType>> {
 
 template<typename ElementType>
 auto CoulombMatrix<ElementType>::inputs_() {
-    auto rv = SDE::declare_input()
+    auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const orbital_type&>("Molecular Orbitals")
                 .template add_field<const type::basis_set&>("Bra")
@@ -49,7 +49,7 @@ auto CoulombMatrix<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto CoulombMatrix<ElementType>::results_() {
-    auto rv = SDE::declare_result().add_field<tensor_type>("Coulomb Matrix");
+    auto rv = sde::declare_result().add_field<tensor_type>("Coulomb Matrix");
     rv["Coulomb Matrix"].set_description("The computed Coulomb matrix");
     return rv;
 }

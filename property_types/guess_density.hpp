@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <SDE/PropertyType.hpp>
+#include <sde/property_type.hpp>
 
 namespace property_types {
 
@@ -14,7 +14,7 @@ namespace property_types {
  *  @tparam ElementType The type of the elements in the returned tensors
  */
 template<typename ElementType = double>
-struct GuessDensity : public SDE::PropertyType<GuessDensity<ElementType>> {
+struct GuessDensity : public sde::PropertyType<GuessDensity<ElementType>> {
     /// The type of the returned density accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// Generates the input fields required by this property type
@@ -26,7 +26,7 @@ struct GuessDensity : public SDE::PropertyType<GuessDensity<ElementType>> {
 //-------------------------------Implementations--------------------------------
 template<typename ElementType>
 auto GuessDensity<ElementType>::inputs_() {
-    auto rv = SDE::declare_input()
+    auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set&>("Basis Set");
     rv["Molecule"].set_description(
@@ -38,7 +38,7 @@ auto GuessDensity<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto GuessDensity<ElementType>::results_() {
-    auto rv = SDE::declare_result().add_field<orbital_type>("Orbital Space");
+    auto rv = sde::declare_result().add_field<orbital_type>("Orbital Space");
     rv["Orbital Space"].set_description("The molecular orbitals");
     return rv;
 }

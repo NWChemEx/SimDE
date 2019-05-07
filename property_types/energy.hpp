@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <SDE/PropertyType.hpp>
+#include <sde/property_type.hpp>
 
 namespace property_types {
 
@@ -14,7 +14,7 @@ namespace property_types {
  *  @tparam ElementType The type of the elements in the tensors.
  */
 template<typename ElementType = double>
-struct Energy : public SDE::PropertyType<Energy<ElementType>> {
+struct Energy : public sde::PropertyType<Energy<ElementType>> {
     /// The type of the energy derivative, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -26,7 +26,7 @@ struct Energy : public SDE::PropertyType<Energy<ElementType>> {
 //-------------------------------Implementations--------------------------------
 template<typename ElementType>
 auto Energy<ElementType>::inputs_() {
-    auto rv = SDE::declare_input()
+    auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<type::size>("Derivative");
     rv["Molecule"].set_description("The molecular system");
@@ -36,7 +36,7 @@ auto Energy<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto Energy<ElementType>::results_() {
-    auto rv = SDE::declare_result().add_field<tensor_type>("Energy");
+    auto rv = sde::declare_result().add_field<tensor_type>("Energy");
     rv["Energy"].set_description("The computed energy or derivatives");
     return rv;
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <SDE/PropertyType.hpp>
+#include <sde/property_type.hpp>
 
 namespace property_types {
 
@@ -13,7 +13,7 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct ReferenceWavefunction
-  : SDE::PropertyType<ReferenceWavefunction<ElementType>> {
+  : sde::PropertyType<ReferenceWavefunction<ElementType>> {
     /// Type of the MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// Type of the returned tensor, accounting for ElementType
@@ -27,7 +27,7 @@ struct ReferenceWavefunction
 //------------------------------Implementations---------------------------------
 template<typename ElementType>
 auto ReferenceWavefunction<ElementType>::inputs_() {
-    auto rv = SDE::declare_input()
+    auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set&>("Basis Set")
                 .add_field<type::size>("Derivative");
@@ -39,7 +39,7 @@ auto ReferenceWavefunction<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto ReferenceWavefunction<ElementType>::results_() {
-    auto rv = SDE::declare_result()
+    auto rv = sde::declare_result()
                 .add_field<tensor_type>("Energy")
                 .template add_field<orbital_type>("Orbital Space");
     rv["Energy"].set_description("The computed energy or derivatives");

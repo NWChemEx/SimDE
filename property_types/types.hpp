@@ -1,7 +1,8 @@
 #pragma once
-#include <LibChemist/AOBasisSet.hpp>
-#include <LibChemist/Molecule.hpp>
-#include <LibChemist/OrbitalSpace.hpp>
+#include <libchemist/ao_basis_set.hpp>
+#include <libchemist/molecule.hpp>
+#include <libchemist/orbital_space.hpp>
+#include <random>
 #include <tamm/tamm.hpp>
 
 /** @file types.hpp
@@ -18,14 +19,14 @@ template<typename T>
 using tensor = tamm::Tensor<T>;
 
 /// Typedef of the class used to describe a molecule
-using molecule = LibChemist::Molecule;
+using molecule = libchemist::Molecule;
 
 /// Typedef of the class used to describe an AO basis set
-using basis_set = LibChemist::AOBasisSet;
+using basis_set = libchemist::AOBasisSet;
 
 /// Typedef of the class modeling the orbital space
 template<typename T>
-using orbitals = LibChemist::OrbitalSpace<T>;
+using orbitals = libchemist::OrbitalSpace<T>;
 
 /// Type of a non-negative counting number
 using size = std::size_t;
@@ -33,14 +34,14 @@ using size = std::size_t;
 } // namespace type
 } // namespace property_types
 
-// These allow SDEAny to wrap a tamm::Tensor, needed for Cache retrieval
+// These allow sdeAny to wrap a tamm::Tensor, needed for Cache retrieval
 namespace tamm {
 template<typename T, typename U>
 bool operator==(const Tensor<T>& lhs, const Tensor<U>& rhs) {
     return false;
 }
 
-inline void hash_object(const Tensor<double>& t, SDE::Hasher& h) {
+inline void hash_object(const Tensor<double>& t, sde::Hasher& h) {
     std::mt19937 rng;
     rng.seed(std::random_device()());
     std::uniform_real_distribution<double> dist;
