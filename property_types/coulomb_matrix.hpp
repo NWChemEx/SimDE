@@ -19,26 +19,26 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct CoulombMatrix : SDE::PropertyType<CoulombMatrix<ElementType>> {
-    ///Type of the MOs that accounts for ElementType
+    /// Type of the MOs that accounts for ElementType
     using orbital_type = type::orbitals<ElementType>;
-    ///Type of the returned tesnor that accounts for ElementType
+    /// Type of the returned tesnor that accounts for ElementType
     using tensor_type = type::tensor<ElementType>;
-    ///Generates the input fields required by this property type
+    /// Generates the input fields required by this property type
     auto inputs_();
-    ///Generates the result fields required by this property type
+    /// Generates the result fields required by this property type
     auto results_();
-}; //class J
+}; // class J
 
 //-----------------------------Implementations----------------------------------
 
 template<typename ElementType>
 auto CoulombMatrix<ElementType>::inputs_() {
     auto rv = SDE::declare_input()
-      .add_field<const type::molecule&>("Molecule")
-      .add_field<const orbital_type&>("Molecular Orbitals")
-      .template add_field<const type::basis_set&>("Bra")
-      .template add_field<const type::basis_set&>("Ket")
-      .template add_field<type::size>("Derivative");
+                .add_field<const type::molecule&>("Molecule")
+                .add_field<const orbital_type&>("Molecular Orbitals")
+                .template add_field<const type::basis_set&>("Bra")
+                .template add_field<const type::basis_set&>("Ket")
+                .template add_field<type::size>("Derivative");
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     rv["Bra"].set_description("The basis set used for the bra");
@@ -54,4 +54,7 @@ auto CoulombMatrix<ElementType>::results_() {
     return rv;
 }
 
-} //namespace property_types
+extern template class CoulombMatrix<double>;
+extern template class CoulombMatrix<float>;
+
+} // namespace property_types

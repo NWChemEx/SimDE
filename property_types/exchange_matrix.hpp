@@ -19,26 +19,26 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct ExchangeMatrix : SDE::PropertyType<ExchangeMatrix<ElementType>> {
-    ///Typedef for the MOs that accounts for ElementType
+    /// Typedef for the MOs that accounts for ElementType
     using orbital_type = type::orbitals<ElementType>;
-    ///Typedef for the returned tensor that accounts for ElementType
+    /// Typedef for the returned tensor that accounts for ElementType
     using tensor_type = type::tensor<ElementType>;
-    ///Generates the input fields required by this property type
+    /// Generates the input fields required by this property type
     auto inputs_();
-    ///Generates the result fields required by this property type
+    /// Generates the result fields required by this property type
     auto results_();
-}; //class K
+}; // class K
 
 //-----------------------------Implementations----------------------------------
 
 template<typename ElementType>
 auto ExchangeMatrix<ElementType>::inputs_() {
     auto rv = SDE::declare_input()
-      .add_field<const type::molecule&>("Molecule")
-      .add_field<const orbital_type&>("Molecular Orbitals")
-      .template add_field<const type::basis_set&>("Bra")
-      .template add_field<const type::basis_set&>("Ket")
-      .template add_field<type::size>("Derivative");
+                .add_field<const type::molecule&>("Molecule")
+                .add_field<const orbital_type&>("Molecular Orbitals")
+                .template add_field<const type::basis_set&>("Bra")
+                .template add_field<const type::basis_set&>("Ket")
+                .template add_field<type::size>("Derivative");
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     rv["Bra"].set_description("The basis set used for the bra");
@@ -54,4 +54,7 @@ auto ExchangeMatrix<ElementType>::results_() {
     return rv;
 }
 
-} //namespace property_types
+extern template class ExchangeMatrix<double>;
+extern template class ExchangeMatrix<float>;
+
+} // namespace property_types

@@ -12,11 +12,11 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct CoreHamiltonian : SDE::PropertyType<CoreHamiltonian<ElementType>> {
-    ///The type of the returned tensor, accounting for ElementType
+    /// The type of the returned tensor, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
-    ///Generates the input fields required by this property type
+    /// Generates the input fields required by this property type
     auto inputs_();
-    ///Generates the result fields required by this property type
+    /// Generates the result fields required by this property type
     auto results_();
 }; // class CoreHamiltonian
 
@@ -24,10 +24,10 @@ struct CoreHamiltonian : SDE::PropertyType<CoreHamiltonian<ElementType>> {
 template<typename ElementType>
 auto CoreHamiltonian<ElementType>::inputs_() {
     auto rv = SDE::declare_input()
-      .add_field<const type::molecule&>("Molecule")
-      .add_field<const type::basis_set&>("Bra")
-      .add_field<const type::basis_set&>("Ket")
-      .add_field<type::size>("Derivative");
+                .add_field<const type::molecule&>("Molecule")
+                .add_field<const type::basis_set&>("Bra")
+                .add_field<const type::basis_set&>("Ket")
+                .add_field<type::size>("Derivative");
     rv["Molecule"].set_description("The molecular system");
     rv["Bra"].set_description("The basis set for the bra");
     rv["Ket"].set_description("The basis set for the ket");
@@ -41,5 +41,8 @@ auto CoreHamiltonian<ElementType>::results_() {
     rv["Core Hamiltonian"].set_description("The computed Core Hamiltonian");
     return rv;
 }
+
+extern template class CoreHamiltonian<double>;
+extern template class CoreHamiltonian<float>;
 
 } // namespace property_types

@@ -23,30 +23,30 @@ namespace property_types {
  */
 template<type::size NBases, typename ElementType = double>
 struct AOIntegral : public SDE::PropertyType<AOIntegral<NBases, ElementType>> {
-    ///The type of an std::array of basis sets
+    /// The type of an std::array of basis sets
     using basis_array_type = std::array<type::basis_set, NBases>;
-    ///The type of a tensor accounting for ElementType
+    /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
-    ///Generates the input fields required by this property type
+    /// Generates the input fields required by this property type
     auto inputs_();
-    ///Generates the result fields required by this property type
+    /// Generates the result fields required by this property type
     auto results_();
-}; //class AOIntegral
+}; // class AOIntegral
 
 //------------------------Implementations---------------------------------------
 
 template<type::size NBases, typename ElementType>
 auto AOIntegral<NBases, ElementType>::inputs_() {
     auto rv = SDE::declare_input()
-              .add_field<const type::molecule&>("Molecule")
-              .add_field<const basis_array_type&>("Basis Sets")
-              .template add_field<type::size>("Derivative");
-    rv["Molecule"]
-    .set_description("The molecule for which the AO integrals are computed");
-    rv["Basis Sets"]
-    .set_description("The basis sets used for the AO integral computation");
-    rv["Derivative"]
-    .set_description("The derivative order of AO integrals to be computed");
+                .add_field<const type::molecule&>("Molecule")
+                .add_field<const basis_array_type&>("Basis Sets")
+                .template add_field<type::size>("Derivative");
+    rv["Molecule"].set_description(
+      "The molecule for which the AO integrals are computed");
+    rv["Basis Sets"].set_description(
+      "The basis sets used for the AO integral computation");
+    rv["Derivative"].set_description(
+      "The derivative order of AO integrals to be computed");
     return rv;
 }
 
@@ -57,4 +57,11 @@ auto AOIntegral<NBases, ElementType>::results_() {
     return rv;
 }
 
-} //namespace property_types
+extern template class AOIntegral<2, double>;
+extern template class AOIntegral<3, double>;
+extern template class AOIntegral<4, double>;
+extern template class AOIntegral<2, float>;
+extern template class AOIntegral<3, float>;
+extern template class AOIntegral<4, float>;
+
+} // namespace property_types

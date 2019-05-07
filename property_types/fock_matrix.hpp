@@ -15,26 +15,26 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct FockMatrix : public SDE::PropertyType<FockMatrix<ElementType>> {
-    ///Type of the returned tensor that accounts for ElementType
-    using tensor_type  = type::tensor<ElementType>;
-    ///Type of the MOs that accounts for ElementType
+    /// Type of the returned tensor that accounts for ElementType
+    using tensor_type = type::tensor<ElementType>;
+    /// Type of the MOs that accounts for ElementType
     using orbital_type = type::orbitals<ElementType>;
-    ///Generates the input fields required by this property type
+    /// Generates the input fields required by this property type
     auto inputs_();
-    ///Generates the result fields required by this property type
+    /// Generates the result fields required by this property type
     auto results_();
-}; //class FockMatrix
+}; // class FockMatrix
 
 //-------------------------------------Implementations--------------------------
 
 template<typename ElementType>
 auto FockMatrix<ElementType>::inputs_() {
     auto rv = SDE::declare_input()
-      .add_field<const type::molecule&>("Molecule")
-      .add_field<const orbital_type&>("Molecular Orbitals")
-      .template add_field<const type::basis_set&>("Bra")
-      .template add_field<const type::basis_set&>("Ket")
-      .template add_field<type::size>("Derivative");
+                .add_field<const type::molecule&>("Molecule")
+                .add_field<const orbital_type&>("Molecular Orbitals")
+                .template add_field<const type::basis_set&>("Bra")
+                .template add_field<const type::basis_set&>("Ket")
+                .template add_field<type::size>("Derivative");
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     rv["Bra"].set_description("The basis set used for the bra");
@@ -50,4 +50,7 @@ auto FockMatrix<ElementType>::results_() {
     return rv;
 }
 
-} //namespace property_types
+extern template class FockMatrix<double>;
+extern template class FockMatrix<float>;
+
+} // namespace property_types

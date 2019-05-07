@@ -15,11 +15,11 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct Energy : public SDE::PropertyType<Energy<ElementType>> {
-    ///The type of the energy derivative, accounting for ElementType
-    using tensor_type   = type::tensor<ElementType>;
-    ///Generates the input fields required by this property type
+    /// The type of the energy derivative, accounting for ElementType
+    using tensor_type = type::tensor<ElementType>;
+    /// Generates the input fields required by this property type
     auto inputs_();
-    ///Generates the result fields required by this property type
+    /// Generates the result fields required by this property type
     auto results_();
 }; // class Energy
 
@@ -27,8 +27,8 @@ struct Energy : public SDE::PropertyType<Energy<ElementType>> {
 template<typename ElementType>
 auto Energy<ElementType>::inputs_() {
     auto rv = SDE::declare_input()
-      .add_field<const type::molecule&>("Molecule")
-      .add_field<type::size>("Derivative");
+                .add_field<const type::molecule&>("Molecule")
+                .add_field<type::size>("Derivative");
     rv["Molecule"].set_description("The molecular system");
     rv["Derivative"].set_description("The derivative order of the energy");
     return rv;
@@ -41,4 +41,7 @@ auto Energy<ElementType>::results_() {
     return rv;
 }
 
-} //namespace property_types
+extern template class Energy<double>;
+extern template class Energy<float>;
+
+} // namespace property_types
