@@ -27,8 +27,7 @@ cpp_find_or_build_dependency(
 
 cpp_find_or_build_dependency(
     NAME libchemist
-    URL github.com/ryanmrichard/LibChemist
-    BRANCH formatting
+    URL github.com/NWChemEx-Project/LibChemist
     PRIVATE
     CMAKE_ARGS BUILD_TESTS=OFF
 )
