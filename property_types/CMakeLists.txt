@@ -9,6 +9,7 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
                        scf_iteration.hpp
                        types.hpp
                        update_guess.hpp
+                       update_mos.hpp
                        xc_quantities.hpp
 )
 set(PROP_TYPE_SOURCES aointegral.cpp
