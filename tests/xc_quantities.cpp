@@ -4,7 +4,7 @@
 TEST_CASE("XCQuantities"){
     test_property_type<property_types::XCQuantities<>>(
         {"Molecule", "Molecular Orbitals", "Bra", "Ket", "Derivative"},
-        {"VXC Matrix", "EXC Energy"}
+        {"VXC Matrix", "EXC Energy", "xEXX"}
     );
 }
 

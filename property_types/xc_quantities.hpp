@@ -42,9 +42,11 @@ template<typename ElementType>
 auto XCQuantities<ElementType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<tensor_type>("VXC Matrix")
-                .template add_field<tensor_type>("EXC Energy");
+                .template add_field<tensor_type>("EXC Energy")
+                .template add_field<tensor_type>("xEXX");
     rv["VXC Matrix"].set_description("The computed VXC Matrix");
     rv["EXC Energy"].set_description("The computed EXC Energy");
+    rv["xEXX"]      .set_description("Scaled HF Exchange Contribution");
     return rv;
 }
 
