@@ -2,10 +2,12 @@ set(TEST_SRCS test_main.cpp
               aointegral.cpp
               core_hamiltonian.cpp
               coulomb_matrix.cpp
+              differential_overlap_integrals.cpp
               energy.cpp
               exchange_matrix.cpp
               fock_matrix.cpp
               guess_density.cpp
+              localized_orbitals.cpp
               reference_wavefunction.cpp
               scf_iteration.cpp
               types.cpp
