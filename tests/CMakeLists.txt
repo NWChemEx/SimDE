@@ -1,14 +1,21 @@
 set(TEST_SRCS test_main.cpp
               aointegral.cpp
+              bunchkaufman.cpp
+              cholesky.cpp
               core_hamiltonian.cpp
               coulomb_matrix.cpp
               df_coefficients.cpp
               differential_overlap_integrals.cpp
+              eigen_solver.cpp
               energy.cpp
               exchange_matrix.cpp
               fock_matrix.cpp
               guess_density.cpp
+              linear_solver.cpp
               localized_orbitals.cpp
+              lu.cpp
+              matrix_inverse.cpp
+              qr.cpp
               reference_wavefunction.cpp
               scf_iteration.cpp
               types.cpp
