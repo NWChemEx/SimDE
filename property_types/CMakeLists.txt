@@ -1,6 +1,7 @@
 set(PROP_TYPE_INCLUDES aointegral.hpp
                        core_hamiltonian.hpp
                        coulomb_matrix.hpp
+                       df_coefficients.hpp
                        differential_overlap_integral.hpp
                        energy.hpp
                        exchange_matrix.hpp
@@ -17,6 +18,7 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
 set(PROP_TYPE_SOURCES aointegral.cpp
                       core_hamiltonian.cpp
                       coulomb_matrix.cpp
+                      df_coefficients.cpp
                       differential_overlap_integral.cpp
                       energy.cpp
                       exchange_matrix.cpp

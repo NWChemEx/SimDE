@@ -2,6 +2,7 @@ set(TEST_SRCS test_main.cpp
               aointegral.cpp
               core_hamiltonian.cpp
               coulomb_matrix.cpp
+              df_coefficients.cpp
               differential_overlap_integrals.cpp
               energy.cpp
               exchange_matrix.cpp
