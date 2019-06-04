@@ -1,4 +1,4 @@
-#include "property_types/linear_algebra/cholesky.hpp"
+#include "property_types/linear_algebra/positive_definite_triangular_factorization.hpp"
 
 namespace property_types {
 

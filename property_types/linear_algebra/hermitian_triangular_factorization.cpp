@@ -1,4 +1,4 @@
-#include "property_types/linear_algebra/bunchkaufman.hpp"
+#include "property_types/linear_algebra/hermitian_triangular_factorization.hpp"
 
 namespace property_types {
 
