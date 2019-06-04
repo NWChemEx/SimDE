@@ -1,4 +1,4 @@
-#include "property_types/eigen_solver.hpp"
+#include "property_types/linear_algebra/eigen_solver.hpp"
 
 namespace property_types {
 

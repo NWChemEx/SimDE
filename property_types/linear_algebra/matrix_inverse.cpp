@@ -1,4 +1,4 @@
-#include "property_types/matrix_inverse.hpp"
+#include "property_types/linear_algebra/matrix_inverse.hpp"
 
 namespace property_types {
 

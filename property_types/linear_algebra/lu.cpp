@@ -1,4 +1,4 @@
-#include "property_types/lu.hpp"
+#include "property_types/linear_algebra/lu.hpp"
 
 namespace property_types {
 

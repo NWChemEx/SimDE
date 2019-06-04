@@ -1,4 +1,4 @@
-#include "property_types/bunchkaufman.hpp"
+#include "property_types/linear_algebra/bunchkaufman.hpp"
 
 namespace property_types {
 

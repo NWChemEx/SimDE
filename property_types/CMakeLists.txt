@@ -1,21 +1,21 @@
 set(PROP_TYPE_INCLUDES aointegral.hpp
-                       bunchkaufman.hpp
-                       cholesky.hpp
                        core_hamiltonian.hpp
                        coulomb_matrix.hpp
                        df_coefficients.hpp
                        differential_overlap_integral.hpp
-                       eigen_solver.hpp
                        energy.hpp
                        exchange_matrix.hpp
                        fock_matrix.hpp
                        guess_density.hpp
-                       linear_solver.hpp
+                       linear_algebra/bunchkaufman.hpp
+                       linear_algebra/cholesky.hpp
+                       linear_algebra/eigen_solver.hpp
+                       linear_algebra/linear_solver.hpp
+                       linear_algebra/lu.hpp
+                       linear_algebra/matrix_inverse.hpp
+                       linear_algebra/matrix_properties.hpp
+                       linear_algebra/qr.hpp
                        localized_orbitals.hpp
-                       lu.hpp
-                       matrix_inverse.hpp
-                       matrix_properties.hpp
-                       qr.hpp
                        reference_wavefunction.hpp
                        scf_iteration.hpp
                        types.hpp
@@ -24,22 +24,22 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
                        xc_quantities.hpp
 )
 set(PROP_TYPE_SOURCES aointegral.cpp
-                      bunchkaufman.cpp
-                      cholesky.cpp
                       core_hamiltonian.cpp
                       coulomb_matrix.cpp
                       df_coefficients.cpp
                       differential_overlap_integral.cpp
-                      eigen_solver.cpp
                       energy.cpp
                       exchange_matrix.cpp
                       fock_matrix.cpp
                       guess_density.cpp
-                      linear_solver.cpp
+                      linear_algebra/bunchkaufman.cpp
+                      linear_algebra/cholesky.cpp
+                      linear_algebra/eigen_solver.cpp
+                      linear_algebra/linear_solver.cpp
+                      linear_algebra/lu.cpp
+                      linear_algebra/matrix_inverse.cpp
+                      linear_algebra/qr.cpp
                       localized_orbitals.cpp
-                      lu.cpp
-                      matrix_inverse.cpp
-                      qr.cpp
                       reference_wavefunction.cpp
                       scf_iteration.cpp
                       update_guess.cpp

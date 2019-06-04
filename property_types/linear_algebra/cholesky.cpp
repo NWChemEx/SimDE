@@ -1,4 +1,4 @@
-#include "property_types/cholesky.hpp"
+#include "property_types/linear_algebra/cholesky.hpp"
 
 namespace property_types {
 

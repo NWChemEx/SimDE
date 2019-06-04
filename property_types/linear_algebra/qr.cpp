@@ -1,4 +1,4 @@
-#include "property_types/qr.hpp"
+#include "property_types/linear_algebra/qr.hpp"
 
 namespace property_types {
 

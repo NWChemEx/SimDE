@@ -1,6 +1,5 @@
 #pragma once
 #include "property_types/types.hpp"
-#include "property_types/matrix_properties.hpp"
 #include <sde/property_type.hpp>
 
 namespace property_types {

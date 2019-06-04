@@ -1,4 +1,4 @@
-#include "property_types/linear_solver.hpp"
+#include "property_types/linear_algebra/linear_solver.hpp"
 
 namespace property_types {
 

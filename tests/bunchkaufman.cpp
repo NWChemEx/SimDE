@@ -1,5 +1,5 @@
 #include "test_property_type.hpp"
-#include <property_types/bunchkaufman.hpp>
+#include <property_types/linear_algebra/bunchkaufman.hpp>
 
 TEST_CASE("BunchKaufman"){
     test_property_type<property_types::BunchKaufmanFactorization<double>>(
