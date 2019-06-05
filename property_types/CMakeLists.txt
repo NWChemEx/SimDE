@@ -7,6 +7,14 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
                        exchange_matrix.hpp
                        fock_matrix.hpp
                        guess_density.hpp
+                       linear_algebra/eigen_solver.hpp
+                       linear_algebra/hermitian_triangular_factorization.hpp
+                       linear_algebra/linear_solver.hpp
+                       linear_algebra/lu.hpp
+                       linear_algebra/matrix_inverse.hpp
+                       linear_algebra/matrix_properties.hpp
+                       linear_algebra/positive_definite_triangular_factorization.hpp
+                       linear_algebra/qr.hpp
                        localized_orbitals.hpp
                        reference_wavefunction.hpp
                        scf_iteration.hpp
@@ -24,6 +32,13 @@ set(PROP_TYPE_SOURCES aointegral.cpp
                       exchange_matrix.cpp
                       fock_matrix.cpp
                       guess_density.cpp
+                      linear_algebra/eigen_solver.cpp
+                      linear_algebra/hermitian_triangular_factorization.cpp
+                      linear_algebra/linear_solver.cpp
+                      linear_algebra/lu.cpp
+                      linear_algebra/matrix_inverse.cpp
+                      linear_algebra/positive_definite_triangular_factorization.cpp
+                      linear_algebra/qr.cpp
                       localized_orbitals.cpp
                       reference_wavefunction.cpp
                       scf_iteration.cpp
