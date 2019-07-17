@@ -7,4 +7,10 @@ TEST_CASE("QR"){
       {"Q", "R"}
     );
 }
+TEST_CASE("RankRevealingQR"){
+    test_property_type<property_types::RankRevealingQRFactorization<double>>(
+      {"Input Matrix"},
+      {"Rank","Q", "R"}
+    );
+}
 
