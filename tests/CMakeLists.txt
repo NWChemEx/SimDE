@@ -1,4 +1,5 @@
-set(TEST_SRCS test_main.cpp
+add_subdirectory(integrals)
+list(APPEND TEST_SRCS test_main.cpp
               aointegral.cpp
               core_hamiltonian.cpp
               coulomb_matrix.cpp

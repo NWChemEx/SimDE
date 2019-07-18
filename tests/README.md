@@ -24,3 +24,15 @@ TEST_CASE("CoulombMatrix"){
     );
 }
 ```
+
+Adding a New Property Type
+==========================
+
+To add a test for a new property type create a `*.cpp` file with a path and name
+that mirrors the path and name of the corresponding property type's header file.
+In the unit test file:
+
+ - include `test_property_type.hpp` and your property type's header file
+ - make a Catch2 `TEST_CASE` that wraps a call to `test_property_type`
+   - Input 1 is an intializer list of your property type's input keys
+   - Input 2 is an initializer list of your property type's result_keys

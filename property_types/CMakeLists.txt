@@ -1,4 +1,5 @@
-set(PROP_TYPE_INCLUDES aointegral.hpp
+add_subdirectory(integrals)
+list(APPEND PROP_TYPE_INCLUDES aointegral.hpp
                        core_hamiltonian.hpp
                        coulomb_matrix.hpp
                        differential_overlap_integral.hpp
@@ -14,7 +15,7 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
                        update_mos.hpp
                        xc_quantities.hpp
 )
-set(PROP_TYPE_SOURCES aointegral.cpp
+list(APPEND PROP_TYPE_SOURCES aointegral.cpp
                       core_hamiltonian.cpp
                       coulomb_matrix.cpp
                       differential_overlap_integral.cpp
