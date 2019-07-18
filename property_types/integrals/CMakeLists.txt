@@ -1,5 +1,8 @@
-list(APPEND PROP_TYPE_INCLUDES integrals/multipole.hpp)
-list(APPEND PROP_TYPE_SOURCES integrals/multipole.cpp)
+list(APPEND PROP_TYPE_INCLUDES integrals/multipole.hpp
+                               integrals/overlap.hpp)
+
+list(APPEND PROP_TYPE_SOURCES integrals/multipole.cpp
+                              integrals/overlap.cpp)
 
 set(PROP_TYPE_INCLUDES "${PROP_TYPE_INCLUDES}" PARENT_SCOPE)
 set(PROP_TYPE_SOURCES "${PROP_TYPE_SOURCES}" PARENT_SCOPE)
