@@ -38,7 +38,7 @@ auto Multipole<order, ElementType>::inputs_() {
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set&>("Bra")
                 .add_field<const type::basis_set&>("Ket")
-                .add_field<const std::vector<double>>("Origin")
+                .add_field<const std::array<double, 3>>("Origin")
                 .template add_field<type::size>("Derivative");
 
     rv["Molecule"].set_description("The molecular system");
