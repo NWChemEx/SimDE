@@ -3,6 +3,7 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
                        coulomb_matrix.hpp
                        df_coefficients.hpp
                        differential_overlap_integral.hpp
+                       embedding_partition.hpp
                        energy.hpp
                        exchange_matrix.hpp
                        fock_matrix.hpp
@@ -28,6 +29,7 @@ set(PROP_TYPE_SOURCES aointegral.cpp
                       coulomb_matrix.cpp
                       df_coefficients.cpp
                       differential_overlap_integral.cpp
+                      embedding_partition.cpp
                       energy.cpp
                       exchange_matrix.cpp
                       fock_matrix.cpp
