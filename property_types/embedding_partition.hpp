@@ -22,8 +22,7 @@ struct EmbedPartition : sde::PropertyType<EmbedPartition<ElementType>> {
 //-------------------------------Implementations--------------------------------
 template<typename ElementType>
 auto EmbedPartition<ElementType>::inputs_() {
-    auto rv =
-            sde::declare_input()
+    auto rv = sde::declare_input()
                     .add_field<const type::molecule&>("Molecule")
                     .add_field<const type::basis_set&>("Basis Set")
                     .add_field<const std::vector<type::size>&>("Active Atoms")
