@@ -4,8 +4,8 @@
 
 namespace property_types {
 
-/** @brief Property type for modules that can update a guess of MOs, using a
- * previous set of MOs
+/** @brief Property type for modules that can partition the density into
+ * active and environment parts
  *
  *  @tparam ElementType the type of the elements in the tensors
  */
