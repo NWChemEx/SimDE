@@ -19,6 +19,7 @@ set(TEST_SRCS test_main.cpp
               qr.cpp
               reference_wavefunction.cpp
               scf_iteration.cpp
+              singular_value_decomposition.cpp
               types.cpp
               update_guess.cpp
               update_mos.cpp

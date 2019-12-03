@@ -19,6 +19,7 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
                        localized_orbitals.hpp
                        reference_wavefunction.hpp
                        scf_iteration.hpp
+                       singular_value_decomposition.hpp
                        types.hpp
                        update_guess.hpp
                        update_mos.hpp
@@ -44,6 +45,7 @@ set(PROP_TYPE_SOURCES aointegral.cpp
                       localized_orbitals.cpp
                       reference_wavefunction.cpp
                       scf_iteration.cpp
+                      singular_value_decomposition.cpp
                       update_guess.cpp
                       update_mos.cpp
                       xc_quantities.cpp
