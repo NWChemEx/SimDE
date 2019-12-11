@@ -3,6 +3,7 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
                        coulomb_matrix.hpp
                        df_coefficients.hpp
                        differential_overlap_integral.hpp
+                       embedding_partition.hpp
                        energy.hpp
                        exchange_matrix.hpp
                        fock_matrix.hpp
@@ -18,6 +19,7 @@ set(PROP_TYPE_INCLUDES aointegral.hpp
                        localized_orbitals.hpp
                        reference_wavefunction.hpp
                        scf_iteration.hpp
+                       singular_value_decomposition.hpp
                        types.hpp
                        update_guess.hpp
                        update_mos.hpp
@@ -28,6 +30,7 @@ set(PROP_TYPE_SOURCES aointegral.cpp
                       coulomb_matrix.cpp
                       df_coefficients.cpp
                       differential_overlap_integral.cpp
+                      embedding_partition.cpp
                       energy.cpp
                       exchange_matrix.cpp
                       fock_matrix.cpp
@@ -42,6 +45,7 @@ set(PROP_TYPE_SOURCES aointegral.cpp
                       localized_orbitals.cpp
                       reference_wavefunction.cpp
                       scf_iteration.cpp
+                      singular_value_decomposition.cpp
                       update_guess.cpp
                       update_mos.cpp
                       xc_quantities.cpp

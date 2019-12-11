@@ -5,6 +5,7 @@ set(TEST_SRCS test_main.cpp
               df_coefficients.cpp
               differential_overlap_integrals.cpp
               eigen_solver.cpp
+              embedding_partition.cpp
               energy.cpp
               exchange_matrix.cpp
               fock_matrix.cpp
@@ -18,6 +19,7 @@ set(TEST_SRCS test_main.cpp
               qr.cpp
               reference_wavefunction.cpp
               scf_iteration.cpp
+              singular_value_decomposition.cpp
               types.cpp
               update_guess.cpp
               update_mos.cpp
