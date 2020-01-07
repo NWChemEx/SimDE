@@ -20,7 +20,7 @@ inline static void test_property_type(string_list input_fields,
     }
     SECTION("results"){
         auto results = T::results();
-            for(const auto& field : result_fields)
-                SECTION(field){ REQUIRE(results.count(field) == 1); }
+        for(const auto& field : result_fields)
+            SECTION(field){ REQUIRE(results.count(field) == 1); }
     }
 }
