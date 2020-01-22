@@ -74,7 +74,7 @@ NuclearRepulsion::NuclearRepulsion() {
      * The above function automatically adds the Energy property type's fields
      * to our API. Specifically our module now takes a ``LibChemist::Molecule``
      * class instance, and an integer signifying the derivative order to
-     * compute and returns a ``tamm::Tensor`` with the energy derivative.
+     * compute and returns a ``TA::TSpArray`` with the energy derivative.
      *
      * If we want to add any additional input/results to our class we do that
      * here. In anticipation of eventually doing some screening we add a
@@ -145,8 +145,8 @@ sde::type::result_map NuclearRepulsion::run_(sde::type;
     /*TUTORIAL
      *
      * With the energy computed all that remains is to package it up and return
-     * the results in the agreed upon format, which is a ``tamm::Tensor``. The
-     * actual packaging of a single scalar into a ``tamm::Tensor`` is a rather
+     * the results in the agreed upon format, which is a ``TA::TSpArray`. The
+     * actual packaging of a single scalar into a ``TA::TSpArray`` is a rather
      * laborious task and omitted here.
      */
     type::tensor<double> rv;

@@ -24,7 +24,7 @@ template<typename ElementType>
 auto EmbedPartition<ElementType>::inputs_() {
     auto rv = sde::declare_input()
                     .add_field<const type::molecule&>("Molecule")
-                    .add_field<const type::basis_set&>("Basis Set")
+                    .add_field<const type::basis_set<ElementType>&>("Basis Set")
                     .add_field<const std::vector<type::size>&>("Active Atoms")
                     .template add_field<const orbital_type&>("Initial OrbitalSpace");
     rv["Molecule"].set_description("The molecule associated with the density");

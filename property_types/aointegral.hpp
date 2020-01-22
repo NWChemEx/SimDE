@@ -24,7 +24,7 @@ namespace property_types {
 template<type::size NBases, typename ElementType = double>
 struct AOIntegral : public sde::PropertyType<AOIntegral<NBases, ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_array_type = std::array<type::basis_set, NBases>;
+    using basis_array_type = std::array<type::basis_set<ElementType>, NBases>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
