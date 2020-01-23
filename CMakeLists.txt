@@ -24,7 +24,7 @@ cpp_add_library(
     property_types
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/property_types"
     INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/property_types"
-    DEPENDS libchemist
+    DEPENDS chemist
 )
 
 if("${BUILD_TESTING}")

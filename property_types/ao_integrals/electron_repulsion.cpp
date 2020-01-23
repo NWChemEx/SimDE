@@ -1,12 +1,12 @@
-#include "property_types/ao_integrals/coulomb_repulsion.hpp"
+#include "property_types/ao_integrals/electron_repulsion.hpp"
 
 namespace property_types {
 
-template class ERI2C<double>;
-template class ERI2C<float>;
-template class ERI3C<double>;
-template class ERI3C<float>;
-template class ERI4C<double>;
-template class ERI4C<float>;
+template class ERI2CIntegral<double>;
+template class ERI2CIntegral<float>;
+template class ERI3CIntegral<double>;
+template class ERI3CIntegral<float>;
+template class ERI4CIntegral<double>;
+template class ERI4CIntegral<float>;
 
 } // namespace property_types

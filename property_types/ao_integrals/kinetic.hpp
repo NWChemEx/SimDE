@@ -30,7 +30,7 @@ namespace property_types {
         auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
-                .add_field<const basis_type&>("Ket")
+                .template add_field<const basis_type&>("Ket")
                 .template add_field<type::size>("Derivative");
         rv["Molecule"].set_description(
                 "The molecule for which the electron kinetic integrals are computed");
@@ -41,7 +41,7 @@ namespace property_types {
         return rv;
     }
 
-    template<type::size NBases, typename ElementType>
+    template<typename ElementType>
     auto KineticIntegral<ElementType>::results_() {
         auto rv = sde::declare_result().add_field<tensor_type>("Kinetic Integrals");
         rv["Kinetic Integrals"].set_description("The requested electron kinetic integrals");

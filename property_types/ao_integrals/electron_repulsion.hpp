@@ -24,7 +24,7 @@ namespace property_types {
     }; // class ERI2CIntegral
 
     template<typename ElementType = double>
-    struct ERI3CIntegral : public sde::PropertyType<ERI2CIntegral<ElementType>> {
+    struct ERI3CIntegral : public sde::PropertyType<ERI3CIntegral<ElementType>> {
         /// The type of an std::array of basis sets
         using basis_type = type::basis_set<ElementType>;
         /// The type of a tensor accounting for ElementType
@@ -36,7 +36,7 @@ namespace property_types {
     }; // class ERI3CIntegral
 
     template<typename ElementType = double>
-    struct ERI4CIntegral : public sde::PropertyType<ERI2CIntegral<ElementType>> {
+    struct ERI4CIntegral : public sde::PropertyType<ERI4CIntegral<ElementType>> {
         /// The type of an std::array of basis sets
         using basis_type = type::basis_set<ElementType>;
         /// The type of a tensor accounting for ElementType
@@ -54,7 +54,7 @@ namespace property_types {
         auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
-                .add_field<const basis_type&>("Ket")
+                .template add_field<const basis_type&>("Ket")
                 .template add_field<type::size>("Derivative");
         rv["Molecule"].set_description(
                 "The molecule for which the electron repulsion integrals are computed");
@@ -65,7 +65,7 @@ namespace property_types {
         return rv;
     }
 
-    template<type::size NBases, typename ElementType>
+    template<typename ElementType>
     auto ERI2CIntegral<ElementType>::results_() {
         auto rv = sde::declare_result().add_field<tensor_type>("ERIs");
         rv["ERIs"].set_description("The requested electron repulsion integrals");
@@ -77,8 +77,8 @@ namespace property_types {
         auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
-                .add_field<const basis_type&>("Ket1")
-                .add_field<const basis_type&>("Ket2")
+                .template add_field<const basis_type&>("Ket1")
+                .template add_field<const basis_type&>("Ket2")
                 .template add_field<type::size>("Derivative");
         rv["Molecule"].set_description(
                 "The molecule for which the electron repulsion integrals are computed");
@@ -90,7 +90,7 @@ namespace property_types {
         return rv;
     }
 
-    template<type::size NBases, typename ElementType>
+    template<typename ElementType>
     auto ERI3CIntegral<ElementType>::results_() {
         auto rv = sde::declare_result().add_field<tensor_type>("ERIs");
         rv["ERIs"].set_description("The requested electron repulsion integrals");
@@ -102,9 +102,9 @@ namespace property_types {
         auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra1")
-                .add_field<const basis_type&>("Bra2")
-                .add_field<const basis_type&>("Ket1")
-                .add_field<const basis_type&>("Ket2")
+                .template add_field<const basis_type&>("Bra2")
+                .template add_field<const basis_type&>("Ket1")
+                .template add_field<const basis_type&>("Ket2")
                 .template add_field<type::size>("Derivative");
         rv["Molecule"].set_description(
                 "The molecule for which the electron repulsion integrals are computed");
@@ -117,7 +117,7 @@ namespace property_types {
         return rv;
     }
 
-    template<type::size NBases, typename ElementType>
+    template<typename ElementType>
     auto ERI4CIntegral<ElementType>::results_() {
         auto rv = sde::declare_result().add_field<tensor_type>("ERIs");
         rv["ERIs"].set_description("The requested electron repulsion integrals");

@@ -26,8 +26,8 @@ auto CoreHamiltonian<ElementType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set<ElementType>&>("Bra")
-                .add_field<const type::basis_set<ElementType>&>("Ket")
-                .add_field<type::size>("Derivative");
+                .template add_field<const type::basis_set<ElementType>&>("Ket")
+                .template add_field<type::size>("Derivative");
     rv["Molecule"].set_description("The molecular system");
     rv["Bra"].set_description("The basis set for the bra");
     rv["Ket"].set_description("The basis set for the ket");

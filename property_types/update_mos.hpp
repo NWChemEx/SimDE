@@ -28,7 +28,7 @@ auto UpdateMOs<ElementType>::inputs_() {
       sde::declare_input()
         .add_field<const type::molecule&>("Molecule")
         .add_field<const type::basis_set<ElementType>&>("Basis Set")
-        .add_field<const tensor_type&>("Fock Matrix")
+        .template add_field<const tensor_type&>("Fock Matrix")
         .template add_field<const orbital_type&>("Previous OrbitalSpace");
     rv["Molecule"].set_description("The molecule associated with the density");
     rv["Basis Set"].set_description("The basis set used for the density");
