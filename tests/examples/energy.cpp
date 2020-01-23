@@ -52,7 +52,7 @@ public:
  *
  * Next, we implement our constructor.
  */
-NuclearRepulsion::NuclearRepulsion() {
+NuclearRepulsion::NuclearRepulsion() : ModuleBase(this) {
     /*TUTORIAL
      *
      * The first thing one usually does in the ctor is to set the property types
@@ -107,9 +107,8 @@ NuclearRepulsion::NuclearRepulsion() {
  * provided and one with the submodules requested (our current module does not
  * use submodules) and returns a map of all computed results.
  */
-sde::type::result_map NuclearRepulsion::run_(sde::type;
-                                             : input_map inputs,
-                                               sde::type::submodule_map) {
+sde::type::result_map NuclearRepulsion::run_(sde::type::input_map inputs,
+                                               sde::type::submodule_map) const {
     /*TUTORIAL
      *
      * The first step in all modules is to unwrap the inputs. This can be done
