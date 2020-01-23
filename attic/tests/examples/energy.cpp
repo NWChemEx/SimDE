@@ -108,7 +108,7 @@ NuclearRepulsion::NuclearRepulsion() : ModuleBase(this) {
  * use submodules) and returns a map of all computed results.
  */
 sde::type::result_map NuclearRepulsion::run_(sde::type::input_map inputs,
-                                               sde::type::submodule_map) const {
+                                             sde::type::submodule_map) const {
     /*TUTORIAL
      *
      * The first step in all modules is to unwrap the inputs. This can be done
@@ -116,8 +116,8 @@ sde::type::result_map NuclearRepulsion::run_(sde::type::input_map inputs,
      * takes inputs not affiliated with a property type you'll have to unwrap
      * them manually, like we do for the ``"Distance Threshold"``.
      */
-    using energy_type      = property_types::Energy<double>;
-    const auto[mol, deriv] = energy_type::unwrap_inputs(inputs);
+    using energy_type       = property_types::Energy<double>;
+    const auto [mol, deriv] = energy_type::unwrap_inputs(inputs);
 
     auto thresh = inputs.at("Distance Threshold").value<double>();
 
@@ -127,13 +127,13 @@ sde::type::result_map NuclearRepulsion::run_(sde::type::input_map inputs,
      * agnostic.
      */
     double enuc = 0.0;
-    for(const auto& atomi : molecule) {
+    for(const auto& atomi : mol) {
         const auto& ri = atomi.coords();
-        for(const auto& atomj : molecule) {
+        for(const auto& atomj : mol) {
             if(atomi == atomj) break;
             const auto& rj    = atomj.coords();
             const double ZiZj = atomi.Z() * atomj.Z();
-            const array_t rij{ri[0] - rj[0], ri[1] - rj[1], ri[2] - rj[2]};
+            const std::array rij{ri[0] - rj[0], ri[1] - rj[1], ri[2] - rj[2]};
             const double rij2 =
               rij[0] * rij[0] + rij[1] * rij[1] + rij[2] * rij[2];
             const double mag_rij = std::sqrt(rij2);
@@ -148,6 +148,7 @@ sde::type::result_map NuclearRepulsion::run_(sde::type::input_map inputs,
      * actual packaging of a single scalar into a ``TA::TSpArray`` is a rather
      * laborious task and omitted here.
      */
-    type::tensor<double> rv;
-    return Energy<double>::wrap_results(results(), rv);
+    property_types::type::tensor<double> rv;
+    auto r = results();
+    return Energy<double>::wrap_results(results(), r);
 } // NuclearRepulsion::run_
