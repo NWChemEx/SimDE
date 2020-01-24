@@ -9,7 +9,7 @@ namespace property_types {
  *  @tparam ElementType the type of the elements in the tensors
  */
 template<typename ElementType = double>
-struct UpdateGuess : sde::PropertyType<UpdateGuess<ElementType>> {
+struct UpdateGuess : public sde::PropertyType<UpdateGuess<ElementType>> {
     /// The type of the new MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// The type of the tensors representing the MOs, accounting for ElementType

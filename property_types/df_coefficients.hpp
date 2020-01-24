@@ -11,7 +11,7 @@ namespace property_types {
  * @tparam ElementType The type of the elements in the returned tensor
  */
 template<typename ElementType = double>
-struct DFCoefficients : sde::PropertyType<DFCoefficients<ElementType>> {
+struct DFCoefficients : public sde::PropertyType<DFCoefficients<ElementType>> {
     /// The type of the returned tensor, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type

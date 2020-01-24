@@ -10,7 +10,7 @@ namespace property_types {
  *  @tparam ElementType the type of the elements in the tensors
  */
 template<typename ElementType = double>
-struct EmbedPartition : sde::PropertyType<EmbedPartition<ElementType>> {
+struct EmbedPartition : public sde::PropertyType<EmbedPartition<ElementType>> {
     /// The type of the new MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// Generates the input fields required by this property type

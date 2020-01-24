@@ -22,7 +22,7 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct DifferentialOverlapIntegral
-  : sde::PropertyType<DifferentialOverlapIntegral<ElementType>> {
+  : public sde::PropertyType<DifferentialOverlapIntegral<ElementType>> {
     /// Type of the orbital spaces taken by this module
     using orbital_type = type::orbitals<ElementType>;
     /// Type of the tensor returned from this module

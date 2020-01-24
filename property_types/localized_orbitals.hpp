@@ -13,7 +13,7 @@ namespace property_types {
  *  @tparam ElementType The type of elements in the tensors
  */
 template<typename ElementType = double>
-struct LocalizedOrbitals : sde::PropertyType<LocalizedOrbitals<ElementType>> {
+struct LocalizedOrbitals : public sde::PropertyType<LocalizedOrbitals<ElementType>> {
     /// Type of orbitals expected by this module, accounting for @p ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// Generates the input fields required by this property type

@@ -11,7 +11,7 @@ namespace property_types {
  * @tparam ElementType The type of the elements in the returned tensor
  */
 template<typename ElementType = double>
-struct CoreHamiltonian : sde::PropertyType<CoreHamiltonian<ElementType>> {
+struct CoreHamiltonian : public sde::PropertyType<CoreHamiltonian<ElementType>> {
     /// The type of the returned tensor, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type

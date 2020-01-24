@@ -18,7 +18,7 @@ namespace property_types {
  *  @tparam ElementType The type of the elements in the returned tensor.
  */
 template<typename ElementType = double>
-struct CoulombMatrix : sde::PropertyType<CoulombMatrix<ElementType>> {
+struct CoulombMatrix : public sde::PropertyType<CoulombMatrix<ElementType>> {
     /// Type of the MOs that accounts for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// Type of the returned tesnor that accounts for ElementType

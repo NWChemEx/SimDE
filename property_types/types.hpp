@@ -37,31 +37,16 @@ using size = std::size_t;
 } // namespace property_types
 
 // These allow sdeAny to wrap a TA::TSpArray, needed for Cache retrieval
+namespace TiledArray {
     template<typename T, typename U>
-    bool operator==(const property_types::type::tensor<T>& lhs, const property_types::type::tensor<U>& rhs) {
+    bool operator==(const property_types::type::tensor<T> &lhs, const property_types::type::tensor<U> &rhs) {
         return false;
     }
 
-    inline void hash_object(const property_types::type::tensor<double>& t, sde::type::hasher& h) {
+    inline void hash_object(const property_types::type::tensor<double> &t, sde::type::hasher &h) {
         std::mt19937 rng;
         rng.seed(std::random_device()());
         std::uniform_real_distribution<double> dist;
         h(dist(rng), dist(rng), dist(rng), dist(rng));
     }
-
-/*
-// These allow sdeAny to wrap a tamm::Tensor, needed for Cache retrieval
-namespace tamm {
-template<typename T, typename U>
-bool operator==(const Tensor<T>& lhs, const Tensor<U>& rhs) {
-    return false;
-}
-
-inline void hash_object(const Tensor<double>& t, sde::Hasher& h) {
-    std::mt19937 rng;
-    rng.seed(std::random_device()());
-    std::uniform_real_distribution<double> dist;
-    h(dist(rng), dist(rng), dist(rng), dist(rng));
-}
-} // namespace tamm
-*/
+} // namespace TiledArray

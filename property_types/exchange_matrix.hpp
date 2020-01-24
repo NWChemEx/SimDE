@@ -18,7 +18,7 @@ namespace property_types {
  *  @tparam ElementType The type of the elements in the returned tensor.
  */
 template<typename ElementType = double>
-struct ExchangeMatrix : sde::PropertyType<ExchangeMatrix<ElementType>> {
+struct ExchangeMatrix : public sde::PropertyType<ExchangeMatrix<ElementType>> {
     /// Typedef for the MOs that accounts for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// Typedef for the returned tensor that accounts for ElementType

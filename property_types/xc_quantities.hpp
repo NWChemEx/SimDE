@@ -11,7 +11,7 @@ namespace property_types {
  *  @tparam ElementType the type of the elements in the tensors
  */
 template<typename ElementType = double>
-struct PureXCQuantities : sde::PropertyType<PureXCQuantities<ElementType>> {
+struct PureXCQuantities : public sde::PropertyType<PureXCQuantities<ElementType>> {
     /// The type of the new MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
@@ -28,7 +28,7 @@ struct PureXCQuantities : sde::PropertyType<PureXCQuantities<ElementType>> {
  *  @tparam ElementType the type of the elements in the tensors
  */
 template<typename ElementType = double>
-struct HybridXCQuantities : sde::PropertyType<HybridXCQuantities<ElementType>> {
+struct HybridXCQuantities : public sde::PropertyType<HybridXCQuantities<ElementType>> {
     /// The type of the new MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
@@ -45,7 +45,7 @@ struct HybridXCQuantities : sde::PropertyType<HybridXCQuantities<ElementType>> {
  *  @tparam ElementType the type of the elements in the tensors
  */
 template<typename ElementType = double>
-struct DoubleHybridXCQuantities : sde::PropertyType<DoubleHybridXCQuantities<ElementType>> {
+struct DoubleHybridXCQuantities : public sde::PropertyType<DoubleHybridXCQuantities<ElementType>> {
     /// The type of the new MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// The type of the tensors representing the MOs, accounting for ElementType

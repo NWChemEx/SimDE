@@ -13,7 +13,7 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct ReferenceWavefunction
-  : sde::PropertyType<ReferenceWavefunction<ElementType>> {
+  : public sde::PropertyType<ReferenceWavefunction<ElementType>> {
     /// Type of the MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// Type of the returned tensor, accounting for ElementType
