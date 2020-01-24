@@ -16,7 +16,8 @@ cpp_find_or_build_dependency(
     libchemist
     URL github.com/NWChemEx-Project/libchemist
     PRIVATE TRUE
-    BUILD_TARGET sde
+    BUILD_TARGET chemist
+    FIND_TARGET nwx::chemist
     CMAKE_ARGS BUILD_TESTING=OFF
 )
 
@@ -24,7 +25,7 @@ cpp_add_library(
     property_types
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/property_types"
     INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/property_types"
-    DEPENDS chemist
+    DEPENDS nwx::chemist
 )
 
 if("${BUILD_TESTING}")
@@ -38,7 +39,7 @@ if("${BUILD_TESTING}")
         test_property_types
         SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests"
         INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/property_types"
-        DEPENDS Catch2 property_types
+        DEPENDS Catch2::Catch2 property_types
     )
 endif()
 
