@@ -3,6 +3,7 @@
 #include <libchemist/molecule.hpp>
 #include <libchemist/orbital_space.hpp>
 #include <libchemist/types.hpp>
+#include <sde/types.hpp>
 #include <random>
 
 /** @file types.hpp
@@ -41,7 +42,7 @@ using size = std::size_t;
         return false;
     }
 
-    inline void hash_object(const property_types::type::tensor<double>& t, sde::Hasher& h) {
+    inline void hash_object(const property_types::type::tensor<double>& t, sde::type::hasher& h) {
         std::mt19937 rng;
         rng.seed(std::random_device()());
         std::uniform_real_distribution<double> dist;
