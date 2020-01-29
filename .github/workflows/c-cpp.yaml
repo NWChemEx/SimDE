@@ -29,10 +29,7 @@ jobs:
             gfortran --version
             gcov     --version
     - name: get-blas-lapack
-      run: |
-            apt-cache search cblas 
-            apt-cache search lapacke 
-            sudo apt-get install libopenblas-base libopenblas-dev
+      run:  sudo apt-get install libopenblas-base libopenblas-dev liblapacke liblapacke-dev
     - name: get-openmpi
       run: |
             sudo apt-get install openmpi-bin libopenmpi-dev
