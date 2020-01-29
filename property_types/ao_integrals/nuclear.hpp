@@ -6,7 +6,7 @@ namespace property_types {
 
 /**
  * @brief The property type for modules that build tensors filled with electron nuclear
- * repulsion integrals in the AO basis set.
+ * attraction integrals in the AO basis set.
  *
  * @tparam ElementType The type of the element in the tensor. Defaults to
  *                     `double`.
@@ -30,9 +30,12 @@ namespace property_types {
         auto rv = sde::declare_input()
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
+                .template add_field<const type::molecule&>("Molecule")
                 .template add_field<type::size>("Derivative");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
+        rv["Molecule"].set_description(
+                "The molecule for which the electron nuclear attraction integrals are computed");
         rv["Derivative"].set_description(
                 "The derivative order of the integrals to be computed");
         return rv;
@@ -41,7 +44,7 @@ namespace property_types {
     template<typename ElementType>
     auto NuclearIntegral<ElementType>::results_() {
         auto rv = sde::declare_result().add_field<tensor_type>("Nuclear Integrals");
-        rv["Nuclear Integrals"].set_description("The requested electron nuclear repulsion integrals");
+        rv["Nuclear Integrals"].set_description("The requested electron nuclear attraction integrals");
         return rv;
     }
 

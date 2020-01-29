@@ -23,7 +23,7 @@ TEST_CASE("OverlapIntegral"){
 
 TEST_CASE("NuclearIntegral"){
     test_property_type<property_types::NuclearIntegral<>>(
-            {"Bra", "Ket", "Derivative"},
+            {"Bra", "Ket", "Molecule", "Derivative"},
             {"Nuclear Integrals"}
     );
 }
