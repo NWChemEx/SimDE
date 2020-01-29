@@ -34,10 +34,30 @@ jobs:
       run: |
             wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
             yes | /bin/sh cmake-3.16.3-Linux-x86_64.sh
+    - name: install-cmakebuild
+      env:
+            CPP_GITHUB_TOKEN: ${{ secrets.CPP_GITHUB_TOKEN }}
+      run: |
+            git clone https://${CPP_GITHUB_TOKEN}@github.com/NWChemEx-Project/CMakeBuild
+            cd CMakeBuild
+            cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=`pwd`/../install
+            cd build
+            make
+            make install
+    - name: install-tamm
+      env:
+            CPP_GITHUB_TOKEN: ${{ secrets.CPP_GITHUB_TOKEN }}
+      run: |
+            git clone https://${CPP_GITHUB_TOKEN}@github.com/NWChemEx-Project/TAMM
+            cd TAMM
+            cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=`pwd`/../install -DCMAKE_PREFIX_PATH=`pwd`/../install
+            cd build
+            make
+            make install
     - name: cmake
       env:
             CPP_GITHUB_TOKEN: ${{ secrets.CPP_GITHUB_TOKEN }}
-      run:  cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DBUILD_TESTING=TRUE -DCATCH_ENABLE_COVERAGE=ON -DCMAKE_CXX_FLAGS="--coverage" -DCMAKE_C_FLAGS="--coverage" -DCMAKE_EXE_LINKER_FLAGS="-fprofile-arcs" -DCPP_GITHUB_TOKEN=$CPP_GITHUB_TOKEN
+      run:  cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DCMAKE_PREFIX_PATH=`pwd`/install -DBUILD_TESTING=TRUE -DCATCH_ENABLE_COVERAGE=ON -DCMAKE_CXX_FLAGS="--coverage" -DCMAKE_C_FLAGS="--coverage" -DCMAKE_EXE_LINKER_FLAGS="-fprofile-arcs" -DCPP_GITHUB_TOKEN=$CPP_GITHUB_TOKEN
     - name: ctest
       run:  cmake-3.16.3-Linux-x86_64/bin/ctest --build-and-test build build --build-nocmake --build-generator "Unix Makefiles" --test-command make test
     - name: gcovr
