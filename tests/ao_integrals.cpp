@@ -72,42 +72,42 @@ TEST_CASE("ERI4CIntegral"){
 
 TEST_CASE("STG2CIntegral"){
     test_property_type<property_types::STG2CIntegral<>>(
-            {"Molecule", "Bra", "Ket", "Derivative"},
+            {"Molecule", "Bra", "Ket", "Derivative", "STG Exponent"},
             {"STG Integrals"}
     );
 }
 
 TEST_CASE("STG3CIntegral"){
     test_property_type<property_types::STG3CIntegral<>>(
-            {"Molecule", "Bra", "Ket1", "Ket2", "Derivative"},
+            {"Molecule", "Bra", "Ket1", "Ket2", "Derivative", "STG Exponent"},
             {"STG Integrals"}
     );
 }
 
 TEST_CASE("STG4CIntegral"){
     test_property_type<property_types::STG4CIntegral<>>(
-            {"Molecule", "Bra1", "Bra2", "Ket1", "Ket2", "Derivative"},
+            {"Molecule", "Bra1", "Bra2", "Ket1", "Ket2", "Derivative", "STG Exponent"},
             {"STG Integrals"}
     );
 }
 
 TEST_CASE("Yukawa2CIntegral"){
     test_property_type<property_types::Yukawa2CIntegral<>>(
-            {"Molecule", "Bra", "Ket", "Derivative"},
+            {"Molecule", "Bra", "Ket", "Derivative", "STG Exponent"},
             {"Yukawa Integrals"}
     );
 }
 
 TEST_CASE("Yukawa3CIntegral"){
     test_property_type<property_types::Yukawa3CIntegral<>>(
-            {"Molecule", "Bra", "Ket1", "Ket2", "Derivative"},
+            {"Molecule", "Bra", "Ket1", "Ket2", "Derivative", "STG Exponent"},
             {"Yukawa Integrals"}
     );
 }
 
 TEST_CASE("Yukawa4CIntegral"){
     test_property_type<property_types::Yukawa4CIntegral<>>(
-            {"Molecule", "Bra1", "Bra2", "Ket1", "Ket2", "Derivative"},
+            {"Molecule", "Bra1", "Bra2", "Ket1", "Ket2", "Derivative", "STG Exponent"},
             {"Yukawa Integrals"}
     );
 }
