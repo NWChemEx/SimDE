@@ -52,13 +52,10 @@ namespace property_types {
     template<typename ElementType>
     auto EDipoleIntegral<ElementType>::inputs_() {
         auto rv = sde::declare_input()
-                .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
                 .template add_field<type::size>("Derivative")
                 .template add_field<const std::array<ElementType,3>&>("Origin",std::array<ElementType,3>{0,0,0});
-        rv["Molecule"].set_description(
-                "The molecule for which the integrals are computed");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
         rv["Derivative"].set_description(
@@ -77,13 +74,10 @@ namespace property_types {
     template<typename ElementType>
     auto EQuadrupoleIntegral<ElementType>::inputs_() {
         auto rv = sde::declare_input()
-                .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
                 .template add_field<type::size>("Derivative")
                 .template add_field<const std::array<ElementType,3>&>("Origin",std::array<ElementType,3>{0,0,0});
-        rv["Molecule"].set_description(
-                "The molecule for which the integrals are computed");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
         rv["Derivative"].set_description(
@@ -102,13 +96,10 @@ namespace property_types {
     template<typename ElementType>
     auto EOctopoleIntegral<ElementType>::inputs_() {
         auto rv = sde::declare_input()
-                .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
                 .template add_field<type::size>("Derivative")
                 .template add_field<const std::array<ElementType,3>&>("Origin",std::array<ElementType,3>{0,0,0});
-        rv["Molecule"].set_description(
-                "The molecule for which the integrals are computed");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
         rv["Derivative"].set_description(

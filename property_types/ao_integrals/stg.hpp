@@ -52,13 +52,10 @@ namespace property_types {
     template<typename ElementType>
     auto STG2CIntegral<ElementType>::inputs_() {
         auto rv = sde::declare_input()
-                .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
                 .template add_field<type::size>("Derivative")
                 .template add_field<ElementType>("STG Exponent",ElementType{1.0});
-        rv["Molecule"].set_description(
-                "The molecule for which the integrals are computed");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
         rv["Derivative"].set_description(
@@ -77,14 +74,11 @@ namespace property_types {
     template<typename ElementType>
     auto STG3CIntegral<ElementType>::inputs_() {
         auto rv = sde::declare_input()
-                .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket1")
                 .template add_field<const basis_type&>("Ket2")
                 .template add_field<type::size>("Derivative")
                 .template add_field<ElementType>("STG Exponent",ElementType{1.0});
-        rv["Molecule"].set_description(
-                "The molecule for which the integrals are computed");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket1"].set_description("The first basis set for the ket");
         rv["Ket2"].set_description("The second basis set for the ket");
@@ -104,15 +98,12 @@ namespace property_types {
     template<typename ElementType>
     auto STG4CIntegral<ElementType>::inputs_() {
         auto rv = sde::declare_input()
-                .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra1")
                 .template add_field<const basis_type&>("Bra2")
                 .template add_field<const basis_type&>("Ket1")
                 .template add_field<const basis_type&>("Ket2")
                 .template add_field<type::size>("Derivative")
                 .template add_field<ElementType>("STG Exponent",ElementType{1.0});
-        rv["Molecule"].set_description(
-                "The molecule for which the integrals are computed");
         rv["Bra1"].set_description("The first basis set for the bra");
         rv["Bra2"].set_description("The second basis set for the bra");
         rv["Ket1"].set_description("The first basis set for the ket");
