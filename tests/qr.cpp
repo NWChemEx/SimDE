@@ -1,16 +1,11 @@
 #include "test_property_type.hpp"
 #include <property_types/linear_algebra/qr.hpp>
 
-TEST_CASE("QR"){
+TEST_CASE("QR") {
     test_property_type<property_types::QRFactorization<double>>(
-      {"Input Matrix"},
-      {"Q", "R"}
-    );
+      {"Input Matrix"}, {"Q", "R"});
 }
-TEST_CASE("RankRevealingQR"){
+TEST_CASE("RankRevealingQR") {
     test_property_type<property_types::RankRevealingQRFactorization<double>>(
-      {"Input Matrix"},
-      {"Rank","Q", "R"}
-    );
+      {"Input Matrix"}, {"Rank", "Q", "R"});
 }
-

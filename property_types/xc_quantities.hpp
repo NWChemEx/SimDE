@@ -4,7 +4,6 @@
 
 namespace property_types {
 
-
 /** @brief Property type for modules that that build XC related quantities
  * (EXC, VXC, etc) in the AO basis set for pure functionals.
  *
@@ -45,7 +44,8 @@ struct HybridXCQuantities : sde::PropertyType<HybridXCQuantities<ElementType>> {
  *  @tparam ElementType the type of the elements in the tensors
  */
 template<typename ElementType = double>
-struct DoubleHybridXCQuantities : sde::PropertyType<DoubleHybridXCQuantities<ElementType>> {
+struct DoubleHybridXCQuantities
+  : sde::PropertyType<DoubleHybridXCQuantities<ElementType>> {
     /// The type of the new MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
@@ -104,12 +104,6 @@ auto DoubleHybridXCQuantities<ElementType>::inputs_() {
     rv["Derivative"].set_description("The derivative order to compute");
     return rv;
 }
-
-
-
-
-
-
 
 template<typename ElementType>
 auto PureXCQuantities<ElementType>::results_() {

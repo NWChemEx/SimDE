@@ -22,11 +22,12 @@ struct EmbedPartition : sde::PropertyType<EmbedPartition<ElementType>> {
 //-------------------------------Implementations--------------------------------
 template<typename ElementType>
 auto EmbedPartition<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                    .add_field<const type::molecule&>("Molecule")
-                    .add_field<const type::basis_set&>("Basis Set")
-                    .add_field<const std::vector<type::size>&>("Active Atoms")
-                    .template add_field<const orbital_type&>("Initial OrbitalSpace");
+    auto rv =
+      sde::declare_input()
+        .add_field<const type::molecule&>("Molecule")
+        .add_field<const type::basis_set&>("Basis Set")
+        .add_field<const std::vector<type::size>&>("Active Atoms")
+        .template add_field<const orbital_type&>("Initial OrbitalSpace");
     rv["Molecule"].set_description("The molecule associated with the density");
     rv["Basis Set"].set_description("The basis set used for the density");
     rv["Active Atoms"].set_description("The list of active atoms");
@@ -37,10 +38,11 @@ auto EmbedPartition<ElementType>::inputs_() {
 template<typename ElementType>
 auto EmbedPartition<ElementType>::results_() {
     auto rv = sde::declare_result()
-            .add_field<int>("N Active MOs")
-            .template add_field<orbital_type>("Orbital Space");
+                .add_field<int>("N Active MOs")
+                .template add_field<orbital_type>("Orbital Space");
     rv["N Active MOs"].set_description("The number of active MOs");
-    rv["Orbital Space"].set_description("The OrbitalSpace with computed density and MOs");
+    rv["Orbital Space"].set_description(
+      "The OrbitalSpace with computed density and MOs");
     return rv;
 }
 

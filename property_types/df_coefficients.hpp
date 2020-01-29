@@ -5,8 +5,8 @@
 namespace property_types {
 
 /**
- * @brief The property type for modules that build the density-fitting coefficients
- *        for computing the J and K matrices using 3C ERIs.
+ * @brief The property type for modules that build the density-fitting
+ *        coefficients for computing the J and K matrices using 3C ERIs.
  *
  * @tparam ElementType The type of the elements in the returned tensor
  */

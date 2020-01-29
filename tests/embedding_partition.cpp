@@ -3,6 +3,6 @@
 
 TEST_CASE("EmbedPartition") {
     test_property_type<property_types::EmbedPartition<>>(
-        {"Molecule", "Basis Set", "Active Atoms", "Initial OrbitalSpace"},
-        {"N Active MOs", "Orbital Space"});
+      {"Molecule", "Basis Set", "Active Atoms", "Initial OrbitalSpace"},
+      {"N Active MOs", "Orbital Space"});
 }
