@@ -1,7 +1,16 @@
 cmake_minimum_required(VERSION 3.10)
 project(property_types VERSION 1.0.0)
-find_package(cpp REQUIRED)
-cpp_option(BUILD_TESTS ON)
+
+set(
+    CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmake"
+    CACHE STRING "" FORCE
+)
+
+include(get_cpp)
+
+### Options ###
+option(BUILD_TESTING "Should we build the tests?" OFF)
+option(BUILD_PYBINDINGS "Should we build Python3 bindings?" ON)
 
 cpp_find_or_build_dependency(
     NAME CMakeBuild
@@ -32,11 +41,25 @@ cpp_find_or_build_dependency(
     CMAKE_ARGS BUILD_TESTS=OFF
 )
 
-add_subdirectory(property_types)
+cpp_add_library(
+    property_types
+    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/libproperty_types"
+    INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/libproperty_types"
+    DEPENDS nwx::sde libchemist tamm
+)
 
 ### Testing ###
-if(BUILD_TESTS)
-    cpp_find_or_build_dependency(NAME Catch2 URL github.com/catchorg/Catch2)
-    enable_testing()
-    add_subdirectory(tests)
+if("${BUILD_TESTING}")
+    cpp_find_or_build_dependency(
+        Catch2
+        URL github.com/catchorg/Catch2
+        BUILD_TARGET Catch2
+        FIND_TARGET Catch2::Catch2
+    )
+    cpp_add_tests(
+        test_property_types
+        SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests"
+        INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/libproperty_types"
+        DEPENDS Catch2::Catch2 property_types
+    )
 endif()
