@@ -29,7 +29,10 @@ jobs:
             gfortran --version
             gcov     --version
     - name: get-blas-lapack
-      run:  sudo apt-get install libopenblas-base libopenblas-dev
+      run: |
+            apt-cache search cblas 
+            apt-cache search lapacke 
+            sudo apt-get install libopenblas-base libopenblas-dev
     - name: get-openmpi
       run: |
             sudo apt-get install openmpi-bin libopenmpi-dev
@@ -59,7 +62,7 @@ jobs:
             cd TAMM
             cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=`pwd`/../install -DCMAKE_PREFIX_PATH=`pwd`/../install
             cd build
-            make
+            make -j4
             make install
     - name: cmake
       env:
