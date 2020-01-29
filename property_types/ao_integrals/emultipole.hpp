@@ -55,13 +55,15 @@ namespace property_types {
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
-                .template add_field<type::size>("Derivative");
+                .template add_field<type::size>("Derivative")
+                .template add_field<const std::array<ElementType,3>&>("Origin",std::array<ElementType,3>{0,0,0});
         rv["Molecule"].set_description(
                 "The molecule for which the integrals are computed");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
         rv["Derivative"].set_description(
                 "The derivative order of the integrals to be computed");
+        rv["Origin"].set_description("The origin of the multipole expansion");
         return rv;
     }
 
@@ -78,13 +80,15 @@ namespace property_types {
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
-                .template add_field<type::size>("Derivative");
+                .template add_field<type::size>("Derivative")
+                .template add_field<const std::array<ElementType,3>&>("Origin",std::array<ElementType,3>{0,0,0});
         rv["Molecule"].set_description(
                 "The molecule for which the integrals are computed");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
         rv["Derivative"].set_description(
                 "The derivative order of the integrals to be computed");
+        rv["Origin"].set_description("The origin of the multipole expansion");
         return rv;
     }
 
@@ -101,13 +105,15 @@ namespace property_types {
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
-                .template add_field<type::size>("Derivative");
+                .template add_field<type::size>("Derivative")
+                .template add_field<const std::array<ElementType,3>&>("Origin",std::array<ElementType,3>{0,0,0});
         rv["Molecule"].set_description(
                 "The molecule for which the integrals are computed");
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
         rv["Derivative"].set_description(
                 "The derivative order of the integrals to be computed");
+        rv["Origin"].set_description("The origin of the multipole expansion");
         return rv;
     }
 

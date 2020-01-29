@@ -30,21 +30,21 @@ TEST_CASE("NuclearIntegral"){
 
 TEST_CASE("EDipoleIntegral"){
     test_property_type<property_types::EDipoleIntegral<>>(
-            {"Molecule", "Bra", "Ket", "Derivative"},
+            {"Molecule", "Bra", "Ket", "Derivative", "Origin"},
             {"EDipole Integrals"}
     );
 }
 
 TEST_CASE("EQuadrupoleIntegral"){
     test_property_type<property_types::EQuadrupoleIntegral<>>(
-            {"Molecule", "Bra", "Ket", "Derivative"},
+            {"Molecule", "Bra", "Ket", "Derivative", "Origin"},
             {"EQuadrupole Integrals"}
     );
 }
 
 TEST_CASE("EOctopoleIntegral"){
     test_property_type<property_types::EOctopoleIntegral<>>(
-            {"Molecule", "Bra", "Ket", "Derivative"},
+            {"Molecule", "Bra", "Ket", "Derivative", "Origin"},
             {"EOctopole Integrals"}
     );
 }
