@@ -28,6 +28,13 @@ jobs:
             g++      --version
             gfortran --version
             gcov     --version
+    - name: get-blas-lapack
+      run:  sudo apt-get install libopenblas-base libopenblas-dev
+    - name: get-openmpi
+      run: |
+            sudo apt-get install openmpi-bin libopenmpi-dev
+            mpicc -show
+            mpiexec --version
     - name: get-gcovr
       run:  pip install gcovr
     - name: get-cmake
