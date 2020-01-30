@@ -49,7 +49,7 @@ jobs:
       run: |
             git clone https://${CPP_GITHUB_TOKEN}@github.com/NWChemEx-Project/CMakeBuild
             cd CMakeBuild
-            cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=`pwd`/../install -DCMAKE_BUILD_TYPE=Debug
+            ../cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=`pwd`/../install -DCMAKE_BUILD_TYPE=Debug
             cd build
             make
             make install
@@ -59,7 +59,7 @@ jobs:
       run: |
             git clone https://${CPP_GITHUB_TOKEN}@github.com/NWChemEx-Project/TAMM
             cd TAMM
-            cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=`pwd`/../install -DCMAKE_PREFIX_PATH=`pwd`/../install -DCMAKE_BUILD_TYPE=Debug
+            ../cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=`pwd`/../install -DCMAKE_PREFIX_PATH=`pwd`/../install -DCMAKE_BUILD_TYPE=Debug
             cd build
             make
             make install
