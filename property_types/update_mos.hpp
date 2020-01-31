@@ -10,7 +10,7 @@ namespace property_types {
  *  @tparam ElementType the type of the elements in the tensors
  */
 template<typename ElementType = double>
-struct UpdateMOs : sde::PropertyType<UpdateMOs<ElementType>> {
+struct UpdateMOs : public sde::PropertyType<UpdateMOs<ElementType>> {
     /// The type of the new MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
@@ -27,8 +27,8 @@ auto UpdateMOs<ElementType>::inputs_() {
     auto rv =
       sde::declare_input()
         .add_field<const type::molecule&>("Molecule")
-        .add_field<const type::basis_set&>("Basis Set")
-        .add_field<const tensor_type&>("Fock Matrix")
+        .add_field<const type::basis_set<ElementType>&>("Basis Set")
+        .template add_field<const tensor_type&>("Fock Matrix")
         .template add_field<const orbital_type&>("Previous OrbitalSpace");
     rv["Molecule"].set_description("The molecule associated with the density");
     rv["Basis Set"].set_description("The basis set used for the density");

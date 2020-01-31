@@ -11,7 +11,7 @@ namespace property_types {
  * @tparam ElementType The type of the elements in the returned tensor
  */
 template<typename ElementType = double>
-struct DFCoefficients : sde::PropertyType<DFCoefficients<ElementType>> {
+struct DFCoefficients : public sde::PropertyType<DFCoefficients<ElementType>> {
     /// The type of the returned tensor, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -25,9 +25,9 @@ template<typename ElementType>
 auto DFCoefficients<ElementType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const type::basis_set&>("Bra")
-                .add_field<const type::basis_set&>("Ket")
-                .add_field<type::size>("Derivative");
+                .add_field<const type::basis_set<ElementType>&>("Bra")
+                .template add_field<const type::basis_set<ElementType>&>("Ket")
+                .template add_field<type::size>("Derivative",type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Bra"].set_description("The basis set for the bra");
     rv["Ket"].set_description("The basis set for the ket");

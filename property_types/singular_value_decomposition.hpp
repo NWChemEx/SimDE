@@ -9,7 +9,7 @@ namespace property_types {
  *  @tparam ElementType the type of the elements in the tensors
  */
     template<typename ElementType = double>
-    struct SingularValueDecomposition : sde::PropertyType<SingularValueDecomposition<ElementType>> {
+    struct SingularValueDecomposition : public sde::PropertyType<SingularValueDecomposition<ElementType>> {
         /// The type of the new tensors, accounting for ElementType
         using tensor_type = type::tensor<ElementType>;
         /// Generates the input fields required by this property type

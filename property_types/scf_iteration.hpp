@@ -33,9 +33,9 @@ auto SCFIteration<ElementType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const orbital_type&>("Molecular Orbitals")
-                .template add_field<const type::basis_set&>("Bra")
-                .template add_field<const type::basis_set&>("Ket")
-                .template add_field<type::size>("Derivative");
+                .template add_field<const type::basis_set<ElementType>&>("Bra")
+                .template add_field<const type::basis_set<ElementType>&>("Ket")
+                .template add_field<type::size>("Derivative",type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     rv["Bra"].set_description("The basis set used for the bra");

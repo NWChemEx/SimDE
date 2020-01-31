@@ -28,7 +28,7 @@ template<typename ElementType>
 auto Energy<ElementType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<type::size>("Derivative");
+                .add_field<type::size>("Derivative",type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Derivative"].set_description("The derivative order of the energy");
     return rv;
