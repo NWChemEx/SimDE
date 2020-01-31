@@ -27,7 +27,7 @@ auto CoreHamiltonian<ElementType>::inputs_() {
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative");
+                .template add_field<type::size>("Derivative",type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Bra"].set_description("The basis set for the bra");
     rv["Ket"].set_description("The basis set for the ket");
