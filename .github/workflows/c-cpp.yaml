@@ -39,30 +39,6 @@ jobs:
       run: |
             wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
             yes | /bin/sh cmake-3.16.3-Linux-x86_64.sh
-    - name: install-cmakebuild
-      env:
-            CPP_GITHUB_TOKEN: ${{ secrets.CPP_GITHUB_TOKEN }}
-      run: |
-            git clone https://${CPP_GITHUB_TOKEN}@github.com/NWChemEx-Project/CMakeBuild
-            export INSTALL_DIR=`pwd`/install
-            echo "CMakeBuild: INSTALL_DIR=${INSTALL_DIR}"
-            cd CMakeBuild
-            #../cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} -DCMAKE_BUILD_TYPE=Debug -DBUILD_SHARED_LIBS=ON
-            #cd build
-            #make
-            #make install
-    - name: install-tamm
-      env:
-            CPP_GITHUB_TOKEN: ${{ secrets.CPP_GITHUB_TOKEN }}
-      run: |
-            git clone https://${CPP_GITHUB_TOKEN}@github.com/NWChemEx-Project/TAMM
-            export INSTALL_DIR=`pwd`/install
-            echo "TAMM: INSTALL_DIR=${INSTALL_DIR}"
-            cd TAMM
-            #../cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} -DCMAKE_PREFIX_PATH=${INSTALL_DIR} -DCMAKE_BUILD_TYPE=Debug -DBUILD_SHARED_LIBS=ON
-            #cd build
-            #make
-            #make install
     - name: cmake
       env:
             CPP_GITHUB_TOKEN: ${{ secrets.CPP_GITHUB_TOKEN }}
@@ -71,7 +47,13 @@ jobs:
             echo "PropertyType: INSTALL_DIR=${INSTALL_DIR}"
             cmake-3.16.3-Linux-x86_64/bin/cmake -H. -Bbuild -DCMAKE_PREFIX_PATH=${INSTALL_DIR} -DBUILD_SHARED_LIBS=ON -DBUILD_TESTING=TRUE -DCATCH_ENABLE_COVERAGE=ON -DCMAKE_CXX_FLAGS="--coverage -std=c++17" -DCMAKE_C_FLAGS="--coverage" -DCMAKE_EXE_LINKER_FLAGS="-fprofile-arcs" -DCPP_GITHUB_TOKEN=$CPP_GITHUB_TOKEN -DCMAKE_BUILD_TYPE=Debug
     - name: ctest
-      run:  cmake-3.16.3-Linux-x86_64/bin/ctest --build-and-test build build --build-nocmake --build-generator "Unix Makefiles" --test-command make test
+      run: |
+            #ctest is annoying in that it caches all output until it is finished keeping you in the dark about
+            #whether things are working as they should.
+            #cmake-3.16.3-Linux-x86_64/bin/ctest --build-and-test build build --build-nocmake --build-generator "Unix Makefiles" --test-command make test
+            cd build
+            make
+            make test
     - name: gcovr
       run: |
             cd ..
