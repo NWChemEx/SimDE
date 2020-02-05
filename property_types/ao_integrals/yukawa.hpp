@@ -54,7 +54,7 @@ namespace property_types {
         auto rv = sde::declare_input()
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
-                .template add_field<type::size>("Derivative")
+                .template add_field<type::size>("Derivative",type::size{0})
                 .template add_field<ElementType>("STG Exponent",ElementType{1.0});
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
@@ -77,7 +77,7 @@ namespace property_types {
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket1")
                 .template add_field<const basis_type&>("Ket2")
-                .template add_field<type::size>("Derivative")
+                .template add_field<type::size>("Derivative",type::size{0})
                 .template add_field<ElementType>("STG Exponent",ElementType{1.0});
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket1"].set_description("The first basis set for the ket");
@@ -102,7 +102,7 @@ namespace property_types {
                 .template add_field<const basis_type&>("Bra2")
                 .template add_field<const basis_type&>("Ket1")
                 .template add_field<const basis_type&>("Ket2")
-                .template add_field<type::size>("Derivative")
+                .template add_field<type::size>("Derivative",type::size{0})
                 .template add_field<ElementType>("STG Exponent",ElementType{1.0});
         rv["Bra1"].set_description("The first basis set for the bra");
         rv["Bra2"].set_description("The second basis set for the bra");

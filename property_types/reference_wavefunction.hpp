@@ -30,7 +30,7 @@ auto ReferenceWavefunction<ElementType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set<ElementType>&>("Basis Set")
-                .template add_field<type::size>("Derivative");
+                .template add_field<type::size>("Derivative",type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Basis Set"].set_description("The basis set used for the computation");
     rv["Derivative"].set_description("The derivative order of the energy");

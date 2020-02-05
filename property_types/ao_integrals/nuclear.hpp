@@ -31,7 +31,7 @@ namespace property_types {
                 .add_field<const basis_type&>("Bra")
                 .template add_field<const basis_type&>("Ket")
                 .template add_field<const type::molecule&>("Molecule")
-                .template add_field<type::size>("Derivative");
+                .template add_field<type::size>("Derivative",type::size{0});
         rv["Bra"].set_description("The basis set for the bra");
         rv["Ket"].set_description("The basis set for the ket");
         rv["Molecule"].set_description(
