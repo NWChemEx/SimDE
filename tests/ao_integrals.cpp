@@ -6,6 +6,7 @@
 #include <property_types/ao_integrals/electron_repulsion.hpp>
 #include <property_types/ao_integrals/stg.hpp>
 #include <property_types/ao_integrals/yukawa.hpp>
+#include <property_types/ao_integrals/doi.hpp>
 
 TEST_CASE("KineticIntegral"){
 test_property_type<property_types::KineticIntegral<>>(
@@ -109,5 +110,12 @@ TEST_CASE("Yukawa4CIntegral"){
     test_property_type<property_types::Yukawa4CIntegral<>>(
             {"Bra1", "Bra2", "Ket1", "Ket2", "Derivative", "STG Exponent"},
             {"Yukawa Integrals"}
+    );
+}
+
+TEST_CASE("DOI"){
+    test_property_type<property_types::DOI<>>(
+            {"Bra1", "Bra2", "Ket1", "Ket2", "Derivative"},
+            {"DOIs"}
     );
 }
