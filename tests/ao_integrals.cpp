@@ -115,7 +115,7 @@ TEST_CASE("Yukawa4CIntegral"){
 
 TEST_CASE("DOI"){
     test_property_type<property_types::DOI<>>(
-            {"Bra1", "Bra2", "Ket1", "Ket2", "Derivative"},
+            {"Bra", "Ket", "Derivative"},
             {"DOIs"}
     );
 }
