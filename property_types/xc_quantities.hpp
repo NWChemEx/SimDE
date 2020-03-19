@@ -115,7 +115,7 @@ template<typename ElementType>
 auto PureXCQuantities<ElementType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<tensor_type>("VXC Matrix")
-                .template add_field<tensor_type>("EXC Energy");
+                .template add_field<ElementType>("EXC Energy");
     rv["VXC Matrix"].set_description("The computed VXC Matrix");
     rv["EXC Energy"].set_description("The computed EXC Energy");
     return rv;
@@ -125,8 +125,8 @@ template<typename ElementType>
 auto HybridXCQuantities<ElementType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<tensor_type>("VXC Matrix")
-                .template add_field<tensor_type>("EXC Energy")
-                .template add_field<tensor_type>("xEXX");
+                .template add_field<ElementType>("EXC Energy")
+                .template add_field<ElementType>("xEXX");
     rv["VXC Matrix"].set_description("The computed VXC Matrix");
     rv["EXC Energy"].set_description("The computed EXC Energy");
     rv["xEXX"].set_description("Scaled HF Exchange Energy Contribution");
@@ -137,9 +137,9 @@ template<typename ElementType>
 auto DoubleHybridXCQuantities<ElementType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<tensor_type>("VXC Matrix")
-                .template add_field<tensor_type>("EXC Energy")
-                .template add_field<tensor_type>("xEXX")
-                .template add_field<tensor_type>("xEMP2");
+                .template add_field<ElementType>("EXC Energy")
+                .template add_field<ElementType>("xEXX")
+                .template add_field<ElementType>("xEMP2");
     rv["VXC Matrix"].set_description("The computed VXC Matrix");
     rv["EXC Energy"].set_description("The computed EXC Energy");
     rv["xEXX"].set_description("Scaled HF Exchange Energy Contribution");

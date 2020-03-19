@@ -40,7 +40,7 @@ auto ReferenceWavefunction<ElementType>::inputs_() {
 template<typename ElementType>
 auto ReferenceWavefunction<ElementType>::results_() {
     auto rv = sde::declare_result()
-                .add_field<tensor_type>("Energy")
+                .add_field<ElementType>("Energy")
                 .template add_field<orbital_type>("Orbital Space");
     rv["Energy"].set_description("The computed energy or derivatives");
     rv["Orbital Space"].set_description("The reference wavefunction");

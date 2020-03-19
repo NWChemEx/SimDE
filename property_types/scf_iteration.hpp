@@ -48,7 +48,7 @@ template<typename ElementType>
 auto SCFIteration<ElementType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<tensor_type>("Fock Matrix")
-                .template add_field<tensor_type>("Electronic Energy");
+                .template add_field<ElementType>("Electronic Energy");
     rv["Fock Matrix"].set_description("The computed Fock Matrix");
     rv["Electronic Energy"].set_description("The computed electronic energy");
     return rv;
