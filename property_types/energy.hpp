@@ -15,8 +15,6 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct Energy : public sde::PropertyType<Energy<ElementType>> {
-    /// The type of the energy derivative, accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
     auto inputs_();
     /// Generates the result fields required by this property type
@@ -36,7 +34,7 @@ auto Energy<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto Energy<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<tensor_type>("Energy");
+    auto rv = sde::declare_result().add_field<ElementType>("Energy");
     rv["Energy"].set_description("The computed energy or derivatives");
     return rv;
 }
