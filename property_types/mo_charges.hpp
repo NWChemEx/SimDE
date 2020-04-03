@@ -5,7 +5,7 @@
 namespace property_types {
 
 /**
- * @brief The property type for modules that calculate partial charges.
+ * @brief The property type for modules that calculate MO charges.
  *
  * @tparam ElementType The type of the elements in the returned tensor
  */
