@@ -5,12 +5,12 @@
 namespace property_types {
 
 /**
- * @brief The property type for modules that calculate partial charges.
+ * @brief The property type for modules that calculate atomic charges.
  *
  * @tparam ElementType The type of the elements in the returned tensor
  */
     template<typename ElementType = double>
-    struct PartialCharges : public sde::PropertyType<PartialCharges<ElementType>> {
+    struct AtomicCharges : public sde::PropertyType<AtomicCharges<ElementType>> {
         /// Type of the MOs that accounts for ElementType
         using orbital_type = type::orbitals<ElementType>;
         /// Type of the return values
@@ -19,11 +19,11 @@ namespace property_types {
         auto inputs_();
         /// Generates the result fields required by this property type
         auto results_();
-    }; // class CoreHamiltonian
+    }; // class AtomicCharges
 
 //---------------------------Implementations------------------------------------
     template<typename ElementType>
-    auto PartialCharges<ElementType>::inputs_() {
+    auto AtomicCharges<ElementType>::inputs_() {
         auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const orbital_type&>("Molecular Orbitals");
@@ -33,13 +33,13 @@ namespace property_types {
     }
 
     template<typename ElementType>
-    auto PartialCharges<ElementType>::results_() {
+    auto AtomicCharges<ElementType>::results_() {
         auto rv = sde::declare_result().add_field<return_type>("Partial Charges");
         rv["Partial Charges"].set_description("The calculated partial charges");
         return rv;
     }
 
-    extern template class PartialCharges<double>;
-    extern template class PartialCharges<float>;
+    extern template class AtomicCharges<double>;
+    extern template class AtomicCharges<float>;
 
 } // namespace property_types

@@ -19,7 +19,7 @@ namespace property_types {
         auto inputs_();
         /// Generates the result fields required by this property type
         auto results_();
-    }; // class CoreHamiltonian
+    }; // class MOCharges
 
 //---------------------------Implementations------------------------------------
     template<typename ElementType>
