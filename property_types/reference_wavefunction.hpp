@@ -14,8 +14,8 @@ namespace property_types {
 template<typename ElementType = double>
 struct ReferenceWavefunction
   : public sde::PropertyType<ReferenceWavefunction<ElementType>> {
-    /// Type of the MOs, accounting for ElementType
-    using orbital_type = type::orbitals<ElementType>;
+    /// Type used to contain various MO subspaces
+    using orbital_map = type::orbital_map<ElementType>;
     /// Type of the returned tensor, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -41,9 +41,9 @@ template<typename ElementType>
 auto ReferenceWavefunction<ElementType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<ElementType>("Energy")
-                .template add_field<orbital_type>("Orbital Space");
+                .template add_field<orbital_map>("Molecular Orbitals");
     rv["Energy"].set_description("The computed energy or derivatives");
-    rv["Orbital Space"].set_description("The reference wavefunction");
+    rv["Molecular Orbitals"].set_description("The reference wavefunction");
     return rv;
 }
 

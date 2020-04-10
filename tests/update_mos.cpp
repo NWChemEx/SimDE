@@ -3,6 +3,6 @@
 
 TEST_CASE("UpdateMOs") {
     test_property_type<property_types::UpdateMOs<>>(
-      {"Molecule", "Basis Set", "Fock Matrix", "Previous OrbitalSpace"},
-      {"Orbital Space"});
+      {"Molecule", "Basis Set", "Fock Matrix", "Previous Molecular Orbitals"},
+      {"Molecular Orbitals"});
 }

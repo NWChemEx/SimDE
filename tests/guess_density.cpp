@@ -3,5 +3,5 @@
 
 TEST_CASE("GuessDensity"){
     test_property_type<property_types::GuessDensity<>>(
-    {"Molecule", "Basis Set"}, {"Orbital Space"});
+    {"Molecule", "Basis Set"}, {"Molecular Orbitals"});
 }

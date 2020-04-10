@@ -11,8 +11,8 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct UpdateMOs : public sde::PropertyType<UpdateMOs<ElementType>> {
-    /// The type of the new MOs, accounting for ElementType
-    using orbital_type = type::orbitals<ElementType>;
+    /// Type used to contain various MO subspaces
+    using orbital_map = type::orbital_map<ElementType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -29,20 +29,19 @@ auto UpdateMOs<ElementType>::inputs_() {
         .add_field<const type::molecule&>("Molecule")
         .add_field<const type::basis_set<ElementType>&>("Basis Set")
         .template add_field<const tensor_type&>("Fock Matrix")
-        .template add_field<const orbital_type&>("Previous OrbitalSpace");
+        .template add_field<const orbital_map&>("Previous Molecular Orbitals");
     rv["Molecule"].set_description("The molecule associated with the density");
     rv["Basis Set"].set_description("The basis set used for the density");
     rv["Fock Matrix"].set_description(
       "The Fock matrix used for the density update");
-    rv["Previous OrbitalSpace"].set_description("The previous MOs/density");
+    rv["Previous Molecular Orbitals"].set_description("The previous MOs/density");
     return rv;
 }
 
 template<typename ElementType>
 auto UpdateMOs<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<orbital_type>("Orbital Space");
-    rv["Orbital Space"].set_description(
-      "The OrbitalSpace with computed density and MOs");
+    auto rv = sde::declare_result().add_field<orbital_map>("Molecular Orbitals");
+    rv["Molecular Orbitals"].set_description("The molecular orbitals");
     return rv;
 }
 

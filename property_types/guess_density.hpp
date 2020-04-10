@@ -15,8 +15,8 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct GuessDensity : public sde::PropertyType<GuessDensity<ElementType>> {
-    /// The type of the returned density accounting for ElementType
-    using orbital_type = type::orbitals<ElementType>;
+    /// Type used to contain various MO subspaces
+    using orbital_map = type::orbital_map<ElementType>;
     /// Generates the input fields required by this property type
     auto inputs_();
     /// Generates the result fields required by this property type
@@ -38,8 +38,8 @@ auto GuessDensity<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto GuessDensity<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<orbital_type>("Orbital Space");
-    rv["Orbital Space"].set_description("The molecular orbitals");
+    auto rv = sde::declare_result().add_field<orbital_map>("Molecular Orbitals");
+    rv["Molecular Orbitals"].set_description("The molecular orbitals");
     return rv;
 }
 
