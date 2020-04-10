@@ -4,6 +4,7 @@
 #include <libchemist/orbital_space.hpp>
 #include <libchemist/types.hpp>
 #include <sde/types.hpp>
+#include <utilities/containers/case_insensitive_map.hpp>
 #include <random>
 
 /** @file types.hpp
@@ -29,6 +30,10 @@ using basis_set = libchemist::AOBasisSet<T>;
 /// Typedef of the class modeling the orbital space
 template<typename T>
 using orbitals = libchemist::OrbitalSpace<T>;
+
+/// Typedef of a map containing multiple OrbitalSpaces
+template<typename T>
+using orbital_map = utilities::CaseInsensitiveMap<orbitals<T>>;
 
 /// Type of a non-negative counting number
 using size = std::size_t;

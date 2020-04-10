@@ -11,10 +11,8 @@ namespace property_types {
  */
 template<typename ElementType = double>
 struct UpdateMOs : public sde::PropertyType<UpdateMOs<ElementType>> {
-    /// The type of the new MOs, accounting for ElementType
-    using orbital_type = type::orbitals<ElementType>;
     /// Type used to contain various MO subspaces
-    using orbital_map = std::map<std::string,orbital_type>;
+    using orbital_map = type::orbital_map<ElementType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
