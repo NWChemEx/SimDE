@@ -3,6 +3,6 @@
 
 TEST_CASE("UpdateGuess"){
     test_property_type<property_types::UpdateGuess<>>(
-        {"Molecule", "Basis Set", "Fock Matrix"},{"Orbital Space"}
+        {"Molecule", "Basis Set", "Fock Matrix"},{"Molecular Orbitals"}
     );
 }

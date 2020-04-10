@@ -12,6 +12,8 @@ template<typename ElementType = double>
 struct UpdateGuess : public sde::PropertyType<UpdateGuess<ElementType>> {
     /// The type of the new MOs, accounting for ElementType
     using orbital_type = type::orbitals<ElementType>;
+    /// Type used to contain various MO subspaces
+    using orbital_map = std::map<std::string,orbital_type>;
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -36,9 +38,8 @@ auto UpdateGuess<ElementType>::inputs_() {
 
 template<typename ElementType>
 auto UpdateGuess<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<orbital_type>("Orbital Space");
-    rv["Orbital Space"].set_description(
-      "The OrbitalSpace with computed density and MOs");
+    auto rv = sde::declare_result().add_field<orbital_map>("Molecular Orbitals");
+    rv["Molecular Orbitals"].set_description("The molecular orbitals");
     return rv;
 }
 
