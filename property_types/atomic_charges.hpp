@@ -14,7 +14,7 @@ namespace property_types {
         /// Type of the MOs that accounts for ElementType
         using orbital_type = type::orbitals<ElementType>;
         /// Type of the return values
-        using return_type = std::vector<ElementType>;
+        using return_type = type::tensor<ElementType>;
         /// Generates the input fields required by this property type
         auto inputs_();
         /// Generates the result fields required by this property type
