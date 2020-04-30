@@ -8,11 +8,10 @@ namespace property_types {
  * @brief The property type for modules that calculate MO charges.
  *
  * @tparam ElementType The type of the elements in the returned tensor
+ * @tparam OrbitalType The type of the input molecular orbitals
  */
-    template<typename ElementType = double>
-    struct MOCharges : public sde::PropertyType<MOCharges<ElementType>> {
-        /// Type of the MOs that accounts for ElementType
-        using orbital_type = type::orbitals<ElementType>;
+    template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+    struct MOCharges : public sde::PropertyType<MOCharges<ElementType, OrbitalType>> {
         /// Type of the returned tensor that accounts for ElementType
         using tensor_type = type::tensor<ElementType>;
         /// Generates the input fields required by this property type
@@ -22,24 +21,28 @@ namespace property_types {
     }; // class MOCharges
 
 //---------------------------Implementations------------------------------------
-    template<typename ElementType>
-    auto MOCharges<ElementType>::inputs_() {
+    template<typename ElementType, typename OrbitalType>
+    auto MOCharges<ElementType, OrbitalType>::inputs_() {
         auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const orbital_type&>("Molecular Orbitals");
+                .add_field<const OrbitalType&>("Molecular Orbitals");
         rv["Molecule"].set_description("The molecular system");
         rv["Molecular Orbitals"].set_description("The molecular orbitals");
         return rv;
     }
 
-    template<typename ElementType>
-    auto MOCharges<ElementType>::results_() {
+    template<typename ElementType, typename OrbitalType>
+    auto MOCharges<ElementType, OrbitalType>::results_() {
         auto rv = sde::declare_result().add_field<tensor_type>("MO Charges");
         rv["MO Charges"].set_description("The calculated MO charge densities");
         return rv;
     }
 
     extern template class MOCharges<double>;
+    extern template class MOCharges<double, type::orthogonal_orbs<double>>;
+    extern template class MOCharges<double, type::canonical_mos<double>>;
     extern template class MOCharges<float>;
+    extern template class MOCharges<float,  type::orthogonal_orbs<float>>;
+    extern template class MOCharges<float,  type::canonical_mos<float>>;
 
 } // namespace property_types

@@ -12,13 +12,12 @@ namespace property_types {
  *  the Fock matrix in the AO basis set.
  *
  *  @tparam ElementType The type of the elements in the returned tensor.
+ *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double>
-struct FockMatrix : public sde::PropertyType<FockMatrix<ElementType>> {
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+struct FockMatrix : public sde::PropertyType<FockMatrix<ElementType, OrbitalType>> {
     /// Type of the returned tensor that accounts for ElementType
     using tensor_type = type::tensor<ElementType>;
-    /// Type of the MOs that accounts for ElementType
-    using orbital_type = type::orbitals<ElementType>;
     /// Generates the input fields required by this property type
     auto inputs_();
     /// Generates the result fields required by this property type
@@ -27,11 +26,11 @@ struct FockMatrix : public sde::PropertyType<FockMatrix<ElementType>> {
 
 //-------------------------------------Implementations--------------------------
 
-template<typename ElementType>
-auto FockMatrix<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto FockMatrix<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const orbital_type&>("Molecular Orbitals")
+                .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
                 .template add_field<type::size>("Derivative",type::size{0});
@@ -43,14 +42,18 @@ auto FockMatrix<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto FockMatrix<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto FockMatrix<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result().add_field<tensor_type>("Fock Matrix");
     rv["Fock Matrix"].set_description("The computed Fock Matrix");
     return rv;
 }
 
 extern template class FockMatrix<double>;
+extern template class FockMatrix<double, type::orthogonal_orbs<double>>;
+extern template class FockMatrix<double, type::canonical_mos<double>>;
 extern template class FockMatrix<float>;
+extern template class FockMatrix<float,  type::orthogonal_orbs<float>>;
+extern template class FockMatrix<float,  type::canonical_mos<float>>;
 
 } // namespace property_types

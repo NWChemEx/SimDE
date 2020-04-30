@@ -8,11 +8,12 @@ namespace property_types {
  * previous set of MOs
  *
  *  @tparam ElementType the type of the elements in the tensors
+ *  @tparam OrbitalType The type of the orbital spaces in the orbital maps
  */
-template<typename ElementType = double>
-struct UpdateMOs : public sde::PropertyType<UpdateMOs<ElementType>> {
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+struct UpdateMOs : public sde::PropertyType<UpdateMOs<ElementType, OrbitalType>> {
     /// Type used to contain various MO subspaces
-    using orbital_map = type::orbital_map<ElementType>;
+    using orbital_map = type::orbital_map<OrbitalType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -22,8 +23,8 @@ struct UpdateMOs : public sde::PropertyType<UpdateMOs<ElementType>> {
 }; // class UpdateMOs
 
 //-------------------------------Implementations--------------------------------
-template<typename ElementType>
-auto UpdateMOs<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto UpdateMOs<ElementType, OrbitalType>::inputs_() {
     auto rv =
       sde::declare_input()
         .add_field<const type::molecule&>("Molecule")
@@ -38,14 +39,18 @@ auto UpdateMOs<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto UpdateMOs<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto UpdateMOs<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result().add_field<orbital_map>("Molecular Orbitals");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     return rv;
 }
 
 extern template class UpdateMOs<double>;
+extern template class UpdateMOs<double, type::orthogonal_orbs<double>>;
+extern template class UpdateMOs<double, type::canonical_mos<double>>;
 extern template class UpdateMOs<float>;
+extern template class UpdateMOs<float,  type::orthogonal_orbs<float>>;
+extern template class UpdateMOs<float,  type::canonical_mos<float>>;
 
 } // namespace property_types
