@@ -16,11 +16,10 @@ namespace property_types {
  *  on memoization for "computing" @f$\mathbf{J}@f$.
  *
  *  @tparam ElementType The type of the elements in the returned tensor.
+ *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double>
-struct ExchangeMatrix : public sde::PropertyType<ExchangeMatrix<ElementType>> {
-    /// Typedef for the MOs that accounts for ElementType
-    using orbital_type = type::orbitals<ElementType>;
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+struct ExchangeMatrix : public sde::PropertyType<ExchangeMatrix<ElementType, OrbitalType>> {
     /// Typedef for the returned tensor that accounts for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -31,11 +30,11 @@ struct ExchangeMatrix : public sde::PropertyType<ExchangeMatrix<ElementType>> {
 
 //-----------------------------Implementations----------------------------------
 
-template<typename ElementType>
-auto ExchangeMatrix<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto ExchangeMatrix<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const orbital_type&>("Molecular Orbitals")
+                .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
                 .template add_field<type::size>("Derivative",type::size{0});
@@ -47,14 +46,18 @@ auto ExchangeMatrix<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto ExchangeMatrix<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto ExchangeMatrix<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result().add_field<tensor_type>("Exchange Matrix");
     rv["Exchange Matrix"].set_description("The computed exchange matrix");
     return rv;
 }
 
 extern template class ExchangeMatrix<double>;
+extern template class ExchangeMatrix<double, type::orthogonal_orbs<double>>;
+extern template class ExchangeMatrix<double, type::canonical_mos<double>>;
 extern template class ExchangeMatrix<float>;
+extern template class ExchangeMatrix<float,  type::orthogonal_orbs<float>>;
+extern template class ExchangeMatrix<float,  type::canonical_mos<float>>;
 
 } // namespace property_types

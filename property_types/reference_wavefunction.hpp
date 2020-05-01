@@ -10,14 +10,14 @@ namespace property_types {
  *  Most correlated electronic structure theory methods require an initial
  *  reference wavefunction from which
  *
+ *  @tparam ElementType The type of the returned energy
+ *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
-template<typename ElementType = double>
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
 struct ReferenceWavefunction
-  : public sde::PropertyType<ReferenceWavefunction<ElementType>> {
+  : public sde::PropertyType<ReferenceWavefunction<ElementType, OrbitalType>> {
     /// Type used to contain various MO subspaces
-    using orbital_map = type::orbital_map<ElementType>;
-    /// Type of the returned tensor, accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
+    using orbital_map = type::orbital_map<OrbitalType>;
     /// Generates the input fields required by this property type
     auto inputs_();
     /// Generates the result fields required by this property type
@@ -25,8 +25,8 @@ struct ReferenceWavefunction
 }; // class ReferenceWavefunction
 
 //------------------------------Implementations---------------------------------
-template<typename ElementType>
-auto ReferenceWavefunction<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto ReferenceWavefunction<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set<ElementType>&>("Basis Set")
@@ -37,8 +37,8 @@ auto ReferenceWavefunction<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto ReferenceWavefunction<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto ReferenceWavefunction<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<ElementType>("Energy")
                 .template add_field<orbital_map>("Molecular Orbitals");
@@ -48,6 +48,10 @@ auto ReferenceWavefunction<ElementType>::results_() {
 }
 
 extern template class ReferenceWavefunction<double>;
+extern template class ReferenceWavefunction<double, type::orthogonal_orbs<double>>;
+extern template class ReferenceWavefunction<double, type::canonical_mos<double>>;
 extern template class ReferenceWavefunction<float>;
+extern template class ReferenceWavefunction<float,  type::orthogonal_orbs<float>>;
+extern template class ReferenceWavefunction<float,  type::canonical_mos<float>>;
 
 } // namespace property_types

@@ -7,11 +7,12 @@ namespace property_types {
 /** @brief Property type for modules that can update a guess of MOs
  *
  *  @tparam ElementType the type of the elements in the tensors
+ *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
-template<typename ElementType = double>
-struct UpdateGuess : public sde::PropertyType<UpdateGuess<ElementType>> {
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+struct UpdateGuess : public sde::PropertyType<UpdateGuess<ElementType, OrbitalType>> {
     /// Type used to contain various MO subspaces
-    using orbital_map = type::orbital_map<ElementType>;
+    using orbital_map = type::orbital_map<OrbitalType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -21,8 +22,8 @@ struct UpdateGuess : public sde::PropertyType<UpdateGuess<ElementType>> {
 }; // class UpdateGuess
 
 //-------------------------------Implementations--------------------------------
-template<typename ElementType>
-auto UpdateGuess<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto UpdateGuess<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set<ElementType>&>("Basis Set")
@@ -34,14 +35,18 @@ auto UpdateGuess<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto UpdateGuess<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto UpdateGuess<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result().add_field<orbital_map>("Molecular Orbitals");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     return rv;
 }
 
 extern template class UpdateGuess<double>;
+extern template class UpdateGuess<double, type::orthogonal_orbs<double>>;
+extern template class UpdateGuess<double, type::canonical_mos<double>>;
 extern template class UpdateGuess<float>;
+extern template class UpdateGuess<float,  type::orthogonal_orbs<float>>;
+extern template class UpdateGuess<float,  type::canonical_mos<float>>;
 
 } // namespace property_types

@@ -9,11 +9,10 @@ namespace property_types {
  * (EXC, VXC, etc) in the AO basis set for pure functionals.
  *
  *  @tparam ElementType the type of the elements in the tensors
+ *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double>
-struct PureXCQuantities : public sde::PropertyType<PureXCQuantities<ElementType>> {
-    /// The type of the new MOs, accounting for ElementType
-    using orbital_type = type::orbitals<ElementType>;
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+struct PureXCQuantities : public sde::PropertyType<PureXCQuantities<ElementType, OrbitalType>> {
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -26,11 +25,10 @@ struct PureXCQuantities : public sde::PropertyType<PureXCQuantities<ElementType>
  * (EXC, VXC, etc) in the AO basis set for hybrid functionals.
  *
  *  @tparam ElementType the type of the elements in the tensors
+ *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double>
-struct HybridXCQuantities : public sde::PropertyType<HybridXCQuantities<ElementType>> {
-    /// The type of the new MOs, accounting for ElementType
-    using orbital_type = type::orbitals<ElementType>;
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+struct HybridXCQuantities : public sde::PropertyType<HybridXCQuantities<ElementType, OrbitalType>> {
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -43,11 +41,10 @@ struct HybridXCQuantities : public sde::PropertyType<HybridXCQuantities<ElementT
  * (EXC, VXC, etc) in the AO basis set for double hybrid functionals.
  *
  *  @tparam ElementType the type of the elements in the tensors
+ *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double>
-struct DoubleHybridXCQuantities : public sde::PropertyType<DoubleHybridXCQuantities<ElementType>> {
-    /// The type of the new MOs, accounting for ElementType
-    using orbital_type = type::orbitals<ElementType>;
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+struct DoubleHybridXCQuantities : public sde::PropertyType<DoubleHybridXCQuantities<ElementType, OrbitalType>> {
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -57,11 +54,11 @@ struct DoubleHybridXCQuantities : public sde::PropertyType<DoubleHybridXCQuantit
 }; // class DoubleHybridXCQuantities
 
 //-------------------------------Implementations--------------------------------
-template<typename ElementType>
-auto PureXCQuantities<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto PureXCQuantities<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const orbital_type&>("Molecular Orbitals")
+                .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
                 .template add_field<type::size>("Derivative",type::size{0});
@@ -73,11 +70,11 @@ auto PureXCQuantities<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto HybridXCQuantities<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto HybridXCQuantities<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const orbital_type&>("Molecular Orbitals")
+                .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
                 .template add_field<type::size>("Derivative",type::size{0});
@@ -89,11 +86,11 @@ auto HybridXCQuantities<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto DoubleHybridXCQuantities<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto DoubleHybridXCQuantities<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const orbital_type&>("Molecular Orbitals")
+                .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
                 .template add_field<type::size>("Derivative",type::size{0});
@@ -111,8 +108,8 @@ auto DoubleHybridXCQuantities<ElementType>::inputs_() {
 
 
 
-template<typename ElementType>
-auto PureXCQuantities<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto PureXCQuantities<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<tensor_type>("VXC Matrix")
                 .template add_field<ElementType>("EXC Energy");
@@ -121,8 +118,8 @@ auto PureXCQuantities<ElementType>::results_() {
     return rv;
 }
 
-template<typename ElementType>
-auto HybridXCQuantities<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto HybridXCQuantities<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<tensor_type>("VXC Matrix")
                 .template add_field<ElementType>("EXC Energy")
@@ -133,8 +130,8 @@ auto HybridXCQuantities<ElementType>::results_() {
     return rv;
 }
 
-template<typename ElementType>
-auto DoubleHybridXCQuantities<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto DoubleHybridXCQuantities<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result()
                 .add_field<tensor_type>("VXC Matrix")
                 .template add_field<ElementType>("EXC Energy")

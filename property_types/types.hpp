@@ -2,6 +2,8 @@
 #include <libchemist/basis_set/ao_basis_set/ao_basis_set.hpp>
 #include <libchemist/molecule.hpp>
 #include <libchemist/orbital_space.hpp>
+#include <libchemist/orthogonal_space.hpp>
+#include <libchemist/canonical_mos.hpp>
 #include <libchemist/types.hpp>
 #include <sde/types.hpp>
 #include <utilities/containers/case_insensitive_map.hpp>
@@ -27,13 +29,17 @@ using molecule = libchemist::Molecule;
 template<typename T>
 using basis_set = libchemist::AOBasisSet<T>;
 
-/// Typedef of the class modeling the orbital space
+/// Typedef of the classes modeling the orbital spaces
 template<typename T>
 using orbitals = libchemist::OrbitalSpace<T>;
+template<typename T>
+using orthogonal_orbs = libchemist::OrthogonalSpace<T>;
+template<typename T>
+using canonical_mos = libchemist::CanonicalMO<T>;
 
 /// Typedef of a map containing multiple OrbitalSpaces
 template<typename T>
-using orbital_map = utilities::CaseInsensitiveMap<orbitals<T>>;
+using orbital_map = utilities::CaseInsensitiveMap<T>;
 
 /// Type of a non-negative counting number
 using size = std::size_t;

@@ -16,11 +16,10 @@ namespace property_types {
  *  on memoization for "computing" @f$\mathbf{K}@f$.
  *
  *  @tparam ElementType The type of the elements in the returned tensor.
+ *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double>
-struct CoulombMatrix : public sde::PropertyType<CoulombMatrix<ElementType>> {
-    /// Type of the MOs that accounts for ElementType
-    using orbital_type = type::orbitals<ElementType>;
+template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+struct CoulombMatrix : public sde::PropertyType<CoulombMatrix<ElementType, OrbitalType>> {
     /// Type of the returned tesnor that accounts for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -31,11 +30,11 @@ struct CoulombMatrix : public sde::PropertyType<CoulombMatrix<ElementType>> {
 
 //-----------------------------Implementations----------------------------------
 
-template<typename ElementType>
-auto CoulombMatrix<ElementType>::inputs_() {
+template<typename ElementType, typename OrbitalType>
+auto CoulombMatrix<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const orbital_type&>("Molecular Orbitals")
+                .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
                 .template add_field<type::size>("Derivative",type::size{0});
@@ -47,14 +46,18 @@ auto CoulombMatrix<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto CoulombMatrix<ElementType>::results_() {
+template<typename ElementType, typename OrbitalType>
+auto CoulombMatrix<ElementType, OrbitalType>::results_() {
     auto rv = sde::declare_result().add_field<tensor_type>("Coulomb Matrix");
     rv["Coulomb Matrix"].set_description("The computed Coulomb matrix");
     return rv;
 }
 
 extern template class CoulombMatrix<double>;
+extern template class CoulombMatrix<double, type::orthogonal_orbs<double>>;
+extern template class CoulombMatrix<double, type::canonical_mos<double>>;
 extern template class CoulombMatrix<float>;
+extern template class CoulombMatrix<float,  type::orthogonal_orbs<float>>;
+extern template class CoulombMatrix<float,  type::canonical_mos<float>>;
 
 } // namespace property_types
