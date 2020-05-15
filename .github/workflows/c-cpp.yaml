@@ -22,6 +22,10 @@ jobs:
             g++      --version
             gfortran --version
             gcov     --version
+    - name: Get Doxygen
+      run: |
+            sudo apt update
+            sudo apt-get install -f doxygen
     - name: get-blas-lapack
       run:  sudo apt-get install libopenblas-base libopenblas-dev libgslcblas0 libgsl-dev liblapacke liblapacke-dev
     - name: get-boost
