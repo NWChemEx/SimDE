@@ -4,10 +4,7 @@
 
 namespace property_types {
 
-/** @brief Property type for modules that compute an correlation energy.
- *
- *  Most correlated electronic structure theory methods require an initial
- *  reference wavefunction from which
+/** @brief Property type for modules that compute a correlation energy.
  *
  *  @tparam ElementType The type of the returned energy
  *  @tparam OrbitalType The type of the orbital spaces in the returned map
