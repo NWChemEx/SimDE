@@ -13,7 +13,8 @@ namespace property_types {
  *  @tparam ElementType The type of the returned energy
  *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
-template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
+template<typename ElementType = double,
+         typename OrbitalType = type::orbitals<ElementType>>
 struct ReferenceWavefunction
   : public sde::PropertyType<ReferenceWavefunction<ElementType, OrbitalType>> {
     /// Type used to contain various MO subspaces
@@ -30,7 +31,7 @@ auto ReferenceWavefunction<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set<ElementType>&>("Basis Set")
-                .template add_field<type::size>("Derivative",type::size{0});
+                .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Basis Set"].set_description("The basis set used for the computation");
     rv["Derivative"].set_description("The derivative order of the energy");
@@ -48,10 +49,13 @@ auto ReferenceWavefunction<ElementType, OrbitalType>::results_() {
 }
 
 extern template class ReferenceWavefunction<double>;
-extern template class ReferenceWavefunction<double, type::orthogonal_orbs<double>>;
-extern template class ReferenceWavefunction<double, type::canonical_mos<double>>;
+extern template class ReferenceWavefunction<double,
+                                            type::orthogonal_orbs<double>>;
+extern template class ReferenceWavefunction<double,
+                                            type::canonical_mos<double>>;
 extern template class ReferenceWavefunction<float>;
-extern template class ReferenceWavefunction<float,  type::orthogonal_orbs<float>>;
-extern template class ReferenceWavefunction<float,  type::canonical_mos<float>>;
+extern template class ReferenceWavefunction<float,
+                                            type::orthogonal_orbs<float>>;
+extern template class ReferenceWavefunction<float, type::canonical_mos<float>>;
 
 } // namespace property_types

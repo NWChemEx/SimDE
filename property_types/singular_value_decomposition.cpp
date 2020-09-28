@@ -2,7 +2,7 @@
 
 namespace property_types {
 
-    template class SingularValueDecomposition<double>;
-    template class SingularValueDecomposition<float>;
+template class SingularValueDecomposition<double>;
+template class SingularValueDecomposition<float>;
 
 } // namespace property_types

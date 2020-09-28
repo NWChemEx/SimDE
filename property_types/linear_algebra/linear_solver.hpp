@@ -6,26 +6,29 @@ namespace property_types {
 
 namespace detail {
 
-  template <typename LHS, typename RHS, typename = void>
-  struct linearsolve_result{ };
+template<typename LHS, typename RHS, typename = void>
+struct linearsolve_result {};
 
-  template <typename LHS, typename RHS>
-  struct linearsolve_result< LHS, RHS, std::enable_if_t< std::is_same_v<LHS,RHS> > > {
+template<typename LHS, typename RHS>
+struct linearsolve_result<LHS, RHS,
+                          std::enable_if_t<std::is_same_v<LHS, RHS>>> {
     using type = LHS;
-  };
-  template <typename LHS, typename RHS>
-  struct linearsolve_result< LHS, RHS, std::enable_if_t< std::is_same_v<std::complex<LHS>,RHS> > > {
-    using type = RHS;
-  };
-  template <typename LHS, typename RHS>
-  struct linearsolve_result< LHS, RHS, std::enable_if_t< std::is_same_v<LHS,std::complex<RHS>> > > {
-    using type = LHS;
-  };
-
-  template <typename LHS, typename RHS>
-  using linearsolve_result_t = typename linearsolve_result<LHS,RHS>::type;
-
 };
+template<typename LHS, typename RHS>
+struct linearsolve_result<
+  LHS, RHS, std::enable_if_t<std::is_same_v<std::complex<LHS>, RHS>>> {
+    using type = RHS;
+};
+template<typename LHS, typename RHS>
+struct linearsolve_result<
+  LHS, RHS, std::enable_if_t<std::is_same_v<LHS, std::complex<RHS>>>> {
+    using type = LHS;
+};
+
+template<typename LHS, typename RHS>
+using linearsolve_result_t = typename linearsolve_result<LHS, RHS>::type;
+
+}; // namespace detail
 
 /** @brief The property type for modules that solve a system of linear
  *  equations A*X = B.
@@ -40,12 +43,12 @@ namespace detail {
  *  @tparam RHSElementType The type of the elements of the input (RHS) tensor.
  *  @tparam ResultElementType The type of the elements of the solution tensor.
  */
-template<
-  typename LHSElementType, 
-  typename RHSElementType, 
-  typename ResultElementType = detail::linearsolve_result_t<LHSElementType, RHSElementType>
->
-struct LinearSolver : public sde::PropertyType<LinearSolver<LHSElementType, RHSElementType, ResultElementType>> {
+template<typename LHSElementType, typename RHSElementType,
+         typename ResultElementType =
+           detail::linearsolve_result_t<LHSElementType, RHSElementType>>
+struct LinearSolver
+  : public sde::PropertyType<
+      LinearSolver<LHSElementType, RHSElementType, ResultElementType>> {
     /// Type of the input (LHS) tensor that accounts for LHSElementType
     using lhs_tensor_type = type::tensor<LHSElementType>;
     /// Type of the input (RHS) tensor that accounts for RHSElementType
@@ -59,35 +62,42 @@ struct LinearSolver : public sde::PropertyType<LinearSolver<LHSElementType, RHSE
 };
 
 //-------------------------------------Implementations--------------------------
-template<typename LHSElementType, typename RHSElementType, typename ResultElementType>
-auto LinearSolver<LHSElementType, RHSElementType, ResultElementType>::inputs_() {
-  auto rv = sde::declare_input().
-              add_field<lhs_tensor_type>("LHS").
-              template add_field<rhs_tensor_type>("RHS");
-  rv["LHS"].set_description("LHS of linear system");
-  rv["RHS"].set_description("RHS of linear system");
-  return rv;
+template<typename LHSElementType, typename RHSElementType,
+         typename ResultElementType>
+auto LinearSolver<LHSElementType, RHSElementType,
+                  ResultElementType>::inputs_() {
+    auto rv = sde::declare_input()
+                .add_field<lhs_tensor_type>("LHS")
+                .template add_field<rhs_tensor_type>("RHS");
+    rv["LHS"].set_description("LHS of linear system");
+    rv["RHS"].set_description("RHS of linear system");
+    return rv;
 } // LinearSolver<LHSElementType, RHSElementType, ResultElementType>::inputs_
 
-template<typename LHSElementType, typename RHSElementType, typename ResultElementType>
-auto LinearSolver<LHSElementType, RHSElementType, ResultElementType>::results_() {
-  auto rv = sde::declare_result().add_field<result_tensor_type>("Solution");
-  rv["Solution"].set_description("Solution for the linear system A*X = B");
-  return rv;
+template<typename LHSElementType, typename RHSElementType,
+         typename ResultElementType>
+auto LinearSolver<LHSElementType, RHSElementType,
+                  ResultElementType>::results_() {
+    auto rv = sde::declare_result().add_field<result_tensor_type>("Solution");
+    rv["Solution"].set_description("Solution for the linear system A*X = B");
+    return rv;
 } // LinearSolver<LHSElementType, RHSElementType, ResultElementType>::results_
 
+extern template class LinearSolver<double, double, double>;
+extern template class LinearSolver<float, float, float>;
 
+extern template class LinearSolver<std::complex<double>, std::complex<double>,
+                                   std::complex<double>>;
+extern template class LinearSolver<std::complex<double>, double,
+                                   std::complex<double>>;
+extern template class LinearSolver<double, std::complex<double>,
+                                   std::complex<double>>;
 
-
-extern template class LinearSolver<double,double,double>;
-extern template class LinearSolver<float,float,float>;
-
-extern template class LinearSolver<std::complex<double>,std::complex<double>,std::complex<double>>;
-extern template class LinearSolver<std::complex<double>,double,std::complex<double>>;
-extern template class LinearSolver<double,std::complex<double>,std::complex<double>>;
-
-extern template class LinearSolver<std::complex<float>,std::complex<float>,std::complex<float>>;
-extern template class LinearSolver<std::complex<float>,float,std::complex<float>>;
-extern template class LinearSolver<float,std::complex<float>,std::complex<float>>;
+extern template class LinearSolver<std::complex<float>, std::complex<float>,
+                                   std::complex<float>>;
+extern template class LinearSolver<std::complex<float>, float,
+                                   std::complex<float>>;
+extern template class LinearSolver<float, std::complex<float>,
+                                   std::complex<float>>;
 
 } // namespace property_types

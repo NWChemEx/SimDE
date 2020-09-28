@@ -11,7 +11,8 @@ namespace property_types {
  * @tparam ElementType The type of the elements in the returned tensor
  */
 template<typename ElementType = double>
-struct CoreHamiltonian : public sde::PropertyType<CoreHamiltonian<ElementType>> {
+struct CoreHamiltonian
+  : public sde::PropertyType<CoreHamiltonian<ElementType>> {
     /// The type of the returned tensor, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -27,7 +28,7 @@ auto CoreHamiltonian<ElementType>::inputs_() {
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative",type::size{0});
+                .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Bra"].set_description("The basis set for the bra");
     rv["Ket"].set_description("The basis set for the ket");
