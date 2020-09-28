@@ -5,4 +5,4 @@ Welcome to Property Types' Documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   api/library_root
+   C++ API <https://nwchemex-project.github.io/PropertyTypes/propertytypes_cxx_api/index.html>
