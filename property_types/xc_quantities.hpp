@@ -4,15 +4,16 @@
 
 namespace property_types {
 
-
 /** @brief Property type for modules that that build XC related quantities
  * (EXC, VXC, etc) in the AO basis set for pure functionals.
  *
  *  @tparam ElementType the type of the elements in the tensors
  *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
-struct PureXCQuantities : public sde::PropertyType<PureXCQuantities<ElementType, OrbitalType>> {
+template<typename ElementType = double,
+         typename OrbitalType = type::orbitals<ElementType>>
+struct PureXCQuantities
+  : public sde::PropertyType<PureXCQuantities<ElementType, OrbitalType>> {
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -27,8 +28,10 @@ struct PureXCQuantities : public sde::PropertyType<PureXCQuantities<ElementType,
  *  @tparam ElementType the type of the elements in the tensors
  *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
-struct HybridXCQuantities : public sde::PropertyType<HybridXCQuantities<ElementType, OrbitalType>> {
+template<typename ElementType = double,
+         typename OrbitalType = type::orbitals<ElementType>>
+struct HybridXCQuantities
+  : public sde::PropertyType<HybridXCQuantities<ElementType, OrbitalType>> {
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -43,8 +46,11 @@ struct HybridXCQuantities : public sde::PropertyType<HybridXCQuantities<ElementT
  *  @tparam ElementType the type of the elements in the tensors
  *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
-struct DoubleHybridXCQuantities : public sde::PropertyType<DoubleHybridXCQuantities<ElementType, OrbitalType>> {
+template<typename ElementType = double,
+         typename OrbitalType = type::orbitals<ElementType>>
+struct DoubleHybridXCQuantities
+  : public sde::PropertyType<
+      DoubleHybridXCQuantities<ElementType, OrbitalType>> {
     /// The type of the tensors representing the MOs, accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -61,7 +67,7 @@ auto PureXCQuantities<ElementType, OrbitalType>::inputs_() {
                 .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative",type::size{0});
+                .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     rv["Bra"].set_description("The basis set used for the bra");
@@ -77,7 +83,7 @@ auto HybridXCQuantities<ElementType, OrbitalType>::inputs_() {
                 .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative",type::size{0});
+                .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     rv["Bra"].set_description("The basis set used for the bra");
@@ -93,7 +99,7 @@ auto DoubleHybridXCQuantities<ElementType, OrbitalType>::inputs_() {
                 .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative",type::size{0});
+                .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     rv["Bra"].set_description("The basis set used for the bra");
@@ -101,12 +107,6 @@ auto DoubleHybridXCQuantities<ElementType, OrbitalType>::inputs_() {
     rv["Derivative"].set_description("The derivative order to compute");
     return rv;
 }
-
-
-
-
-
-
 
 template<typename ElementType, typename OrbitalType>
 auto PureXCQuantities<ElementType, OrbitalType>::results_() {

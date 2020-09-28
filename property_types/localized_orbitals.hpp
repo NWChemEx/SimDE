@@ -13,8 +13,10 @@ namespace property_types {
  *  @tparam InputOrbitals The type of the input orbitals
  *  @tparam OutputOrbitals the type iof the output orbitals
  */
-template<typename InputOrbitals = type::orbitals<double>, typename OutputOrbitals = InputOrbitals>
-struct LocalizedOrbitals : public sde::PropertyType<LocalizedOrbitals<InputOrbitals, OutputOrbitals>> {
+template<typename InputOrbitals  = type::orbitals<double>,
+         typename OutputOrbitals = InputOrbitals>
+struct LocalizedOrbitals
+  : public sde::PropertyType<LocalizedOrbitals<InputOrbitals, OutputOrbitals>> {
     /// Generates the input fields required by this property type
     auto inputs_();
     /// Generates the result fields required by this property type

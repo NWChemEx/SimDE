@@ -18,8 +18,10 @@ namespace property_types {
  *  @tparam ElementType The type of the elements in the returned tensor.
  *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
-struct CoulombMatrix : public sde::PropertyType<CoulombMatrix<ElementType, OrbitalType>> {
+template<typename ElementType = double,
+         typename OrbitalType = type::orbitals<ElementType>>
+struct CoulombMatrix
+  : public sde::PropertyType<CoulombMatrix<ElementType, OrbitalType>> {
     /// Type of the returned tesnor that accounts for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -37,7 +39,7 @@ auto CoulombMatrix<ElementType, OrbitalType>::inputs_() {
                 .add_field<const OrbitalType&>("Molecular Orbitals")
                 .template add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative",type::size{0});
+                .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     rv["Bra"].set_description("The basis set used for the bra");
@@ -57,7 +59,7 @@ extern template class CoulombMatrix<double>;
 extern template class CoulombMatrix<double, type::orthogonal_orbs<double>>;
 extern template class CoulombMatrix<double, type::canonical_mos<double>>;
 extern template class CoulombMatrix<float>;
-extern template class CoulombMatrix<float,  type::orthogonal_orbs<float>>;
-extern template class CoulombMatrix<float,  type::canonical_mos<float>>;
+extern template class CoulombMatrix<float, type::orthogonal_orbs<float>>;
+extern template class CoulombMatrix<float, type::canonical_mos<float>>;
 
 } // namespace property_types

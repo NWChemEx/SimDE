@@ -5,8 +5,8 @@
 namespace property_types {
 
 /**
- * @brief The property type for modules that build the density-fitting coefficients
- *        for computing the J and K matrices using 3C ERIs.
+ * @brief The property type for modules that build the density-fitting
+ * coefficients for computing the J and K matrices using 3C ERIs.
  *
  * @tparam ElementType The type of the elements in the returned tensor
  */
@@ -27,7 +27,7 @@ auto DFCoefficients<ElementType>::inputs_() {
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const type::basis_set<ElementType>&>("Bra")
                 .template add_field<const type::basis_set<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative",type::size{0});
+                .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Bra"].set_description("The basis set for the bra");
     rv["Ket"].set_description("The basis set for the ket");

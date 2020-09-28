@@ -6,16 +6,18 @@ namespace property_types {
 
 /** @brief The property type for modules that perform matrix inversion.
  *
- *  Modules that satisfy this property compute the matrix inverse 
+ *  Modules that satisfy this property compute the matrix inverse
  *
  *  A(i,k) * Ainv(k,j) = Ainv(i,k) * A(k,j) = delta(i,j)
  *
  *  where A and Ainv are square rank-2 tensors with Ainv being the inverse of A
  *
- *  @tparam MatrixElementType The type of the elements of the input/output tensors.
+ *  @tparam MatrixElementType The type of the elements of the input/output
+ * tensors.
  */
 template<typename MatrixElementType>
-struct MatrixInverse : public sde::PropertyType<MatrixInverse<MatrixElementType>> {
+struct MatrixInverse
+  : public sde::PropertyType<MatrixInverse<MatrixElementType>> {
     /// Type of the input / output  tensors that accounts for MatrixElementType
     using matrix_tensor_type = type::tensor<MatrixElementType>;
     /// Generates the input fields required by this property type
@@ -24,20 +26,20 @@ struct MatrixInverse : public sde::PropertyType<MatrixInverse<MatrixElementType>
     auto results_();
 };
 
-
 //-------------------------------------Implementations--------------------------
-template <typename MatrixElementType>
+template<typename MatrixElementType>
 auto MatrixInverse<MatrixElementType>::inputs_() {
-  auto rv = sde::declare_input().add_field<matrix_tensor_type>("Input Matrix");
-  rv["Input Matrix"].set_description("The matrix to be inverted");
-  return rv;
+    auto rv =
+      sde::declare_input().add_field<matrix_tensor_type>("Input Matrix");
+    rv["Input Matrix"].set_description("The matrix to be inverted");
+    return rv;
 } // MatrixInverse<MatrixElementType>::inputs_
 
-template <typename MatrixElementType>
+template<typename MatrixElementType>
 auto MatrixInverse<MatrixElementType>::results_() {
-  auto rv = sde::declare_result().add_field<matrix_tensor_type>("Inverse");
-  rv["Inverse"].set_description("Inverse of the input matrix");
-  return rv;
+    auto rv = sde::declare_result().add_field<matrix_tensor_type>("Inverse");
+    rv["Inverse"].set_description("Inverse of the input matrix");
+    return rv;
 } // MatrixInverse<MatrixElementType>::results_
 
 extern template class MatrixInverse<double>;

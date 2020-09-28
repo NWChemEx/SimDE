@@ -9,8 +9,10 @@ namespace property_types {
  *  @tparam ElementType the type of the elements in the tensors
  *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
-template<typename ElementType = double, typename OrbitalType = type::orbitals<ElementType>>
-struct UpdateGuess : public sde::PropertyType<UpdateGuess<ElementType, OrbitalType>> {
+template<typename ElementType = double,
+         typename OrbitalType = type::orbitals<ElementType>>
+struct UpdateGuess
+  : public sde::PropertyType<UpdateGuess<ElementType, OrbitalType>> {
     /// Type used to contain various MO subspaces
     using orbital_map = type::orbital_map<OrbitalType>;
     /// The type of the tensors representing the MOs, accounting for ElementType
@@ -37,7 +39,8 @@ auto UpdateGuess<ElementType, OrbitalType>::inputs_() {
 
 template<typename ElementType, typename OrbitalType>
 auto UpdateGuess<ElementType, OrbitalType>::results_() {
-    auto rv = sde::declare_result().add_field<orbital_map>("Molecular Orbitals");
+    auto rv =
+      sde::declare_result().add_field<orbital_map>("Molecular Orbitals");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     return rv;
 }
@@ -46,7 +49,7 @@ extern template class UpdateGuess<double>;
 extern template class UpdateGuess<double, type::orthogonal_orbs<double>>;
 extern template class UpdateGuess<double, type::canonical_mos<double>>;
 extern template class UpdateGuess<float>;
-extern template class UpdateGuess<float,  type::orthogonal_orbs<float>>;
-extern template class UpdateGuess<float,  type::canonical_mos<float>>;
+extern template class UpdateGuess<float, type::orthogonal_orbs<float>>;
+extern template class UpdateGuess<float, type::canonical_mos<float>>;
 
 } // namespace property_types
