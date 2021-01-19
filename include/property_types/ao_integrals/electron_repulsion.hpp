@@ -1,6 +1,9 @@
 #pragma once
+#include "property_types/ao_integrals/four_center.hpp"
+#include "property_types/ao_integrals/three_center.hpp"
+#include "property_types/ao_integrals/two_center.hpp"
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -11,115 +14,56 @@ namespace property_types {
  * @tparam ElementType The type of the element in the tensor. Defaults to
  *                     `double`.
  */
-template<typename ElementType = double>
-struct ERI2CIntegral : public sde::PropertyType<ERI2CIntegral<ElementType>> {
-    /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
-    /// The type of a tensor accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class ERI2CIntegral
-
-template<typename ElementType = double>
-struct ERI3CIntegral : public sde::PropertyType<ERI3CIntegral<ElementType>> {
-    /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
-    /// The type of a tensor accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class ERI3CIntegral
-
-template<typename ElementType = double>
-struct ERI4CIntegral : public sde::PropertyType<ERI4CIntegral<ElementType>> {
-    /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
-    /// The type of a tensor accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class ERI4CIntegral
-
-//------------------------Implementations---------------------------------------
+template<typename ElementType>
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(ERI2C,
+                                        ao_integral::TwoCenter<ElementType>,
+                                        ElementType);
 
 template<typename ElementType>
-auto ERI2CIntegral<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const basis_type&>("Bra")
-                .template add_field<const basis_type&>("Ket")
-                .template add_field<type::size>("Derivative", type::size{0});
-    rv["Bra"].set_description("The basis set for the bra");
-    rv["Ket"].set_description("The basis set for the ket");
-    rv["Derivative"].set_description(
-      "The derivative order of electron repulsion integrals to be computed");
-    return rv;
+TEMPLATED_PROPERTY_TYPE_INPUTS(ERI2C, ElementType) {
+    return sde::declare_input();
 }
 
 template<typename ElementType>
-auto ERI2CIntegral<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<tensor_type>("ERIs");
-    rv["ERIs"].set_description("The requested electron repulsion integrals");
-    return rv;
+TEMPLATED_PROPERTY_TYPE_RESULTS(ERI2C, ElementType) {
+    return sde::declare_result();
 }
 
 template<typename ElementType>
-auto ERI3CIntegral<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const basis_type&>("Bra")
-                .template add_field<const basis_type&>("Ket1")
-                .template add_field<const basis_type&>("Ket2")
-                .template add_field<type::size>("Derivative", type::size{0});
-    rv["Bra"].set_description("The basis set for the bra");
-    rv["Ket1"].set_description("The first basis set for the ket");
-    rv["Ket2"].set_description("The second basis set for the ket");
-    rv["Derivative"].set_description(
-      "The derivative order of electron repulsion integrals to be computed");
-    return rv;
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(ERI3C,
+                                        ao_integral::ThreeCenter<ElementType>,
+                                        ElementType);
+
+template<typename ElementType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(ERI3C, ElementType) {
+    return sde::declare_input();
 }
 
 template<typename ElementType>
-auto ERI3CIntegral<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<tensor_type>("ERIs");
-    rv["ERIs"].set_description("The requested electron repulsion integrals");
-    return rv;
+TEMPLATED_PROPERTY_TYPE_RESULTS(ERI3C, ElementType) {
+    return sde::declare_result();
 }
 
 template<typename ElementType>
-auto ERI4CIntegral<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const basis_type&>("Bra1")
-                .template add_field<const basis_type&>("Bra2")
-                .template add_field<const basis_type&>("Ket1")
-                .template add_field<const basis_type&>("Ket2")
-                .template add_field<type::size>("Derivative", type::size{0});
-    rv["Bra1"].set_description("The first basis set for the bra");
-    rv["Bra2"].set_description("The second basis set for the bra");
-    rv["Ket1"].set_description("The first basis set for the ket");
-    rv["Ket2"].set_description("The second basis set for the ket");
-    rv["Derivative"].set_description(
-      "The derivative order of electron repulsion integrals to be computed");
-    return rv;
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(ERI4C,
+                                        ao_integral::FourCenter<ElementType>,
+                                        ElementType);
+
+template<typename ElementType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(ERI4C, ElementType) {
+    return sde::declare_input();
 }
 
 template<typename ElementType>
-auto ERI4CIntegral<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<tensor_type>("ERIs");
-    rv["ERIs"].set_description("The requested electron repulsion integrals");
-    return rv;
+TEMPLATED_PROPERTY_TYPE_RESULTS(ERI4C, ElementType) {
+    return sde::declare_result();
 }
 
-extern template class ERI2CIntegral<double>;
-extern template class ERI2CIntegral<float>;
-extern template class ERI3CIntegral<double>;
-extern template class ERI3CIntegral<float>;
-extern template class ERI4CIntegral<double>;
-extern template class ERI4CIntegral<float>;
+extern template class ERI2C<double>;
+extern template class ERI2C<float>;
+extern template class ERI3C<double>;
+extern template class ERI3C<float>;
+extern template class ERI4C<double>;
+extern template class ERI4C<float>;
 
 } // namespace property_types

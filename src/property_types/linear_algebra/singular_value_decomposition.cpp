@@ -1,4 +1,4 @@
-#include "property_types/singular_value_decomposition.hpp"
+#include "property_types/linear_algebra/singular_value_decomposition.hpp"
 
 namespace property_types {
 

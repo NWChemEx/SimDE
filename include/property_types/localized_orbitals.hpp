@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -13,7 +13,7 @@ namespace property_types {
  *  @tparam InputOrbitals The type of the input orbitals
  *  @tparam OutputOrbitals the type iof the output orbitals
  */
-template<typename InputOrbitals  = type::orbitals<double>,
+template<typename InputOrbitals  = type::orbital_space_t<double>,
          typename OutputOrbitals = InputOrbitals>
 struct LocalizedOrbitals
   : public sde::PropertyType<LocalizedOrbitals<InputOrbitals, OutputOrbitals>> {
@@ -43,11 +43,11 @@ auto LocalizedOrbitals<InputOrbitals, OutputOrbitals>::results_() {
     return rv;
 }
 
-extern template class LocalizedOrbitals<type::orbitals<double>>;
-extern template class LocalizedOrbitals<type::orthogonal_orbs<double>>;
-extern template class LocalizedOrbitals<type::canonical_mos<double>>;
-extern template class LocalizedOrbitals<type::orbitals<float>>;
-extern template class LocalizedOrbitals<type::orthogonal_orbs<float>>;
-extern template class LocalizedOrbitals<type::canonical_mos<float>>;
+extern template class LocalizedOrbitals<type::orbital_space_t<double>>;
+extern template class LocalizedOrbitals<type::derived_space_t<double>>;
+extern template class LocalizedOrbitals<type::canonical_space_t<double>>;
+extern template class LocalizedOrbitals<type::orbital_space_t<float>>;
+extern template class LocalizedOrbitals<type::derived_space_t<float>>;
+extern template class LocalizedOrbitals<type::canonical_space_t<float>>;
 
 } // namespace property_types

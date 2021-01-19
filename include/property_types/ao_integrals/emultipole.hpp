@@ -1,6 +1,7 @@
 #pragma once
+#include "property_types/ao_integrals/two_center.hpp"
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -15,7 +16,7 @@ template<typename ElementType = double>
 struct EDipoleIntegral
   : public sde::PropertyType<EDipoleIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -28,7 +29,7 @@ template<typename ElementType = double>
 struct EQuadrupoleIntegral
   : public sde::PropertyType<EQuadrupoleIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -41,7 +42,7 @@ template<typename ElementType = double>
 struct EOctopoleIntegral
   : public sde::PropertyType<EOctopoleIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type

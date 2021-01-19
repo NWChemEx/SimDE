@@ -1,4 +1,4 @@
-#include "cauchy_schwarz_approximation.hpp"
+#include "property_types/cauchy_schwarz_approximation.hpp"
 
 namespace property_types {
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -26,8 +26,8 @@ template<typename ElementType>
 auto CoreHamiltonian<ElementType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const type::basis_set<ElementType>&>("Bra")
-                .template add_field<const type::basis_set<ElementType>&>("Ket")
+                .add_field<const type::ao_space_t<ElementType>&>("Bra")
+                .template add_field<const type::ao_space_t<ElementType>&>("Ket")
                 .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Bra"].set_description("The basis set for the bra");

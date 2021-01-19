@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -15,7 +15,7 @@ template<typename ElementType = double>
 struct Yukawa2CIntegral
   : public sde::PropertyType<Yukawa2CIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -28,7 +28,7 @@ template<typename ElementType = double>
 struct Yukawa3CIntegral
   : public sde::PropertyType<Yukawa3CIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -41,7 +41,7 @@ template<typename ElementType = double>
 struct Yukawa4CIntegral
   : public sde::PropertyType<Yukawa4CIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type

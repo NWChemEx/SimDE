@@ -1,7 +1,7 @@
 #pragma once
 #include "property_types/ao_integrals/two_center.hpp"
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -18,13 +18,13 @@ DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(DOI,
                                         ElementType);
 
 template<typename ElementType>
-TEMPLATE_PROPERTY_TYPE_INPUTS(DOI, ElementType) {
+TEMPLATED_PROPERTY_TYPE_INPUTS(DOI, ElementType) {
     return sde::declare_input();
 }
 
 template<typename ElementType>
-TEMPLATE_PROPERTY_TYPE_RESULTS(DOI, ElementType) {
-    return sde::decalre_result();
+TEMPLATED_PROPERTY_TYPE_RESULTS(DOI, ElementType) {
+    return sde::declare_result();
 }
 
 extern template class DOI<double>;

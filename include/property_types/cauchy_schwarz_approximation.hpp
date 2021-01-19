@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -8,7 +8,7 @@ template<typename ElementType = double>
 struct CauchySchwarzApprox
   : public sde::PropertyType<CauchySchwarzApprox<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The return type
     using return_type = std::vector<std::vector<ElementType>>;
     /// Generates the input fields required by this property type

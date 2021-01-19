@@ -1,9 +1,7 @@
 #pragma once
-#include <libchemist/basis_set/ao_basis_set/ao_basis_set.hpp>
-#include <libchemist/canonical_mos.hpp>
-#include <libchemist/molecule.hpp>
+#include <libchemist/basis_set/ao_basis_set.hpp>
+#include <libchemist/molecule/molecule.hpp>
 #include <libchemist/orbital_space/orbital_space.hpp>
-#include <libchemist/orthogonal_space.hpp>
 #include <libchemist/types.hpp>
 #include <random>
 #include <sde/types.hpp>
@@ -27,10 +25,16 @@ using molecule = libchemist::Molecule;
 
 /// Typedef of the classes modeling the orbital spaces
 template<typename T>
-using ao_space_t = libchemist::orbital_space::AOSpace<T>;
-template<typename T>
+using orbital_space_t = libchemist::orbital_space::BaseSpace<T>;
 
+template<typename T>
+using ao_space_t = libchemist::orbital_space::AOSpace<T>;
+
+template<typename T>
 using sparse_ao_space_t = libchemist::orbital_space::SparseAOSpace<T>;
+
+template<typename T>
+using derived_space_t = libchemist::orbital_space::DerivedSpace<T>;
 
 template<typename T>
 using canonical_space_t = libchemist::orbital_space::CanonicalSpace<T>;

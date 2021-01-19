@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -19,7 +19,7 @@ namespace property_types {
  *  @tparam OrbitalType The type of the input orbital space
  */
 template<typename ElementType = double,
-         typename OrbitalType = type::orbitals<ElementType>>
+         typename OrbitalType = type::orbital_space_t<ElementType>>
 struct ExchangeMatrix
   : public sde::PropertyType<ExchangeMatrix<ElementType, OrbitalType>> {
     /// Typedef for the returned tensor that accounts for ElementType
@@ -37,8 +37,8 @@ auto ExchangeMatrix<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const OrbitalType&>("Molecular Orbitals")
-                .template add_field<const type::basis_set<ElementType>&>("Bra")
-                .template add_field<const type::basis_set<ElementType>&>("Ket")
+                .template add_field<const type::ao_space_t<ElementType>&>("Bra")
+                .template add_field<const type::ao_space_t<ElementType>&>("Ket")
                 .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
@@ -56,10 +56,10 @@ auto ExchangeMatrix<ElementType, OrbitalType>::results_() {
 }
 
 extern template class ExchangeMatrix<double>;
-extern template class ExchangeMatrix<double, type::orthogonal_orbs<double>>;
-extern template class ExchangeMatrix<double, type::canonical_mos<double>>;
+extern template class ExchangeMatrix<double, type::derived_space_t<double>>;
+extern template class ExchangeMatrix<double, type::canonical_space_t<double>>;
 extern template class ExchangeMatrix<float>;
-extern template class ExchangeMatrix<float, type::orthogonal_orbs<float>>;
-extern template class ExchangeMatrix<float, type::canonical_mos<float>>;
+extern template class ExchangeMatrix<float, type::derived_space_t<float>>;
+extern template class ExchangeMatrix<float, type::canonical_space_t<float>>;
 
 } // namespace property_types

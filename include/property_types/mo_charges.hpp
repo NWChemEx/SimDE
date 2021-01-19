@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -11,7 +11,7 @@ namespace property_types {
  * @tparam OrbitalType The type of the input molecular orbitals
  */
 template<typename ElementType = double,
-         typename OrbitalType = type::orbitals<ElementType>>
+         typename OrbitalType = type::orbital_space_t<ElementType>>
 struct MOCharges
   : public sde::PropertyType<MOCharges<ElementType, OrbitalType>> {
     /// Type of the returned tensor that accounts for ElementType
@@ -41,10 +41,10 @@ auto MOCharges<ElementType, OrbitalType>::results_() {
 }
 
 extern template class MOCharges<double>;
-extern template class MOCharges<double, type::orthogonal_orbs<double>>;
-extern template class MOCharges<double, type::canonical_mos<double>>;
+extern template class MOCharges<double, type::derived_space_t<double>>;
+extern template class MOCharges<double, type::canonical_space_t<double>>;
 extern template class MOCharges<float>;
-extern template class MOCharges<float, type::orthogonal_orbs<float>>;
-extern template class MOCharges<float, type::canonical_mos<float>>;
+extern template class MOCharges<float, type::derived_space_t<float>>;
+extern template class MOCharges<float, type::canonical_space_t<float>>;
 
 } // namespace property_types

@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -11,7 +11,7 @@ namespace property_types {
  * @tparam OrbitalType The type of the input orbital space
  */
 template<typename ElementType = double,
-         typename OrbitalType = type::orbitals<ElementType>>
+         typename OrbitalType = type::orbital_space_t<ElementType>>
 struct AtomicCharges
   : public sde::PropertyType<AtomicCharges<ElementType, OrbitalType>> {
     /// Type of the return values
@@ -41,10 +41,8 @@ auto AtomicCharges<ElementType, OrbitalType>::results_() {
 }
 
 extern template class AtomicCharges<double>;
-extern template class AtomicCharges<double, type::orthogonal_orbs<double>>;
-extern template class AtomicCharges<double, type::canonical_mos<double>>;
+extern template class AtomicCharges<double, type::canonical_space_t<double>>;
 extern template class AtomicCharges<float>;
-extern template class AtomicCharges<float, type::orthogonal_orbs<float>>;
-extern template class AtomicCharges<float, type::canonical_mos<float>>;
+extern template class AtomicCharges<float, type::canonical_space_t<float>>;
 
 } // namespace property_types

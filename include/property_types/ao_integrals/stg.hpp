@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -14,7 +14,7 @@ namespace property_types {
 template<typename ElementType = double>
 struct STG2CIntegral : public sde::PropertyType<STG2CIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -26,7 +26,7 @@ struct STG2CIntegral : public sde::PropertyType<STG2CIntegral<ElementType>> {
 template<typename ElementType = double>
 struct STG3CIntegral : public sde::PropertyType<STG3CIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type
@@ -38,7 +38,7 @@ struct STG3CIntegral : public sde::PropertyType<STG3CIntegral<ElementType>> {
 template<typename ElementType = double>
 struct STG4CIntegral : public sde::PropertyType<STG4CIntegral<ElementType>> {
     /// The type of an std::array of basis sets
-    using basis_type = type::basis_set<ElementType>;
+    using basis_type = type::ao_space_t<ElementType>;
     /// The type of a tensor accounting for ElementType
     using tensor_type = type::tensor<ElementType>;
     /// Generates the input fields required by this property type

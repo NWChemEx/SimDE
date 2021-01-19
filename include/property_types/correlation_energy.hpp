@@ -1,6 +1,6 @@
 #pragma once
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
@@ -10,7 +10,7 @@ namespace property_types {
  *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
 template<typename ElementType = double,
-         typename OrbitalType = type::orbitals<ElementType>>
+         typename OrbitalType = type::orbital_space_t<ElementType>>
 struct CorrelationEnergy
   : public sde::PropertyType<CorrelationEnergy<ElementType, OrbitalType>> {
     /// Type used to contain various MO subspaces
@@ -26,7 +26,7 @@ template<typename ElementType, typename OrbitalType>
 auto CorrelationEnergy<ElementType, OrbitalType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const type::basis_set<ElementType>&>("Basis Set")
+                .add_field<const type::ao_space_t<ElementType>&>("Basis Set")
                 .template add_field<orbital_map>("Reference Molecular Orbitals")
                 .template add_field<type::size>("Derivative", type::size{0});
     rv["Molecule"].set_description("The molecular system");
@@ -47,10 +47,11 @@ auto CorrelationEnergy<ElementType, OrbitalType>::results_() {
 }
 
 extern template class CorrelationEnergy<double>;
-extern template class CorrelationEnergy<double, type::orthogonal_orbs<double>>;
-extern template class CorrelationEnergy<double, type::canonical_mos<double>>;
+extern template class CorrelationEnergy<double, type::derived_space_t<double>>;
+extern template class CorrelationEnergy<double,
+                                        type::canonical_space_t<double>>;
 extern template class CorrelationEnergy<float>;
-extern template class CorrelationEnergy<float, type::orthogonal_orbs<float>>;
-extern template class CorrelationEnergy<float, type::canonical_mos<float>>;
+extern template class CorrelationEnergy<float, type::derived_space_t<float>>;
+extern template class CorrelationEnergy<float, type::canonical_space_t<float>>;
 
 } // namespace property_types

@@ -1,7 +1,7 @@
 #pragma once
 #include "property_types/linear_algebra/matrix_properties.hpp"
 #include "property_types/types.hpp"
-#include <sde/property_type.hpp>
+#include <sde/property_type/property_type.hpp>
 
 namespace property_types {
 
