@@ -2,7 +2,7 @@
 #include <libchemist/basis_set/ao_basis_set/ao_basis_set.hpp>
 #include <libchemist/canonical_mos.hpp>
 #include <libchemist/molecule.hpp>
-#include <libchemist/orbital_space.hpp>
+#include <libchemist/orbital_space/orbital_space.hpp>
 #include <libchemist/orthogonal_space.hpp>
 #include <libchemist/types.hpp>
 #include <random>
@@ -25,17 +25,15 @@ using tensor = libchemist::type::tensor<T>;
 /// Typedef of the class used to describe a molecule
 using molecule = libchemist::Molecule;
 
-/// Typedef of the class used to describe an AO basis set
-template<typename T>
-using basis_set = libchemist::AOBasisSet<T>;
-
 /// Typedef of the classes modeling the orbital spaces
 template<typename T>
-using orbitals = libchemist::OrbitalSpace<T>;
+using ao_space_t = libchemist::orbital_space::AOSpace<T>;
 template<typename T>
-using orthogonal_orbs = libchemist::OrthogonalSpace<T>;
+
+using sparse_ao_space_t = libchemist::orbital_space::SparseAOSpace<T>;
+
 template<typename T>
-using canonical_mos = libchemist::CanonicalMO<T>;
+using canonical_space_t = libchemist::orbital_space::CanonicalSpace<T>;
 
 /// Typedef of a map containing multiple OrbitalSpaces
 template<typename T>
