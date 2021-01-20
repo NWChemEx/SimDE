@@ -1,0 +1,12 @@
+#pragma once
+#include "property_types/ao_integrals/doi.hpp"
+#include "property_types/ao_integrals/electron_repulsion.hpp"
+#include "property_types/ao_integrals/emultipole.hpp"
+#include "property_types/ao_integrals/four_center.hpp"
+#include "property_types/ao_integrals/kinetic.hpp"
+#include "property_types/ao_integrals/nuclear.hpp"
+#include "property_types/ao_integrals/overlap.hpp"
+#include "property_types/ao_integrals/stg.hpp"
+#include "property_types/ao_integrals/three_center.hpp"
+#include "property_types/ao_integrals/two_center.hpp"
+#include "property_types/ao_integrals/yukawa.hpp"

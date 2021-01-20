@@ -3,7 +3,7 @@
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 
-namespace property_types {
+namespace property_types::ao_integrals {
 
 /**
  * @brief The property type for modules that build tensors filled with
@@ -13,8 +13,7 @@ namespace property_types {
  *                     `double`.
  */
 template<typename ElementType = double>
-DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(DOI,
-                                        ao_integral::TwoCenter<ElementType>,
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(DOI, TwoCenter<ElementType>,
                                         ElementType);
 
 template<typename ElementType>
@@ -30,4 +29,4 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(DOI, ElementType) {
 extern template class DOI<double>;
 extern template class DOI<float>;
 
-} // namespace property_types
+} // namespace property_types::ao_integrals

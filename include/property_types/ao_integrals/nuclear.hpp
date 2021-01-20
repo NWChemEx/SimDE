@@ -1,8 +1,9 @@
 #pragma once
+#include "property_types/ao_integrals/two_center.hpp"
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 
-namespace property_types {
+namespace property_types::ao_integrals {
 
 /**
  * @brief The property type for modules that build tensors filled with electron
@@ -12,45 +13,22 @@ namespace property_types {
  *                     `double`.
  */
 template<typename ElementType = double>
-struct NuclearIntegral
-  : public sde::PropertyType<NuclearIntegral<ElementType>> {
-    /// The type of an std::array of basis sets
-    using basis_type = type::ao_space_t<ElementType>;
-    /// The type of a tensor accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class NuclearIntegral
-
-//------------------------Implementations---------------------------------------
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(Nuclear, TwoCenter<ElementType>,
+                                        ElementType);
 
 template<typename ElementType>
-auto NuclearIntegral<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const basis_type&>("Bra")
-                .template add_field<const basis_type&>("Ket")
-                .template add_field<const type::molecule&>("Molecule")
-                .template add_field<type::size>("Derivative", type::size{0});
-    rv["Bra"].set_description("The basis set for the bra");
-    rv["Ket"].set_description("The basis set for the ket");
-    rv["Molecule"].set_description("The molecule for which the electron "
-                                   "nuclear attraction integrals are computed");
-    rv["Derivative"].set_description(
-      "The derivative order of the integrals to be computed");
-    return rv;
+TEMPLATED_PROPERTY_TYPE_INPUTS(Nuclear, ElementType) {
+    using molecule_t = const type::molecule&;
+
+    return sde::declare_input().add_field<molecule_t>("molecule");
 }
 
 template<typename ElementType>
-auto NuclearIntegral<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<tensor_type>("Nuclear Integrals");
-    rv["Nuclear Integrals"].set_description(
-      "The requested electron nuclear attraction integrals");
-    return rv;
+TEMPLATED_PROPERTY_TYPE_RESULTS(Nuclear, ElementType) {
+    return sde::declare_result();
 }
 
-extern template class NuclearIntegral<double>;
-extern template class NuclearIntegral<float>;
+extern template class Nuclear<double>;
+extern template class Nuclear<float>;
 
-} // namespace property_types
+} // namespace property_types::ao_integrals

@@ -2,7 +2,7 @@
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 
-namespace property_types::ao_integral {
+namespace property_types::ao_integrals {
 
 template<typename ElementType>
 DECLARE_TEMPLATED_PROPERTY_TYPE(FourCenter, ElementType);
@@ -25,4 +25,4 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(FourCenter, ElementType) {
     return sde::declare_result().add_field<tensor_t>("(pq|O|rs)");
 }
 
-} // namespace property_types::ao_integral
+} // namespace property_types::ao_integrals

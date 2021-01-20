@@ -1,8 +1,8 @@
 #include "property_types/ao_integrals/nuclear.hpp"
 
-namespace property_types {
+namespace property_types::ao_integrals {
 
-template class NuclearIntegral<double>;
-template class NuclearIntegral<float>;
+template class Nuclear<double>;
+template class Nuclear<float>;
 
-} // namespace property_types
+} // namespace property_types::ao_integrals

@@ -3,7 +3,7 @@
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 
-namespace property_types {
+namespace property_types::ao_integrals {
 
 /**
  * @brief The property type for modules that build tensors filled with various
@@ -12,125 +12,36 @@ namespace property_types {
  * @tparam ElementType The type of the element in the tensor. Defaults to
  *                     `double`.
  */
-template<typename ElementType = double>
-struct EDipoleIntegral
-  : public sde::PropertyType<EDipoleIntegral<ElementType>> {
-    /// The type of an std::array of basis sets
-    using basis_type = type::ao_space_t<ElementType>;
-    /// The type of a tensor accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class EDipoleIntegral
+template<typename ElementType, unsigned Order>
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(EMultipole, TwoCenter<ElementType>,
+                                        ElementType, Order);
 
-template<typename ElementType = double>
-struct EQuadrupoleIntegral
-  : public sde::PropertyType<EQuadrupoleIntegral<ElementType>> {
-    /// The type of an std::array of basis sets
-    using basis_type = type::ao_space_t<ElementType>;
-    /// The type of a tensor accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class EQuadrupoleIntegral
+template<typename ElementType, unsigned Order>
+TEMPLATED_PROPERTY_TYPE_INPUTS(EMultipole, ElementType, Order) {
+    using center_t = const std::array<ElementType, 3>&;
 
-template<typename ElementType = double>
-struct EOctopoleIntegral
-  : public sde::PropertyType<EOctopoleIntegral<ElementType>> {
-    /// The type of an std::array of basis sets
-    using basis_type = type::ao_space_t<ElementType>;
-    /// The type of a tensor accounting for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class EOctopoleIntegral
+    return sde::declare_input().add_field<center_t>("origin");
+}
 
-//------------------------Implementations---------------------------------------
-
-template<typename ElementType>
-auto EDipoleIntegral<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const basis_type&>("Bra")
-                .template add_field<const basis_type&>("Ket")
-                .template add_field<type::size>("Derivative", type::size{0})
-                .template add_field<const std::array<ElementType, 3>&>(
-                  "Origin", std::array<ElementType, 3>{0, 0, 0});
-    rv["Bra"].set_description("The basis set for the bra");
-    rv["Ket"].set_description("The basis set for the ket");
-    rv["Derivative"].set_description(
-      "The derivative order of the integrals to be computed");
-    rv["Origin"].set_description("The origin of the multipole expansion");
-    return rv;
+template<typename ElementType, unsigned Order>
+TEMPLATED_PROPERTY_TYPE_RESULTS(EMultipole, ElementType, Order) {
+    return sde::declare_result();
 }
 
 template<typename ElementType>
-auto EDipoleIntegral<ElementType>::results_() {
-    auto rv = sde::declare_result().add_field<tensor_type>("EDipole Integrals");
-    rv["EDipole Integrals"].set_description(
-      "The requested electric dipole integrals");
-    return rv;
-}
+using EDipole = EMultipole<ElementType, 1>;
 
 template<typename ElementType>
-auto EQuadrupoleIntegral<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const basis_type&>("Bra")
-                .template add_field<const basis_type&>("Ket")
-                .template add_field<type::size>("Derivative", type::size{0})
-                .template add_field<const std::array<ElementType, 3>&>(
-                  "Origin", std::array<ElementType, 3>{0, 0, 0});
-    rv["Bra"].set_description("The basis set for the bra");
-    rv["Ket"].set_description("The basis set for the ket");
-    rv["Derivative"].set_description(
-      "The derivative order of the integrals to be computed");
-    rv["Origin"].set_description("The origin of the multipole expansion");
-    return rv;
-}
+using EQuadrupole = EMultipole<ElementType, 2>;
 
 template<typename ElementType>
-auto EQuadrupoleIntegral<ElementType>::results_() {
-    auto rv =
-      sde::declare_result().add_field<tensor_type>("EQuadrupole Integrals");
-    rv["EQuadrupole Integrals"].set_description(
-      "The requested electric quadrupole integrals");
-    return rv;
-}
+using EOctopole = EMultipole<ElementType, 3>;
 
-template<typename ElementType>
-auto EOctopoleIntegral<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const basis_type&>("Bra")
-                .template add_field<const basis_type&>("Ket")
-                .template add_field<type::size>("Derivative", type::size{0})
-                .template add_field<const std::array<ElementType, 3>&>(
-                  "Origin", std::array<ElementType, 3>{0, 0, 0});
-    rv["Bra"].set_description("The basis set for the bra");
-    rv["Ket"].set_description("The basis set for the ket");
-    rv["Derivative"].set_description(
-      "The derivative order of the integrals to be computed");
-    rv["Origin"].set_description("The origin of the multipole expansion");
-    return rv;
-}
+extern template class EMultipole<double, 1>;
+extern template class EMultipole<float, 1>;
+extern template class EMultipole<double, 2>;
+extern template class EMultipole<float, 2>;
+extern template class EMultipole<double, 3>;
+extern template class EMultipole<float, 3>;
 
-template<typename ElementType>
-auto EOctopoleIntegral<ElementType>::results_() {
-    auto rv =
-      sde::declare_result().add_field<tensor_type>("EOctopole Integrals");
-    rv["EOctopole Integrals"].set_description(
-      "The requested electric octopole integrals");
-    return rv;
-}
-
-extern template class EDipoleIntegral<double>;
-extern template class EDipoleIntegral<float>;
-extern template class EQuadrupoleIntegral<double>;
-extern template class EQuadrupoleIntegral<float>;
-extern template class EOctopoleIntegral<double>;
-extern template class EOctopoleIntegral<float>;
-} // namespace property_types
+} // namespace property_types::ao_integrals

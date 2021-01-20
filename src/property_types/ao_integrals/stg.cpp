@@ -1,12 +1,12 @@
 #include "property_types/ao_integrals/stg.hpp"
 
-namespace property_types {
+namespace property_types::ao_integrals {
 
-template class STG2CIntegral<double>;
-template class STG2CIntegral<float>;
-template class STG3CIntegral<double>;
-template class STG3CIntegral<float>;
-template class STG4CIntegral<double>;
-template class STG4CIntegral<float>;
+template class STG<TwoCenter<double>>;
+template class STG<TwoCenter<float>>;
+template class STG<ThreeCenter<double>>;
+template class STG<ThreeCenter<float>>;
+template class STG<FourCenter<double>>;
+template class STG<FourCenter<float>>;
 
-} // namespace property_types
+} // namespace property_types::ao_integrals
