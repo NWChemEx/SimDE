@@ -41,8 +41,10 @@ auto AtomicCharges<ElementType, OrbitalType>::results_() {
 }
 
 extern template class AtomicCharges<double>;
+extern template class AtomicCharges<double, type::derived_space_t<double>>;
 extern template class AtomicCharges<double, type::canonical_space_t<double>>;
 extern template class AtomicCharges<float>;
+extern template class AtomicCharges<float, type::derived_space_t<float>>;
 extern template class AtomicCharges<float, type::canonical_space_t<float>>;
 
 } // namespace property_types
