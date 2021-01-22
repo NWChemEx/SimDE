@@ -4,5 +4,5 @@
 using namespace property_types::ao_integrals;
 
 TEST_CASE("Kinetic") {
-    test_property_type<Kinetic<double>>({"bra", "ket"}, {"(p|O|q)"});
+    test_property_type<Kinetic<double>>({"bra", "ket"}, {"(m|T|n)"});
 }

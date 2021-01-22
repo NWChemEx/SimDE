@@ -18,9 +18,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(TwoCenter, ElementType) {
 
 template<typename ElementType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(TwoCenter, ElementType) {
-    using tensor_t = type::tensor<ElementType>;
-
-    return sde::declare_result().add_field<tensor_t>("(p|O|q)");
+    return sde::declare_result();
 }
 
 } // namespace property_types::ao_integrals

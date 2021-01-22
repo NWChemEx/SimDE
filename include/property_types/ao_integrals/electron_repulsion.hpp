@@ -1,4 +1,5 @@
 #pragma once
+#include "property_types/ao_integrals/detail_/make_key.hpp"
 #include "property_types/ao_integrals/four_center.hpp"
 #include "property_types/ao_integrals/three_center.hpp"
 #include "property_types/ao_integrals/two_center.hpp"
@@ -24,7 +25,11 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ERI, BaseType) {
 
 template<typename BaseType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(ERI, BaseType) {
-    return sde::declare_result();
+    using element_type = double; // TODO get from TMP
+    using tensor_type  = type::tensor<element_type>;
+
+    return sde::declare_result().add_field<tensor_type>(
+      detail_::make_key<BaseType>("r_12"));
 }
 
 template<typename ElementType>

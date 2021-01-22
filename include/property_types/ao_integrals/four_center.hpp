@@ -20,9 +20,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(FourCenter, ElementType) {
 
 template<typename ElementType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(FourCenter, ElementType) {
-    using tensor_t = type::tensor<ElementType>;
-
-    return sde::declare_result().add_field<tensor_t>("(pq|O|rs)");
+    return sde::declare_result();
 }
 
 } // namespace property_types::ao_integrals

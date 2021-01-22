@@ -4,5 +4,5 @@
 using namespace property_types::ao_integrals;
 
 TEST_CASE("Overlap") {
-    test_property_type<Overlap<double>>({"bra", "ket"}, {"(p|O|q)"});
+    test_property_type<Overlap<double>>({"bra", "ket"}, {"(m|n)"});
 }

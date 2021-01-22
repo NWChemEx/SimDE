@@ -1,5 +1,4 @@
 #include "property_types/ao_integrals/electron_repulsion.hpp"
-
 namespace property_types::ao_integrals {
 
 template class ERI<TwoCenter<double>>;

@@ -1,4 +1,5 @@
 #pragma once
+#include "property_types/ao_integrals/detail_/make_key.hpp"
 #include "property_types/ao_integrals/two_center.hpp"
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
@@ -25,7 +26,12 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(EMultipole, ElementType, Order) {
 
 template<typename ElementType, unsigned Order>
 TEMPLATED_PROPERTY_TYPE_RESULTS(EMultipole, ElementType, Order) {
-    return sde::declare_result();
+    using tensor_type = type::tensor<ElementType>;
+    using base_type   = TwoCenter<ElementType>;
+
+    auto op = "r**" + std::to_string(Order);
+    return sde::declare_result().add_field<tensor_type>(
+      detail_::make_key<base_type>(op));
 }
 
 template<typename ElementType>

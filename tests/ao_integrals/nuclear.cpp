@@ -5,5 +5,5 @@ using namespace property_types::ao_integrals;
 
 TEST_CASE("Nuclear") {
     test_property_type<Nuclear<double>>({"molecule", "bra", "ket"},
-                                        {"(p|O|q)"});
+                                        {"(m|Z_A/r_iA|n)"});
 }
