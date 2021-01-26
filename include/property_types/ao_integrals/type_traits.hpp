@@ -147,6 +147,102 @@ constexpr auto n_centers() {
     }
 }
 
+/** @brief Struct used to determine if a type is that of the differential
+           overlap integral's property type.
+ *
+ *  The primary template is instantiated for all @p T which aren't a
+ *  specialization of `ao_integrals::DOI`. When instantiated the class will have
+ *  a static constexpr member `value` which be set to false.
+ *
+ *  @tparam T The type we are inspecting.
+ */
+template<typename T>
+struct IsDOI : std::false_type {};
+
+/** @brief Struct used to determine if a type is that of the differential
+ *         overlap integral's property type.
+ *
+ *  This specialization is instantiated when @p T is a specialization of
+ *  `ao_integrals::DOI`. When instantiated this specialization will have a
+ *  static constexpr member `value` which is set to true.
+ *
+ *  @tparam T The scalar type of the integral values.
+ */
+template<typename T>
+struct IsDOI<property_types::ao_integrals::DOI<T>> : std::true_type {};
+
+/** @brief Struct used to determine if a type is that of the electron-nuclear
+ *         attraction property type.
+ *
+ *  The primary template is instantiated for all @p T which aren't a
+ *  specialization of `ao_integrals::Nuclear`. When instantiated the class will
+ *  have a static constexpr member `value` which be set to false.
+ *
+ *  @tparam T The type we are inspecting.
+ */
+template<typename T>
+struct IsNuclear : std::false_type {};
+
+/** @brief Struct used to determine if a type is that of the nuclear-electron
+ *         attraction integral's property type.
+ *
+ *  This specialization is instantiated when @p T is a specialization of
+ *  `ao_integrals::Nuclear`. When instantiated this specialization will have a
+ *  static constexpr member `value` which is set to true.
+ *
+ *  @tparam T The scalar type of the integral values.
+ */
+template<typename T>
+struct IsNuclear<property_types::ao_integrals::Nuclear<T>> : std::true_type {};
+
+/** @brief Struct used to determine if a type is that of a Slater-type geminal's
+           property type.
+ *
+ *  The primary template is instantiated for all @p T which aren't a
+ *  specialization of `ao_integrals::STG`. When instantiated the class will have
+ *  a static constexpr member `value` which be set to false.
+ *
+ *  @tparam T The type we are inspecting.
+ */
+template<typename T>
+struct IsSTG : std::false_type {};
+
+/** @brief Struct used to determine if a type is that of the Slater-type geminal
+ *         integral's property type.
+ *
+ *  This specialization is instantiated when @p T is a specialization of
+ *  `ao_integrals::STG`. When instantiated this specialization will have a
+ *  static constexpr member `value` which is set to true.
+ *
+ *  @tparam T The scalar type of the integral values.
+ */
+template<typename T>
+struct IsSTG<property_types::ao_integrals::STG<T>> : std::true_type {};
+
+/** @brief Struct used to determine if a type is that of the Yukawa integral's
+ *         property type.
+ *
+ *  The primary template is instantiated for all @p T which aren't a
+ *  specialization of `ao_integrals::Yukawa`. When instantiated the class will
+ *  have a static constexpr member `value` which be set to false.
+ *
+ *  @tparam T The type we are inspecting.
+ */
+template<typename T>
+struct IsYukawa : std::false_type {};
+
+/** @brief Struct used to determine if a type is that of the Yukawa integral's
+ *         property type.
+ *
+ *  This specialization is instantiated when @p T is a specialization of
+ *  `ao_integrals::Yukawa`. When instantiated this specialization will have a
+ *  static constexpr member `value` which is set to true.
+ *
+ *  @tparam T The scalar type of the integral values.
+ */
+template<typename T>
+struct IsYukawa<property_types::ao_integrals::Yukawa<T>> : std::true_type {};
+
 } // namespace detail_
 
 /** @brief User API for determining how many centers an integral involves.
@@ -159,5 +255,52 @@ constexpr auto n_centers() {
  */
 template<typename T>
 static constexpr auto n_centers_v = detail_::n_centers<T>();
+
+/** @brief User API for determining if a type is the property type for the
+ *         differential overlap integral.
+ *
+ *  If @p T is the same type as the differential overlap integral's property
+ *  type this global variable will be set to true, otherwise it will be set to
+ *  false.
+ *
+ *  @param T The type we are inspecting.
+ */
+template<typename T>
+static constexpr auto is_doi_v = detail_::IsDOI<T>::value;
+
+/** @brief User API for determining if a type is the property type for the
+ *         nuclear-electron attraction integral.
+ *
+ *  If @p T is the same type as the nuclear-electron attraction integral's
+ *  property type this global variable will be set to true, otherwise it will be
+ *  set to false.
+ *
+ *  @param T The type we are inspecting.
+ */
+template<typename T>
+static constexpr auto is_nuclear_v = detail_::IsNuclear<T>::value;
+
+/** @brief User API for determining if a type is the property type for a Slater-
+ *         type geminal integral.
+ *
+ *  If @p T is the same type as the Slater-type geminal integral's property
+ *  type this global variable will be set to true, otherwise it will be set to
+ *  false.
+ *
+ *  @param T The type we are inspecting.
+ */
+template<typename T>
+static constexpr auto is_stg_v = detail_::IsSTG<T>::value;
+
+/** @brief User API for determining if a type is the property type for the
+ *         Yukawa integral.
+ *
+ *  If @p T is the same type as the Yukawa integral's property type this global
+ *  variable will be set to true, otherwise it will be set to false.
+ *
+ *  @param T The type we are inspecting.
+ */
+template<typename T>
+static constexpr auto is_yukawa_v = detail_::IsYukawa<T>::value;
 
 } // namespace property_types::ao_integrals
