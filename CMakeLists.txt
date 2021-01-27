@@ -26,8 +26,8 @@ cpp_find_or_build_dependency(
 
 cpp_add_library(
     property_types
-    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/property_types"
-    INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/property_types"
+    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/property_types"
+    INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include/property_types"
     DEPENDS nwx::chemist
 )
 
@@ -36,6 +36,7 @@ if("${BUILD_TESTING}")
         Catch2
         URL github.com/catchorg/Catch2
         BUILD_TARGET Catch2
+        VERSION v2.x
         FIND_TARGET Catch2::Catch2
     )
     cpp_add_tests(
