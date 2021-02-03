@@ -144,4 +144,14 @@ auto DoubleHybridXCQuantities<ElementType, OrbitalType>::results_() {
     return rv;
 }
 
+extern template class PureXCQuantities<double>;
+extern template class PureXCQuantities<double, type::derived_space_t<double>>;
+extern template class PureXCQuantities<double, type::canonical_space_t<double>>;
+extern template class HybridXCQuantities<double>;
+extern template class HybridXCQuantities<double, type::derived_space_t<double>>;
+extern template class HybridXCQuantities<double, type::canonical_space_t<double>>;
+extern template class DoubleHybridXCQuantities<double>;
+extern template class DoubleHybridXCQuantities<double, type::derived_space_t<double>>;
+extern template class DoubleHybridXCQuantities<double, type::canonical_space_t<double>>;
+
 } // namespace property_types
