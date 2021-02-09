@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 
 /** @file ao_integrals_fwd.hpp
  *
@@ -18,10 +19,10 @@ template<typename T, unsigned Order>
 struct EMultipole;
 
 template<typename T>
-struct FourCenter;
-
-template<typename T>
 struct Kinetic;
+
+template<std::size_t N, typename T>
+struct NCenter;
 
 template<typename T>
 struct Nuclear;
@@ -31,12 +32,6 @@ struct Overlap;
 
 template<typename T>
 struct STG;
-
-template<typename T>
-struct ThreeCenter;
-
-template<typename T>
-struct TwoCenter;
 
 template<typename T>
 struct Yukawa;
