@@ -1,8 +1,10 @@
 #include "../ao_integrals_test.hpp"
+#include "property_types/ao_integrals/type_traits.hpp"
 #include "property_types/ao_integrals/utilities/unpack_spaces.hpp"
 #include <catch2/catch.hpp>
 
 using namespace property_types;
+using namespace ao_integrals;
 
 namespace {
 
@@ -28,32 +30,41 @@ auto generate_inputs() {
 
 } // namespace
 
-TEMPLATE_TEST_CASE("unpack_spaces<2>", "", double, float) {
-    using element_type = TestType;
+TEMPLATE_LIST_TEST_CASE("unpack_spaces<2>", "", test::all_2c) {
+    using element_type = double;
     using space_type   = type::ao_space_t<element_type>;
     auto inputs        = generate_inputs<element_type>();
-    auto rv            = ao_integrals::unpack_spaces<2, element_type>(inputs);
+    auto rv            = ao_integrals::unpack_spaces<TestType>(inputs);
+    REQUIRE(rv.size() == 2);
     REQUIRE(rv[0] == inputs.at("bra").template value<space_type>());
     REQUIRE(rv[1] == inputs.at("ket").template value<space_type>());
 }
 
-TEMPLATE_TEST_CASE("unpack_spaces<3>", "", double, float) {
-    using element_type = TestType;
+TEMPLATE_LIST_TEST_CASE("unpack_spaces<3>", "", test::all_3c) {
+    using element_type = double;
     using space_type   = type::ao_space_t<element_type>;
     auto inputs        = generate_inputs<element_type>();
-    auto rv            = ao_integrals::unpack_spaces<3, element_type>(inputs);
+    auto rv            = ao_integrals::unpack_spaces<TestType>(inputs);
+    REQUIRE(rv.size() == 3);
     REQUIRE(rv[0] == inputs.at("bra").template value<space_type>());
     REQUIRE(rv[1] == inputs.at("ket 1").template value<space_type>());
     REQUIRE(rv[2] == inputs.at("ket 2").template value<space_type>());
 }
 
-TEMPLATE_TEST_CASE("unpack_spaces<4>", "", double, float) {
-    using element_type = TestType;
+TEMPLATE_LIST_TEST_CASE("unpack_spaces<4>", "", test::all_4c) {
+    using element_type = double;
     using space_type   = type::ao_space_t<element_type>;
     auto inputs        = generate_inputs<element_type>();
-    auto rv            = ao_integrals::unpack_spaces<4, element_type>(inputs);
-    REQUIRE(rv[0] == inputs.at("bra 1").template value<space_type>());
-    REQUIRE(rv[1] == inputs.at("bra 2").template value<space_type>());
-    REQUIRE(rv[2] == inputs.at("ket 1").template value<space_type>());
-    REQUIRE(rv[3] == inputs.at("ket 2").template value<space_type>());
+    auto rv            = ao_integrals::unpack_spaces<TestType>(inputs);
+    if constexpr(ao_integrals::is_doi_v<TestType>) {
+        REQUIRE(rv.size() == 2);
+        REQUIRE(rv[0] == inputs.at("bra").template value<space_type>());
+        REQUIRE(rv[1] == inputs.at("ket").template value<space_type>());
+    } else {
+        REQUIRE(rv.size() == 4);
+        REQUIRE(rv[0] == inputs.at("bra 1").template value<space_type>());
+        REQUIRE(rv[1] == inputs.at("bra 2").template value<space_type>());
+        REQUIRE(rv[2] == inputs.at("ket 1").template value<space_type>());
+        REQUIRE(rv[3] == inputs.at("ket 2").template value<space_type>());
+    }
 }

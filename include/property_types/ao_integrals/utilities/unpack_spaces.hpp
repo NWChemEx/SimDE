@@ -1,5 +1,5 @@
 #pragma once
-#include "property_types/ao_integrals/n_center.hpp"
+#include "property_types/ao_integrals/type_traits.hpp"
 #include "property_types/types.hpp"
 
 namespace property_types::ao_integrals {
@@ -9,10 +9,10 @@ namespace property_types::ao_integrals {
  *  This function wraps the logic required to unpack the spaces provided to an
  *  integral module.
  *
- *  @tparam N The number of centers in the integral
- *  @tparam ElementType The scalar type used for basis set parameters.
+ *  @tparam PropertyType The property type whose input spaces are being
+ *          unpacked.
  *
- *  @input[in] inputs The input map provided to the module. The spaces will be
+ *  @param[in] inputs The input map provided to the module. The spaces will be
  *                    unpacked from this object.
  *
  *  @return An std::vector whose elements are spaces for the integrals. The
@@ -25,12 +25,19 @@ namespace property_types::ao_integrals {
  *  @throw std::runtime_error if the inputs do not contain the correct keys.
  *                            Strong throw guarantee.
  */
-template<std::size_t N, typename ElementType>
+template<typename PropertyType>
 auto unpack_spaces(const sde::type::input_map& inputs) {
-    using n_center_t = NCenter<N, ElementType>;
-    using ao_vec_t   = std::vector<type::ao_space_t<ElementType>>;
+    constexpr auto N   = n_centers_v<PropertyType>;
+    using element_type = double;
+    using n_center_t   = NCenter<N, element_type>;
+    using ao_space_t   = type::ao_space_t<element_type>;
+    using ao_vec_t     = std::vector<ao_space_t>;
 
-    if constexpr(N == 2) {
+    if constexpr(is_doi_v<PropertyType>) {
+        const auto& b = inputs.at("bra").value<ao_space_t>();
+        const auto& k = inputs.at("ket").value<ao_space_t>();
+        return ao_vec_t{b, k};
+    } else if constexpr(N == 2) {
         const auto& [b, k] = n_center_t::unwrap_inputs(inputs);
         return ao_vec_t{b, k};
     } else if constexpr(N == 3) {
