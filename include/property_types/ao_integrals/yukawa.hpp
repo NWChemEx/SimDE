@@ -1,4 +1,5 @@
 #pragma once
+#include "property_types/ao_integrals/detail_/macros.hpp"
 #include "property_types/ao_integrals/detail_/make_key.hpp"
 #include "property_types/ao_integrals/four_center.hpp"
 #include "property_types/ao_integrals/three_center.hpp"
@@ -35,20 +36,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(Yukawa, BaseType) {
       detail_::make_key<my_type>("exp(-ar_12)/r_12"));
 }
 
-template<typename ElementType>
-using Yukawa2C = Yukawa<TwoCenter<ElementType>>;
-
-template<typename ElementType>
-using Yukawa3C = Yukawa<ThreeCenter<ElementType>>;
-
-template<typename ElementType>
-using Yukawa4C = Yukawa<FourCenter<ElementType>>;
-
-extern template class Yukawa<TwoCenter<double>>;
-extern template class Yukawa<TwoCenter<float>>;
-extern template class Yukawa<ThreeCenter<double>>;
-extern template class Yukawa<ThreeCenter<float>>;
-extern template class Yukawa<FourCenter<double>>;
-extern template class Yukawa<FourCenter<float>>;
+MULTICENTER_AO_INTEGRAL_TYPEDEFS(Yukawa);
+MULTICENTER_AO_INTEGRAL_EXTERNS(Yukawa);
 
 } // namespace property_types::ao_integrals
