@@ -10,6 +10,9 @@
 namespace property_types::ao_integrals {
 
 template<typename T>
+struct CorrelationFactor;
+
+template<typename T>
 struct DOI;
 
 template<typename T>

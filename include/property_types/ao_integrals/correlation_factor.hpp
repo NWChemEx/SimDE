@@ -1,6 +1,10 @@
 #pragma once
+#include "property_types/ao_integrals/detail_/macros.hpp"
 #include "property_types/ao_integrals/detail_/make_key.hpp"
-#include
+#include "property_types/ao_integrals/type_traits.hpp"
+#include "property_types/types.hpp"
+#include <sde/property_type/property_type.hpp>
+
 namespace property_types::ao_integrals {
 
 /** @brief This is the property type for the quantity usually denoted as
@@ -16,12 +20,15 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(CorrelationFactor, BaseType) {
 
 template<typename BaseType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(CorrelationFactor, BaseType) {
-    using element_type = double;
+    using element_type = element_t<BaseType>;
     using tensor_type  = type::tensor<element_type>;
     using my_type      = CorrelationFactor<BaseType>;
 
     return sde::declare_result().add_field<tensor_type>(
       detail_::make_key<my_type>("f_12(r_12)"));
 }
+
+MULTICENTER_AO_INTEGRAL_TYPEDEFS(CorrelationFactor);
+MULTICENTER_AO_INTEGRAL_EXTERNS(CorrelationFactor);
 
 } // namespace property_types::ao_integrals
