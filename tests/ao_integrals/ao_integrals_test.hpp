@@ -10,17 +10,19 @@ namespace property_types::ao_integrals::test {
 
 // All of the two centered AO integrals, templated on element type
 template<typename T>
-using two_center =
-  std::tuple<ERI2C<T>, EDipole<T>, EQuadrupole<T>, EOctopole<T>, Kinetic<T>,
-             Nuclear<T>, Overlap<T>, STG2C<T>, Yukawa2C<T>>;
+using two_center = std::tuple<CorrelationFactor2C<T>, ERI2C<T>, EDipole<T>,
+                              EQuadrupole<T>, EOctopole<T>, Kinetic<T>,
+                              Nuclear<T>, Overlap<T>, STG2C<T>, Yukawa2C<T>>;
 
 // All of the three-centered AO integrals, templated on element type
 template<typename T>
-using three_center = std::tuple<ERI3C<T>, STG3C<T>, Yukawa3C<T>>;
+using three_center =
+  std::tuple<CorrelationFactor3C<T>, ERI3C<T>, STG3C<T>, Yukawa3C<T>>;
 
 // All of the four-centered AO integrals, templated on element type
 template<typename T>
-using four_center = std::tuple<DOI<T>, ERI4C<T>, STG4C<T>, Yukawa4C<T>>;
+using four_center =
+  std::tuple<CorrelationFactor4C<T>, DOI<T>, ERI4C<T>, STG4C<T>, Yukawa4C<T>>;
 
 // All of the two-centered integrals (includes all element types)
 using all_2c =

@@ -1,4 +1,5 @@
 #pragma once
+#include "property_types/ao_integrals/correlation_factor.hpp"
 #include "property_types/ao_integrals/doi.hpp"
 #include "property_types/ao_integrals/electron_repulsion.hpp"
 #include "property_types/ao_integrals/emultipole.hpp"

@@ -36,6 +36,33 @@
     template<typename ElementType>                         \
     using PT_NAME##4C = PT_NAME<FourCenter<ElementType>>
 
+/** @brief Forward declares template instantiations for 2, 3, and 4 center
+ *         versions of a property type.
+ *
+ *  This macro is designed to be put in a header file. It will declare a series
+ *  of instantiations for the property type spanning all combinations of 2, 3,
+ *  and 4 centers with element types of `double` and `float`. For example:
+ *
+ *  ```.cpp
+ *  MULTICENTER_AO_INTEGRAL_EXTERNS(ERI);
+ *  ```
+ *  is equivalent to:
+ *  ```.cpp
+ *  extern template class ERI<TwoCenter<double>>;
+ *  extern template class ERI<TwoCenter<float>>;
+ *  extern template class ERI<ThreeCenter<double>>;
+ *  extern template class ERI<ThreeCenter<float>>;
+ *  extern template class ERI<FourCenter<double>>;
+ *  extern template class ERI<FourCenter<float>>;
+ *  ```
+ *
+ *  @note The user is responsible for actually instantiating these templates in
+ *        a source file. This can easily be done with the
+ *        `MULTICENTER_AO_INTEGRAL_DEFINES` macro.
+ *
+ *  @param[in] PT_NAME The name of the property type (without the angle brackets
+ *                     or template parameters) that will being instantiated.
+ */
 #define MULTICENTER_AO_INTEGRAL_EXTERNS(PT_NAME)        \
     extern template class PT_NAME<TwoCenter<double>>;   \
     extern template class PT_NAME<TwoCenter<float>>;    \

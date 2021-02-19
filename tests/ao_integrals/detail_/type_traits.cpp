@@ -1,4 +1,4 @@
-#include "ao_integrals_test.hpp"
+#include "../ao_integrals_test.hpp"
 #include "property_types/ao_integrals/ao_integrals.hpp"
 #include "property_types/ao_integrals/detail_/type_traits.hpp"
 #include <catch2/catch.hpp>
