@@ -143,18 +143,22 @@ constexpr auto n_centers() {
     }
 }
 
-/** @brief Struct used to determine if the elements of an AO integral are of
- *         type float.
+/** @brief Struct used to determine if the elements of an AO integral
+ * are of type float.
  *
- *  This struct contains a global variable named ``value``, which is set to true
- *  if @p T is a property type that inherits from ``NCenter<N, float>`` for
- *  arbitrary ``N``. ``value`` is false otherwise.
+ *  This struct contains a global variable named ``value``, which is
+ * set to true if @p T is a property type that inherits from
+ * ``NCenter<N, float>`` for arbitrary ``N``. ``value`` is false
+ * otherwise.
  *
  *  @tparam T The property type to inspect.
  */
 template<typename T>
 struct HasFloatElements {
     static constexpr auto value =
+      std::is_same_v<ao_integrals::NCenter<2, float>, T> ||
+      std::is_same_v<ao_integrals::NCenter<3, float>, T> ||
+      std::is_same_v<ao_integrals::NCenter<4, float>, T> ||
       has_type_v<ao_integrals::NCenter<2, float>, typename T::bases_t> ||
       has_type_v<ao_integrals::NCenter<3, float>, typename T::bases_t> ||
       has_type_v<ao_integrals::NCenter<4, float>, typename T::bases_t>;
@@ -172,6 +176,9 @@ struct HasFloatElements {
 template<typename T>
 struct HasDoubleElements {
     static constexpr auto value =
+      std::is_same_v<ao_integrals::NCenter<2, double>, T> ||
+      std::is_same_v<ao_integrals::NCenter<3, double>, T> ||
+      std::is_same_v<ao_integrals::NCenter<4, double>, T> ||
       has_type_v<ao_integrals::NCenter<2, double>, typename T::bases_t> ||
       has_type_v<ao_integrals::NCenter<3, double>, typename T::bases_t> ||
       has_type_v<ao_integrals::NCenter<4, double>, typename T::bases_t>;
