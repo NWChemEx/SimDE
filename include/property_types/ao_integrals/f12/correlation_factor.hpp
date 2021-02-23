@@ -8,7 +8,7 @@
 namespace property_types::ao_integrals {
 
 /** @brief This is the property type for the quantity usually denoted as
- *         @f$f_{12}(\vec{r}_{12})@f$ in f12 theory.
+ *         @f$f_{12}(r_{12})@f$ in f12 theory.
  */
 template<typename BaseType>
 DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(CorrelationFactor, BaseType, BaseType);

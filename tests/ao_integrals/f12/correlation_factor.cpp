@@ -1,4 +1,4 @@
-#include "property_types/ao_integrals/correlation_factor.hpp"
+#include "property_types/ao_integrals/f12/correlation_factor.hpp"
 #include "tests/test_property_type.hpp"
 
 using namespace property_types::ao_integrals;
