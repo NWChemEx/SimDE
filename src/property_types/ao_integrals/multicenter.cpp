@@ -4,12 +4,16 @@
 #include "property_types/ao_integrals/yukawa.hpp"
 
 namespace property_types::ao_integrals {
+namespace f12 {
 
 MULTICENTER_AO_INTEGRAL_DEFINES(CorrelationFactor);
 MULTICENTER_AO_INTEGRAL_DEFINES(CorrelationFactorSquared);
 MULTICENTER_AO_INTEGRAL_DEFINES(dfdrSquared);
-MULTICENTER_AO_INTEGRAL_DEFINES(ERI);
 MULTICENTER_AO_INTEGRAL_DEFINES(GR);
+
+} // namespace f12
+
+MULTICENTER_AO_INTEGRAL_DEFINES(ERI);
 MULTICENTER_AO_INTEGRAL_DEFINES(STG);
 MULTICENTER_AO_INTEGRAL_DEFINES(Yukawa);
 

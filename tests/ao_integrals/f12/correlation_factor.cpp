@@ -1,7 +1,7 @@
 #include "property_types/ao_integrals/f12/correlation_factor.hpp"
 #include "tests/test_property_type.hpp"
 
-using namespace property_types::ao_integrals;
+using namespace property_types::ao_integrals::f12;
 
 TEST_CASE("Correlation Factor 2C") {
     test_property_type<CorrelationFactor2C<double>>({"bra", "ket"},

@@ -1,7 +1,7 @@
 #include "property_types/ao_integrals/f12/dfdr_squared.hpp"
 #include "tests/test_property_type.hpp"
 
-using namespace property_types::ao_integrals;
+using namespace property_types::ao_integrals::f12;
 
 TEST_CASE("dfdr Squared 2C") {
     test_property_type<dfdrSquared2C<double>>({"bra", "ket"},

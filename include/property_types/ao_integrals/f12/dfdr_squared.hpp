@@ -5,7 +5,7 @@
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 
-namespace property_types::ao_integrals {
+namespace property_types::ao_integrals::f12 {
 
 /** @brief This is the property type for the quantity usually denoted as
  *         @f$\left|\bigtriangledown f_{12}(r_{12})\right|^2@f$ in f12 theory.
@@ -35,4 +35,4 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(dfdrSquared, BaseType) {
 MULTICENTER_AO_INTEGRAL_TYPEDEFS(dfdrSquared);
 MULTICENTER_AO_INTEGRAL_EXTERNS(dfdrSquared);
 
-} // namespace property_types::ao_integrals
+} // namespace property_types::ao_integrals::f12

@@ -5,7 +5,7 @@
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 
-namespace property_types::ao_integrals {
+namespace property_types::ao_integrals::f12 {
 
 /** @brief Property type for the F12 quantity ususally denoted as:
  *         @f$\frac{f_{12}(r_{12})}{r_{12}}@f$.
@@ -36,4 +36,4 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(GR, BaseType) {
 MULTICENTER_AO_INTEGRAL_TYPEDEFS(GR);
 MULTICENTER_AO_INTEGRAL_EXTERNS(GR);
 
-} // namespace property_types::ao_integrals
+} // namespace property_types::ao_integrals::f12

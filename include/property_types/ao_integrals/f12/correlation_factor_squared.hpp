@@ -5,7 +5,7 @@
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 
-namespace property_types::ao_integrals {
+namespace property_types::ao_integrals::f12 {
 
 /** @brief This is the property type for the square of the quantity usually
  *         denoted as @f$f_{12}(r_{12})@f$ in f12 theory.
@@ -32,4 +32,4 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(CorrelationFactorSquared, BaseType) {
 MULTICENTER_AO_INTEGRAL_TYPEDEFS(CorrelationFactorSquared);
 MULTICENTER_AO_INTEGRAL_EXTERNS(CorrelationFactorSquared);
 
-} // namespace property_types::ao_integrals
+} // namespace property_types::ao_integrals::f12

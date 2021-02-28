@@ -1,7 +1,7 @@
 #include "property_types/ao_integrals/f12/gr.hpp"
 #include "tests/test_property_type.hpp"
 
-using namespace property_types::ao_integrals;
+using namespace property_types::ao_integrals::f12;
 
 TEST_CASE("GR 2C") {
     test_property_type<GR2C<double>>({"bra", "ket"}, {"(m|f_12(r_12)/r_12|n)"});
