@@ -1,6 +1,7 @@
 #pragma once
 #include "property_types/ao_integrals/detail_/macros.hpp"
 #include "property_types/ao_integrals/detail_/make_key.hpp"
+#include "property_types/ao_integrals/n_center.hpp"
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 

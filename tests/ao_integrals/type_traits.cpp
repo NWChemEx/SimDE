@@ -10,10 +10,6 @@ template<typename T>
 using all_ao_ints = decltype(
   std::tuple_cat(two_center<T>{}, three_center<T>{}, four_center<T>{}));
 
-TEMPLATE_LIST_TEST_CASE("element_t", "", all_ao_ints<float>) {
-    STATIC_REQUIRE(std::is_same_v<element_t<TestType>, float>);
-}
-
 TEMPLATE_LIST_TEST_CASE("element_t", "", all_ao_ints<double>) {
     STATIC_REQUIRE(std::is_same_v<element_t<TestType>, double>);
 }
