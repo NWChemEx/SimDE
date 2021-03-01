@@ -1,8 +1,6 @@
 #pragma once
 #include "property_types/ao_integrals/ao_integrals_fwd.hpp"
-#include "property_types/ao_integrals/four_center.hpp"
-#include "property_types/ao_integrals/three_center.hpp"
-#include "property_types/ao_integrals/two_center.hpp"
+
 #include <tuple>
 
 namespace property_types::ao_integrals {
@@ -28,9 +26,9 @@ static constexpr bool has_type_v = has_type<T, Tuple>::value;
 /** @brief Primary template for determining if a type is for a two-center
  *         integral.
  *
- *  The primary template takes care of the scenario where the type derives from
- *  `TwoCenter`. The type contains a static member `value` which is true if @T
- *  is a property type that derives from `TwoCenter` and false otherwise.
+ *  The primary template takes care of the scenario where the type derives
+ * from `TwoCenter`. The type contains a static member `value` which is true
+ * if @T is a property type that derives from `TwoCenter` and false otherwise.
  *
  *  @tparam T The property type we are inspecting. Assumed to be the type of a
  *            valid property type.
@@ -38,8 +36,8 @@ static constexpr bool has_type_v = has_type<T, Tuple>::value;
 template<typename T>
 struct IsTwoCentered {
     static constexpr bool value =
-      has_type_v<ao_integrals::TwoCenter<float>, typename T::bases_t> ||
-      has_type_v<ao_integrals::TwoCenter<double>, typename T::bases_t>;
+      has_type_v<ao_integrals::NCenter<2, float>, typename T::bases_t> ||
+      has_type_v<ao_integrals::NCenter<2, double>, typename T::bases_t>;
 };
 
 template<typename T>
@@ -55,7 +53,7 @@ struct IsTwoCentered<ao_integrals::DOI<T>> : std::false_type {};
  *  @tparam T The scalar type used in the integrals.
  */
 template<typename T>
-struct IsTwoCentered<ao_integrals::TwoCenter<T>> : std::true_type {};
+struct IsTwoCentered<ao_integrals::NCenter<2, T>> : std::true_type {};
 
 /** @brief Primary template for determining if a type is for a three-center
  *         integral.
@@ -70,8 +68,8 @@ struct IsTwoCentered<ao_integrals::TwoCenter<T>> : std::true_type {};
 template<typename T>
 struct IsThreeCentered {
     static constexpr bool value =
-      has_type_v<ao_integrals::ThreeCenter<float>, typename T::bases_t> ||
-      has_type_v<ao_integrals::ThreeCenter<double>, typename T::bases_t>;
+      has_type_v<ao_integrals::NCenter<3, float>, typename T::bases_t> ||
+      has_type_v<ao_integrals::NCenter<3, double>, typename T::bases_t>;
 };
 
 /** @brief Specialization of IsThreeCentered to register the base `ThreeCenter`
@@ -84,7 +82,7 @@ struct IsThreeCentered {
  *  @tparam T The scalar type used in the integrals.
  */
 template<typename T>
-struct IsThreeCentered<ao_integrals::ThreeCenter<T>> : std::true_type {};
+struct IsThreeCentered<ao_integrals::NCenter<3, T>> : std::true_type {};
 
 /** @brief Primary template for determining if a type is for a four-center
  *         integral.
@@ -99,8 +97,8 @@ struct IsThreeCentered<ao_integrals::ThreeCenter<T>> : std::true_type {};
 template<typename T>
 struct IsFourCentered {
     static constexpr bool value =
-      has_type_v<ao_integrals::FourCenter<float>, typename T::bases_t> ||
-      has_type_v<ao_integrals::FourCenter<double>, typename T::bases_t>;
+      has_type_v<ao_integrals::NCenter<4, float>, typename T::bases_t> ||
+      has_type_v<ao_integrals::NCenter<4, double>, typename T::bases_t>;
 };
 
 template<typename T>
@@ -116,7 +114,7 @@ struct IsFourCentered<ao_integrals::DOI<T>> : std::true_type {};
  *  @tparam T The scalar type used in the integrals.
  */
 template<typename T>
-struct IsFourCentered<ao_integrals::FourCenter<T>> : std::true_type {};
+struct IsFourCentered<ao_integrals::NCenter<4, T>> : std::true_type {};
 
 /** @brief Convenience function for determining how many centers an integral
  *         involves.
@@ -141,9 +139,9 @@ constexpr auto n_centers() {
     } else if constexpr(IsFourCentered<T>::value) {
         return 4;
     } else {
-        static_assert(
-          IsFourCentered<T>::value,
-          "Does not derive from TwoCentered, ThreeCentered, or FourCentered");
+        // If we get here we know v will be false
+        constexpr bool v = IsFourCentered<T>::value;
+        static_assert(v, "Does not derive from NCenters<N,T>");
     }
 }
 
