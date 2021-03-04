@@ -1,4 +1,6 @@
 #pragma once
+#include "property_types/ao_integrals/detail_/make_key.hpp"
+#include "property_types/ao_integrals/n_center.hpp"
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
 
@@ -20,38 +22,29 @@ namespace property_types {
  */
 template<typename ElementType = double,
          typename OrbitalType = type::orbital_space_t<ElementType>>
-struct CoulombMatrix
-  : public sde::PropertyType<CoulombMatrix<ElementType, OrbitalType>> {
-    /// Type of the returned tesnor that accounts for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class J
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(CoulombMatrix,
+                                        ao_integrals::TwoCenter<ElementType>,
+                                        ElementType, OrbitalType);
 
 //-----------------------------Implementations----------------------------------
 
 template<typename ElementType, typename OrbitalType>
-auto CoulombMatrix<ElementType, OrbitalType>::inputs_() {
+TEMPLATED_PROPERTY_TYPE_INPUTS(CoulombMatrix, ElementType, OrbitalType) {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const OrbitalType&>("Molecular Orbitals")
-                .template add_field<const type::ao_space_t<ElementType>&>("Bra")
-                .template add_field<const type::ao_space_t<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative", type::size{0});
+                .add_field<const OrbitalType&>("Molecular Orbitals");
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
-    rv["Bra"].set_description("The basis set used for the bra");
-    rv["Ket"].set_description("The basis set used for the ket");
-    rv["Derivative"].set_description("The derivative order");
     return rv;
 }
 
 template<typename ElementType, typename OrbitalType>
-auto CoulombMatrix<ElementType, OrbitalType>::results_() {
-    auto rv = sde::declare_result().add_field<tensor_type>("Coulomb Matrix");
-    rv["Coulomb Matrix"].set_description("The computed Coulomb matrix");
+TEMPLATED_PROPERTY_TYPE_RESULTS(CoulombMatrix, ElementType, OrbitalType) {
+    using my_type     = CoulombMatrix<ElementType, OrbitalType>;
+    using tensor_type = type::tensor<ElementType>;
+    const auto key    = ao_integrals::detail_::make_key<my_type>("j");
+    auto rv           = sde::declare_result().add_field<tensor_type>(key);
+    rv[key].set_description("The computed Coulomb matrix");
     return rv;
 }
 

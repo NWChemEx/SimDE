@@ -1,4 +1,4 @@
-#include "property_types/exchange_matrix.hpp"
+#include "property_types/ao_integrals/exchange_matrix.hpp"
 
 namespace property_types {
 

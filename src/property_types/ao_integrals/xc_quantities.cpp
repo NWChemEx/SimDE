@@ -1,4 +1,4 @@
-#include "property_types/xc_quantities.hpp"
+#include "property_types/ao_integrals/xc_quantities.hpp"
 
 namespace property_types {
 

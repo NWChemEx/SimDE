@@ -42,7 +42,7 @@ if("${BUILD_TESTING}")
     cpp_add_tests(
         test_property_types
         SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests"
-        INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/property_types"
+        INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests"
         DEPENDS Catch2::Catch2 property_types
     )
 endif()
