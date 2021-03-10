@@ -1,10 +1,8 @@
 #pragma once
 #include "property_types/ao_integrals/ao_integrals_fwd.hpp"
-#include "property_types/ao_integrals/detail_/type_traits.hpp"
-
 #include <tuple>
 
-namespace property_types::ao_integrals {
+namespace property_types::ao_integrals::detail_ {
 
 /// Stolen from https://stackoverflow.com/a/25958302
 template<typename T, typename Tuple>
@@ -145,6 +143,47 @@ constexpr auto n_centers() {
     }
 }
 
+/** @brief Struct used to determine if the elements of an AO integral
+ * are of type float.
+ *
+ *  This struct contains a global variable named ``value``, which is
+ * set to true if @p T is a property type that inherits from
+ * ``NCenter<N, float>`` for arbitrary ``N``. ``value`` is false
+ * otherwise.
+ *
+ *  @tparam T The property type to inspect.
+ */
+template<typename T>
+struct HasFloatElements {
+    static constexpr auto value =
+      std::is_same_v<ao_integrals::NCenter<2, float>, T> ||
+      std::is_same_v<ao_integrals::NCenter<3, float>, T> ||
+      std::is_same_v<ao_integrals::NCenter<4, float>, T> ||
+      has_type_v<ao_integrals::NCenter<2, float>, typename T::bases_t> ||
+      has_type_v<ao_integrals::NCenter<3, float>, typename T::bases_t> ||
+      has_type_v<ao_integrals::NCenter<4, float>, typename T::bases_t>;
+};
+
+/** @brief Struct used to determine if the elements of an AO integral are of
+ *         type double.
+ *
+ *  This struct contains a global variable named ``value``, which is set to true
+ *  if @p T is a property type that inherits from ``NCenter<N, double>`` for
+ *  arbitrary ``N``. ``value`` is false otherwise.
+ *
+ *  @tparam T The property type to inspect.
+ */
+template<typename T>
+struct HasDoubleElements {
+    static constexpr auto value =
+      std::is_same_v<ao_integrals::NCenter<2, double>, T> ||
+      std::is_same_v<ao_integrals::NCenter<3, double>, T> ||
+      std::is_same_v<ao_integrals::NCenter<4, double>, T> ||
+      has_type_v<ao_integrals::NCenter<2, double>, typename T::bases_t> ||
+      has_type_v<ao_integrals::NCenter<3, double>, typename T::bases_t> ||
+      has_type_v<ao_integrals::NCenter<4, double>, typename T::bases_t>;
+};
+
 /** @brief Struct used to determine if a type is that of the differential
            overlap integral's property type.
  *
@@ -232,74 +271,13 @@ struct IsYukawa : std::false_type {};
 /** @brief Struct used to determine if a type is that of the Yukawa integral's
  *         property type.
  *
- *  This type trait is the type that property type @p T uses for each AO
- *  integral.
+ *  This specialization is instantiated when @p T is a specialization of
+ *  `ao_integrals::Yukawa`. When instantiated this specialization will have a
+ *  static constexpr member `value` which is set to true.
  *
- *  @param T The property type to inspect.
+ *  @tparam T The scalar type of the integral values.
  */
 template<typename T>
-using element_t =
-  std::conditional_t<detail_::HasDoubleElements<T>::value, double, float>;
+struct IsYukawa<property_types::ao_integrals::Yukawa<T>> : std::true_type {};
 
-// template<typename T>
-// using element_t = typename detail_::GetElementType<T>::type;
-
-/** @brief User API for determining how many centers an integral involves.
- *
- *  The global variable `n_centers_v<T>` is set to the number of centers that
- *  `T` invovles.
- *
- *  @tparam T The property type we are inspecting. Assumed to be the property
- *            type of an integral.
- */
-template<typename T>
-static constexpr auto n_centers_v = detail_::n_centers<T>();
-
-/** @brief User API for determining if a type is the property type for the
- *         differential overlap integral.
- *
- *  If @p T is the same type as the differential overlap integral's property
- *  type this global variable will be set to true, otherwise it will be set to
- *  false.
- *
- *  @param T The type we are inspecting.
- */
-template<typename T>
-static constexpr auto is_doi_v = detail_::IsDOI<T>::value;
-
-/** @brief User API for determining if a type is the property type for the
- *         nuclear-electron attraction integral.
- *
- *  If @p T is the same type as the nuclear-electron attraction integral's
- *  property type this global variable will be set to true, otherwise it will be
- *  set to false.
- *
- *  @param T The type we are inspecting.
- */
-template<typename T>
-static constexpr auto is_nuclear_v = detail_::IsNuclear<T>::value;
-
-/** @brief User API for determining if a type is the property type for a Slater-
- *         type geminal integral.
- *
- *  If @p T is the same type as the Slater-type geminal integral's property
- *  type this global variable will be set to true, otherwise it will be set to
- *  false.
- *
- *  @param T The type we are inspecting.
- */
-template<typename T>
-static constexpr auto is_stg_v = detail_::IsSTG<T>::value;
-
-/** @brief User API for determining if a type is the property type for the
- *         Yukawa integral.
- *
- *  If @p T is the same type as the Yukawa integral's property type this global
- *  variable will be set to true, otherwise it will be set to false.
- *
- *  @param T The type we are inspecting.
- */
-template<typename T>
-static constexpr auto is_yukawa_v = detail_::IsYukawa<T>::value;
-
-} // namespace property_types::ao_integrals
+} // namespace property_types::ao_integrals::detail_

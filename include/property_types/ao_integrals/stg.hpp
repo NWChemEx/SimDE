@@ -1,4 +1,5 @@
 #pragma once
+#include "property_types/ao_integrals/detail_/macros.hpp"
 #include "property_types/ao_integrals/detail_/make_key.hpp"
 #include "property_types/ao_integrals/n_center.hpp"
 #include "property_types/types.hpp"
@@ -33,20 +34,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(STG, BaseType) {
       detail_::make_key<my_type>("exp(-ar_12)"));
 }
 
-template<typename ElementType>
-using STG2C = STG<TwoCenter<ElementType>>;
-
-template<typename ElementType>
-using STG3C = STG<ThreeCenter<ElementType>>;
-
-template<typename ElementType>
-using STG4C = STG<FourCenter<ElementType>>;
-
-extern template class STG<TwoCenter<double>>;
-extern template class STG<TwoCenter<float>>;
-extern template class STG<ThreeCenter<double>>;
-extern template class STG<ThreeCenter<float>>;
-extern template class STG<FourCenter<double>>;
-extern template class STG<FourCenter<float>>;
+MULTICENTER_AO_INTEGRAL_TYPEDEFS(STG);
+MULTICENTER_AO_INTEGRAL_EXTERNS(STG);
 
 } // namespace property_types::ao_integrals
