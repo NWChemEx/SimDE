@@ -2,7 +2,7 @@
 #include <property_types/cauchy_schwarz_approximation.hpp>
 
 TEST_CASE("CauchySchwarz") {
-    test_property_type<property_types::CauchySchwarzApprox<>>(
+    test_property_type<property_types::ShellNorms<>>(
             {"Basis1", "Basis2", "Derivative"},
             {"Screening Matrix"}
     );

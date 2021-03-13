@@ -5,8 +5,7 @@
 namespace property_types {
 
 template<typename ElementType = double>
-struct CauchySchwarzApprox
-  : public sde::PropertyType<CauchySchwarzApprox<ElementType>> {
+struct ShellNorms : public sde::PropertyType<ShellNorms<ElementType>> {
     /// The type of an std::array of basis sets
     using basis_type = type::ao_space_t<ElementType>;
     /// The return type
@@ -15,12 +14,12 @@ struct CauchySchwarzApprox
     auto inputs_();
     /// Generates the result fields required by this property type
     auto results_();
-}; // class CauchySchwarzApprox
+}; // class ShellNorms
 
 //------------------------Implementations---------------------------------------
 
 template<typename ElementType>
-auto CauchySchwarzApprox<ElementType>::inputs_() {
+auto ShellNorms<ElementType>::inputs_() {
     auto rv = sde::declare_input()
                 .add_field<const basis_type&>("Basis1")
                 .template add_field<const basis_type&>("Basis2")
@@ -33,14 +32,14 @@ auto CauchySchwarzApprox<ElementType>::inputs_() {
 }
 
 template<typename ElementType>
-auto CauchySchwarzApprox<ElementType>::results_() {
+auto ShellNorms<ElementType>::results_() {
     auto rv = sde::declare_result().add_field<return_type>("Screening Matrix");
     rv["Screening Matrix"].set_description(
       "The Cauchy Schwarz screening matrix");
     return rv;
 }
 
-extern template class CauchySchwarzApprox<double>;
-extern template class CauchySchwarzApprox<float>;
+extern template class ShellNorms<double>;
+extern template class ShellNorms<float>;
 
 } // namespace property_types

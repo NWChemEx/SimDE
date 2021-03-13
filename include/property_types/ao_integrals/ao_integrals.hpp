@@ -3,6 +3,7 @@
 #include "property_types/ao_integrals/doi.hpp"
 #include "property_types/ao_integrals/electron_repulsion.hpp"
 #include "property_types/ao_integrals/emultipole.hpp"
+#include "property_types/ao_integrals/f12/f12.hpp"
 #include "property_types/ao_integrals/kinetic.hpp"
 #include "property_types/ao_integrals/n_center.hpp"
 #include "property_types/ao_integrals/nuclear.hpp"

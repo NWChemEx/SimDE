@@ -2,7 +2,7 @@
 
 namespace property_types {
 
-template class CauchySchwarzApprox<double>;
-template class CauchySchwarzApprox<float>;
+template class ShellNorms<double>;
+template class ShellNorms<float>;
 
 } // namespace property_types
