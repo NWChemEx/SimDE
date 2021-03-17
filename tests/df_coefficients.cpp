@@ -1,9 +1,7 @@
+#include "property_types/ao_integrals/df_coefficients.hpp"
 #include "test_property_type.hpp"
-#include <property_types/df_coefficients.hpp>
 
-TEST_CASE("DFCoefficients"){
-    test_property_type<property_types::DFCoefficients<>>(
-      {"Molecule", "Bra", "Ket", "Derivative"},
-      {"DF Coefficients"}
-    );
+TEST_CASE("DFCoefficients") {
+    test_property_type<property_types::DFCoefficients<>>({"bra", "ket"},
+                                                         {"(m|l|n)"});
 }

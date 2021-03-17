@@ -1,4 +1,4 @@
-#include "property_types/coulomb_matrix.hpp"
+#include "property_types/ao_integrals/coulomb_matrix.hpp"
 
 namespace property_types {
 

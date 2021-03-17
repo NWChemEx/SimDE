@@ -1,4 +1,4 @@
-#include "property_types/core_hamiltonian.hpp"
+#include "property_types/ao_integrals/core_hamiltonian.hpp"
 
 namespace property_types {
 
