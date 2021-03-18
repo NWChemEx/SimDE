@@ -3,6 +3,6 @@
 
 TEST_CASE("SCFIteration") {
     test_property_type<property_types::SCFIteration<>>(
-      {"Molecule", "Molecular Orbitals", "Bra", "Ket"},
+      {"Molecule", "Molecular Orbitals", "bra", "ket"},
       {"Fock Matrix", "Electronic Energy"});
 }
