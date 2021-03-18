@@ -46,10 +46,11 @@ auto SCFIteration<ElementType, OrbitalType>::inputs_() {
 
 template<typename ElementType, typename OrbitalType>
 auto SCFIteration<ElementType, OrbitalType>::results_() {
-    auto rv = sde::declare_result()
-                .add_field<tensor_type>("Fock Matrix")
+    auto key = "(m|f|n)";
+    auto rv  = sde::declare_result()
+                .add_field<tensor_type>(key)
                 .template add_field<ElementType>("Electronic Energy");
-    rv["Fock Matrix"].set_description("The computed Fock Matrix");
+    rv[key].set_description("The computed Fock Matrix");
     rv["Electronic Energy"].set_description("The computed electronic energy");
     return rv;
 }
