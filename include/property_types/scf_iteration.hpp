@@ -31,17 +31,16 @@ struct SCFIteration
 
 template<typename ElementType, typename OrbitalType>
 auto SCFIteration<ElementType, OrbitalType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const type::molecule&>("Molecule")
-                .add_field<const OrbitalType&>("Molecular Orbitals")
-                .template add_field<const type::ao_space_t<ElementType>&>("Bra")
-                .template add_field<const type::ao_space_t<ElementType>&>("Ket")
-                .template add_field<type::size>("Derivative", type::size{0});
+    auto rv =
+      sde::declare_input()
+        .add_field<const type::molecule&>("Molecule")
+        .add_field<const OrbitalType&>("Molecular Orbitals")
+        .template add_field<const type::ao_space_t<ElementType>&>("bra")
+        .template add_field<const type::ao_space_t<ElementType>&>("ket");
     rv["Molecule"].set_description("The molecular system");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
-    rv["Bra"].set_description("The basis set used for the bra");
-    rv["Ket"].set_description("The basis set used for the ket");
-    rv["Derivative"].set_description("The derivative order to compute");
+    rv["bra"].set_description("The basis set used for the bra");
+    rv["ket"].set_description("The basis set used for the ket");
     return rv;
 }
 
