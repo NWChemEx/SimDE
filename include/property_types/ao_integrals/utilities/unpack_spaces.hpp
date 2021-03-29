@@ -29,13 +29,24 @@ template<typename PropertyType>
 auto unpack_spaces(const sde::type::input_map& inputs) {
     constexpr auto N   = n_centers_v<PropertyType>;
     using element_type = double;
-    using n_center_t   = NCenter<N, element_type>;
-    using ao_space_t   = type::ao_space_t<element_type>;
-    using ao_vec_t     = std::vector<ao_space_t>;
+
+    // Check the base classes of the PropertyType for a sparse base
+    using base_tuple        = typename PropertyType::bases_t;
+    using sparse_ao_space_t = type::sparse_ao_space_t<element_type>;
+    using dense_ao_space_t  = type::ao_space_t<element_type>;
+    using sparse_ncenter_t  = NCenter<N, sparse_ao_space_t>;
+    constexpr bool is_sparse =
+      detail_::has_type<sparse_ncenter_t, base_tuple>::value;
+
+    // Work out AOSpace and NCenter types based on is_sparse
+    using ao_space_t =
+      std::conditional_t<is_sparse, sparse_ao_space_t, dense_ao_space_t>;
+    using n_center_t = NCenter<N, ao_space_t>;
+    using ao_vec_t   = std::vector<ao_space_t>;
 
     if constexpr(is_doi_v<PropertyType>) {
-        const auto& b = inputs.at("bra").value<ao_space_t>();
-        const auto& k = inputs.at("ket").value<ao_space_t>();
+        const auto& b = inputs.at("bra").value<const ao_space_t&>();
+        const auto& k = inputs.at("ket").value<const ao_space_t&>();
         return ao_vec_t{b, k};
     } else if constexpr(N == 2) {
         const auto& [b, k] = n_center_t::unwrap_inputs(inputs);

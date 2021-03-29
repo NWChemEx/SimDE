@@ -34,4 +34,20 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(Overlap, ElementType) {
 extern template class Overlap<double>;
 extern template class Overlap<float>;
 
+template<typename ElementType = double>
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(SparseOverlap,
+                                        SparseTwoCenter<ElementType>,
+                                        ElementType);
+
+template<typename ElementType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(SparseOverlap, ElementType) {
+    return sde::declare_input();
+}
+
+template<typename ElementType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(SparseOverlap, ElementType) {
+    using tensor_type = type::tensor_of_tensors<ElementType>;
+    return sde::declare_result().add_field<tensor_type>("Overlap");
+}
+
 } // namespace property_types::ao_integrals
