@@ -16,16 +16,15 @@ namespace property_types {
  *  @tparam ElementType The type of the elements in the returned tensor.
  *  @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double,
-         typename OrbitalType = type::orbital_space_t<ElementType>>
-DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(FockMatrix,
-                                        ao_integrals::TwoCenter<ElementType>,
-                                        ElementType, OrbitalType);
+template<typename ElementType, typename OrbitalType, typename BaseType>
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(FockMatrix_, BaseType, ElementType,
+                                        OrbitalType, BaseType);
 
 //-------------------------------------Implementations--------------------------
 
-template<typename ElementType, typename OrbitalType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(FockMatrix, ElementType, OrbitalType) {
+template<typename ElementType, typename OrbitalType, typename BaseType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(FockMatrix_, ElementType, OrbitalType,
+                               BaseType) {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const OrbitalType&>("Molecular Orbitals");
@@ -34,21 +33,29 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(FockMatrix, ElementType, OrbitalType) {
     return rv;
 }
 
-template<typename ElementType, typename OrbitalType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(FockMatrix, ElementType, OrbitalType) {
-    using my_type     = FockMatrix<ElementType, OrbitalType>;
-    using tensor_type = type::tensor<ElementType>;
+template<typename ElementType, typename OrbitalType, typename BaseType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(FockMatrix_, ElementType, OrbitalType,
+                                BaseType) {
+    using my_type     = FockMatrix_<ElementType, OrbitalType, BaseType>;
+    using tensor_type = std::decay_t<decltype(std::declval<OrbitalType>().C())>;
     auto key          = ao_integrals::detail_::make_key<my_type>("f");
     auto rv           = sde::declare_result().add_field<tensor_type>(key);
     rv[key].set_description("The computed Fock Matrix");
     return rv;
 }
 
-extern template class FockMatrix<double>;
-extern template class FockMatrix<double, type::derived_space_t<double>>;
-extern template class FockMatrix<double, type::canonical_space_t<double>>;
-extern template class FockMatrix<float>;
-extern template class FockMatrix<float, type::derived_space_t<float>>;
-extern template class FockMatrix<float, type::canonical_space_t<float>>;
+template<typename ElementType, typename OrbitalType>
+using FockMatrix =
+  FockMatrix_<ElementType, OrbitalType, ao_integrals::TwoCenter<ElementType>>;
+
+template<typename ElementType, typename OrbitalType>
+using SparseFockMatrix =
+  FockMatrix_<ElementType, OrbitalType,
+              ao_integrals::SparseTwoCenter<ElementType>>;
+
+extern template class FockMatrix_<double, type::derived_space_t<double>,
+                                  ao_integrals::TwoCenter<double>>;
+extern template class FockMatrix_<float, type::derived_space_t<float>,
+                                  ao_integrals::TwoCenter<float>>;
 
 } // namespace property_types
