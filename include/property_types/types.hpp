@@ -13,9 +13,7 @@
  */
 namespace property_types::type {
 
-/// Typedef of the class used for tensors
-template<typename T>
-using tensor = libchemist::type::tensor<T>;
+using namespace libchemist::type;
 
 /// Typedef of the class used to describe a molecule
 using molecule = libchemist::Molecule;

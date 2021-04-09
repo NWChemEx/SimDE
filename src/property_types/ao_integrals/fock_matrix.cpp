@@ -2,11 +2,9 @@
 
 namespace property_types {
 
-template class FockMatrix<double>;
-template class FockMatrix<double, type::derived_space_t<double>>;
-template class FockMatrix<double, type::canonical_space_t<double>>;
-template class FockMatrix<float>;
-template class FockMatrix<float, type::derived_space_t<float>>;
-template class FockMatrix<float, type::canonical_space_t<float>>;
+template class FockMatrix_<double, type::derived_space_t<double>,
+                           ao_integrals::TwoCenter<double>>;
+template class FockMatrix_<float, type::derived_space_t<float>,
+                           ao_integrals::TwoCenter<float>>;
 
 } // namespace property_types
