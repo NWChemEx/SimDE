@@ -14,6 +14,8 @@ MULTICENTER_AO_INTEGRAL_DEFINES(GR);
 } // namespace f12
 
 MULTICENTER_AO_INTEGRAL_DEFINES(ERI);
+template class ERI<SparseFourCenter<double>>;
+template class ERI<SparseFourCenter<float>>;
 MULTICENTER_AO_INTEGRAL_DEFINES(STG);
 MULTICENTER_AO_INTEGRAL_DEFINES(Yukawa);
 

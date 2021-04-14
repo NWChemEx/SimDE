@@ -39,11 +39,16 @@ using ERI3C = ERI<ThreeCenter<ElementType>>;
 template<typename ElementType>
 using ERI4C = ERI<FourCenter<ElementType>>;
 
+template<typename ElementType>
+using SparseERI4C = ERI<SparseFourCenter<ElementType>>;
+
 extern template class ERI<TwoCenter<double>>;
 extern template class ERI<TwoCenter<float>>;
 extern template class ERI<ThreeCenter<double>>;
 extern template class ERI<ThreeCenter<float>>;
 extern template class ERI<FourCenter<double>>;
 extern template class ERI<FourCenter<float>>;
+extern template class ERI<SparseFourCenter<double>>;
+extern template class ERI<SparseFourCenter<float>>;
 
 } // namespace property_types::ao_integrals
