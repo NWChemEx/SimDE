@@ -1,5 +1,6 @@
 #pragma once
 #include "property_types/ao_integrals/detail_/make_key.hpp"
+#include "property_types/ao_integrals/detail_/type_traits.hpp"
 #include "property_types/ao_integrals/n_center.hpp"
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
@@ -23,8 +24,10 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ERI, BaseType) {
 
 template<typename BaseType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(ERI, BaseType) {
-    using element_type = double; // TODO get from TMP
-    using tensor_type  = type::tensor<element_type>;
+    using traits       = detail_::NCenterTraits<BaseType>;
+    using element_type = typename traits::element_type; // TODO get from TMP
+    using space_type   = typename traits::space_type;
+    using tensor_type  = typename space_type::overlap_type;
 
     return sde::declare_result().add_field<tensor_type>(
       detail_::make_key<BaseType>("r_12"));
