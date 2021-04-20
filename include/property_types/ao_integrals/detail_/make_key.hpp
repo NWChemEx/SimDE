@@ -1,5 +1,6 @@
 #pragma once
 #include "property_types/ao_integrals/type_traits.hpp"
+#include <string>
 
 namespace property_types::ao_integrals::detail_ {
 
