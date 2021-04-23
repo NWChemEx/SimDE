@@ -5,12 +5,13 @@
 
 namespace property_types {
 
-template<typename BaseType>
-DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(Transformed, BaseType, BaseType);
+template<typename SpaceType, typename BaseType>
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(Transformed_, BaseType, SpaceType,
+                                        BaseType);
 
-template<typename BaseType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(Transformed, BaseType) {
-    using orb_space_t = const type::orbital_space_t<double>&;
+template<typename SpaceType, typename BaseType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(Transformed_, SpaceType, BaseType) {
+    using orb_space_t = const SpaceType&;
 
     if constexpr(ao_integrals::n_centers_v<BaseType> == 2) {
         return sde::declare_input()
@@ -34,9 +35,15 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(Transformed, BaseType) {
     }
 }
 
-template<typename BaseType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(Transformed, BaseType) {
+template<typename SpaceType, typename BaseType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(Transformed_, SpaceType, BaseType) {
     return sde::declare_result();
 }
+
+template<typename BaseType>
+using Transformed = Transformed_<type::orbital_space_t<double>, BaseType>;
+
+template<typename BaseType>
+using SparseTransformed = Transformed_<type::sparse_space_t<double>, BaseType>;
 
 } // namespace property_types

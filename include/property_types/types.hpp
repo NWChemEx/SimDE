@@ -23,6 +23,9 @@ template<typename T>
 using orbital_space_t = libchemist::orbital_space::BaseSpace<T>;
 
 template<typename T>
+using sparse_space_t = libchemist::orbital_space::SparseBase<T>;
+
+template<typename T>
 using ao_space_t = libchemist::orbital_space::AOSpace<T>;
 
 template<typename T>
@@ -30,6 +33,13 @@ using sparse_ao_space_t = libchemist::orbital_space::SparseAOSpace<T>;
 
 template<typename T>
 using derived_space_t = libchemist::orbital_space::DerivedSpace<T>;
+
+template<typename T>
+using sparse_independent_t =
+  libchemist::orbital_space::SparseIndependentSpace<T>;
+
+template<typename T>
+using sparse_derived_t = libchemist::orbital_space::SparseDerivedSpace<T>;
 
 template<typename T>
 using canonical_space_t = libchemist::orbital_space::CanonicalSpace<T>;
