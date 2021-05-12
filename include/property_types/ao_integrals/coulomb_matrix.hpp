@@ -1,5 +1,6 @@
 #pragma once
 #include "property_types/ao_integrals/detail_/make_key.hpp"
+#include "property_types/ao_integrals/detail_/type_traits.hpp"
 #include "property_types/ao_integrals/n_center.hpp"
 #include "property_types/types.hpp"
 #include <sde/property_type/property_type.hpp>
@@ -21,15 +22,16 @@ namespace property_types {
  *  @tparam OrbitalType The type of the input orbital space
  */
 template<typename ElementType = double,
-         typename OrbitalType = type::orbital_space_t<ElementType>>
-DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(CoulombMatrix,
-                                        ao_integrals::TwoCenter<ElementType>,
-                                        ElementType, OrbitalType);
+         typename OrbitalType = type::orbital_space_t<ElementType>,
+         typename BaseType    = ao_integrals::TwoCenter<ElementType>>
+DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(CoulombMatrix_, BaseType, ElementType,
+                                        OrbitalType, BaseType);
 
 //-----------------------------Implementations----------------------------------
 
-template<typename ElementType, typename OrbitalType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(CoulombMatrix, ElementType, OrbitalType) {
+template<typename ElementType, typename OrbitalType, typename BaseType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(CoulombMatrix_, ElementType, OrbitalType,
+                               BaseType) {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const OrbitalType&>("Molecular Orbitals");
@@ -38,21 +40,36 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(CoulombMatrix, ElementType, OrbitalType) {
     return rv;
 }
 
-template<typename ElementType, typename OrbitalType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(CoulombMatrix, ElementType, OrbitalType) {
-    using my_type     = CoulombMatrix<ElementType, OrbitalType>;
-    using tensor_type = type::tensor<ElementType>;
-    const auto key    = ao_integrals::detail_::make_key<my_type>("j");
-    auto rv           = sde::declare_result().add_field<tensor_type>(key);
+template<typename ElementType, typename OrbitalType, typename BaseType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(CoulombMatrix_, ElementType, OrbitalType,
+                                BaseType) {
+    using my_type      = CoulombMatrix_<ElementType, OrbitalType>;
+    using traits       = ao_integrals::detail_::NCenterTraits<BaseType>;
+    using element_type = typename traits::element_type;
+    using space_type   = typename traits::space_type;
+    using tensor_type  = typename space_type::overlap_type;
+    const auto key     = ao_integrals::detail_::make_key<my_type>("j");
+    auto rv            = sde::declare_result().add_field<tensor_type>(key);
     rv[key].set_description("The computed Coulomb matrix");
     return rv;
 }
 
-extern template class CoulombMatrix<double>;
-extern template class CoulombMatrix<double, type::derived_space_t<double>>;
-extern template class CoulombMatrix<double, type::canonical_space_t<double>>;
-extern template class CoulombMatrix<float>;
-extern template class CoulombMatrix<float, type::derived_space_t<float>>;
-extern template class CoulombMatrix<float, type::canonical_space_t<float>>;
+template<typename ElementType,
+         typename OrbitalType = type::orbital_space_t<ElementType>>
+using CoulombMatrix = CoulombMatrix_<ElementType, OrbitalType,
+                                     ao_integrals::TwoCenter<ElementType>>;
+
+template<typename ElementType,
+         typename OrbitalType = type::orbital_space_t<ElementType>>
+using SparseCoulombMatrix =
+  CoulombMatrix_<ElementType, OrbitalType,
+                 ao_integrals::SparseTwoCenter<ElementType>>;
+
+extern template class CoulombMatrix_<double>;
+extern template class CoulombMatrix_<double, type::derived_space_t<double>>;
+extern template class CoulombMatrix_<double, type::canonical_space_t<double>>;
+extern template class CoulombMatrix_<float>;
+extern template class CoulombMatrix_<float, type::derived_space_t<float>>;
+extern template class CoulombMatrix_<float, type::canonical_space_t<float>>;
 
 } // namespace property_types

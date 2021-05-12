@@ -18,7 +18,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(CouplingCoefficient, OccType, VirtType) {
 
 template<typename OccType, typename VirtType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(CouplingCoefficient, OccType, VirtType) {
-    using tensor_type = std::decay_t<decltype(std::declval<OccType>().C())>;
+    using tensor_type = std::decay_t<decltype(std::declval<VirtType>().C())>;
     auto rv           = sde::declare_result().add_field<tensor_type>("C");
     return rv;
 }

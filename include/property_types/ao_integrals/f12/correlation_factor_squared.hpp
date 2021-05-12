@@ -21,13 +21,19 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(CorrelationFactorSquared, BaseType) {
 
 template<typename BaseType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(CorrelationFactorSquared, BaseType) {
-    using element_type = element_t<BaseType>;
-    using tensor_type  = type::tensor<element_type>;
+    using traits       = detail_::NCenterTraits<BaseType>;
+    using element_type = typename traits::element_type;
+    using space_type   = typename traits::space_type;
+    using tensor_type  = typename space_type::overlap_type;
     using my_type      = CorrelationFactorSquared<BaseType>;
 
     return sde::declare_result().add_field<tensor_type>(
       detail_::make_key<my_type>("f_12^2(r_12)"));
 }
+
+template<typename ElementType>
+using SparseCorrelationFactorSquared4C =
+  CorrelationFactorSquared<SparseFourCenter<ElementType>>;
 
 MULTICENTER_AO_INTEGRAL_TYPEDEFS(CorrelationFactorSquared);
 MULTICENTER_AO_INTEGRAL_EXTERNS(CorrelationFactorSquared);
