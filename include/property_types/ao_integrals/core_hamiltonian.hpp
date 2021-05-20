@@ -39,11 +39,11 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(CoreHamiltonian_, ElementType, BaseType) {
     return rv;
 }
 
-template<typename ElementType>
+template<typename ElementType = double>
 using CoreHamiltonian =
   CoreHamiltonian_<ElementType, ao_integrals::TwoCenter<ElementType>>;
 
-template<typename ElementType>
+template<typename ElementType = double>
 using SparseCoreHamiltonian =
   CoreHamiltonian_<ElementType, ao_integrals::SparseTwoCenter<ElementType>>;
 

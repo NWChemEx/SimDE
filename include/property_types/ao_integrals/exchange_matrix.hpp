@@ -54,12 +54,12 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(ExchangeMatrix_, ElementType, OrbitalType,
     return rv;
 }
 
-template<typename ElementType,
+template<typename ElementType = double,
          typename OrbitalType = type::orbital_space_t<ElementType>>
 using ExchangeMatrix = ExchangeMatrix_<ElementType, OrbitalType,
                                        ao_integrals::TwoCenter<ElementType>>;
 
-template<typename ElementType,
+template<typename ElementType = double,
          typename OrbitalType = type::orbital_space_t<ElementType>>
 using SparseExchangeMatrix =
   ExchangeMatrix_<ElementType, OrbitalType,
