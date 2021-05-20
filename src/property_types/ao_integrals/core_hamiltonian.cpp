@@ -2,7 +2,7 @@
 
 namespace property_types {
 
-template class CoreHamiltonian<double>;
-template class CoreHamiltonian<float>;
+template class CoreHamiltonian_<double>;
+template class CoreHamiltonian_<float>;
 
 } // namespace property_types
