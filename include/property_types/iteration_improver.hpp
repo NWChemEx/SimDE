@@ -36,4 +36,9 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(IterationImprover, TensorType) {
     return rv;
 }
 
+extern template class IterationImprover<type::tensor<double>>;
+extern template class IterationImprover<type::tensor<float>>;
+extern template class IterationImprover<type::tensor_of_tensors<double>>;
+extern template class IterationImprover<type::tensor_of_tensors<float>>;
+
 } // namespace property_types
