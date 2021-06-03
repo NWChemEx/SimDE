@@ -5,38 +5,34 @@
 namespace property_types {
 
 /** @brief Property type for modules that use information across iterations
- *         to improve iterative matrix guesses.
+ *         to improve iterative tensor guesses.
  *
- *  @tparam ElementType the type of the elements in the matrices
+ *  @tparam TensorType the type of the tensors
  */
-template<typename ElementType = double>
-DECLARE_TEMPLATED_PROPERTY_TYPE(IterationImprover, ElementType);
+template<typename TensorType = type::tensor<double>>
+DECLARE_TEMPLATED_PROPERTY_TYPE(IterationImprover, TensorType);
 
-template<typename ElementType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(IterationImprover, ElementType) {
-    using tensor_type  = type::tensor<ElementType>;
-
+template<typename TensorType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(IterationImprover, TensorType) {
     auto rv = sde::declare_input()
-      .template add_field<const tensor_type&>("Initial Matrix")
-      .template add_field<const tensor_type&>("Current Matrix")
-      .template add_field<const tensor_type&>("Error Matrix");
-    rv["Initial Matrix"].set_description(
-      "The initial version of the matrix");
-    rv["Current Matrix"].set_description(
-      "The version of the matrix from the current iteration");
-    rv["Error Matrix"].set_description(
-      "Error associated with the current matrix");
+      .template add_field<const TensorType&>("Initial Tensor")
+      .template add_field<const TensorType&>("Current Tensor")
+      .template add_field<const TensorType&>("Error Tensor");
+    rv["Initial Tensor"].set_description(
+      "The initial version of the tensor");
+    rv["Current Tensor"].set_description(
+      "The version of the tensor from the current iteration");
+    rv["Error Tensor"].set_description(
+      "Error associated with the current tensor");
     return rv;
 }
 
-template<typename ElementType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(IterationImprover, ElementType) {
-    using tensor_type = type::tensor<ElementType>;
-
-    auto rv = sde::declare_result().template add_field<tensor_type>(
-      "Improved Matrix");
-    rv["Improved Matrix"].set_description(
-      "The improved matrix guess");
+template<typename TensorType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(IterationImprover, TensorType) {
+    auto rv = sde::declare_result().template add_field<TensorType>(
+      "Improved Tensor");
+    rv["Improved Tensor"].set_description(
+      "The improved tensor guess");
     return rv;
 }
 

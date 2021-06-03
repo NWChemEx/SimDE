@@ -3,6 +3,6 @@
 
 TEST_CASE("IterationImprover") {
     test_property_type<property_types::IterationImprover<>>(
-      {"Initial Matrix", "Current Matrix", "Error Matrix"},
-      {"Improved Matrix"});
+      {"Initial Tensor", "Current Tensor", "Error Tensor"},
+      {"Improved Tensor"});
 }
