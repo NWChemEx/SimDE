@@ -17,12 +17,15 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(IterationImprover, TensorType) {
     auto rv = sde::declare_input()
       .template add_field<const TensorType&>("Initial Tensor")
       .template add_field<const TensorType&>("Current Tensor")
-      .template add_field<const TensorType&>("Error Tensor");
+      .template add_field<const TensorType&>("Initial Error Tensor")
+      .template add_field<const TensorType&>("Current Error Tensor");
     rv["Initial Tensor"].set_description(
       "The initial version of the tensor");
     rv["Current Tensor"].set_description(
       "The version of the tensor from the current iteration");
-    rv["Error Tensor"].set_description(
+    rv["Initial Error Tensor"].set_description(
+      "Error associated with the initial tensor");
+    rv["Current Error Tensor"].set_description(
       "Error associated with the current tensor");
     return rv;
 }
