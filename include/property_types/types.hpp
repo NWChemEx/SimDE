@@ -2,6 +2,7 @@
 #include <libchemist/molecule/molecule.hpp>
 #include <libchemist/orbital_space/orbital_space.hpp>
 #include <libchemist/topology/connectivity_table.hpp>
+#include <libchemist/topology/topology.hpp>
 #include <libchemist/types.hpp>
 #include <sde/types.hpp>
 #include <utilities/containers/case_insensitive_map.hpp>
@@ -21,6 +22,9 @@ using molecule = libchemist::Molecule;
 
 /// Typedef of the class used for connectivity information
 using connectivity_table = libchemist::topology::ConnectivityTable;
+
+/// Typedef of the class used for molecular topology  
+using topology = libchemist::topology::Topology;
 
 /// Typedef of the classes modeling the orbital spaces
 template<typename T>
