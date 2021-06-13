@@ -1,6 +1,7 @@
 #pragma once
 #include <libchemist/molecule/molecule.hpp>
 #include <libchemist/orbital_space/orbital_space.hpp>
+#include <libchemist/topology/topology.hpp>
 #include <libchemist/types.hpp>
 #include <sde/types.hpp>
 #include <utilities/containers/case_insensitive_map.hpp>
@@ -17,6 +18,8 @@ using namespace libchemist::type;
 
 /// Typedef of the class used to describe a molecule
 using molecule = libchemist::Molecule;
+
+using topology = libchemist::topology::Topology;
 
 /// Typedef of the classes modeling the orbital spaces
 template<typename T>
