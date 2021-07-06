@@ -19,6 +19,7 @@ cpp_find_or_build_dependency(
     libchemist
     URL github.com/NWChemEx-Project/libchemist
     PRIVATE TRUE
+    VERSION db4b0f4783e3aed21ee44fc26e40243b042092f1 # TODO: remove when modified for mass changes to LibChemist
     BUILD_TARGET chemist
     FIND_TARGET nwx::chemist
     CMAKE_ARGS BUILD_TESTING=OFF
