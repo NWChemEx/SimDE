@@ -1,11 +1,5 @@
 #pragma once
-#include <libchemist/molecule/molecule.hpp>
-#include <libchemist/orbital_space/orbital_space.hpp>
-#include <libchemist/topology/connectivity_table.hpp>
-#include <libchemist/topology/topology.hpp>
-#include <libchemist/types.hpp>
-#include <sde/types.hpp>
-#include <utilities/containers/case_insensitive_map.hpp>
+#include <libchemist/libchemist.hpp>
 
 /** @file types.hpp
  *
@@ -17,13 +11,34 @@ namespace property_types::type {
 
 using namespace libchemist::type;
 
+// --------------------- Fundamental Input -------------------------------------
+
 /// Typedef of the class used to describe a molecule
 using molecule = libchemist::Molecule;
+
+/// Typedef of the class which describes an entire chemical system
+using chemical_system = libchemist::ChemicalSystem;
+
+// ------------------------------ Orbital Spaces -------------------------------
+
+template<typename T>
+using ao_space = libchemist::orbital_space::AOSpace<T>;
+
+template<typename T>
+using sparse_ao_space = libchemist::orbital_space::SparseAOSpace<T>;
+
+// ---------------------- Tensors ---------------------------------------------
+
+template<typename T>
+using tensor  = libchemist::type::tensor<T>;
+
+template<typename T>
+using tensor_of_tensors = libchemist::type::tensor_of_tensors<T>;
 
 /// Typedef of the class used for connectivity information
 using connectivity_table = libchemist::topology::ConnectivityTable;
 
-/// Typedef of the class used for molecular topology  
+/// Typedef of the class used for molecular topology
 using topology = libchemist::topology::Topology;
 
 /// Typedef of the classes modeling the orbital spaces
@@ -32,12 +47,6 @@ using orbital_space_t = libchemist::orbital_space::BaseSpace<T>;
 
 template<typename T>
 using sparse_space_t = libchemist::orbital_space::SparseBase<T>;
-
-template<typename T>
-using ao_space_t = libchemist::orbital_space::AOSpace<T>;
-
-template<typename T>
-using sparse_ao_space_t = libchemist::orbital_space::SparseAOSpace<T>;
 
 template<typename T>
 using derived_space_t = libchemist::orbital_space::DerivedSpace<T>;
@@ -51,12 +60,5 @@ using sparse_derived_t = libchemist::orbital_space::SparseDerivedSpace<T>;
 
 template<typename T>
 using canonical_space_t = libchemist::orbital_space::CanonicalSpace<T>;
-
-/// Typedef of a map containing multiple OrbitalSpaces
-template<typename T>
-using orbital_map = utilities::CaseInsensitiveMap<T>;
-
-/// Type of a non-negative counting number
-using size = std::size_t;
 
 } // namespace property_types::type

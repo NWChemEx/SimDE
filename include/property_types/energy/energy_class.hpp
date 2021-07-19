@@ -13,29 +13,22 @@ namespace property_types {
  *
  *  @tparam ElementType The type of the elements in the tensors.
  */
-template<typename ElementType = double>
-struct Energy : public sde::PropertyType<Energy<ElementType>> {
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class Energy
+template<typename ElementType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(Energy, ElementType);
 
 //-------------------------------Implementations--------------------------------
 template<typename ElementType>
-auto Energy<ElementType>::inputs_() {
-    auto rv = sde::declare_input()
-                .add_field<const type::molecule&>("Molecule")
-                .add_field<type::size>("Derivative", type::size{0});
-    rv["Molecule"].set_description("The molecular system");
-    rv["Derivative"].set_description("The derivative order of the energy");
+TEMPLATED_PROPERTY_TYPE_INPUTS(Energy, ElementType) {
+    auto rv =
+      sde::declare_input().add_field<const type::chemical_system&>("system");
+    rv["system"].set_description("The molecular system");
     return rv;
 }
 
 template<typename ElementType>
-auto Energy<ElementType>::results_() {
+TEMPLATED_PROPERTY_TYPE_RESULTS(Energy, ElementType) {
     auto rv = sde::declare_result().add_field<ElementType>("Energy");
-    rv["Energy"].set_description("The computed energy or derivatives");
+    rv["Energy"].set_description("The computed energy");
     return rv;
 }
 
