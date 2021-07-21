@@ -1,7 +1,7 @@
 /** @file energy.hpp
  *
  *  Convenience header for including all of the property types associated with
- *  energys.
+ *  energies.
  */
 #pragma once
 
