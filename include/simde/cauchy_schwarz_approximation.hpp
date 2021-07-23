@@ -4,25 +4,15 @@
 
 namespace simde {
 
-template<typename ElementType = double>
-struct ShellNorms : public sde::PropertyType<ShellNorms<ElementType>> {
-    /// The type of an std::array of basis sets
-    using basis_type = type::ao_space_t<ElementType>;
-    /// The return type
-    using return_type = std::vector<std::vector<ElementType>>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class ShellNorms
+DECLARE_PROPERTY_TYPE(ShellNorms);
 
 //------------------------Implementations---------------------------------------
 
-template<typename ElementType>
-auto ShellNorms<ElementType>::inputs_() {
+PROPERTY_TYPE_INPUTS(ShellNorms) {
+    using basis_type = const type::ao_space&;
     auto rv = sde::declare_input()
-                .add_field<const basis_type&>("Basis1")
-                .template add_field<const basis_type&>("Basis2")
+                .add_field<basis_type>("Basis1")
+                .template add_field<basis_type>("Basis2")
                 .template add_field<type::size>("Derivative", type::size{0});
     rv["Basis1"].set_description("The first basis set");
     rv["Basis2"].set_description("The second basis set");
@@ -31,15 +21,12 @@ auto ShellNorms<ElementType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType>
-auto ShellNorms<ElementType>::results_() {
+PROPERTY_TYPE_RESULTS(ShellNorms) {
+    using return_type = std::vector<std::vector<double>>;
     auto rv = sde::declare_result().add_field<return_type>("Screening Matrix");
     rv["Screening Matrix"].set_description(
       "The Cauchy Schwarz screening matrix");
     return rv;
 }
-
-extern template class ShellNorms<double>;
-extern template class ShellNorms<float>;
 
 } // namespace simde

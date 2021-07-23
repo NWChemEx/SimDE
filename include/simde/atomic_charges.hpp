@@ -10,21 +10,12 @@ namespace simde {
  * @tparam ElementType The type of the elements in the returned tensor
  * @tparam OrbitalType The type of the input orbital space
  */
-template<typename ElementType = double,
-         typename OrbitalType = type::orbital_space_t<ElementType>>
-struct AtomicCharges
-  : public sde::PropertyType<AtomicCharges<ElementType, OrbitalType>> {
-    /// Type of the return values
-    using return_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class AtomicCharges
+template<typename OrbitalType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(AtomicCharges, OrbitalType);
 
 //---------------------------Implementations------------------------------------
-template<typename ElementType, typename OrbitalType>
-auto AtomicCharges<ElementType, OrbitalType>::inputs_() {
+template<typename OrbitalType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(AtomicCharges, OrbitalType) {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const OrbitalType&>("Molecular Orbitals");
@@ -33,18 +24,14 @@ auto AtomicCharges<ElementType, OrbitalType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType, typename OrbitalType>
-auto AtomicCharges<ElementType, OrbitalType>::results_() {
-    auto rv = sde::declare_result().add_field<return_type>("Partial Charges");
+template<typename OrbitalType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(AtomicCharges, OrbitalType) {
+    auto rv = sde::declare_result().add_field<type::tensor>("Partial Charges");
     rv["Partial Charges"].set_description("The calculated partial charges");
     return rv;
 }
 
-extern template class AtomicCharges<double>;
-extern template class AtomicCharges<double, type::derived_space_t<double>>;
-extern template class AtomicCharges<double, type::canonical_space_t<double>>;
-extern template class AtomicCharges<float>;
-extern template class AtomicCharges<float, type::derived_space_t<float>>;
-extern template class AtomicCharges<float, type::canonical_space_t<float>>;
+extern template class AtomicCharges<type::derived_space>;
+extern template class AtomicCharges<type::canonical_space>;
 
 } // namespace simde

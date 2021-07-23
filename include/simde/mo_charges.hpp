@@ -10,21 +10,11 @@ namespace simde {
  * @tparam ElementType The type of the elements in the returned tensor
  * @tparam OrbitalType The type of the input molecular orbitals
  */
-template<typename ElementType = double,
-         typename OrbitalType = type::orbital_space_t<ElementType>>
-struct MOCharges
-  : public sde::PropertyType<MOCharges<ElementType, OrbitalType>> {
-    /// Type of the returned tensor that accounts for ElementType
-    using tensor_type = type::tensor<ElementType>;
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class MOCharges
+template<typename OrbitalType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(MOCharges, OrbitalType);
 
-//---------------------------Implementations------------------------------------
-template<typename ElementType, typename OrbitalType>
-auto MOCharges<ElementType, OrbitalType>::inputs_() {
+template<typename OrbitalType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(MOCharges, OrbitalType) {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const OrbitalType&>("Molecular Orbitals");
@@ -33,18 +23,14 @@ auto MOCharges<ElementType, OrbitalType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType, typename OrbitalType>
-auto MOCharges<ElementType, OrbitalType>::results_() {
-    auto rv = sde::declare_result().add_field<tensor_type>("MO Charges");
+template<typename OrbitalType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(MOCharges, OrbitalType) {
+    auto rv = sde::declare_result().add_field<type::tensor>("MO Charges");
     rv["MO Charges"].set_description("The calculated MO charge densities");
     return rv;
 }
 
-extern template class MOCharges<double>;
-extern template class MOCharges<double, type::derived_space_t<double>>;
-extern template class MOCharges<double, type::canonical_space_t<double>>;
-extern template class MOCharges<float>;
-extern template class MOCharges<float, type::derived_space_t<float>>;
-extern template class MOCharges<float, type::canonical_space_t<float>>;
+extern template class MOCharges<type::derived_space>;
+extern template class MOCharges<type::canonical_space>;
 
 } // namespace simde

@@ -1,8 +1,10 @@
-#include "test_property_type.hpp"
-#include <property_types/reference_wavefunction.hpp>
+#include "../test_property_type.hpp"
+#include "simde/wavefunctions/reference_wavefunction.hpp"
 
-TEST_CASE("ReferenceWavefunction"){
-    test_property_type<property_types::ReferenceWavefunction<>>(
-      {"Molecule", "Basis Set", "Derivative"},{"Energy", "Molecular Orbitals"}
-    );
+using namespace simde;
+
+TEST_CASE("ReferenceWavefunction") {
+    test_property_type<ReferenceWavefunction<type::canonical_space>>(
+      {"Molecule", "Basis Set", "Derivative"},
+      {"Energy", "Molecular Orbitals"});
 }

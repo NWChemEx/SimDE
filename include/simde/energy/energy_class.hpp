@@ -13,26 +13,20 @@ namespace simde {
  *
  *  @tparam ElementType The type of the elements in the tensors.
  */
-template<typename ElementType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(Energy, ElementType);
+DECLARE_PROPERTY_TYPE(Energy);
 
 //-------------------------------Implementations--------------------------------
-template<typename ElementType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(Energy, ElementType) {
-    auto rv =
-      sde::declare_input().add_field<const type::chemical_system&>("system");
+PROPERTY_TYPE_INPUTS(Energy) {
+    using chem_sys_t = const type::chemical_system&;
+    auto rv          = sde::declare_input().add_field<chem_sys_t>("system");
     rv["system"].set_description("The molecular system");
     return rv;
 }
 
-template<typename ElementType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(Energy, ElementType) {
-    auto rv = sde::declare_result().add_field<ElementType>("Energy");
+PROPERTY_TYPE_RESULTS(Energy) {
+    auto rv = sde::declare_result().add_field<double>("Energy");
     rv["Energy"].set_description("The computed energy");
     return rv;
 }
-
-extern template class Energy<double>;
-extern template class Energy<float>;
 
 } // namespace simde

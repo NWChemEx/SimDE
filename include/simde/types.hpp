@@ -11,7 +11,7 @@ namespace simde::type {
 
 using namespace libchemist::type;
 
-// --------------------- Fundamental Input -------------------------------------
+// --------------------- Fundamental Types -------------------------------------
 
 /// Typedef of the class used to describe a molecule
 using molecule = libchemist::Molecule;
@@ -22,33 +22,28 @@ using chemical_system = libchemist::ChemicalSystem;
 // ------------------------------ Orbital Spaces -------------------------------
 
 /// Typedef of class describing an AO space
-template<typename T>
-using ao_space = libchemist::orbital_space::AOSpace<T>;
+using ao_space = libchemist::orbital_space::AOSpaceD;
 
 /// Typedef of class describing an AO space with a sparse map
-template<typename T>
-using sparse_ao_space = libchemist::orbital_space::SparseAOSpace<T>;
+using sparse_ao_space = libchemist::orbital_space::DepAOSpaceD;
 
 /// Typedef of orbital space obtained by transforming an ao_space
-template<typename>
 using derived_space = libchemist::orbital_space::DerivedSpaceD;
 
 /// Typedef of orbital space obtained by transforming a sparse_ao_space
-template<typename>
-using ind_derived_space = libchemist::orbital_space::IndDerivedSpaceD;
+using ind_derived_space = libchemist::orbital_space::IndDerivedSpace;
 
 /// Typedef of derived orbital space which has a sparse map
-template<typename>
-using dep_derived_space = libchemist::orbital_space::DepDerivedSpaceD;
+using dep_derived_space = libchemist::orbital_space::DepDerivedSpace;
 
-template<typename T>
-using canonical_space_t = libchemist::orbital_space::CanonicalSpace<T>;
+/// Typedef of an orbital space with orbitals that diagonalize the Fock matrix
+using canonical_space = libchemist::orbital_space::CanonicalSpaceD;
 
 // ---------------------- Tensors ---------------------------------------------
 
-using tensor = libchemist::tensor::type::SparseTensorWrapper;
+using tensor = libchemist::type::tensor;
 
-using tensor_of_tensors = libchemist::tensor::type::ToTWrapper;
+using tensor_of_tensors = libchemist::type::tensor_of_tensors;
 
 // -----------------------------------------------------------------------------
 // ----------------------------- Operators -------------------------------------
@@ -68,27 +63,29 @@ using el_xc = libchemist::KohnShamExchangeCorrelation;
 
 using fock = libchemist::FockOperator;
 
-using hamiltonian = libchemist::HamiltonianOperator;
+using hamiltonian = libchemist::Hamiltonian;
 
 // -----------------------------------------------------------------------------
 // ---------------------------- Wavefunctions ----------------------------------
 // -----------------------------------------------------------------------------
 
-using noncanonical_reference = libchemist::Reference;
+using noncanonical_reference = libchemist::wavefunction::Reference;
 
-using canonical_reference = libchemist::CanonicalReference;
+using canonical_reference = libchemist::wavefunction::CanonicalReference;
 
-using noncanonical_local_reference = libchemist::LocalReference;
+using noncanonical_local_reference = libchemist::wavefunction::LocalReference;
 
-using canonical_local_reference = libchemist::CanonicalLocalReference;
+using canonical_local_reference =
+  libchemist::wavefunction::CanonicalLocalReference;
 
-using perturbative = libchemist::Perturbative;
+using many_body = libchemist::wavefunction::ManyBodyWf;
 
-using canonical_perturbative = libchemist::CanonicalPerturbative;
+using canonical_many_body = libchemist::wavefunction::CanonicalManyBodyWf;
 
-using noncanonical_local_perturbative = libchemist::LocalPerturbative;
+using _local_many_body = libchemist::wavefunction::LocalManyBodyWf;
 
-using canonical_local_perturbative = libchemist::CanonicalLocalPerturbative;
+using canonical_local_many_body =
+  libchemist::wavefunction::CanonicalLocalManyBodyWf;
 
 // ---------------------------- Other ------------------------------------------
 
@@ -97,7 +94,5 @@ using connectivity_table = libchemist::topology::ConnectivityTable;
 
 /// Typedef of the class used for molecular topology
 using topology = libchemist::topology::Topology;
-
-/// Typedef of the classes modeling the orbital spaces
 
 } // namespace simde::type

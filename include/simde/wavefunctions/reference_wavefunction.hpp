@@ -13,15 +13,13 @@ namespace simde {
  *  @tparam ElementType The type of the returned energy
  *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
-template<typename WavefunctionType, typename ElementType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(ReferenceWavefunction, WavefunctionType,
-                                ElementType);
+template<typename WavefunctionType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(ReferenceWavefunction, WavefunctionType);
 
-template<typename WavefunctionType, typename ElementType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(ReferenceWavefunction, WavefunctionType,
-                               ElementType) {
+template<typename WavefunctionType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(ReferenceWavefunction, WavefunctionType) {
     using ham_t = const type::hamiltonian&;
-    using ao_t  = const type::ao_space<ElementType>&;
+    using ao_t  = const type::ao_space&;
 
     auto rv = sde::declare_input()
                 .add_field<ham_t>("Hamiltonian")
@@ -29,15 +27,14 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ReferenceWavefunction, WavefunctionType,
     return rv;
 }
 
-template<typename ElementType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(ReferenceWavefunction, ElementType) {
-    auto rv =
-      sde::declare_result().add_field<canonical_reference>("Wavefunction");
+template<typename WavefunctionType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(ReferenceWavefunction, WavefunctionType) {
+    auto rv = sde::declare_result().add_field<type::canonical_reference>(
+      "Wavefunction");
 
     return rv;
 }
 
-extern template class ReferenceWavefunction<type::canonical_reference, double>;
-extern template class ReferenceWavefunction<type::canonical_reference, float>;
+extern template class ReferenceWavefunction<type::canonical_reference>;
 
 } // namespace simde

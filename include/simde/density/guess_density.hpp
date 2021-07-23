@@ -11,17 +11,14 @@ namespace simde {
  *  guess for the electronic density. This property type is for modules that are
  *  capable of providing such a guess.
  *
- *  @tparam ElementType The type of the elements in the input basis set
  *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
-template<typename ElementType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(GuessDensity, ElementType);
+DECLARE_PROPERTY_TYPE(GuessDensity);
 
 //-------------------------------Implementations--------------------------------
-template<typename ElementType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(GuessDensity, ElementType) {
+PROPERTY_TYPE_INPUTS(GuessDensity) {
     using ham_t      = const type::hamiltonian&;
-    using ao_space_t = const type::ao_space<ElementType>&;
+    using ao_space_t = const type::ao_space&;
 
     auto rv = sde::declare_input()
                 .add_field<ham_t>("System Hamiltonian")
@@ -29,13 +26,9 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GuessDensity, ElementType) {
     return rv;
 }
 
-template<typename ElementType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(GuessDensity, ElementType>{
+PROPERTY_TYPE_RESULTS(GuessDensity) {
     auto rv = sde::declare_result().add_field<type::tensor>("Initial density");
     return rv;
 }
-
-extern template class GuessDensity<double>;
-extern template class GuessDensity<float>;
 
 } // namespace simde

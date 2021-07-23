@@ -2,9 +2,7 @@
 
 namespace simde {
 
-template class IterationImprover<type::tensor<double>>;
-template class IterationImprover<type::tensor<float>>;
-template class IterationImprover<type::tensor_of_tensors<double>>;
-template class IterationImprover<type::tensor_of_tensors<float>>;
+template class IterationImprover<type::tensor>;
+template class IterationImprover<type::tensor_of_tensors>;
 
 } // namespace simde

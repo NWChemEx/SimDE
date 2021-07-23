@@ -3,19 +3,16 @@
 
 namespace simde {
 
-template<typename OperatorType, typename ElementType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralAOTensorRepresentation, OperatorType,
-                                ElementType);
+template<typename OperatorType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralAOTensorRepresentation, OperatorType);
 
-template<typename OperatorType, typename ElementType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralAOTensorRepresentation, OperatorType,
-                               ElementType) {
-    using ao_space_map = std::map<unsigned int, type::ao_space<ElementType>>;
-    using sparse_ao_space_map =
-      std::map<unsigned int, type::sparse_ao_space<ElementType>>;
+template<typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralAOTensorRepresentation, OperatorType) {
+    using ao_space_map        = std::map<unsigned int, type::ao_space>;
+    using sparse_ao_space_map = std::map<unsigned int, type::sparse_ao_space>;
 
-    using ao_space_map_t        = const ao_space_map<ElementType>&;
-    using sparse_ao_space_map_t = const sparse_ao_space_map<ElementType>&;
+    using ao_space_map_t        = const ao_space_map&;
+    using sparse_ao_space_map_t = const sparse_ao_space_map&;
     using op                    = const OperatorType&;
 
     auto rv = sde::declare_inputs()
@@ -25,16 +22,11 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralAOTensorRepresentation, OperatorType,
     return rv;
 }
 
-template<typename OperatorType, typename ElementType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralAOTensorRepresentation, OperatorType,
-                                ElementType) {
+template<typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralAOTensorRepresentation, OperatorType) {
     auto rv = sde::declare_results().add_field<type::tensor_of_tensors>(
       "Tensor representation");
     return rv;
 }
-
-template<typename OperatorType>
-using GeneralAOTensorRepresentationD =
-  GeneralAOTensorRepresentation<OperatorType, double>;
 
 } // namespace simde

@@ -30,8 +30,4 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EnergyDenominator_, OccType, VirtType) {
     return rv;
 }
 
-template<typename T>
-using EnergyDenominator =
-  EnergyDenominator_<type::canonical_space_t<T>, type::canonical_space_t<T>>;
-
 } // namespace simde

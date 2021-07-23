@@ -1,9 +1,7 @@
-#include "tests/test_property_type.hpp"
-#include <property_types/cauchy_schwarz_approximation.hpp>
+#include "simde/cauchy_schwarz_approximation.hpp"
+#include "test_property_type.hpp"
 
 TEST_CASE("CauchySchwarz") {
-    test_property_type<property_types::ShellNorms<>>(
-            {"Basis1", "Basis2", "Derivative"},
-            {"Screening Matrix"}
-    );
+    test_property_type<simde::ShellNorms>({"Basis1", "Basis2", "Derivative"},
+                                          {"Screening Matrix"});
 }

@@ -10,23 +10,16 @@ namespace simde {
  *  @tparam ElementType the type of the elements in the basis set
  *  @tparam OrbitalType the type of the input and output orbital spaces
  */
-template<typename ElementType = double,
-         typename OrbitalType = type::orbital_space_t<ElementType>>
-struct EmbedPartition
-  : public sde::PropertyType<EmbedPartition<ElementType, OrbitalType>> {
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class UpdateMOs
+template<typename OrbitalType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(EmbedPartition, OrbitalType);
 
 //-------------------------------Implementations--------------------------------
-template<typename ElementType, typename OrbitalType>
-auto EmbedPartition<ElementType, OrbitalType>::inputs_() {
+template<typename OrbitalType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(EmbedPartition, OrbitalType) {
     auto rv =
       sde::declare_input()
         .add_field<const type::molecule&>("Molecule")
-        .add_field<const type::ao_space_t<ElementType>&>("Basis Set")
+        .add_field<const type::ao_space&>("Basis Set")
         .template add_field<const std::vector<type::size>&>("Active Atoms")
         .template add_field<const OrbitalType&>("Initial Orbitals");
     rv["Molecule"].set_description("The molecule associated with the density");
@@ -36,8 +29,8 @@ auto EmbedPartition<ElementType, OrbitalType>::inputs_() {
     return rv;
 }
 
-template<typename ElementType, typename OrbitalType>
-auto EmbedPartition<ElementType, OrbitalType>::results_() {
+template<typename OrbitalType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(EmbedPartition, OrbitalType) {
     auto rv = sde::declare_result()
                 .template add_field<OrbitalType>("Active Orbitals")
                 .template add_field<OrbitalType>("Environment Orbitals");
@@ -46,11 +39,7 @@ auto EmbedPartition<ElementType, OrbitalType>::results_() {
     return rv;
 }
 
-extern template class EmbedPartition<double>;
-extern template class EmbedPartition<double, type::derived_space_t<double>>;
-extern template class EmbedPartition<double, type::canonical_space_t<double>>;
-extern template class EmbedPartition<float>;
-extern template class EmbedPartition<float, type::derived_space_t<float>>;
-extern template class EmbedPartition<float, type::canonical_space_t<float>>;
+extern template class EmbedPartition<type::derived_space>;
+extern template class EmbedPartition<type::canonical_space>;
 
 } // namespace simde

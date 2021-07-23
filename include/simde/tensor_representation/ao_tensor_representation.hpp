@@ -3,14 +3,14 @@
 
 namespace simde {
 
-template<std::size_t N, typename OperatorType, typename ElementType>
+template<std::size_t N, typename OperatorType>
 DECLARE_TEMPLATED_PROPERTY_TYPE(AOTensorRepresentation, N, OperatorType,
                                 ElementType);
 
-template<std::size_t N, typename OperatorType, typename ElementType>
+template<std::size_t N, typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType,
                                ElementType) {
-    using const_ao_space_t = const type::ao_space<ElementType>&;
+    using const_ao_space_t = const type::ao_space;
 
     if constexpr(N == 2) {
         return sde::declare_input()
@@ -36,26 +36,21 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType,
     }
 }
 
-template<std::size_t N, typename OperatorType, typename ElementType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(AOTensorRepresentation, N, OperatorType,
-                                ElementType) {
+template<std::size_t N, typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(AOTensorRepresentation, N, OperatorType) {
     return sde::declare_result().add_field<type::tensor>(
       "tensor representation");
 }
 
-template<std::size_t N, typename OperatorType>
-using AOTensorRepresentationD = TensorRepresentation<N, OperatorType, double>;
+template<typename OperatorType>
+using TwoCenterAOTensorRepresentation = AOTensorRepresentation<2, OperatorType>;
 
 template<typename OperatorType>
-using TwoCenterAOTensorRepresentationD =
-  AOTensorRepresentationD<2, OperatorType>;
+using ThreeCenterAOTensorRepresentation =
+  AOTensorRepresentation<3, OperatorType>;
 
 template<typename OperatorType>
-using ThreeCenterAOTensorRepresentationD =
-  AOTensorRepresentationD<3, OperatorType>;
-
-template<typename OperatorType>
-using FourCenterAOTensorRepresentationD =
-  AOTensorRepresentationD<4, OperatorType>;
+using FourCenterAOTensorRepresentation =
+  AOTensorRepresentation<4, OperatorType>;
 
 } // namespace simde

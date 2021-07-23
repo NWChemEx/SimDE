@@ -13,20 +13,13 @@ namespace simde {
  *  @tparam InputOrbitals The type of the input orbitals
  *  @tparam OutputOrbitals the type iof the output orbitals
  */
-template<typename InputOrbitals  = type::orbital_space_t<double>,
-         typename OutputOrbitals = InputOrbitals>
-struct LocalizedOrbitals
-  : public sde::PropertyType<LocalizedOrbitals<InputOrbitals, OutputOrbitals>> {
-    /// Generates the input fields required by this property type
-    auto inputs_();
-    /// Generates the result fields required by this property type
-    auto results_();
-}; // class LocalizedOrbitals
-
-//-------------------------------Implementations--------------------------------
+template<typename InputOrbitals, typename OutputOrbitals = InputOrbitals>
+DECLARE_TEMPLATED_PROPERTY_TYPE(LocalizedOrbitals, InputOrbitals,
+                                OutputOrbitals);
 
 template<typename InputOrbitals, typename OutputOrbitals>
-auto LocalizedOrbitals<InputOrbitals, OutputOrbitals>::inputs_() {
+TEMPLATED_PROPERTY_TYPE_INPUTS(LocalizedOrbitals, InputOrbitals,
+                               OutputOrbitals) {
     auto rv = sde::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const InputOrbitals&>("Orbitals");
@@ -37,17 +30,14 @@ auto LocalizedOrbitals<InputOrbitals, OutputOrbitals>::inputs_() {
 }
 
 template<typename InputOrbitals, typename OutputOrbitals>
-auto LocalizedOrbitals<InputOrbitals, OutputOrbitals>::results_() {
+TEMPLATED_PROPERTY_TYPE_RESULTS(LocalizedOrbitals, InputOrbitals,
+                                OutputOrbitals) {
     auto rv = sde::declare_result().add_field<OutputOrbitals>("Local Orbitals");
     rv["Local Orbitals"].set_description("The localized orbitals");
     return rv;
 }
 
-extern template class LocalizedOrbitals<type::orbital_space_t<double>>;
-extern template class LocalizedOrbitals<type::derived_space_t<double>>;
-extern template class LocalizedOrbitals<type::canonical_space_t<double>>;
-extern template class LocalizedOrbitals<type::orbital_space_t<float>>;
-extern template class LocalizedOrbitals<type::derived_space_t<float>>;
-extern template class LocalizedOrbitals<type::canonical_space_t<float>>;
+extern template class LocalizedOrbitals<type::derived_space>;
+extern template class LocalizedOrbitals<type::canonical_space>;
 
 } // namespace simde

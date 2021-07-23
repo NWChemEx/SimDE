@@ -9,7 +9,7 @@ namespace simde {
  *
  *  @tparam TensorType the type of the tensors
  */
-template<typename TensorType = type::tensor<double>>
+template<typename TensorType = type::tensor>
 DECLARE_TEMPLATED_PROPERTY_TYPE(IterationImprover, TensorType);
 
 template<typename TensorType>
@@ -37,9 +37,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(IterationImprover, TensorType) {
     return rv;
 }
 
-extern template class IterationImprover<type::tensor<double>>;
-extern template class IterationImprover<type::tensor<float>>;
-extern template class IterationImprover<type::tensor_of_tensors<double>>;
-extern template class IterationImprover<type::tensor_of_tensors<float>>;
+extern template class IterationImprover<type::tensor>;
+extern template class IterationImprover<type::tensor_of_tensors>;
 
 } // namespace simde

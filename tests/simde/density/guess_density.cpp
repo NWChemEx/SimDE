@@ -1,7 +1,7 @@
-#include "test_property_type.hpp"
-#include <property_types/guess_density.hpp>
+#include "../test_property_type.hpp"
+#include "simde/density/guess_density.hpp"
 
-TEST_CASE("GuessDensity"){
-    test_property_type<property_types::GuessDensity<>>(
-    {"Molecule", "Basis Set"}, {"Molecular Orbitals"});
+TEST_CASE("GuessDensity") {
+    test_property_type<simde::GuessDensity>({"System Hamiltonian", "Basis Set"},
+                                            {"Initial density"});
 }

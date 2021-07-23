@@ -1,8 +1,7 @@
-#include "simde/reference_wavefunction.hpp"
+#include "simde/wavefunctions/reference_wavefunction.hpp"
 
 namespace simde {
 
-template class ReferenceWavefunction<double>;
-template class ReferenceWavefunction<float>;
+template class ReferenceWavefunction<type::canonical_reference>;
 
 } // namespace simde

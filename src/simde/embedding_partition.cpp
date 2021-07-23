@@ -2,11 +2,7 @@
 
 namespace simde {
 
-template class EmbedPartition<double>;
-template class EmbedPartition<double, type::derived_space_t<double>>;
-template class EmbedPartition<double, type::canonical_space_t<double>>;
-template class EmbedPartition<float>;
-template class EmbedPartition<float, type::derived_space_t<float>>;
-template class EmbedPartition<float, type::canonical_space_t<float>>;
+template class EmbedPartition<type::derived_space>;
+template class EmbedPartition<type::canonical_space>;
 
 } // namespace simde

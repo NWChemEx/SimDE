@@ -2,17 +2,17 @@
 
 namespace simde {
 
-template<typename OperatorType, typename ElementType>
+template<typename OperatorType>
 DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation,
-                                OperatorType, ElementType);
+                                OperatorType);
 
-template<typename OperatorType, typename ElementType>
+template<typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
-                               OperatorType, ElementType) {
-    using ao_space          = type::ao_space<ElementType>;
-    using sparse_ao_space   = type::sparse_ao_space<ElementType>;
-    using ind_derived_space = type::ind_derived_space<ElementType>;
-    using dep_derived_space = type::dep_derived_space<ElementType>;
+                               OperatorType) {
+    using ao_space          = type::ao_space;
+    using sparse_ao_space   = type::sparse_ao_space;
+    using ind_derived_space = type::ind_derived_space;
+    using dep_derived_space = type::dep_derived_space;
 
     using ao_space_map          = std::map<unsigned int, ao_space>;
     using sparse_ao_space_map   = std::map<unsigned int, sparse_ao_space>;
@@ -36,15 +36,11 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
     return rv;
 }
 
-template<typename OperatorType, typename ElementType>
+template<typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralTransformedTensorRepresentation,
-                                OperatorType, ElementType) {
+                                OperatorType) {
     return sde::declare_results().add_field<type::tensor_of_tensors>(
       "Transformed tensor");
 }
-
-template<typename OperatorType>
-using TransformedTensorRepresentationD =
-  TransformedTensorRepresentation<OperatorType, double>;
 
 } // namespace simde
