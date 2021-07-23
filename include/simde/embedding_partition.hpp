@@ -1,0 +1,56 @@
+#pragma once
+#include "simde/types.hpp"
+#include <sde/property_type/property_type.hpp>
+
+namespace simde {
+
+/** @brief Property type for modules that can partition the density into
+ * active and environment parts
+ *
+ *  @tparam ElementType the type of the elements in the basis set
+ *  @tparam OrbitalType the type of the input and output orbital spaces
+ */
+template<typename ElementType = double,
+         typename OrbitalType = type::orbital_space_t<ElementType>>
+struct EmbedPartition
+  : public sde::PropertyType<EmbedPartition<ElementType, OrbitalType>> {
+    /// Generates the input fields required by this property type
+    auto inputs_();
+    /// Generates the result fields required by this property type
+    auto results_();
+}; // class UpdateMOs
+
+//-------------------------------Implementations--------------------------------
+template<typename ElementType, typename OrbitalType>
+auto EmbedPartition<ElementType, OrbitalType>::inputs_() {
+    auto rv =
+      sde::declare_input()
+        .add_field<const type::molecule&>("Molecule")
+        .add_field<const type::ao_space_t<ElementType>&>("Basis Set")
+        .template add_field<const std::vector<type::size>&>("Active Atoms")
+        .template add_field<const OrbitalType&>("Initial Orbitals");
+    rv["Molecule"].set_description("The molecule associated with the density");
+    rv["Basis Set"].set_description("The basis set used for the density");
+    rv["Active Atoms"].set_description("The list of active atoms");
+    rv["Initial Orbitals"].set_description("The initial orbital space");
+    return rv;
+}
+
+template<typename ElementType, typename OrbitalType>
+auto EmbedPartition<ElementType, OrbitalType>::results_() {
+    auto rv = sde::declare_result()
+                .template add_field<OrbitalType>("Active Orbitals")
+                .template add_field<OrbitalType>("Environment Orbitals");
+    rv["Active Orbitals"].set_description("The active orbital space");
+    rv["Environment Orbitals"].set_description("The environment orbital space");
+    return rv;
+}
+
+extern template class EmbedPartition<double>;
+extern template class EmbedPartition<double, type::derived_space_t<double>>;
+extern template class EmbedPartition<double, type::canonical_space_t<double>>;
+extern template class EmbedPartition<float>;
+extern template class EmbedPartition<float, type::derived_space_t<float>>;
+extern template class EmbedPartition<float, type::canonical_space_t<float>>;
+
+} // namespace simde
