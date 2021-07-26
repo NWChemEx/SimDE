@@ -5,6 +5,5 @@ using namespace simde;
 
 TEST_CASE("ReferenceWavefunction") {
     test_property_type<ReferenceWavefunction<type::canonical_space>>(
-      {"Molecule", "Basis Set", "Derivative"},
-      {"Energy", "Molecular Orbitals"});
+      {"Hamiltonian", "AO Basis Set"}, {"Wavefunction"});
 }

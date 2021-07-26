@@ -3,6 +3,4 @@
 
 using namespace simde;
 
-TEST_CASE("Energy") {
-    test_property_type<Energy>({"Molecule", "Derivative"}, {"Energy"});
-}
+TEST_CASE("Energy") { test_property_type<Energy>({"system"}, {"Energy"}); }
