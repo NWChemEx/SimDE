@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -10,7 +10,7 @@ DECLARE_PROPERTY_TYPE(ShellNorms);
 
 PROPERTY_TYPE_INPUTS(ShellNorms) {
     using basis_type = const type::ao_space&;
-    auto rv = sde::declare_input()
+    auto rv          = pluginplay::declare_input()
                 .add_field<basis_type>("Basis1")
                 .template add_field<basis_type>("Basis2")
                 .template add_field<type::size>("Derivative", type::size{0});
@@ -23,7 +23,8 @@ PROPERTY_TYPE_INPUTS(ShellNorms) {
 
 PROPERTY_TYPE_RESULTS(ShellNorms) {
     using return_type = std::vector<std::vector<double>>;
-    auto rv = sde::declare_result().add_field<return_type>("Screening Matrix");
+    auto rv =
+      pluginplay::declare_result().add_field<return_type>("Screening Matrix");
     rv["Screening Matrix"].set_description(
       "The Cauchy Schwarz screening matrix");
     return rv;

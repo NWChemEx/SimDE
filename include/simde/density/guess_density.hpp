@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -13,21 +13,22 @@ namespace simde {
  *
  *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
-DECLARE_PROPERTY_TYPE(GuessDensity);
+DECLARE_PROPERTY_TYPE(Guespluginplaynsity);
 
 //-------------------------------Implementations--------------------------------
-PROPERTY_TYPE_INPUTS(GuessDensity) {
+PROPERTY_TYPE_INPUTS(Guespluginplaynsity) {
     using ham_t      = const type::hamiltonian&;
     using ao_space_t = const type::ao_space&;
 
-    auto rv = sde::declare_input()
+    auto rv = pluginplay::declare_input()
                 .add_field<ham_t>("System Hamiltonian")
                 .template add_field<ao_space_t>("Basis Set");
     return rv;
 }
 
-PROPERTY_TYPE_RESULTS(GuessDensity) {
-    auto rv = sde::declare_result().add_field<type::tensor>("Initial density");
+PROPERTY_TYPE_RESULTS(Guespluginplaynsity) {
+    auto rv =
+      pluginplay::declare_result().add_field<type::tensor>("Initial density");
     return rv;
 }
 

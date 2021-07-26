@@ -1,5 +1,5 @@
 #pragma once
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -15,7 +15,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralAOTensorRepresentation, OperatorType) {
     using sparse_ao_space_map_t = const sparse_ao_space_map&;
     using op                    = const OperatorType&;
 
-    auto rv = sde::declare_inputs()
+    auto rv = pluginplay::declare_inputs()
                 .add_field<ao_space_map_t>("AO Spaces")
                 .template add_field<sparse_ao_space_map_t>("Sparse AO Spaces")
                 .template add_field<op>("Operator");
@@ -24,7 +24,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralAOTensorRepresentation, OperatorType) {
 
 template<typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralAOTensorRepresentation, OperatorType) {
-    auto rv = sde::declare_results().add_field<type::tensor_of_tensors>(
+    auto rv = pluginplay::declare_results().add_field<type::tensor_of_tensors>(
       "Tensor representation");
     return rv;
 }

@@ -10,7 +10,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(WavefunctionEnergy, WavefunctionType) {
     using ham_t = const type::hamiltonian&;
     using wf_t  = const WavefunctionType&;
 
-    auto rv = sde::declare_input()
+    auto rv = pluginplay::declare_input()
                 .add_field<ham_t>("Hamiltonian")
                 .template add_field<wf_t>("Wavefunction");
     return rv;
@@ -18,7 +18,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(WavefunctionEnergy, WavefunctionType) {
 
 template<typename WavefunctionType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(WavefunctionEnergy, WavefunctionType) {
-    auto rv = sde::declare_result().add_field<double>("Energy");
+    auto rv = pluginplay::declare_result().add_field<double>("Energy");
     return rv;
 }
 

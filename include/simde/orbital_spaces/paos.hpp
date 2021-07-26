@@ -10,12 +10,12 @@ DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(
 
 template<typename InputOrbitals, typename OutputOrbitals>
 TEMPLATED_PROPERTY_TYPE_INPUTS(PAOs, InputOrbitals, OutputOrbitals) {
-    return sde::declare_input();
+    return pluginplay::declare_input();
 }
 
 template<typename InputOrbitals, typename OutputOrbitals>
 TEMPLATED_PROPERTY_TYPE_RESULTS(PAOs, InputOrbitals, OutputOrbitals) {
-    return sde::declare_result();
+    return pluginplay::declare_result();
 }
 
 } // namespace simde

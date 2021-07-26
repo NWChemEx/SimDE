@@ -1,5 +1,5 @@
 #pragma once
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -13,18 +13,18 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType,
     using const_ao_space_t = const type::ao_space;
 
     if constexpr(N == 2) {
-        return sde::declare_input()
+        return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra")
           .template add_field<const OperatorType&>("op")
           .template add_field<const_ao_space_t>("ket");
     } else if constexpr(N == 3) {
-        return sde::declare_input()
+        return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra")
           .template add_field<const OperatorType&>("op")
           .template add_field<const_ao_space_t>("ket 1")
           .template add_field<const_ao_space_t>("ket 2");
     } else if constexpr(N == 4) {
-        return sde::declare_input()
+        return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra 1")
           .template add_field<const_ao_space_t>("bra 2")
           .template add_field<const OperatorType&>("op")
@@ -38,7 +38,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType,
 
 template<std::size_t N, typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(AOTensorRepresentation, N, OperatorType) {
-    return sde::declare_result().add_field<type::tensor>(
+    return pluginplay::declare_result().add_field<type::tensor>(
       "tensor representation");
 }
 

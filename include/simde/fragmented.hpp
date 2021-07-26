@@ -1,6 +1,6 @@
 #pragma once
 #include <libchemist/set_theory/set_theory.hpp>
-#include <sde/sde.hpp>
+#include <pluginplay/pluginplay.hpp>
 
 namespace simde {
 
@@ -30,13 +30,15 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(Fragmented, Type2Fragment);
 
 template<typename Type2Fragment>
 PROPERTY_TYPE_INPUTS(Fragmented<Type2Fragment>) {
-    return sde::declare_input().add_field<Type2Fragment>("Object to Fragment");
+    return pluginplay::declare_input().add_field<Type2Fragment>(
+      "Object to Fragment");
 }
 
 template<typename Type2Fragment>
 PROPERTY_TYPE_RESULTS(Fragmented<Type2Fragment>) {
     using return_type = libchemist::set_theory::FamilyOfSets<Type2Fragment>;
-    return sde::declare_result().add_field<return_type>("Fragmented Object");
+    return pluginplay::declare_result().add_field<return_type>(
+      "Fragmented Object");
 }
 
 } // namespace simde

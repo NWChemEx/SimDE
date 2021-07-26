@@ -26,7 +26,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
     using op_t                    = const OperatorType&;
 
     auto rv =
-      sde::declare_inputs()
+      pluginplay::declare_inputs()
         .add_field<ao_space_map_t>("AO spaces")
         .template add_field<sparse_ao_space_map_t>("Sparse AO spaces")
         .template add_field<ind_derived_space_map_t>(
@@ -39,7 +39,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
 template<typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralTransformedTensorRepresentation,
                                 OperatorType) {
-    return sde::declare_results().add_field<type::tensor_of_tensors>(
+    return pluginplay::declare_results().add_field<type::tensor_of_tensors>(
       "Transformed tensor");
 }
 

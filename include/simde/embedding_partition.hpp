@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -17,7 +17,7 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(EmbedPartition, OrbitalType);
 template<typename OrbitalType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(EmbedPartition, OrbitalType) {
     auto rv =
-      sde::declare_input()
+      pluginplay::declare_input()
         .add_field<const type::molecule&>("Molecule")
         .add_field<const type::ao_space&>("Basis Set")
         .template add_field<const std::vector<type::size>&>("Active Atoms")
@@ -31,7 +31,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(EmbedPartition, OrbitalType) {
 
 template<typename OrbitalType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(EmbedPartition, OrbitalType) {
-    auto rv = sde::declare_result()
+    auto rv = pluginplay::declare_result()
                 .template add_field<OrbitalType>("Active Orbitals")
                 .template add_field<OrbitalType>("Environment Orbitals");
     rv["Active Orbitals"].set_description("The active orbital space");

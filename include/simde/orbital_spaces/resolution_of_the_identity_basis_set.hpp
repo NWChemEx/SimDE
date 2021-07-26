@@ -1,5 +1,5 @@
 #pragma once
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -15,7 +15,7 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(ResolutionOfTheIdentityBasisSet, ORBSType,
 template<typename ORBSType, typename CABSType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(ResolutionOfTheIdentityBasisSet, ORBSType,
                                CABSType) {
-    auto rv = sde::declare_input()
+    auto rv = pluginplay::declare_input()
                 .add_field<const ORBSType&>("orbital space")
                 .template add_field<const CABSType&>("cabs space");
     return rv;
@@ -24,7 +24,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ResolutionOfTheIdentityBasisSet, ORBSType,
 template<typename ORBSType, typename CABSType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(ResolutionOfTheIdentityBasisSet, ORBSType,
                                 CABSType) {
-    auto rv = sde::declare_result().add_field<CABSType>("RIBS");
+    auto rv = pluginplay::declare_result().add_field<CABSType>("RIBS");
     return rv;
 }
 

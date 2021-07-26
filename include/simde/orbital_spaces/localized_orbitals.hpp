@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -20,7 +20,7 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(LocalizedOrbitals, InputOrbitals,
 template<typename InputOrbitals, typename OutputOrbitals>
 TEMPLATED_PROPERTY_TYPE_INPUTS(LocalizedOrbitals, InputOrbitals,
                                OutputOrbitals) {
-    auto rv = sde::declare_input()
+    auto rv = pluginplay::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const InputOrbitals&>("Orbitals");
     rv["Molecule"].set_description(
@@ -32,7 +32,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(LocalizedOrbitals, InputOrbitals,
 template<typename InputOrbitals, typename OutputOrbitals>
 TEMPLATED_PROPERTY_TYPE_RESULTS(LocalizedOrbitals, InputOrbitals,
                                 OutputOrbitals) {
-    auto rv = sde::declare_result().add_field<OutputOrbitals>("Local Orbitals");
+    auto rv =
+      pluginplay::declare_result().add_field<OutputOrbitals>("Local Orbitals");
     rv["Local Orbitals"].set_description("The localized orbitals");
     return rv;
 }

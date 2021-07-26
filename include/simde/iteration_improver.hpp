@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -14,7 +14,7 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(IterationImprover, TensorType);
 
 template<typename TensorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(IterationImprover, TensorType) {
-    auto rv = sde::declare_input()
+    auto rv = pluginplay::declare_input()
                 .template add_field<const TensorType&>("Initial Tensor")
                 .template add_field<const TensorType&>("Current Tensor")
                 .template add_field<const TensorType&>("Initial Error Tensor")
@@ -31,8 +31,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(IterationImprover, TensorType) {
 
 template<typename TensorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(IterationImprover, TensorType) {
-    auto rv =
-      sde::declare_result().template add_field<TensorType>("Improved Tensor");
+    auto rv = pluginplay::declare_result().template add_field<TensorType>(
+      "Improved Tensor");
     rv["Improved Tensor"].set_description("The improved tensor guess");
     return rv;
 }

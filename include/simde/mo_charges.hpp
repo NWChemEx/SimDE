@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <sde/property_type/property_type.hpp>
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
@@ -15,7 +15,7 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(MOCharges, OrbitalType);
 
 template<typename OrbitalType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(MOCharges, OrbitalType) {
-    auto rv = sde::declare_input()
+    auto rv = pluginplay::declare_input()
                 .add_field<const type::molecule&>("Molecule")
                 .add_field<const OrbitalType&>("Molecular Orbitals");
     rv["Molecule"].set_description("The molecular system");
@@ -25,7 +25,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(MOCharges, OrbitalType) {
 
 template<typename OrbitalType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(MOCharges, OrbitalType) {
-    auto rv = sde::declare_result().add_field<type::tensor>("MO Charges");
+    auto rv =
+      pluginplay::declare_result().add_field<type::tensor>("MO Charges");
     rv["MO Charges"].set_description("The calculated MO charge densities");
     return rv;
 }

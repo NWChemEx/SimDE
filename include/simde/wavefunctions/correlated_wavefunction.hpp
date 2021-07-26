@@ -12,7 +12,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(CorrelatedWavefunction, InputWavefunction,
     using op    = const type::hamiltonian&;
     using in_wf = const InputWavefunction&;
 
-    auto rv = sde::declare_inputs()
+    auto rv = pluginplay::declare_inputs()
                 .add_field<op>("Hamiltonian")
                 .template add_field<in_wf>("Referencw Wavefunction");
 
@@ -24,8 +24,8 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(CorrelatedWavefunction, InputWavefunction,
                                 OutputWavefunction) {
     using out_wf = const OutputWavefunction&;
 
-    auto rv =
-      sde::declare_results().add_field<out_wf>("Correlated Wavefunction");
+    auto rv = pluginplay::declare_results().add_field<out_wf>(
+      "Correlated Wavefunction");
 
     return rv;
 }
