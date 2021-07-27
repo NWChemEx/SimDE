@@ -2,20 +2,20 @@
 
 namespace simde {
 
-DECLARE_MODULE(Fock);
+DECLARE_PROPERTY_TYPE(FockOp);
 
-MODULE_INPUTS(Fock) {
+PROPERTY_TYPE_INPUTS(FockOp) {
     using ham         = const type::hamiltonian&;
     using tensor_type = const type::tensor&;
 
-    auto rv = pluginplay::declare_inputs()
+    auto rv = pluginplay::declare_input()
                 .add_field<ham>("System Hamiltonian")
                 .template add_field<tensor_type>("Density");
     return rv;
 }
 
-MODULE_RESULTS(Fock) {
-    return pluginplay::declare_results().add_field<type::fock>("Fock operator");
+PROPERTY_TYPE_RESULTS(FockOp) {
+    return pluginplay::declare_result().add_field<type::fock>("Fock operator");
 }
 
 } // namespace simde

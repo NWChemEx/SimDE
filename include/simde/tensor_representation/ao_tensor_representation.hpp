@@ -4,12 +4,10 @@
 namespace simde {
 
 template<std::size_t N, typename OperatorType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(AOTensorRepresentation, N, OperatorType,
-                                ElementType);
+DECLARE_TEMPLATED_PROPERTY_TYPE(AOTensorRepresentation, N, OperatorType);
 
 template<std::size_t N, typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType,
-                               ElementType) {
+TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType) {
     using const_ao_space_t = const type::ao_space;
 
     if constexpr(N == 2) {
