@@ -13,10 +13,10 @@ namespace simde {
  *
  *  @tparam OrbitalType The type of the orbital spaces in the returned map
  */
-DECLARE_PROPERTY_TYPE(Guespluginplaynsity);
+DECLARE_PROPERTY_TYPE(GuessDensity);
 
 //-------------------------------Implementations--------------------------------
-PROPERTY_TYPE_INPUTS(Guespluginplaynsity) {
+PROPERTY_TYPE_INPUTS(GuessDensity) {
     using ham_t      = const type::hamiltonian&;
     using ao_space_t = const type::ao_space&;
 
@@ -26,7 +26,7 @@ PROPERTY_TYPE_INPUTS(Guespluginplaynsity) {
     return rv;
 }
 
-PROPERTY_TYPE_RESULTS(Guespluginplaynsity) {
+PROPERTY_TYPE_RESULTS(GuessDensity) {
     auto rv =
       pluginplay::declare_result().add_field<type::tensor>("Initial density");
     return rv;
