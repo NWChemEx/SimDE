@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/version.txt" VERSION)
-project(property_types VERSION "${VERSION}" LANGUAGES CXX)
+project(simde VERSION "${VERSION}" LANGUAGES CXX)
 
 set(
     CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmake"
@@ -9,7 +9,7 @@ set(
 
 include(get_cpp)
 include(nwx_cxx_api_docs)
-nwx_cxx_api_docs("${CMAKE_CURRENT_SOURCE_DIR}/libchemist")
+nwx_cxx_api_docs("${CMAKE_CURRENT_SOURCE_DIR}/src/simde")
 
 ### Options ###
 option(BUILD_TESTING "Should we build the tests?" OFF)
@@ -19,16 +19,15 @@ cpp_find_or_build_dependency(
     libchemist
     URL github.com/NWChemEx-Project/libchemist
     PRIVATE TRUE
-    VERSION db4b0f4783e3aed21ee44fc26e40243b042092f1 # TODO: remove when modified for mass changes to LibChemist
     BUILD_TARGET chemist
     FIND_TARGET nwx::chemist
     CMAKE_ARGS BUILD_TESTING=OFF
 )
 
 cpp_add_library(
-    property_types
-    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/property_types"
-    INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include/property_types"
+    ${PROJECT_NAME}
+    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
+    INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}"
     DEPENDS nwx::chemist
 )
 
@@ -41,11 +40,9 @@ if("${BUILD_TESTING}")
         FIND_TARGET Catch2::Catch2
     )
     cpp_add_tests(
-        test_property_types
-        SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests"
-        INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests"
-        DEPENDS Catch2::Catch2 property_types
+        test_${PROJECT_NAME}
+        SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests/${PROJECT_NAME}"
+        INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
+        DEPENDS Catch2::Catch2 ${PROJECT_NAME}
     )
 endif()
-
-
