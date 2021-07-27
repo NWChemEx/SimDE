@@ -9,32 +9,32 @@ namespace simde {
 // -----------------------------------------------------------------------------
 
 /// double precision, electron kinetic energy
-using EKineticD = TwoCenterAOTensorRepresentationD<type::el_kinetic>;
+using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
 
 /// Two-center, double precision, electron-electron repulsion integrals
-using ERI2D = TwoCenterAOTensorRepresentationD<type::el_el_coulomb>;
+using ERI2 = TwoCenterAOTensorRepresentation<type::el_el_coulomb>;
 
 /// Three-center, double precision, electron-electron repulsion integrals
-using ERI3D = ThreeCenterAOTensorRepresentationD<type::el_el_coulomb>;
+using ERI3 = ThreeCenterAOTensorRepresentation<type::el_el_coulomb>;
 
 /// Four-center, double precision, electron-electron repulsion integrals
-using ERI4D = FourCenterAOTensorRepresentationD<type::el_el_coulomb>;
+using ERI4 = FourCenterAOTensorRepresentation<type::el_el_coulomb>;
 
 /// double precision, electron-nucleus attraction energies
-using ENuclearD = TwoCenterAOTensorRepresentationD<type::el_nuc_coulomb>;
+using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
 
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 
 // The Coulomb matrix (i.e. J) in SCF computed in double precision
-using MeanFieldJD = TwoCenterAOTensorRepresentationD<type::el_scf_j>;
+using MeanFieldJ = TwoCenterAOTensorRepresentation<type::el_scf_j>;
 
 // The exchange matrix (i.e. K) in SCF computed in double precision
-using MeanFieldKD = TwoCenterAOTensorRepresentationD<type::el_scf_k>;
+using MeanFieldK = TwoCenterAOTensorRepresentation<type::el_scf_k>;
 
 // The Kohn-Sham XC matrix in DFT computed in double precision
-using XCD = TwoCenterAOTensorRepresentationD<type::el_xc>;
+using XC = TwoCenterAOTensorRepresentation<type::el_xc>;
 
 // The Fock matrix computed in double precision
-using FockD = TwoCenterAOTensorRepresentationD<libchemist::FockOperator>;
+using Fock = TwoCenterAOTensorRepresentation<libchemist::FockOperator>;
 
 } // namespace simde
