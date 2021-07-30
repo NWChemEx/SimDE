@@ -55,11 +55,11 @@ using el_el_coulomb = libchemist::ElectronElectronCoulomb;
 
 using el_nuc_coulomb = libchemist::ElectronNuclearCoulomb;
 
-using el_scf_j = libchemist::MeanFieldElectronCoulomb;
+using el_scf_j = libchemist::ElectronEDensityCoulomb;
 
-using el_scf_k = libchemist::MeanFieldElectronExactExchange;
+using el_scf_k = libchemist::ElectronEDensityExchange;
 
-using el_xc = libchemist::KohnShamExchangeCorrelation;
+using el_xc = libchemist::ExchangeCorrelation;
 
 using fock = libchemist::FockOperator;
 
@@ -82,7 +82,7 @@ using many_body = libchemist::wavefunction::ManyBodyWf;
 
 using canonical_many_body = libchemist::wavefunction::CanonicalManyBodyWf;
 
-using _local_many_body = libchemist::wavefunction::LocalManyBodyWf;
+using local_many_body = libchemist::wavefunction::LocalManyBodyWf;
 
 using canonical_local_many_body =
   libchemist::wavefunction::CanonicalLocalManyBodyWf;
