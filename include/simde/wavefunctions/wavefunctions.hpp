@@ -3,13 +3,13 @@
 
 namespace simde {
 
-using NoncanonicalReferenceD =
-  ReferenceWavefunction<type::noncanonical_reference, double>;
+using NoncanonicalReference =
+  ReferenceWavefunction<type::noncanonical_reference>;
 
-using CanonicalReferenceD =
-  ReferenceWavefunction<type::canonical_reference, double>;
+using CanonicalReference =
+  ReferenceWavefunction<type::canonical_reference>;
 
-using Perturbative = CorrelatedWavefunction<type::canonical_reference,
-                                            type::canonical_perturbative>;
+//using Perturbative = CorrelatedWavefunction<type::canonical_reference,
+//                                            type::canonical_perturbative>;
 
 } // namespace simde
