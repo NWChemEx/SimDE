@@ -17,7 +17,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(TransformedTensorRepresentation, OperatorType) {
     using derived_space_map_t = const derived_space_map&;
     using op_t                = const OperatorType&;
 
-    auto rv = pluginplay::declare_inputs()
+    auto rv = pluginplay::declare_input()
                 .add_field<ao_space_map_t>("AO spaces")
                 .template add_field<derived_space_map_t>("Derived spaces")
                 .template add_field<op_t>("Operator");
@@ -26,7 +26,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(TransformedTensorRepresentation, OperatorType) {
 
 template<typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(TransformedTensorRepresentation, OperatorType) {
-    return pluginplay::declare_results().add_field<type::tensor>(
+    return pluginplay::declare_result().add_field<type::tensor>(
       "Transformed tensor");
 }
 

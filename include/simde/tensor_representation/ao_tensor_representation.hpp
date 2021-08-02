@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/types.hpp"
 #include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
@@ -8,7 +9,7 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(AOTensorRepresentation, N, OperatorType);
 
 template<std::size_t N, typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType) {
-    using const_ao_space_t = const type::ao_space;
+    using const_ao_space_t = const simde::type::ao_space;
 
     if constexpr(N == 2) {
         return pluginplay::declare_input()
