@@ -1,17 +1,19 @@
 #pragma once
+#include "simde/types.hpp"
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
-DECLARE_MODULE(SystemHamiltonian);
+DECLARE_PROPERTY_TYPE(SystemHamiltonian);
 
-MODULE_INPUTS(SystemHamiltonian) {
+PROPERTY_TYPE_INPUTS(SystemHamiltonian) {
     using system = const type::chemical_system&;
-    auto rv = pluginplay::declare_inputs().add_field<system>("Chemical System");
+    auto rv = pluginplay::declare_input().add_field<system>("Chemical System");
     return rv;
 }
 
-MODULE_RESULTS(SystemHamiltonian) {
-    return pluginplay::declare_results().add_field<type::hamiltonian>(
+PROPERTY_TYPE_RESULTS(SystemHamiltonian) {
+    return pluginplay::declare_result().add_field<type::hamiltonian>(
       "Hamiltonian");
 }
 
