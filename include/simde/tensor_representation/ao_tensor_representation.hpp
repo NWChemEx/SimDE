@@ -4,29 +4,50 @@
 
 namespace simde {
 
+namespace {
+
+template<typename OperatorType>
+auto name_operator() {
+    if constexpr(std::is_same_v<OperatorType, simde::type::el_identity>) {
+        return "[I_1]";
+    } else if constexpr(std::is_same_v<OperatorType, simde::type::el_dipole>) {
+        return "[r_1]";
+    } else if constexpr(std::is_same_v<OperatorType,
+                                       simde::type::el_quadrupole>) {
+        return "[r_1]^2";
+    } else if constexpr(std::is_same_v<OperatorType,
+                                       simde::type::el_octupole>) {
+        return "[r_1]^3";
+    } else {
+        return "op";
+    }
+}
+
+} // namespace
+
 template<std::size_t N, typename OperatorType>
 DECLARE_TEMPLATED_PROPERTY_TYPE(AOTensorRepresentation, N, OperatorType);
 
 template<std::size_t N, typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType) {
     using const_ao_space_t = const simde::type::ao_space;
-
+    auto op_key            = name_operator<OperatorType>();
     if constexpr(N == 2) {
         return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra")
-          .template add_field<const OperatorType&>("op")
+          .template add_field<const OperatorType&>(op_key)
           .template add_field<const_ao_space_t>("ket");
     } else if constexpr(N == 3) {
         return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra")
-          .template add_field<const OperatorType&>("op")
+          .template add_field<const OperatorType&>(op_key)
           .template add_field<const_ao_space_t>("ket 1")
           .template add_field<const_ao_space_t>("ket 2");
     } else if constexpr(N == 4) {
         return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra 1")
           .template add_field<const_ao_space_t>("bra 2")
-          .template add_field<const OperatorType&>("op")
+          .template add_field<const OperatorType&>(op_key)
           .template add_field<const_ao_space_t>("ket 1")
           .template add_field<const_ao_space_t>("ket 2");
     } else {
@@ -37,8 +58,9 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType) {
 
 template<std::size_t N, typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(AOTensorRepresentation, N, OperatorType) {
-    return pluginplay::declare_result().add_field<type::tensor>(
-      "tensor representation");
+    auto op_name = name_operator<OperatorType>();
+    auto r_key   = std::string(op_name) + " tensor representation";
+    return pluginplay::declare_result().add_field<type::tensor>(r_key);
 }
 
 template<typename OperatorType>
