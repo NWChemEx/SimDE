@@ -19,7 +19,11 @@ using molecule = libchemist::Molecule;
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = libchemist::ChemicalSystem;
 
-// ------------------------------ Orbital Spaces -------------------------------
+/// Typedef of the AO Basis Set
+using ao_basis_set = libchemist::AOBasisSetD;
+
+// ------------------------------ Orbital Spaces
+// -------------------------------
 
 /// Typedef of class describing an AO space
 using ao_space = libchemist::orbital_space::AOSpaceD;
@@ -49,17 +53,33 @@ using tensor_of_tensors = libchemist::type::tensor_of_tensors;
 // ----------------------------- Operators -------------------------------------
 // -----------------------------------------------------------------------------
 
-using el_kinetic = libchemist::ElectronKinetic;
+using el_dipole = libchemist::ElectricDipole;
 
 using el_el_coulomb = libchemist::ElectronElectronCoulomb;
 
+using el_el_delta = libchemist::ElectronElectronDelta;
+
+using el_el_f12_commutator = libchemist::ElectronElectronF12Commutator;
+
+using el_el_stg = libchemist::ElectronElectronSTG;
+
+using el_el_yukawa = libchemist::ElectronElectronYukawa;
+
+using el_identity = libchemist::ElectronIdentity;
+
+using el_kinetic = libchemist::ElectronKinetic;
+
 using el_nuc_coulomb = libchemist::ElectronNuclearCoulomb;
 
-using el_scf_j = libchemist::MeanFieldElectronCoulomb;
+using el_octupole = libchemist::ElectricOctupole;
 
-using el_scf_k = libchemist::MeanFieldElectronExactExchange;
+using el_quadrupole = libchemist::ElectricQuadrupole;
 
-using el_xc = libchemist::KohnShamExchangeCorrelation;
+using el_scf_j = libchemist::ElectronEDensityCoulomb;
+
+using el_scf_k = libchemist::ElectronEDensityExchange;
+
+using el_xc = libchemist::ExchangeCorrelation;
 
 using fock = libchemist::FockOperator;
 
@@ -82,7 +102,7 @@ using many_body = libchemist::wavefunction::ManyBodyWf;
 
 using canonical_many_body = libchemist::wavefunction::CanonicalManyBodyWf;
 
-using _local_many_body = libchemist::wavefunction::LocalManyBodyWf;
+using local_many_body = libchemist::wavefunction::LocalManyBodyWf;
 
 using canonical_local_many_body =
   libchemist::wavefunction::CanonicalLocalManyBodyWf;

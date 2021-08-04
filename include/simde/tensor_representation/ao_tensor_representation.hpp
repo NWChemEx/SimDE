@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/types.hpp"
 #include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
@@ -8,24 +9,25 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(AOTensorRepresentation, N, OperatorType);
 
 template<std::size_t N, typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType) {
-    using const_ao_space_t = const type::ao_space;
-
+    using const_ao_space_t = const simde::type::ao_space;
+    OperatorType op;
+    auto op_key = op.as_string();
     if constexpr(N == 2) {
         return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra")
-          .template add_field<const OperatorType&>("op")
+          .template add_field<const OperatorType&>(op_key)
           .template add_field<const_ao_space_t>("ket");
     } else if constexpr(N == 3) {
         return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra")
-          .template add_field<const OperatorType&>("op")
+          .template add_field<const OperatorType&>(op_key)
           .template add_field<const_ao_space_t>("ket 1")
           .template add_field<const_ao_space_t>("ket 2");
     } else if constexpr(N == 4) {
         return pluginplay::declare_input()
           .add_field<const_ao_space_t>("bra 1")
           .template add_field<const_ao_space_t>("bra 2")
-          .template add_field<const OperatorType&>("op")
+          .template add_field<const OperatorType&>(op_key)
           .template add_field<const_ao_space_t>("ket 1")
           .template add_field<const_ao_space_t>("ket 2");
     } else {
@@ -36,8 +38,17 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(AOTensorRepresentation, N, OperatorType) {
 
 template<std::size_t N, typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(AOTensorRepresentation, N, OperatorType) {
-    return pluginplay::declare_result().add_field<type::tensor>(
-      "tensor representation");
+    OperatorType op;
+    auto op_name      = op.as_string();
+    std::string r_key = "tensor representation";
+    if constexpr(N == 2) {
+        r_key = "(μ|" + op_name + "|ν)";
+    } else if constexpr(N == 3) {
+        r_key = "(μ|" + op_name + "|νλ)";
+    } else if constexpr(N == 4) {
+        r_key = "(μν|" + op_name + "|λθ)";
+    }
+    return pluginplay::declare_result().add_field<type::tensor>(r_key);
 }
 
 template<typename OperatorType>
