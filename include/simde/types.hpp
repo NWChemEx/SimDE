@@ -61,6 +61,7 @@ using nuc_nuc_coulomb = libchemist::NuclearNuclearCoulomb;
 using el_dipole = libchemist::ElectricDipole;
 
 using el_el_coulomb = libchemist::ElectronElectronCoulomb;
+
 using nel_nel_coulomb = libchemist::NElectronNElectronCoulomb;
 
 using el_el_delta = libchemist::ElectronElectronDelta;
@@ -74,21 +75,11 @@ using el_el_yukawa = libchemist::ElectronElectronYukawa;
 using el_identity = libchemist::ElectronIdentity;
 
 using el_kinetic = libchemist::ElectronKinetic;
+
 using nel_kinetic = libchemist::NElectronKinetic;
 
-using el_el_delta = libchemist::ElectronElectronDelta;
-
-using el_el_f12_commutator = libchemist::ElectronElectronF12Commutator;
-
-using el_el_stg = libchemist::ElectronElectronSTG;
-
-using el_el_yukawa = libchemist::ElectronElectronYukawa;
-
-using el_identity = libchemist::ElectronIdentity;
-
-using el_kinetic = libchemist::ElectronKinetic;
-
 using el_nuc_coulomb = libchemist::ElectronNuclearCoulomb;
+
 using nel_nuc_coulomb = libchemist::NElectronNuclearCoulomb;
 
 using el_octupole = libchemist::ElectricOctupole;
