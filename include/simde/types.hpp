@@ -67,6 +67,8 @@ using el_el_yukawa = libchemist::ElectronElectronYukawa;
 
 using el_identity = libchemist::ElectronIdentity;
 
+using el_identity_nuc = libchemist::ElectronIdentity_Nuclear;
+
 using el_kinetic = libchemist::ElectronKinetic;
 
 using el_nuc_coulomb = libchemist::ElectronNuclearCoulomb;

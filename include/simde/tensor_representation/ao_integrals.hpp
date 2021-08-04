@@ -12,6 +12,8 @@ using EDOI = TwoCenterAOTensorRepresentation<type::el_el_delta>;
 
 using EOverlap = TwoCenterAOTensorRepresentation<type::el_identity>;
 
+using EOverlapDeriv = TwoCenterAOTensorRepresentation<type::el_identity_nuc>;
+
 /// double precision, electron kinetic energy
 using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
 
