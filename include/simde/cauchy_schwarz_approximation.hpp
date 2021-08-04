@@ -9,7 +9,7 @@ DECLARE_PROPERTY_TYPE(ShellNorms);
 //------------------------Implementations---------------------------------------
 
 PROPERTY_TYPE_INPUTS(ShellNorms) {
-    using basis_type = const type::ao_space&;
+    using basis_type = const simde::type::ao_space&;
     auto rv          = pluginplay::declare_input()
                 .add_field<basis_type>("Basis1")
                 .template add_field<basis_type>("Basis2")

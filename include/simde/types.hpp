@@ -19,6 +19,9 @@ using molecule = libchemist::Molecule;
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = libchemist::ChemicalSystem;
 
+/// Typedef of the AO Basis Set
+using ao_basis_set = libchemist::AOBasisSetD;
+
 /// Typedefs for one or more electrons
 using electron = libchemist::Electron;
 using many_electrons = libchemist::ManyElectrons;
@@ -61,6 +64,8 @@ using el_el_coulomb = libchemist::ElectronElectronCoulomb;
 using nel_nel_coulomb = libchemist::NElectronNElectronCoulomb;
 
 using el_el_delta = libchemist::ElectronElectronDelta;
+
+using el_el_f12_commutator = libchemist::ElectronElectronF12Commutator;
 
 using el_el_stg = libchemist::ElectronElectronSTG;
 
