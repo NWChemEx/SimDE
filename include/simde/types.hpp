@@ -49,17 +49,25 @@ using tensor_of_tensors = libchemist::type::tensor_of_tensors;
 // ----------------------------- Operators -------------------------------------
 // -----------------------------------------------------------------------------
 
-using el_identity = libchemist::ElectronIdentity;
-
-using el_kinetic = libchemist::ElectronKinetic;
+using el_dipole = libchemist::ElectricDipole;
 
 using el_el_coulomb = libchemist::ElectronElectronCoulomb;
+
+using el_el_delta = libchemist::ElectronElectronDelta;
 
 using el_el_stg = libchemist::ElectronElectronSTG;
 
 using el_el_yukawa = libchemist::ElectronElectronYukawa;
 
+using el_identity = libchemist::ElectronIdentity;
+
+using el_kinetic = libchemist::ElectronKinetic;
+
 using el_nuc_coulomb = libchemist::ElectronNuclearCoulomb;
+
+using el_octupole = libchemist::ElectricOctupole;
+
+using el_quadrupole = libchemist::ElectricQuadrupole;
 
 using el_scf_j = libchemist::ElectronEDensityCoulomb;
 
