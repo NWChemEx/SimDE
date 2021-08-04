@@ -8,6 +8,10 @@ namespace simde {
 // ------------------------ Fundamental Integrals ------------------------------
 // -----------------------------------------------------------------------------
 
+using EDOI = TwoCenterAOTensorRepresentation<type::el_el_delta>;
+
+using EOverlap = TwoCenterAOTensorRepresentation<type::el_identity>;
+
 /// double precision, electron kinetic energy
 using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
 
@@ -36,5 +40,17 @@ using XC = TwoCenterAOTensorRepresentation<type::el_xc>;
 
 // The Fock matrix computed in double precision
 using Fock = TwoCenterAOTensorRepresentation<libchemist::FockOperator>;
+
+// -----------------------------------------------------------------------------
+// ------------------------ F12 Related Integrals ------------------------------
+// -----------------------------------------------------------------------------
+
+using STG3 = ThreeCenterAOTensorRepresentation<type::el_el_stg>;
+
+using STG4 = FourCenterAOTensorRepresentation<type::el_el_stg>;
+
+using Yukawa3 = ThreeCenterAOTensorRepresentation<type::el_el_yukawa>;
+
+using Yukawa4 = FourCenterAOTensorRepresentation<type::el_el_yukawa>;
 
 } // namespace simde

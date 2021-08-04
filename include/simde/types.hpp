@@ -19,7 +19,11 @@ using molecule = libchemist::Molecule;
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = libchemist::ChemicalSystem;
 
-// ------------------------------ Orbital Spaces -------------------------------
+/// Typedef of the AO Basis Set
+using ao_basis_set = libchemist::AOBasisSetD;
+
+// ------------------------------ Orbital Spaces
+// -------------------------------
 
 /// Typedef of class describing an AO space
 using ao_space = libchemist::orbital_space::AOSpaceD;
@@ -54,6 +58,8 @@ using el_dipole = libchemist::ElectricDipole;
 using el_el_coulomb = libchemist::ElectronElectronCoulomb;
 
 using el_el_delta = libchemist::ElectronElectronDelta;
+
+using el_el_f12_commutator = libchemist::ElectronElectronF12Commutator;
 
 using el_el_stg = libchemist::ElectronElectronSTG;
 
