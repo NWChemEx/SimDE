@@ -22,8 +22,11 @@ using chemical_system = libchemist::ChemicalSystem;
 /// Typedef of the AO Basis Set
 using ao_basis_set = libchemist::AOBasisSetD;
 
-// ------------------------------ Orbital Spaces
-// -------------------------------
+/// Typedefs for one or more electrons
+using electron = libchemist::Electron;
+using many_electrons = libchemist::ManyElectrons;
+
+// ------------------------------ Orbital Spaces -------------------------------
 
 /// Typedef of class describing an AO space
 using ao_space = libchemist::orbital_space::AOSpaceD;
@@ -53,9 +56,13 @@ using tensor_of_tensors = libchemist::type::tensor_of_tensors;
 // ----------------------------- Operators -------------------------------------
 // -----------------------------------------------------------------------------
 
+using nuc_nuc_coulomb = libchemist::NuclearNuclearCoulomb;
+
 using el_dipole = libchemist::ElectricDipole;
 
 using el_el_coulomb = libchemist::ElectronElectronCoulomb;
+
+using nel_nel_coulomb = libchemist::NElectronNElectronCoulomb;
 
 using el_el_delta = libchemist::ElectronElectronDelta;
 
@@ -69,7 +76,11 @@ using el_identity = libchemist::ElectronIdentity;
 
 using el_kinetic = libchemist::ElectronKinetic;
 
+using nel_kinetic = libchemist::NElectronKinetic;
+
 using el_nuc_coulomb = libchemist::ElectronNuclearCoulomb;
+
+using nel_nuc_coulomb = libchemist::NElectronNuclearCoulomb;
 
 using el_octupole = libchemist::ElectricOctupole;
 
