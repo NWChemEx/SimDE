@@ -55,7 +55,7 @@ using tensor_of_tensors = libchemist::type::tensor_of_tensors;
 
 using el_dipole = libchemist::ElectricDipole;
 
-using el_el_coulomb = libchemist::ElectronElectronCoulomb;
+using el_el_coulomb = libchemist::ElectronRepulsion;
 
 using el_el_delta = libchemist::ElectronElectronDelta;
 
@@ -71,7 +71,7 @@ using el_identity_nuc = libchemist::ElectronIdentity_Nuclear;
 
 using el_kinetic = libchemist::ElectronKinetic;
 
-using el_nuc_coulomb = libchemist::ElectronNuclearCoulomb;
+using el_nuc_coulomb = libchemist::ElectronNuclearAttraction;
 
 using el_octupole = libchemist::ElectricOctupole;
 
