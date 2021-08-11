@@ -53,39 +53,52 @@ using tensor_of_tensors = libchemist::type::tensor_of_tensors;
 // ----------------------------- Operators -------------------------------------
 // -----------------------------------------------------------------------------
 
-using el_dipole = libchemist::ElectricDipole;
+using core_hamiltonian = libchemist::operators::CoreHamiltonian;
 
-using el_el_coulomb = libchemist::ElectronRepulsion;
+using el_dipole = libchemist::operators::ElectricDipole;
 
-using el_el_delta = libchemist::ElectronElectronDelta;
+using el_el_coulomb = libchemist::operators::ElectronRepulsion;
 
-using el_el_f12_commutator = libchemist::ElectronElectronF12Commutator;
+using el_el_delta = libchemist::operators::ElectronElectronDelta;
 
-using el_el_stg = libchemist::ElectronElectronSTG;
+using el_el_f12_commutator =
+  libchemist::operators::ElectronElectronF12Commutator;
 
-using el_el_yukawa = libchemist::ElectronElectronYukawa;
+using el_el_stg = libchemist::operators::ElectronElectronSTG;
 
-using el_identity = libchemist::ElectronIdentity;
+using el_el_yukawa = libchemist::operators::ElectronElectronYukawa;
 
-using el_identity_nuc = libchemist::ElectronIdentity_Nuclear;
+using el_identity = libchemist::operators::ElectronIdentity;
 
-using el_kinetic = libchemist::ElectronKinetic;
+using el_identity_nuc = libchemist::operators::ElectronIdentity_Nuclear;
 
-using el_nuc_coulomb = libchemist::ElectronNuclearAttraction;
+using el_kinetic = libchemist::operators::ElectronKinetic;
 
-using el_octupole = libchemist::ElectricOctupole;
+using el_nuc_coulomb = libchemist::operators::ElectronNuclearAttraction;
 
-using el_quadrupole = libchemist::ElectricQuadrupole;
+using el_octupole = libchemist::operators::ElectricOctupole;
 
-using el_scf_j = libchemist::ElectronEDensityCoulomb;
+using el_quadrupole = libchemist::operators::ElectricQuadrupole;
 
-using el_scf_k = libchemist::ElectronEDensityExchange;
+using el_scf_j = libchemist::operators::ElectronEDensityCoulomb;
 
-using el_xc = libchemist::ExchangeCorrelation;
+using el_scf_k = libchemist::operators::ElectronEDensityExchange;
 
-using fock = libchemist::FockOperator;
+using el_xc = libchemist::operators::ExchangeCorrelation;
 
-using hamiltonian = libchemist::Hamiltonian;
+using els_hamiltonian = libchemist::operators::ElectronicHamiltonian;
+
+using els_coulomb = libchemist::operators::NElectronRepulsion;
+
+using els_kinetic = libchemist::operators::NElectronKinetic;
+
+using els_nuc_coulomb = libchemist::operators::NElectronNuclearAttraction;
+
+using fock = libchemist::operators::Fock;
+
+using hamiltonian = libchemist::operators::Hamiltonian;
+
+using nuc_coulomb = libchemist::operators::NuclearRepulsion;
 
 // -----------------------------------------------------------------------------
 // ---------------------------- Wavefunctions ----------------------------------

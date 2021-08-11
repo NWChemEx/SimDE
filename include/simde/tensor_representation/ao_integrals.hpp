@@ -31,6 +31,9 @@ using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
 
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 
+// The one-electron core Hamiltonian
+using CoreH = TwoCenterAOTensorRepresentation<type::core_hamiltonian>;
+
 // The Coulomb matrix (i.e. J) in SCF computed in double precision
 using MeanFieldJ = TwoCenterAOTensorRepresentation<type::el_scf_j>;
 

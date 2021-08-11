@@ -18,7 +18,7 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(ReferenceWavefunction, WavefunctionType);
 
 template<typename WavefunctionType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(ReferenceWavefunction, WavefunctionType) {
-    using ham_t = const type::hamiltonian&;
+    using ham_t = const type::els_hamiltonian&;
     using ao_t  = const type::ao_space&;
 
     auto rv = pluginplay::declare_input()
