@@ -22,8 +22,13 @@ using chemical_system = libchemist::ChemicalSystem;
 /// Typedef of the AO Basis Set
 using ao_basis_set = libchemist::AOBasisSetD;
 
-// ------------------------------ Orbital Spaces
-// -------------------------------
+/// Typedef of an electron
+using el = libchemist::operators::Electron;
+
+/// Typedef of the electron density
+using el_density = libchemist::operators::OneElectronDensity;
+
+// ------------------------------ Orbital Spaces -------------------------------
 
 /// Typedef of class describing an AO space
 using ao_space = libchemist::orbital_space::AOSpaceD;
