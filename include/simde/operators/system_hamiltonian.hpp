@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <pluginplay/property_type/property_type.hpp>
+#include <pluginplay/pluginplay.hpp>
 
 namespace simde {
 

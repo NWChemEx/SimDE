@@ -1,4 +1,5 @@
 #pragma once
+#include <pluginplay/pluginplay.hpp>
 
 namespace simde {
 

@@ -12,6 +12,8 @@ using EDOI = TwoCenterAOTensorRepresentation<type::el_el_delta>;
 
 using EOverlap = TwoCenterAOTensorRepresentation<type::el_identity>;
 
+using EOverlapDeriv = TwoCenterAOTensorRepresentation<type::el_identity_nuc>;
+
 /// double precision, electron kinetic energy
 using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
 
@@ -29,6 +31,9 @@ using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
 
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 
+// The one-electron core Hamiltonian
+using CoreH = TwoCenterAOTensorRepresentation<type::core_hamiltonian>;
+
 // The Coulomb matrix (i.e. J) in SCF computed in double precision
 using MeanFieldJ = TwoCenterAOTensorRepresentation<type::el_scf_j>;
 
@@ -39,7 +44,7 @@ using MeanFieldK = TwoCenterAOTensorRepresentation<type::el_scf_k>;
 using XC = TwoCenterAOTensorRepresentation<type::el_xc>;
 
 // The Fock matrix computed in double precision
-using Fock = TwoCenterAOTensorRepresentation<libchemist::FockOperator>;
+using Fock = TwoCenterAOTensorRepresentation<libchemist::operators::Fock>;
 
 // -----------------------------------------------------------------------------
 // ------------------------ F12 Related Integrals ------------------------------

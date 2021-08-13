@@ -1,18 +1,18 @@
 #pragma once
 #include "simde/types.hpp"
-#include <pluginplay/property_type/property_type.hpp>
+#include <pluginplay/pluginplay.hpp>
 
 namespace simde {
 
 DECLARE_PROPERTY_TYPE(FockOp);
 
 PROPERTY_TYPE_INPUTS(FockOp) {
-    using ham         = const type::hamiltonian&;
-    using tensor_type = const type::tensor&;
+    using ham          = const type::els_hamiltonian&;
+    using density_type = const type::el_density&;
 
     auto rv = pluginplay::declare_input()
-                .add_field<ham>("System Hamiltonian")
-                .template add_field<tensor_type>("Density");
+                .add_field<ham>("Electronic Hamiltonian")
+                .template add_field<density_type>("One Electron Density");
     return rv;
 }
 

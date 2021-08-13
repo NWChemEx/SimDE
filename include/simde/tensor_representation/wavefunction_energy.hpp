@@ -11,8 +11,9 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(WavefunctionEnergy, WavefunctionType) {
     using wf_t  = const WavefunctionType&;
 
     auto rv = pluginplay::declare_input()
-                .add_field<ham_t>("Hamiltonian")
-                .template add_field<wf_t>("Wavefunction");
+                .add_field<wf_t>("Bra")
+                .template add_field<ham_t>("Hamiltonian")
+                .template add_field<wf_t>("Ket");
     return rv;
 }
 
