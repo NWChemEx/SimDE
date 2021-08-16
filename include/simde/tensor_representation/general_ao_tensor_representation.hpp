@@ -1,5 +1,6 @@
 #pragma once
-#include <pluginplay/property_type/property_type.hpp>
+#include "simde/tensor_representation/detail_/tensor_rep_traits.hpp"
+#include "simde/types.hpp"
 
 namespace simde {
 
@@ -8,8 +9,14 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralAOTensorRepresentation, OperatorType);
 
 template<typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralAOTensorRepresentation, OperatorType) {
-    using ao_space_map        = std::map<unsigned int, type::ao_space>;
-    using sparse_ao_space_map = std::map<unsigned int, type::sparse_ao_space>;
+    using ao_space        = type::ao_space;
+    using sparse_ao_space = type::sparse_ao_space;
+
+    using ao_traits        = detail_::TensorRepTraits<ao_space>;
+    using sparse_ao_traits = detail_::TensorRepTraits<derived_space>;
+
+    using ao_space_map        = typename ao_traits::map_type;
+    using sparse_ao_space_map = typename sparse_ao_traits::map_type;
 
     using ao_space_map_t        = const ao_space_map&;
     using sparse_ao_space_map_t = const sparse_ao_space_map&;

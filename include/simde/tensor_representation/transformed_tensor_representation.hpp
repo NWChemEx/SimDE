@@ -1,4 +1,6 @@
 #pragma once
+#include "simde/tensor_representation/detail_/tensor_rep_traits.hpp"
+#include "simde/types.hpp"
 
 namespace simde {
 
@@ -10,8 +12,11 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(TransformedTensorRepresentation, OperatorType) {
     using ao_space      = type::ao_space;
     using derived_space = type::derived_space;
 
-    using ao_space_map      = std::map<unsigned int, ao_space>;
-    using derived_space_map = std::map<unsigned int, derived_space>;
+    using ao_traits      = detail_::TensorRepTraits<ao_space>;
+    using derived_traits = detail_::TensorRepTraits<derived_space>;
+
+    using ao_space_map      = typename ao_traits::map_type;
+    using derived_space_map = typename derived_traits::map_type;
 
     using ao_space_map_t      = const ao_space_map&;
     using derived_space_map_t = const derived_space_map&;

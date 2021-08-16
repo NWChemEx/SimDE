@@ -1,4 +1,6 @@
 #pragma once
+#include "simde/tensor_representation/detail_/tensor_rep_traits.hpp"
+#include "simde/types.hpp"
 
 namespace simde {
 
@@ -9,15 +11,20 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation,
 template<typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
                                OperatorType) {
-    using ao_space          = type::ao_space;
-    using sparse_ao_space   = type::sparse_ao_space;
-    using ind_derived_space = type::ind_derived_space;
-    using dep_derived_space = type::dep_derived_space;
+    using ao_space        = type::ao_space;
+    using sparse_ao_space = type::sparse_ao_space;
+    using iderived_space  = type::ind_derived_space;
+    using dderived_space  = type::dep_derived_space;
 
-    using ao_space_map          = std::map<unsigned int, ao_space>;
-    using sparse_ao_space_map   = std::map<unsigned int, sparse_ao_space>;
-    using ind_derived_space_map = std::map<unsigned int, ind_derived_space>;
-    using dep_derived_space_map = std::map<unsigned int, dep_derived_space>;
+    using ao_traits                = detail_::TensorRepTraits<ao_space>;
+    using sparse_ao_traits         = detail_::TensorRepTraits<derived_space>;
+    using ind_derived_space_traits = detail_::TensorRepTraits<iderived_space>;
+    using dep_derived_space_triats = detail_::TensorRepTraits<dderived_space>;
+
+    using ao_space_map          = typename ao_traits::map_type;
+    using sparse_ao_space_map   = typename sparse_ao_traits::map_type;
+    using ind_derived_space_map = typename ind_derived_space_traits::map_type;
+    using dep_derived_space_map = typename dep_derived_space_traits::map_type;
 
     using ao_space_map_t          = const ao_space_map&;
     using sparse_ao_space_map_t   = const sparse_ao_space_map&;
