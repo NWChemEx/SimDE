@@ -17,9 +17,9 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
     using dderived_space  = type::dep_derived_space;
 
     using ao_traits                = detail_::TensorRepTraits<ao_space>;
-    using sparse_ao_traits         = detail_::TensorRepTraits<derived_space>;
+    using sparse_ao_traits         = detail_::TensorRepTraits<sparse_ao_space>;
     using ind_derived_space_traits = detail_::TensorRepTraits<iderived_space>;
-    using dep_derived_space_triats = detail_::TensorRepTraits<dderived_space>;
+    using dep_derived_space_traits = detail_::TensorRepTraits<dderived_space>;
 
     using ao_space_map          = typename ao_traits::map_type;
     using sparse_ao_space_map   = typename sparse_ao_traits::map_type;

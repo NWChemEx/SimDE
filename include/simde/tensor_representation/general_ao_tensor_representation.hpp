@@ -13,7 +13,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralAOTensorRepresentation, OperatorType) {
     using sparse_ao_space = type::sparse_ao_space;
 
     using ao_traits        = detail_::TensorRepTraits<ao_space>;
-    using sparse_ao_traits = detail_::TensorRepTraits<derived_space>;
+    using sparse_ao_traits = detail_::TensorRepTraits<sparse_ao_space>;
 
     using ao_space_map        = typename ao_traits::map_type;
     using sparse_ao_space_map = typename sparse_ao_traits::map_type;
