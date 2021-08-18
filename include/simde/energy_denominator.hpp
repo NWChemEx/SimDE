@@ -12,10 +12,10 @@ namespace simde {
  *  @tparam VirtType The type of the virtual orbital space.
  */
 template<typename OccType, typename VirtType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(EnergyDenominator_, OccType, VirtType);
+DECLARE_TEMPLATED_PROPERTY_TYPE(EnergyDenominator, OccType, VirtType);
 
 template<typename OccType, typename VirtType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(EnergyDenominator_, OccType, VirtType) {
+TEMPLATED_PROPERTY_TYPE_INPUTS(EnergyDenominator, OccType, VirtType) {
     auto rv = pluginplay::declare_input()
                 .add_field<const OccType&>("Occupieds")
                 .template add_field<const VirtType&>("Virtuals");
@@ -23,11 +23,14 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(EnergyDenominator_, OccType, VirtType) {
 }
 
 template<typename OccType, typename VirtType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(EnergyDenominator_, OccType, VirtType) {
+TEMPLATED_PROPERTY_TYPE_RESULTS(EnergyDenominator, OccType, VirtType) {
     using tensor_type = std::decay_t<decltype(std::declval<VirtType>().C())>;
     auto rv           = pluginplay::declare_result().add_field<tensor_type>(
       "-1/(e_a + e_b - e_i - e_j)");
     return rv;
 }
+
+using CanonicalEnergyDenominator =
+  EnergyDenominator<type::canonical_space, type::canonical_space>;
 
 } // namespace simde
