@@ -4,12 +4,12 @@
 
 namespace simde {
 
-template<typename OperatorType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation,
+template<std::size_t N, typename OperatorType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation, N,
                                 OperatorType);
 
-template<typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
+template<std::size_t N, typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation, N,
                                OperatorType) {
     using ao_space        = type::ao_space;
     using sparse_ao_space = type::sparse_ao_space;
@@ -43,8 +43,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
     return rv;
 }
 
-template<typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralTransformedTensorRepresentation,
+template<std::size_t N, typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralTransformedTensorRepresentation, N,
                                 OperatorType) {
     return pluginplay::declare_result().add_field<type::tensor_of_tensors>(
       "Transformed tensor");

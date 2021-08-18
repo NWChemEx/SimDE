@@ -42,7 +42,7 @@ TEST_CASE("tensor_representation") {
     }
 
     SECTION("General AO dispatch") {
-        using pt = GeneralAOTensorRepresentation<type::el_el_coulomb>;
+        using pt = GeneralAOTensorRepresentation<3, type::el_el_coulomb>;
         auto mod = pluginplay::make_lambda<pt>(
           [&](auto&& aos_in, auto&& sparse_aos, auto&& op) {
               REQUIRE(aos_in.size() == 1);
@@ -61,7 +61,7 @@ TEST_CASE("tensor_representation") {
     }
 
     SECTION("Derived dispatch") {
-        using pt = TransformedTensorRepresentation<type::el_el_coulomb>;
+        using pt = TransformedTensorRepresentation<4, type::el_el_coulomb>;
         auto mod = pluginplay::make_lambda<pt>(
           [&](auto&& aos_in, auto&& mos_in, auto&& op) {
               REQUIRE(aos_in.size() == 2);
@@ -82,7 +82,8 @@ TEST_CASE("tensor_representation") {
     }
 
     SECTION("General derived dispatch") {
-        using pt = GeneralTransformedTensorRepresentation<type::el_el_coulomb>;
+        using pt =
+          GeneralTransformedTensorRepresentation<4, type::el_el_coulomb>;
         auto mod = pluginplay::make_lambda<pt>(
           [&](auto&& aos_in, auto&& sparse_aos, auto&& ind_mos, auto&& dep_mos,
               auto&& op) {

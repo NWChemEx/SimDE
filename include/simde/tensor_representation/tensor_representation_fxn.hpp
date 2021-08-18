@@ -89,10 +89,11 @@ auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
 
     if constexpr(makes_tot) {
         if(sparse_ao) {
-            using pt = GeneralAOTensorRepresentation<op_type>;
+            using pt = GeneralAOTensorRepresentation<n_center, op_type>;
             return mod.run_as<pt>(p.m_ao_spaces, p.m_sparse_ao_spaces, op);
         } else if(sparse) {
-            using pt = GeneralTransformedTensorRepresentation<op_type>;
+            using pt =
+              GeneralTransformedTensorRepresentation<n_center, op_type>;
             return mod.run_as<pt>(p.m_ao_spaces, p.m_sparse_ao_spaces,
                                   p.m_ind_spaces, p.m_dep_spaces, op);
         } else {
@@ -103,7 +104,7 @@ auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
             return detail_::ao_dispatch<n_center, op_type>(mod, p.m_ao_spaces,
                                                            op);
         } else if(derived) {
-            using pt = TransformedTensorRepresentation<op_type>;
+            using pt = TransformedTensorRepresentation<n_center, op_type>;
             return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, op);
         } else {
             throw std::runtime_error("Unrecognized scenario");

@@ -10,6 +10,9 @@
 
 namespace simde {
 
+template<typename T>
+using space_map_t = typename detail_::TensorRepTraits<T>::map_type;
+
 using WfEnergy = WavefunctionEnergy<type::canonical_reference>;
 
-}
+} // namespace simde
