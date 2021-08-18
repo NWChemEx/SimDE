@@ -1,23 +1,30 @@
 #pragma once
+#include "simde/tensor_representation/detail_/tensor_rep_traits.hpp"
+#include "simde/types.hpp"
 
 namespace simde {
 
-template<typename OperatorType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation,
+template<std::size_t N, typename OperatorType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation, N,
                                 OperatorType);
 
-template<typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
+template<std::size_t N, typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation, N,
                                OperatorType) {
-    using ao_space          = type::ao_space;
-    using sparse_ao_space   = type::sparse_ao_space;
-    using ind_derived_space = type::ind_derived_space;
-    using dep_derived_space = type::dep_derived_space;
+    using ao_space        = type::ao_space;
+    using sparse_ao_space = type::sparse_ao_space;
+    using iderived_space  = type::ind_derived_space;
+    using dderived_space  = type::dep_derived_space;
 
-    using ao_space_map          = std::map<unsigned int, ao_space>;
-    using sparse_ao_space_map   = std::map<unsigned int, sparse_ao_space>;
-    using ind_derived_space_map = std::map<unsigned int, ind_derived_space>;
-    using dep_derived_space_map = std::map<unsigned int, dep_derived_space>;
+    using ao_traits                = detail_::TensorRepTraits<ao_space>;
+    using sparse_ao_traits         = detail_::TensorRepTraits<sparse_ao_space>;
+    using ind_derived_space_traits = detail_::TensorRepTraits<iderived_space>;
+    using dep_derived_space_traits = detail_::TensorRepTraits<dderived_space>;
+
+    using ao_space_map          = typename ao_traits::map_type;
+    using sparse_ao_space_map   = typename sparse_ao_traits::map_type;
+    using ind_derived_space_map = typename ind_derived_space_traits::map_type;
+    using dep_derived_space_map = typename dep_derived_space_traits::map_type;
 
     using ao_space_map_t          = const ao_space_map&;
     using sparse_ao_space_map_t   = const sparse_ao_space_map&;
@@ -36,8 +43,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation,
     return rv;
 }
 
-template<typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralTransformedTensorRepresentation,
+template<std::size_t N, typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralTransformedTensorRepresentation, N,
                                 OperatorType) {
     return pluginplay::declare_result().add_field<type::tensor_of_tensors>(
       "Transformed tensor");
