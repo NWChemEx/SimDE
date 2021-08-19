@@ -26,9 +26,6 @@ using ERI3 = ThreeCenterAOTensorRepresentation<type::el_el_coulomb>;
 /// Four-center, double precision, electron-electron repulsion integrals
 using ERI4 = FourCenterAOTensorRepresentation<type::el_el_coulomb>;
 
-/// double precision, electron-nucleus attraction energies
-using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
-
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 
 // The one-electron core Hamiltonian
