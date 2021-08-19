@@ -1,6 +1,5 @@
 #include "../test_property_type.hpp"
-#include "simde/orbital_spaces/density_fit_basis.h"
-#include "simde/types.hpp"
+#include "simde/orbital_spaces/orbital_spaces.hpp"
 
 using namespace simde;
 
