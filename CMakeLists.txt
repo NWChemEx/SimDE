@@ -31,6 +31,12 @@ cpp_add_library(
     DEPENDS nwx::chemist
 )
 
+include(nwx_python_mods)
+find_package(Python3 REQUIRED)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
+find_package(Cppyy REQUIRED)
+cppyy_make_python_package(simde NAMESPACE simde PREFIX simde)
+
 if("${BUILD_TESTING}")
     cpp_find_or_build_dependency(
         Catch2
