@@ -26,6 +26,9 @@ using ERI3 = ThreeCenterAOTensorRepresentation<type::el_el_coulomb>;
 /// Four-center, double precision, electron-electron repulsion integrals
 using ERI4 = FourCenterAOTensorRepresentation<type::el_el_coulomb>;
 
+/// double precision, electron-nucleus attraction energies
+using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
+
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 
 // The one-electron core Hamiltonian
@@ -42,9 +45,6 @@ using XC = TwoCenterAOTensorRepresentation<type::el_xc>;
 
 // The Fock matrix computed in double precision
 using Fock = TwoCenterAOTensorRepresentation<libchemist::operators::Fock>;
-
-/// Type that computes the density-fitting coefficients
-using DF_Coefs = TwoCenterAOTensorRepresentation<type::el_el_coulomb>;
 
 // -----------------------------------------------------------------------------
 // ------------------------ F12 Related Integrals ------------------------------
