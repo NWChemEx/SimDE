@@ -1,5 +1,5 @@
 #include "../test_property_type.hpp"
-#include "simde/orbital_spaces/complimentary_auxiliary_basis_set.hpp"
+#include "simde/orbital_spaces/orbital_spaces.hpp"
 #include "simde/types.hpp"
 
 using namespace simde;
