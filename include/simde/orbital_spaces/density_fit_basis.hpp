@@ -10,16 +10,15 @@ DECLARE_PROPERTY_TYPE(DensityFitBasis);
 
 PROPERTY_TYPE_INPUTS(DensityFitBasis) {
     auto rv = pluginplay::declare_input()
-            .add_field<const type::ao_space&>("Aux Basis")
-            .add_field<const type::el_el_coulomb&>("Coulomb Operator");
+                .add_field<const type::ao_space&>("Aux Basis")
+                .add_field<const type::el_el_coulomb&>("Coulomb Operator");
     rv["Aux Basis"].set_description("The auxilliary basis set");
     rv["Coulomb Operator"].set_description("A Coulomb Operator");
     return rv;
 }
 
 PROPERTY_TYPE_RESULTS(DensityFitBasis) {
-    auto rv =
-            pluginplay::declare_result().add_field<type::derived_space>("DF");
+    auto rv = pluginplay::declare_result().add_field<type::derived_space>("DF");
     rv["DF"].set_description("The density fitting space");
     return rv;
 }
