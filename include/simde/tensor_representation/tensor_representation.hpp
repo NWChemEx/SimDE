@@ -14,7 +14,7 @@ namespace simde {
 template<typename T>
 using space_map_t = typename detail_::TensorRepTraits<T>::map_type;
 
-using TotalCanonicalEnergy = TotalEnergy<Type::canonical_reference>;
+using TotalCanonicalEnergy = TotalEnergy<type::canonical_reference>;
 
 using WfEnergy [[deprecated("Use TotalCanonicalEnergy instead")]] =
   TotalCanonicalEnergy;
