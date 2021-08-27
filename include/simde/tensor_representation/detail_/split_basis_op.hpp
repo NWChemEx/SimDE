@@ -57,12 +57,13 @@ auto split_basis_op(const Args&... args) {
         auto&& op            = std::get<2>(arg_tuple);
         using op_type        = std::decay_t<decltype(op)>;
         constexpr auto is_op = libchemist::operators::is_operator_v<op_type>;
-        static_assert(is_op, "For three centers, Op must be argument 2");
+        static_assert(is_op, "For four centers, Op must be argument 2");
 
         auto&& bra1 = std::get<0>(arg_tuple);
         auto&& bra2 = std::get<1>(arg_tuple);
         auto&& ket1 = std::get<3>(arg_tuple);
         auto&& ket2 = std::get<4>(arg_tuple);
+
         using tuple_type =
           std::tuple<decltype(std::as_const(op)),
                      decltype(std::tie(bra1, bra2, ket1, ket2))>;
