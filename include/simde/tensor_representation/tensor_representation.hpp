@@ -19,6 +19,8 @@ using TotalCanonicalEnergy = TotalEnergy<type::canonical_reference>;
 using WfEnergy [[deprecated("Use TotalCanonicalEnergy instead")]] =
   TotalCanonicalEnergy;
 
+using CanonicalElectronicEnergy = ElectronicEnergy<type::canonical_reference>;
+
 using CanonicalCorrelationEnergy =
   CorrelationEnergy<type::canonical_reference, type::canonical_many_body>;
 
