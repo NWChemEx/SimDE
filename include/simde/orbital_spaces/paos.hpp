@@ -1,21 +1,24 @@
 #pragma once
-#include "simde/localized_orbitals.hpp"
+#include <pluginplay/pluginplay.hpp>
 
 namespace simde {
 
 template<typename InputOrbitals, typename OutputOrbitals>
-DECLARE_DERIVED_TEMPLATED_PROPERTY_TYPE(
-  PAOs, LocalizedOrbitals<InputOrbitals, OutputOrbitals>, InputOrbitals,
-  OutputOrbitals);
+DECLARE_TEMPLATED_PROPERTY_TYPE(PAOs, InputOrbitals, OutputOrbitals);
 
 template<typename InputOrbitals, typename OutputOrbitals>
 TEMPLATED_PROPERTY_TYPE_INPUTS(PAOs, InputOrbitals, OutputOrbitals) {
-    return pluginplay::declare_input();
+    auto rv =
+      pluginplay::declare_input().add_field<const InputOrbitals&>("Orbitals");
+    return rv;
 }
 
 template<typename InputOrbitals, typename OutputOrbitals>
 TEMPLATED_PROPERTY_TYPE_RESULTS(PAOs, InputOrbitals, OutputOrbitals) {
-    return pluginplay::declare_result();
+    auto rv = pluginplay::declare_result().add_field<OutputOrbitals>("PAOs");
+    return rv;
 }
+
+using paos = PAOs<type::derived_space, type::derived_space>;
 
 } // namespace simde
