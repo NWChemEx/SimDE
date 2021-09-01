@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/types.hpp"
 #include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
@@ -21,5 +22,8 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(ComplimentaryAuxiliaryBasisSet, ResultBasis,
     auto rv = pluginplay::declare_result().add_field<ResultBasis>("CABS");
     return rv;
 }
+
+using CABS =
+  ComplimentaryAuxiliaryBasisSet<type::derived_space, type::ao_space>;
 
 } // namespace simde

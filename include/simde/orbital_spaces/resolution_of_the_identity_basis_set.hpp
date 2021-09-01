@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/types.hpp"
 #include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
@@ -27,5 +28,8 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(ResolutionOfTheIdentityBasisSet, ORBSType,
     auto rv = pluginplay::declare_result().add_field<CABSType>("RIBS");
     return rv;
 }
+
+using RIBS =
+  ResolutionOfTheIdentityBasisSet<type::derived_space, type::derived_space>;
 
 } // namespace simde
