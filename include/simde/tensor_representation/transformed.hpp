@@ -9,6 +9,8 @@ using TransformedExchange = TransformedTensorRepresentation<2, type::el_scf_k>;
 using TransformedF12Commutator =
   TransformedTensorRepresentation<4, type::el_el_f12_commutator>;
 using TransformedFock = TransformedTensorRepresentation<2, type::fock>;
+using TransformedOverlap =
+  TransformedTensorRepresentation<2, type::el_identity>;
 using TransformedSTG4 = TransformedTensorRepresentation<4, type::el_el_stg>;
 using TransformedYukawa4 =
   TransformedTensorRepresentation<4, type::el_el_yukawa>;
