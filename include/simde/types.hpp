@@ -67,6 +67,8 @@ using el_dipole = libchemist::operators::ElectricDipole;
 
 using el_el_coulomb = libchemist::operators::ElectronRepulsion;
 
+using el_el_coulomb_nuc = libchemist::operators::ElectronRepulsion_Nuclear;
+
 using el_el_delta = libchemist::operators::ElectronElectronDelta;
 
 using el_el_f12_commutator =
@@ -82,7 +84,11 @@ using el_identity_nuc = libchemist::operators::ElectronIdentity_Nuclear;
 
 using el_kinetic = libchemist::operators::ElectronKinetic;
 
+using el_kinetic_nuc = libchemist::operators::ElectronKinetic_Nuclear;
+
 using el_nuc_coulomb = libchemist::operators::ElectronNuclearAttraction;
+
+using el_nuc_coulomb_nuc = libchemist::operators::ElectronNuclearAttraction_Nuclear;
 
 using el_octupole = libchemist::operators::ElectricOctupole;
 
