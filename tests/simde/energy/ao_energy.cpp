@@ -3,4 +3,6 @@
 
 using namespace simde;
 
-TEST_CASE("AOEnergy") { test_property_type<AOEnergy>({"system","AOs"}, {"Energy"}); }
+TEST_CASE("AOEnergy") {
+    test_property_type<AOEnergy>({"system", "AOs"}, {"Energy"});
+}

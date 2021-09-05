@@ -3,4 +3,6 @@
 
 using namespace simde;
 
-TEST_CASE("AOGradient") { test_property_type<AOGradient>({"system","AOs"}, {"Energy","Gradient"}); }
+TEST_CASE("AOGradient") {
+    test_property_type<AOGradient>({"system", "AOs"}, {"Energy", "Gradient"});
+}

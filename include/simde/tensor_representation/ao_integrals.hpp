@@ -13,14 +13,14 @@ using EDOI = TwoCenterAOTensorRepresentation<type::el_el_delta>;
 /// Two center, double precision, overlap integrals
 using EOverlap = TwoCenterAOTensorRepresentation<type::el_identity>;
 
-/// Two center, double precision, 1st derivative overlap integrals wrt 
+/// Two center, double precision, 1st derivative overlap integrals wrt
 /// nuclear positions
 using EOverlapDeriv = TwoCenterAOTensorRepresentation<type::el_identity_nuc>;
 
 /// double precision, electron kinetic energy
 using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
 
-/// Two center, double precision, 1st derivative kinetic energy integrals wrt 
+/// Two center, double precision, 1st derivative kinetic energy integrals wrt
 /// nuclear positions
 using EKineticDeriv = TwoCenterAOTensorRepresentation<type::el_kinetic_nuc>;
 
@@ -33,14 +33,14 @@ using ERI3 = ThreeCenterAOTensorRepresentation<type::el_el_coulomb>;
 /// Four-center, double precision, electron-electron repulsion integrals
 using ERI4 = FourCenterAOTensorRepresentation<type::el_el_coulomb>;
 
-/// Four center, double precision, 1st derivative electron repulsion integrals 
+/// Four center, double precision, 1st derivative electron repulsion integrals
 /// wrt nuclear positions
 using ERI4Deriv = FourCenterAOTensorRepresentation<type::el_el_coulomb_nuc>;
 
 /// double precision, electron-nucleus attraction energies
 using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
 
-/// Two center, double precision, 1st derivative nuclear attraction integrals 
+/// Two center, double precision, 1st derivative nuclear attraction integrals
 /// wrt nuclear positions
 using ENuclearDeriv = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb_nuc>;
 

@@ -12,10 +12,13 @@ PROPERTY_TYPE_INPUTS(AOGradient) {
     return rv;
 }
 
-PROPERTY_TYPE_RESULTS(AOGradient) { 
-    using point_vector = std::vector<Point<double>>>;
-    auto rv = pluginplay::declare_result().template add_field<const point_vector&>("Gradient");
-    rv["Gradient"].set_description("The 1st derivates wrt the nuclear coordinates");
+PROPERTY_TYPE_RESULTS(AOGradient) {
+    using point_vector = std::vector<Point<double>> > ;
+    auto rv =
+      pluginplay::declare_result().template add_field<const point_vector&>(
+        "Gradient");
+    rv["Gradient"].set_description(
+      "The 1st derivates wrt the nuclear coordinates");
     return rv;
 }
 
