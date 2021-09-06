@@ -42,9 +42,6 @@ PROPERTY_TYPE_RESULTS(Fragmented<Type2Fragment>) {
       "Fragmented Object");
 }
 
-/// Property type for splitting a chemical system up into many chemical systems
-using FragmentedSystem = Fragmented<type::chemical_system>;
-
 /// Property type for splitting a molecule up into many molecules
 using FragmentedMolecule = Fragmented<type::molecule>;
 
