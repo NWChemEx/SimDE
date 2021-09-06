@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/types.hpp"
 #include <libchemist/set_theory/set_theory.hpp>
 #include <pluginplay/pluginplay.hpp>
 
@@ -40,5 +41,14 @@ PROPERTY_TYPE_RESULTS(Fragmented<Type2Fragment>) {
     return pluginplay::declare_result().add_field<return_type>(
       "Fragmented Object");
 }
+
+/// Property type for splitting a chemical system up into many chemical systems
+using FragmentedSystem = Fragmented<type::chemical_system>;
+
+/// Property type for splitting a molecule up into many molecules
+using FragmentedMolecule = Fragmented<type::molecule>;
+
+/// Property type for splitting the set of fragments up into pairs, etc.
+using NMers = Fragmented<libchemist::set_theory::FamilyOfSets<type::molecule>>;
 
 } // namespace simde
