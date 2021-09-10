@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/types.hpp"
 #include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
@@ -30,5 +31,8 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(SparsityRelation, IndependType, DependType) {
       " domain in the dependent basis set");
     return rv;
 }
+
+using MO2AO = SparsityRelation<type::derived_space, type::ao_space>;
+using MO2MO = SparsityRelation<type::derived_space, type::derived_space>;
 
 } // namespace simde
