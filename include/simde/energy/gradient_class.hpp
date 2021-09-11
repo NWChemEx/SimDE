@@ -1,5 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
+#include "libchemist/types.hpp"
 #include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
@@ -21,8 +22,12 @@ PROPERTY_TYPE_INPUTS(Gradient) {
 }
 
 PROPERTY_TYPE_RESULTS(Gradient) {
-    using grad_t = std::vector<double>;
-    auto rv = pluginplay::declare_result().add_field<grad_t>("Gradient");
+    // The commented out stuff does not work, those types seem to resolve to type "void".
+    //using tensor_t = libchemist::tensor<double>;
+    //using tensor_t = type::tensor<double>;
+    //using tensor_t = simde::tensor<double>;
+    using tensor_t = std::vector<libchemist::Point<double>>;
+    auto rv = pluginplay::declare_result().add_field<tensor_t>("Gradient");
     rv["Gradient"].set_description("The computed 1st order derivative of the energy wrt to atom positions");
     return rv;
 }
