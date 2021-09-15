@@ -48,14 +48,26 @@ using ind_derived_space = libchemist::orbital_space::IndDerivedSpace;
 /// Typedef of derived orbital space which has a sparse map
 using dep_derived_space = libchemist::orbital_space::DepDerivedSpace;
 
+/// Typedef of a derived orbital space where the basis is orbital specific
+using orb_specific_space = libchemist::orbital_space::IndSpecificDerivedSpace;
+
 /// Typedef of an orbital space with orbitals that diagonalize the Fock matrix
 using canonical_space = libchemist::orbital_space::CanonicalSpaceD;
+
+using canonical_ind_space = libchemist::orbital_space::CanonicalIndSpace;
+
+using canonical_dep_space = libchemist::orbital_space::CanonicalDepSpace;
+
+using canonical_ind_specific_space =
+  libchemist::orbital_space::CanonicalIndSpecificSpace;
 
 // ---------------------- Tensors ---------------------------------------------
 
 using tensor = libchemist::type::tensor;
 
 using tensor_of_tensors = libchemist::type::tensor_of_tensors;
+
+using sparse_map = libchemist::sparse_map::SparseMapEE;
 
 // -----------------------------------------------------------------------------
 // ----------------------------- Operators -------------------------------------
