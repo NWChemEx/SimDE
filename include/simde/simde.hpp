@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/atomic_charges.hpp"
 #include "simde/density/density.hpp"
 #include "simde/energy/energy.hpp"
 #include "simde/energy_denominator.hpp"
