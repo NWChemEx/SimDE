@@ -29,6 +29,9 @@ using ERI4 = FourCenterAOTensorRepresentation<type::el_el_coulomb>;
 /// double precision, electron-nucleus attraction energies
 using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
 
+// double precision, electronic dipole moment
+using EDipole = TwoCenterAOTensorRepresentation<type::el_dipole>;
+
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 
 // The one-electron core Hamiltonian
