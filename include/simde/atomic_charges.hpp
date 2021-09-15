@@ -13,7 +13,7 @@ DECLARE_PROPERTY_TYPE(AtomicCharges);
 PROPERTY_TYPE_INPUTS(AtomicCharges) {
     auto rv = pluginplay::declare_input()
                 .add_field<const type::molecule&>("Molecule")
-                .add_field<const type::el_density &>("Density");
+                .add_field<const type::el_density&>("Density");
     rv["Molecule"].set_description("The molecular system");
     rv["Density"].set_description("The electronic density");
     return rv;
