@@ -35,6 +35,14 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(ReferenceWavefunction, WavefunctionType) {
     return rv;
 }
 
+using NoncanonicalReference =
+  ReferenceWavefunction<type::noncanonical_reference>;
+
+using CanonicalReference = ReferenceWavefunction<type::canonical_reference>;
+using CanonicalLocalReference =
+  ReferenceWavefunction<type::canonical_local_reference>;
+
 extern template class ReferenceWavefunction<type::canonical_reference>;
+extern template class ReferenceWavefunction<type::canonical_local_reference>;
 
 } // namespace simde
