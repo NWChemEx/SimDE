@@ -5,7 +5,6 @@
 
 namespace simde {
 
-
 using CanonicalManyBodyWf =
   CorrelatedWavefunction<type::canonical_reference, type::canonical_many_body>;
 
