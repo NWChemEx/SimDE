@@ -22,7 +22,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(QCPAOs, InputOrbitals, OutputOrbitals) {
 }
 
 using qcpaos = QCPAOs<type::derived_space, type::canonical_space>;
-using sparse_qcpaos =
-  QCPAOs<type::ind_derived_space, type::canonical_dep_space>;
+// using sparse_qcpaos =
+//   QCPAOs<type::ind_derived_space, type::canonical_dep_space>;
 
 } // namespace simde

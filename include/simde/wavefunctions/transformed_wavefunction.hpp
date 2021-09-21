@@ -27,7 +27,9 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(TransformedWavefunction, OutputType,
 }
 
 using CanonicalToLocal =
-  TransformedWavefunction<type::canonical_local_reference,
-                          type::canonical_reference>;
+  TransformedWavefunction<type::local_reference, type::canonical_reference>;
+
+using LocalToLocal =
+  TransformedWavefunction<type::local_reference, type::local_reference>;
 
 } // namespace simde
