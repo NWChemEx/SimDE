@@ -20,10 +20,7 @@ using namespace simde;
 
 TEST_CASE("tensor_representation") {
     type::ao_space aos;
-    type::sparse_ao_space aos_i;
     type::derived_space mos;
-    type::ind_derived_space mos_i;
-    type::dep_derived_space paos_i;
     type::el_el_coulomb r12;
 
     type::tensor t;
@@ -39,25 +36,6 @@ TEST_CASE("tensor_representation") {
           });
         auto [rv] = tensor_representation(mod, aos, r12, aos);
         REQUIRE(rv == t);
-    }
-
-    SECTION("General AO dispatch") {
-        using pt = GeneralAOTensorRepresentation<3, type::el_el_coulomb>;
-        auto mod = pluginplay::make_lambda<pt>(
-          [&](auto&& aos_in, auto&& sparse_aos, auto&& op) {
-              REQUIRE(aos_in.size() == 1);
-              REQUIRE(aos_in.count(1) == 1);
-              REQUIRE(aos_in.at(1).get() == aos);
-              REQUIRE(sparse_aos.size() == 2);
-              REQUIRE(sparse_aos.count(0) == 1);
-              REQUIRE(sparse_aos.at(0).get() == aos_i);
-              REQUIRE(sparse_aos.count(2) == 1);
-              REQUIRE(sparse_aos.at(2).get() == aos_i);
-              REQUIRE(op == r12);
-              return tot;
-          });
-        auto [rv] = tensor_representation(mod, aos_i, r12, aos, aos_i);
-        REQUIRE(rv == tot);
     }
 
     SECTION("Derived dispatch") {
@@ -81,36 +59,37 @@ TEST_CASE("tensor_representation") {
         REQUIRE(rv == t);
     }
 
-    SECTION("General derived dispatch") {
-        using pt =
-          GeneralTransformedTensorRepresentation<4, type::el_el_coulomb>;
-        auto mod = pluginplay::make_lambda<pt>(
-          [&](auto&& aos_in, auto&& sparse_aos, auto&& ind_mos, auto&& dep_mos,
-              auto&& op) {
-              REQUIRE(aos_in.size() == 1);
-              REQUIRE(aos_in.count(2) == 1);
-              REQUIRE(aos_in.at(2).get() == aos);
-              REQUIRE(sparse_aos.size() == 1);
-              REQUIRE(sparse_aos.count(3) == 1);
-              REQUIRE(sparse_aos.at(3).get() == aos_i);
-              REQUIRE(ind_mos.size() == 1);
-              REQUIRE(ind_mos.count(0) == 1);
-              REQUIRE(ind_mos.at(0).get() == mos_i);
-              REQUIRE(dep_mos.size() == 1);
-              REQUIRE(dep_mos.count(1) == 1);
-              REQUIRE(dep_mos.at(1).get() == paos_i);
-              REQUIRE(op == r12);
-              return tot;
-          });
-        auto [rv] = tensor_representation(mod, mos_i, paos_i, r12, aos, aos_i);
-        REQUIRE(rv == tot);
-    }
+    // SECTION("General derived dispatch") {
+    //     using pt =
+    //       GeneralTransformedTensorRepresentation<4, type::el_el_coulomb>;
+    //     auto mod = pluginplay::make_lambda<pt>(
+    //       [&](auto&& aos_in, auto&& sparse_aos, auto&& ind_mos, auto&&
+    //       dep_mos,
+    //           auto&& op) {
+    //           REQUIRE(aos_in.size() == 1);
+    //           REQUIRE(aos_in.count(2) == 1);
+    //           REQUIRE(aos_in.at(2).get() == aos);
+    //           REQUIRE(sparse_aos.size() == 1);
+    //           REQUIRE(sparse_aos.count(3) == 1);
+    //           REQUIRE(sparse_aos.at(3).get() == aos_i);
+    //           REQUIRE(ind_mos.size() == 1);
+    //           REQUIRE(ind_mos.count(0) == 1);
+    //           REQUIRE(ind_mos.at(0).get() == mos_i);
+    //           REQUIRE(dep_mos.size() == 1);
+    //           REQUIRE(dep_mos.count(1) == 1);
+    //           REQUIRE(dep_mos.at(1).get() == paos_i);
+    //           REQUIRE(op == r12);
+    //           return tot;
+    //       });
+    //     auto [rv] = tensor_representation(mod, mos_i, paos_i, r12, aos,
+    //     aos_i); REQUIRE(rv == tot);
+    // }
 
-    SECTION("Not a valid dispatch") {
-        using pt = AOTensorRepresentation<2, type::el_el_coulomb>;
-        auto mod =
-          pluginplay::make_lambda<pt>([&](auto, auto, auto) { return t; });
-        REQUIRE_THROWS_AS(tensor_representation(mod, mos, r12, mos_i),
-                          std::runtime_error);
-    }
+    // SECTION("Not a valid dispatch") {
+    //     using pt = AOTensorRepresentation<2, type::el_el_coulomb>;
+    //     auto mod =
+    //       pluginplay::make_lambda<pt>([&](auto, auto, auto) { return t; });
+    //     REQUIRE_THROWS_AS(tensor_representation(mod, mos, r12, mos),
+    //                       std::runtime_error);
+    // }
 }

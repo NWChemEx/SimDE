@@ -1,53 +1,55 @@
-#pragma once
-#include "simde/tensor_representation/detail_/tensor_rep_traits.hpp"
-#include "simde/types.hpp"
+// #pragma once
+// #include "simde/tensor_representation/detail_/tensor_rep_traits.hpp"
+// #include "simde/types.hpp"
 
-namespace simde {
+// namespace simde {
 
-template<std::size_t N, typename OperatorType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation, N,
-                                OperatorType);
+// template<std::size_t N, typename OperatorType>
+// DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation, N,
+//                                 OperatorType);
 
-template<std::size_t N, typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation, N,
-                               OperatorType) {
-    using ao_space        = type::ao_space;
-    using sparse_ao_space = type::sparse_ao_space;
-    using iderived_space  = type::ind_derived_space;
-    using dderived_space  = type::dep_derived_space;
+// template<std::size_t N, typename OperatorType>
+// TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation, N,
+//                                OperatorType) {
+//     using ao_space        = type::ao_space;
+//     using sparse_ao_space = type::sparse_ao_space;
+//     using iderived_space  = type::ind_derived_space;
+//     using dderived_space  = type::dep_derived_space;
 
-    using ao_traits                = detail_::TensorRepTraits<ao_space>;
-    using sparse_ao_traits         = detail_::TensorRepTraits<sparse_ao_space>;
-    using ind_derived_space_traits = detail_::TensorRepTraits<iderived_space>;
-    using dep_derived_space_traits = detail_::TensorRepTraits<dderived_space>;
+//     using ao_traits                = detail_::TensorRepTraits<ao_space>;
+//     using sparse_ao_traits         =
+//     detail_::TensorRepTraits<sparse_ao_space>; using ind_derived_space_traits
+//     = detail_::TensorRepTraits<iderived_space>; using
+//     dep_derived_space_traits = detail_::TensorRepTraits<dderived_space>;
 
-    using ao_space_map          = typename ao_traits::map_type;
-    using sparse_ao_space_map   = typename sparse_ao_traits::map_type;
-    using ind_derived_space_map = typename ind_derived_space_traits::map_type;
-    using dep_derived_space_map = typename dep_derived_space_traits::map_type;
+//     using ao_space_map          = typename ao_traits::map_type;
+//     using sparse_ao_space_map   = typename sparse_ao_traits::map_type;
+//     using ind_derived_space_map = typename
+//     ind_derived_space_traits::map_type; using dep_derived_space_map =
+//     typename dep_derived_space_traits::map_type;
 
-    using ao_space_map_t          = const ao_space_map&;
-    using sparse_ao_space_map_t   = const sparse_ao_space_map&;
-    using ind_derived_space_map_t = const ind_derived_space_map&;
-    using dep_derived_space_map_t = const dep_derived_space_map&;
-    using op_t                    = const OperatorType&;
+//     using ao_space_map_t          = const ao_space_map&;
+//     using sparse_ao_space_map_t   = const sparse_ao_space_map&;
+//     using ind_derived_space_map_t = const ind_derived_space_map&;
+//     using dep_derived_space_map_t = const dep_derived_space_map&;
+//     using op_t                    = const OperatorType&;
 
-    auto rv =
-      pluginplay::declare_input()
-        .add_field<ao_space_map_t>("AO spaces")
-        .template add_field<sparse_ao_space_map_t>("Sparse AO spaces")
-        .template add_field<ind_derived_space_map_t>(
-          "Independent derived spaces")
-        .template add_field<dep_derived_space_map_t>("Dependent derived spaces")
-        .template add_field<op_t>("Operator");
-    return rv;
-}
+//     auto rv =
+//       pluginplay::declare_input()
+//         .add_field<ao_space_map_t>("AO spaces")
+//         .template add_field<sparse_ao_space_map_t>("Sparse AO spaces")
+//         .template add_field<ind_derived_space_map_t>(
+//           "Independent derived spaces")
+//         .template add_field<dep_derived_space_map_t>("Dependent derived
+//         spaces") .template add_field<op_t>("Operator");
+//     return rv;
+// }
 
-template<std::size_t N, typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralTransformedTensorRepresentation, N,
-                                OperatorType) {
-    return pluginplay::declare_result().add_field<type::tensor_of_tensors>(
-      "Transformed tensor");
-}
+// template<std::size_t N, typename OperatorType>
+// TEMPLATED_PROPERTY_TYPE_RESULTS(GeneralTransformedTensorRepresentation, N,
+//                                 OperatorType) {
+//     return pluginplay::declare_result().add_field<type::tensor_of_tensors>(
+//       "Transformed tensor");
+// }
 
-} // namespace simde
+// } // namespace simde

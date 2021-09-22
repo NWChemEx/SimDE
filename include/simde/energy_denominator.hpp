@@ -33,7 +33,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EnergyDenominator, OccType, VirtType) {
 using CanonicalEnergyDenominator =
   EnergyDenominator<type::canonical_space, type::canonical_space>;
 
-using CanonicalSparseEnergyDenominator =
-  EnergyDenominator<type::canonical_ind_space, type::canonical_dep_space>;
+// using CanonicalSparseEnergyDenominator =
+//   EnergyDenominator<type::canonical_ind_space, type::canonical_dep_space>;
 
 } // namespace simde
