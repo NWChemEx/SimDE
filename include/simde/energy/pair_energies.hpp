@@ -29,6 +29,6 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(PairEnergy, OccType, VirtType) {
 }
 
 using SparsePairEnergy =
-  PairEnergy<type::canonical_ind_space, type::canonical_dep_space>;
+  PairEnergy<type::independent_space, type::independent_space>;
 
 } // namespace simde
