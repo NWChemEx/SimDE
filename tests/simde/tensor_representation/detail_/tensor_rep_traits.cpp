@@ -3,9 +3,7 @@
 
 using namespace simde;
 
-using spaces_type =
-  std::tuple<type::ao_space, type::sparse_ao_space, type::derived_space,
-             type::ind_derived_space, type::dep_derived_space>;
+using spaces_type = std::tuple<type::ao_space, type::derived_space>;
 
 TEMPLATE_LIST_TEST_CASE("TensorRepTraits", "", spaces_type) {
     using space_type      = TestType;

@@ -62,53 +62,23 @@ auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
 
     auto&& [op, bases] = detail_::split_basis_op(args...);
 
-    constexpr bool has_dependent =
-      (libchemist::orbital_space::is_dependent_v<std::decay_t<Args>> || ...);
-
-    constexpr bool has_independent =
-      (libchemist::orbital_space::is_independent_v<std::decay_t<Args>> || ...);
-
-    constexpr bool makes_tot = has_dependent || has_independent;
-
     detail_::TensorRepParser p(bases);
 
-    const auto n_ao_spaces          = p.m_ao_spaces.size();
-    const auto n_sparse_ao_spaces   = p.m_sparse_ao_spaces.size();
-    const auto n_derived_spaces     = p.m_derived_spaces.size();
-    const auto n_ind_spaces         = p.m_ind_spaces.size();
-    const auto n_dep_spaces         = p.m_dep_spaces.size();
-    const auto total_ao             = n_ao_spaces + n_sparse_ao_spaces;
-    const auto total_sparse_derived = n_ind_spaces + n_dep_spaces;
+    const auto n_ao_spaces      = p.m_ao_spaces.size();
+    const auto n_derived_spaces = p.m_derived_spaces.size();
+    const auto n_ind_spaces     = p.m_ind_spaces.size();
 
-    const bool all_ao    = (n_center == n_ao_spaces);
-    const bool sparse_ao = (n_center == total_ao);
-    const bool derived   = (n_center == (n_ao_spaces + n_derived_spaces));
-    const bool sparse    = (n_center == (total_ao + total_sparse_derived));
+    const bool all_ao  = (n_center == n_ao_spaces);
+    const bool derived = (n_center == n_ao_spaces + n_derived_spaces);
+    using op_type      = std::decay_t<decltype(op)>;
 
-    using op_type = std::decay_t<decltype(op)>;
-
-    if constexpr(makes_tot) {
-        if(sparse_ao) {
-            using pt = GeneralAOTensorRepresentation<n_center, op_type>;
-            return mod.run_as<pt>(p.m_ao_spaces, p.m_sparse_ao_spaces, op);
-        } else if(sparse) {
-            using pt =
-              GeneralTransformedTensorRepresentation<n_center, op_type>;
-            return mod.run_as<pt>(p.m_ao_spaces, p.m_sparse_ao_spaces,
-                                  p.m_ind_spaces, p.m_dep_spaces, op);
-        } else {
-            throw std::runtime_error("Unrecognized scenario");
-        }
+    if(all_ao) {
+        return detail_::ao_dispatch<n_center, op_type>(mod, p.m_ao_spaces, op);
+    } else if(derived) {
+        using pt = TransformedTensorRepresentation<n_center, op_type>;
+        return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, op);
     } else {
-        if(all_ao) {
-            return detail_::ao_dispatch<n_center, op_type>(mod, p.m_ao_spaces,
-                                                           op);
-        } else if(derived) {
-            using pt = TransformedTensorRepresentation<n_center, op_type>;
-            return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, op);
-        } else {
-            throw std::runtime_error("Unrecognized scenario");
-        }
+        throw std::runtime_error("Unrecognized scenario");
     }
 }
 
