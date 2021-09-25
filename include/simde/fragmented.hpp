@@ -45,24 +45,11 @@ PROPERTY_TYPE_RESULTS(Fragmented<Type2Fragment>) {
 /// Property type for splitting a molecule up into many molecules
 using FragmentedMolecule = Fragmented<type::molecule>;
 
+/// Property type for making fragment basis set pairs
+using FragmentedAOSystem =
+  Fragmented<std::tuple<type::molecule, type::ao_space>>;
+
 /// Property type for splitting the set of fragments up into pairs, etc.
 using NMers = Fragmented<libchemist::set_theory::FamilyOfSets<type::molecule>>;
-
-#define SPECIALIZE_PROPERTY_TYPE(prop_type, ...)           \
-    struct prop_type<__VA_ARGS__>                          \
-      : pluginplay::PropertyType<prop_type<__VA_ARGS__>> { \
-        auto inputs_();                                    \
-        auto results_();                                   \
-    }
-
-SPECIALIZE_PROPERTY_TYPE(Fragmented, simde::type::ao_space);
-
-PROPERTY_TYPE_INPUTS(Fragmented<simde::type::ao_space>) {
-    using frag_type = libchemist::set_theory::FamilyOfSets<type::molecule>;
-    auto rv         = pluginplay::declare_input()
-                .add_field<simde::type::ao_space>("Supersystem basis set")
-                .template add_field<frag_type>("Fragments");
-    return rv;
-}
 
 } // namespace simde
