@@ -29,6 +29,9 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(TransformedWavefunction, OutputType,
 using CanonicalToLocal =
   TransformedWavefunction<type::local_reference, type::canonical_reference>;
 
+using LocalMBToToTMB =
+  TransformedWavefunction<type::local_tot_many_body, type::local_many_body>;
+
 using LocalToLocal =
   TransformedWavefunction<type::local_reference, type::local_reference>;
 
