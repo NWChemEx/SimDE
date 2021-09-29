@@ -2,6 +2,7 @@
 #include "simde/tensor_representation/detail_/ao_dispatch.hpp"
 #include "simde/tensor_representation/detail_/split_basis_op.hpp"
 #include "simde/tensor_representation/detail_/tensor_rep_parser.hpp"
+#include "simde/tensor_representation/detail_/transform_traits.hpp"
 #include "simde/tensor_representation/general_ao_tensor_representation.hpp"
 #include "simde/tensor_representation/general_transformed_tensor_representation.hpp"
 #include "simde/tensor_representation/transformed_tensor_representation.hpp"
@@ -48,8 +49,6 @@ namespace simde {
  * @return The tensor representation of the operator, in the specified basis
  *         set.
  *
- * @throw std::runtime_error if we can't figure out what integral you are trying
- *                           to compute. Strong throw guarantee.
  */
 template<typename... Args>
 auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
@@ -64,21 +63,24 @@ auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
 
     detail_::TensorRepParser p(bases);
 
-    const auto n_ao_spaces      = p.m_ao_spaces.size();
-    const auto n_derived_spaces = p.m_derived_spaces.size();
-    const auto n_ind_spaces     = p.m_ind_spaces.size();
+    using transform_traits_t = detail_::TransformTraits<std::decay_t<Args>...>;
+    constexpr bool has_tots  = transform_traits_t::has_tots;
+    constexpr bool has_derived = transform_traits_t::has_derived;
+    constexpr bool is_general  = has_tots;
+    constexpr bool is_derived  = has_derived && (!is_general);
+    constexpr bool is_all_ao   = (!has_derived) && (!is_general);
 
-    const bool all_ao  = (n_center == n_ao_spaces);
-    const bool derived = (n_center == n_ao_spaces + n_derived_spaces);
-    using op_type      = std::decay_t<decltype(op)>;
+    using op_type = std::decay_t<decltype(op)>;
 
-    if(all_ao) {
+    if constexpr(is_all_ao) {
         return detail_::ao_dispatch<n_center, op_type>(mod, p.m_ao_spaces, op);
-    } else if(derived) {
+    } else if constexpr(is_derived) {
         using pt = TransformedTensorRepresentation<n_center, op_type>;
         return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, op);
     } else {
-        throw std::runtime_error("Unrecognized scenario");
+        using pt = GeneralTransformedTensorRepresentation<n_center, op_type>;
+        return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, p.m_tot_spaces,
+                              p.m_ind_spaces, op);
     }
 }
 

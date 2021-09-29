@@ -46,8 +46,6 @@ using canonical_space = libchemist::orbital_space::CanonicalSpaceD;
 
 using canonical_tot_space = libchemist::orbital_space::CanonicalToTSpace;
 
-using independent_tot_space = libchemist::orbital_space::CanonicalIndToTSpace;
-
 using independent_space = libchemist::orbital_space::CanonicalIndSpace;
 
 // ---------------------- Tensors ---------------------------------------------
