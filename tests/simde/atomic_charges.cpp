@@ -2,6 +2,6 @@
 #include "test_property_type.hpp"
 
 TEST_CASE("AtomicCharges") {
-    test_property_type<simde::AtomicCharges>(
-      {"Molecule", "Density"}, {"Partial Charges"});
+    test_property_type<simde::AtomicCharges>({"Molecule", "Density"},
+                                             {"Partial Charges"});
 }
