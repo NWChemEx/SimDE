@@ -70,7 +70,9 @@ auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
     constexpr bool is_derived  = has_derived && (!is_general);
     constexpr bool is_all_ao   = (!has_derived) && (!is_general);
 
-    using op_type = std::decay_t<decltype(op)>;
+    const bool all_ao  = (n_center == n_ao_spaces);
+    const bool derived = (n_center == n_ao_spaces + n_derived_spaces);
+    using op_type      = std::decay_t<decltype(op)>;
 
     if constexpr(is_all_ao) {
         return detail_::ao_dispatch<n_center, op_type>(mod, p.m_ao_spaces, op);

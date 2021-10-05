@@ -40,7 +40,6 @@ public:
 
     /// Type of the member holding the AO spaces
     using ao_map_t = trt_map_t<type::ao_space>;
-
     /// Type of the member holding derived spaces
     using derived_space_map_t = trt_map_t<type::derived_space>;
 
