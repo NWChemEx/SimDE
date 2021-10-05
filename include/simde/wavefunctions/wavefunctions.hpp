@@ -8,4 +8,10 @@ namespace simde {
 using CanonicalManyBodyWf =
   CorrelatedWavefunction<type::canonical_reference, type::canonical_many_body>;
 
+using LocalManyBodyWf =
+  CorrelatedWavefunction<type::local_reference, type::local_many_body>;
+
+using LocalToTManyBodyWf =
+  CorrelatedWavefunction<type::local_reference, type::local_tot_many_body>;
+
 } // namespace simde

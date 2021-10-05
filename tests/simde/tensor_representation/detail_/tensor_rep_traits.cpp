@@ -3,7 +3,11 @@
 
 using namespace simde;
 
-using spaces_type = std::tuple<type::ao_space, type::derived_space>;
+/// Tuple containing all of the spaces we need to handle
+using spaces_type =
+  std::tuple<type::ao_space, type::derived_space, type::tot_derived_space,
+             type::canonical_space, type::canonical_tot_space,
+             type::independent_space>;
 
 TEMPLATE_LIST_TEST_CASE("TensorRepTraits", "", spaces_type) {
     using space_type      = TestType;
@@ -25,5 +29,35 @@ TEMPLATE_LIST_TEST_CASE("TensorRepTraits", "", spaces_type) {
     SECTION("map_type") {
         using corr = std::map<mode_type, const_reference>;
         STATIC_REQUIRE(std::is_same_v<map_type, corr>);
+    }
+
+    SECTION("is_ao_space") {
+        constexpr auto is_ao_space = traits_type::is_ao_space;
+        constexpr bool corr        = std::is_same_v<space_type, type::ao_space>;
+        STATIC_REQUIRE(is_ao_space == corr);
+    }
+
+    SECTION("is_derived") {
+        constexpr auto is_derived = traits_type::is_derived;
+        constexpr bool corr =
+          std::is_same_v<space_type, type::derived_space> ||
+          std::is_same_v<space_type, type::canonical_space> ||
+          std::is_same_v<space_type, type::independent_space>;
+        STATIC_REQUIRE(is_derived == corr);
+    }
+
+    SECTION("is_tot_derived") {
+        constexpr auto is_tot_derived = traits_type::is_tot_derived;
+        constexpr bool corr =
+          std::is_same_v<space_type, type::tot_derived_space> ||
+          std::is_same_v<space_type, type::canonical_tot_space>;
+        STATIC_REQUIRE(is_tot_derived == corr);
+    }
+
+    SECTION("is_independent") {
+        constexpr auto is_independent = traits_type::is_independent;
+        constexpr bool corr =
+          std::is_same_v<space_type, type::independent_space>;
+        STATIC_REQUIRE(is_independent == corr);
     }
 }
