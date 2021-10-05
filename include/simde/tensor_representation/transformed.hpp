@@ -18,4 +18,7 @@ using TransformedYukawa4 =
 using TransformedLocalERI4 =
   GeneralTransformedTensorRepresentation<4, type::el_el_coulomb>;
 
+using TransformedLocalOverlap =
+  GeneralTransformedTensorRepresentation<2, type::el_identity>;
+
 } // namespace simde

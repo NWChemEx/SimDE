@@ -76,6 +76,8 @@ auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
         return detail_::ao_dispatch<n_center, op_type>(mod, p.m_ao_spaces, op);
     } else if constexpr(is_derived) {
         using pt = TransformedTensorRepresentation<n_center, op_type>;
+        // Some of the spaces may be independent, need to handle this
+
         return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, op);
     } else {
         using pt = GeneralTransformedTensorRepresentation<n_center, op_type>;

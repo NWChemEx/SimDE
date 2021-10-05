@@ -30,10 +30,12 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EnergyDenominator, OccType, VirtType) {
     return rv;
 }
 
+/// Type of an energy denominator that uses canonical orbitals
 using CanonicalEnergyDenominator =
   EnergyDenominator<type::canonical_space, type::canonical_space>;
 
-// using CanonicalSparseEnergyDenominator =
-//   EnergyDenominator<type::canonical_ind_space, type::canonical_dep_space>;
+/// Type of energy denominator which uses tensor of tensors
+using LocalEnergyDenominator =
+  EnergyDenominator<type::independent_space, type::canonical_tot_space>;
 
 } // namespace simde
