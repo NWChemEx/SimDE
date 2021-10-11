@@ -16,6 +16,9 @@ using namespace libchemist::type;
 /// Typedef of the class used to describe a molecule
 using molecule = libchemist::Molecule;
 
+/// Typedef of the class which models a nucleus
+using atom = typename molecule::value_type;
+
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = libchemist::ChemicalSystem;
 
