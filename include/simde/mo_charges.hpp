@@ -15,8 +15,8 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(MOCharges, OrbitalType);
 
 template<typename OrbitalType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(MOCharges, OrbitalType) {
-    auto rv = pluginplay::declare_input()
-                .add_field<const OrbitalType&>("Molecular Orbitals");
+    auto rv = pluginplay::declare_input().add_field<const OrbitalType&>(
+      "Molecular Orbitals");
     rv["Molecular Orbitals"].set_description("The molecular orbitals");
     return rv;
 }
