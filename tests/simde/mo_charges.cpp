@@ -5,5 +5,5 @@ using namespace simde;
 
 TEST_CASE("MOCharges") {
     test_property_type<MOCharges<type::derived_space>>(
-      {"Molecule", "Molecular Orbitals"}, {"MO Charges"});
+      {"Molecular Orbitals"}, {"MO Charges"});
 }
