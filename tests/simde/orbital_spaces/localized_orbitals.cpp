@@ -5,5 +5,5 @@ using namespace simde;
 
 TEST_CASE("LocalizedOrbitals") {
     test_property_type<LocalizedOrbitals<type::canonical_space>>(
-      {"Molecule", "Orbitals"}, {"Local Orbitals"});
+      {"Orbitals"}, {"Local Orbitals"});
 }
