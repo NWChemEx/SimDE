@@ -31,12 +31,8 @@ cpp_add_library(
     DEPENDS nwx::chemist
 )
 
-if(BUILD_PYBINDINGS)
-    include(nwx_python_mods)
-    find_package(Python3 REQUIRED)
-    find_package(Cppyy REQUIRED)
-    cppyy_make_python_package(simde NAMESPACE simde PREFIX simde)
-endif()
+include(nwx_python_mods)
+cppyy_make_python_package(PACKAGE pluginplay NAMESPACES pluginplay DEPPACKAGES parallelzone )
 
 if("${BUILD_TESTING}")
     cpp_find_or_build_dependency(
