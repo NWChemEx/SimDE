@@ -18,9 +18,16 @@
 #
 function(cppyy_make_python_package)
     #---------------------------------------------------------------------------
-    #-----------------------Make sure we have cppyy installed-------------------
+    #----------------------Check if Python bindings need to be build------------
     #---------------------------------------------------------------------------
     if (NOT BUILD_PYBINDINGS)
+        return()
+    endif()
+    #---------------------------------------------------------------------------
+    #----------------------Do not build bindings if shared_libs is off----------
+    #---------------------------------------------------------------------------
+    if (NOT BUILD_SHARED_LIBS)
+        message(WARNING, "BUILD_SHARED_LIBS is OFF, and Python needs shared libraries")
         return()
     endif()
     #---------------------------------------------------------------------------
@@ -32,7 +39,7 @@ function(cppyy_make_python_package)
     #---------------------------------------------------------------------------
     set(options MPI PYTHONIZE)
     set(oneValueArgs PACKAGE)
-    set(multiValueArgs NAMESPACES DEPNAMESPACES)
+    set(multiValueArgs NAMESPACES DEPPACKAGES)
     cmake_parse_arguments(install_data "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN} )
     #---------------------------------------------------------------------------
     #--------------------------Get include directories--------------------------
@@ -55,7 +62,7 @@ function(cppyy_make_python_package)
     #------------Collect the information we need off the target-----------------
     #---------------------------------------------------------------------------
     set(target_lib "$<TARGET_FILE_NAME:${install_data_PACKAGE}>")
-    set(output_dir "${CMAKE_BINARY_DIR}/${install_data_PACKAGE}")
+    set(output_dir "${CMAKE_BINARY_DIR}/Python/${install_data_PACKAGE}")
     #---------------------------------------------------------------------------
     #------------Defines in BTAS and Madness at runtime are needed by cppyy-----
     #---------------------------------------------------------------------------
@@ -70,8 +77,8 @@ function(cppyy_make_python_package)
     #---------------------------------------------------------------------------
     set(init_file_name "${output_dir}/__init__.py")
     set(init_file "import cppyy\n\n")
-    foreach(depnamespace ${install_data_DEPNAMESPACES})
-        set(init_file "${init_file}from ${depnamespace} import \*\n")
+    foreach(deppackage ${install_data_DEPPACKAGES})
+        set(init_file "${init_file}from ${deppackage} import \*\n")
     endforeach()
     set(init_file "${init_file}import os\n")
     set(init_file "${init_file}paths = list(set(\"${include_dirs}\".split(';')))\n")
@@ -97,7 +104,7 @@ function(cppyy_make_python_package)
     set(init_file "${init_file}for h in headers:\n")
     set(init_file "${init_file}    inc = os.path.join(\"${header_PREFIX}\",h)\n")
     set(init_file "${init_file}    cppyy.include(inc)\n")
-    set(init_file "${init_file}\ncppyy.load_library(\"${CMAKE_BINARY_DIR}/${target_lib}\")\n\n")
+    set(init_file "${init_file}\ncppyy.load_library(\"${CMAKE_CURRENT_BINARY_DIR}/${target_lib}\")\n\n")
     foreach(namespace ${install_data_NAMESPACES})
         set(init_file "${init_file}from cppyy.gbl import ${namespace}\n")
     endforeach()
