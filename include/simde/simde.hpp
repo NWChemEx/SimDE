@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/atom_to_ao.hpp"
 #include "simde/atomic_charges.hpp"
 #include "simde/connectivity.hpp"
 #include "simde/density/density.hpp"
