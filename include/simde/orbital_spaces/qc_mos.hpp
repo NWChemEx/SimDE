@@ -24,6 +24,6 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(QCMOs, InputOrbitals, OutputOrbitals) {
 /// Type of the property type for QC-NR-PAOs
 using qcpaos = QCMOs<type::derived_space, type::canonical_space>;
 /// Type of the property type for QC-LMOs
-using qclmos = QCMOS<type::derived_space, type::canonical_space>;
+using qclmos = QCMOs<type::derived_space, type::canonical_space>;
 
 } // namespace simde
