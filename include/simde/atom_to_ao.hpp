@@ -25,18 +25,30 @@ using atom_to_center_return_type = detail_::AtomToCenterTraits::return_type;
  *        convenience. Since the user must provide us a Molecule and an
  *        AOBasisSet instance this should prove no problem for the user.
  *
+ *  @todo Change the input from Molecule to PointSet, once PointSet becomes
+ *        available.
+ *
  */
-DECLARE_PROPERTY_TYPE(AtomToCenter);
+template<typename InputOrbitalType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(AtomToCenter, InputOrbitalType);
 
-PROPERTY_TYPE_INPUTS(AtomToCenter) {
+template<typename InputOrbitalType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(AtomToCenter, InputOrbitalType) {
     return pluginplay::declare_input()
       .add_field<const simde::type::molecule&>("Molecule")
-      .template add_field<const simde::type::ao_basis_set&>("AO Basis");
+      .template add_field<const InputOrbitalType&>("Orbital Basis");
 }
 
-PROPERTY_TYPE_RESULTS(AtomToCenter) {
+template<typename InputOrbitalType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(AtomToCenter, InputOrbitalType) {
     using r_t = atom_to_center_return_type;
     return pluginplay::declare_result().add_field<r_t>("Atom to Center map");
 }
+
+/// Maps points to AOs
+using AtomToAO = AtomToCenter<simde::type::ao_basis_set>;
+
+/// Maps points to MOs
+using AtomToMO = AtomToCenter<simde::type::derived_space>;
 
 } // namespace simde
