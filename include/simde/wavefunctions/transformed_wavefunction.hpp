@@ -26,6 +26,9 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(TransformedWavefunction, OutputType,
     return rv;
 }
 
+using NoncanonicalToLocal =
+  TransformedWavefunction<type::local_reference, type::noncanonical_reference>;
+
 using CanonicalToLocal =
   TransformedWavefunction<type::local_reference, type::canonical_reference>;
 
