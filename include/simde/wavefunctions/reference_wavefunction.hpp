@@ -29,7 +29,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ReferenceWavefunction, WavefunctionType) {
 
 template<typename WavefunctionType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(ReferenceWavefunction, WavefunctionType) {
-    auto rv = pluginplay::declare_result().add_field<type::canonical_reference>(
+    auto rv = pluginplay::declare_result().add_field<WavefunctionType>(
       "Wavefunction");
 
     return rv;
@@ -41,6 +41,7 @@ using NoncanonicalReference =
 using CanonicalReference = ReferenceWavefunction<type::canonical_reference>;
 using CanonicalLocalReference = ReferenceWavefunction<type::local_reference>;
 
+extern template class ReferenceWavefunction<type::noncanonical_reference>;
 extern template class ReferenceWavefunction<type::canonical_reference>;
 extern template class ReferenceWavefunction<type::local_reference>;
 
