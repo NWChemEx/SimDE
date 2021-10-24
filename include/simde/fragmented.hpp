@@ -52,10 +52,6 @@ using FragmentedSystem = Fragmented<type::chemical_system>;
 using FragmentedNucleiAO =
   Fragmented<std::tuple<type::molecule, type::ao_basis_set>>;
 
-/// Property type for making chemical system/basis-set pairs
-using FragmentedSystemAO =
-  Fragmented<std::tuple<type::chemical_system, type::ao_basis_set>>;
-
 /// Property type for splitting the set of fragments up into pairs, etc.
 using NMers = Fragmented<libchemist::set_theory::FamilyOfSets<type::molecule>>;
 
