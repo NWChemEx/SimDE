@@ -45,9 +45,16 @@ PROPERTY_TYPE_RESULTS(Fragmented<Type2Fragment>) {
 /// Property type for splitting a molecule up into many molecules
 using FragmentedMolecule = Fragmented<type::molecule>;
 
-/// Property type for making fragment basis set pairs
-using FragmentedAOSystem =
+/// Property type for splitting up the chemical system
+using FragmentedSystem = Fragmented<type::chemical_system>;
+
+/// Property type for making molecule/basis-set pairs
+using FragmentedNucleiAO =
   Fragmented<std::tuple<type::molecule, type::ao_basis_set>>;
+
+/// Property type for making chemical system/basis-set pairs
+using FragmentedSystemAO =
+  Fragmented<std::tuple<type::chemical_system, type::ao_basis_set>>;
 
 /// Property type for splitting the set of fragments up into pairs, etc.
 using NMers = Fragmented<libchemist::set_theory::FamilyOfSets<type::molecule>>;
