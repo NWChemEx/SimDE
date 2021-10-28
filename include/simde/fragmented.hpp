@@ -5,6 +5,23 @@
 
 namespace simde {
 
+/** @brief Provides users of the Fragmented PT with type information.
+ *
+ *  The FragmentedTraits struct is useful for users of the Fragmented property
+ *  type that want to progmatically know the input or return types of a
+ *  particular Fragmented instance.
+ *
+ *  @tparam Type2Fragment The type we are fragmenting. Same type expectations as
+ *                        the Fragmented property type.
+ */
+template<typename Type2Fragment>
+struct FragmentedTraits {
+    /// Type of the inputs to the Fragmented property type
+    using input_type = Type2Fragment;
+    /// Type of the object returned by the Fragmented property type
+    using return_type = libchemist::set_theory::FamilyOfSets<Type2Fragment>;
+};
+
 /** @brief Property type for requesting that an object be Fragmented
  *
  *  Chemistry concepts such as functional groups, polymers, coordination
@@ -29,27 +46,38 @@ namespace simde {
 template<typename Type2Fragment>
 DECLARE_TEMPLATED_PROPERTY_TYPE(Fragmented, Type2Fragment);
 
+/** @brief Declares the inputs to a module which Fragments something
+ *
+ *  Modules which fragment objects of type @p Type2Fragment need to take an
+ *  object of @p Type2Fragment. For forward compatability, the exact input
+ *  type (with all cv qualifiers) is accessible via
+ *  `FragmentedTraits<Type2Fragment>::input_type`.
+ *
+ */
 template<typename Type2Fragment>
 PROPERTY_TYPE_INPUTS(Fragmented<Type2Fragment>) {
-    return pluginplay::declare_input().add_field<Type2Fragment>(
+    using traits_type = FragmentedTraits<Type2Fragment>;
+    using input_type  = typename traits_type::input_type;
+    return pluginplay::declare_input().add_field<input_type>(
       "Object to Fragment");
 }
 
+/** @brief Declares the results to a module which Fragments something
+ *
+ *  Modules which fragment objects of type @p Type2Fragment return a container
+ *  filled with subsets of the input object. For forward compatability, the
+ *  exact result type (with all cv qualifiers) is accessible via
+ *  `FragmentedTraits<Type2Fragment>::return_type`.
+ *
+ */
 template<typename Type2Fragment>
 PROPERTY_TYPE_RESULTS(Fragmented<Type2Fragment>) {
-    using return_type = libchemist::set_theory::FamilyOfSets<Type2Fragment>;
+    using return_type = typename FragmentedTraits<Type2Fragment>::return_type;
     return pluginplay::declare_result().add_field<return_type>(
       "Fragmented Object");
 }
 
-/// Property type for splitting a molecule up into many molecules
+/// Property type for splitting a molecule
 using FragmentedMolecule = Fragmented<type::molecule>;
-
-/// Property type for making fragment basis set pairs
-using FragmentedAOSystem =
-  Fragmented<std::tuple<type::molecule, type::ao_basis_set>>;
-
-/// Property type for splitting the set of fragments up into pairs, etc.
-using NMers = Fragmented<libchemist::set_theory::FamilyOfSets<type::molecule>>;
 
 } // namespace simde
