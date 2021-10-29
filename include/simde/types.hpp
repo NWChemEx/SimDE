@@ -32,7 +32,8 @@ using el = libchemist::Electron;
 using many_electrons = libchemist::ManyElectrons;
 
 /// Typedef of the electron density
-using el_density = libchemist::OneElectronDensity;
+using el_density        = libchemist::OneElectronDensity;
+using decomp_el_density = libchemist::Decomposable1EDensity;
 
 // ------------------------------ Orbital Spaces -------------------------------
 
@@ -93,6 +94,8 @@ using el_quadrupole = libchemist::operators::ElectricQuadrupole;
 using el_scf_j = libchemist::operators::ElectronEDensityCoulomb;
 
 using el_scf_k = libchemist::operators::ElectronEDensityExchange;
+
+using el_lscf_k = libchemist::operators::ElectronDecomposableEDensity;
 
 using el_xc = libchemist::operators::ExchangeCorrelation;
 
