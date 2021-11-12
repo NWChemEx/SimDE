@@ -43,9 +43,6 @@ using MeanFieldJ = TwoCenterAOTensorRepresentation<type::el_scf_j>;
 // The exchange matrix (i.e. K) in SCF computed in double precision
 using MeanFieldK = TwoCenterAOTensorRepresentation<type::el_scf_k>;
 
-// The Kohn-Sham XC matrix in DFT computed in double precision
-using XC = TwoCenterAOTensorRepresentation<type::el_xc>;
-
 // The Fock matrix computed in double precision
 using Fock = TwoCenterAOTensorRepresentation<libchemist::operators::Fock>;
 

@@ -94,7 +94,7 @@ using el_scf_j = libchemist::operators::ElectronEDensityCoulomb;
 
 using el_scf_k = libchemist::operators::ElectronEDensityExchange;
 
-using el_xc = libchemist::operators::ExchangeCorrelation;
+using el_scf_xc = libchemist::operators::ExchangeCorrelation;
 
 using els_hamiltonian = libchemist::operators::ElectronicHamiltonian;
 
