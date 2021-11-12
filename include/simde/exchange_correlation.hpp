@@ -31,16 +31,14 @@ PROPERTY_TYPE_INPUTS(ExchangeCorrelationPotential) {
 }
 
 PROPERTY_TYPE_RESULTS(ExchangeCorrelationEnergy) {
-    return pluginplay::declare_result()
-      .add_field<double>("EXC");
+    return pluginplay::declare_result().add_field<double>("EXC");
 }
 
 PROPERTY_TYPE_RESULTS(ExchangeCorrelationPotential) {
     using tensor_t = simde::type::tensor;
-    return pluginplay::declare_result()
-      .add_field<tensor_t>("VXC");
+    return pluginplay::declare_result().add_field<tensor_t>("VXC");
 }
 
 using MeanFieldXCEnergy    = ExchangeCorrelationEnergy;
 using MeanFieldXCPotential = ExchangeCorrelationPotential;
-}
+} // namespace simde
