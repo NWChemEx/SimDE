@@ -29,8 +29,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ReferenceWavefunction, WavefunctionType) {
 
 template<typename WavefunctionType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(ReferenceWavefunction, WavefunctionType) {
-    auto rv = pluginplay::declare_result().add_field<WavefunctionType>(
-      "Wavefunction");
+    auto rv =
+      pluginplay::declare_result().add_field<WavefunctionType>("Wavefunction");
 
     return rv;
 }
