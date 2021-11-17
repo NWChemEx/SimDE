@@ -32,6 +32,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(SparsityRelation, IndependType, DependType) {
     return rv;
 }
 
+using AO2AO = SparsityRelation<type::ao_space, type::ao_space>;
 using MO2AO = SparsityRelation<type::derived_space, type::ao_space>;
 using MO2MO = SparsityRelation<type::derived_space, type::derived_space>;
 
