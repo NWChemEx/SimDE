@@ -16,6 +16,9 @@ using namespace libchemist::type;
 /// Typedef of the class used to describe a molecule
 using molecule = libchemist::Molecule;
 
+/// Typedef of the class which models a nucleus
+using atom = typename molecule::value_type;
+
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = libchemist::ChemicalSystem;
 
@@ -36,26 +39,25 @@ using el_density = libchemist::OneElectronDensity;
 /// Typedef of class describing an AO space
 using ao_space = libchemist::orbital_space::AOSpaceD;
 
-/// Typedef of class describing an AO space with a sparse map
-using sparse_ao_space = libchemist::orbital_space::DepAOSpaceD;
-
 /// Typedef of orbital space obtained by transforming an ao_space
 using derived_space = libchemist::orbital_space::DerivedSpaceD;
 
-/// Typedef of orbital space obtained by transforming a sparse_ao_space
-using ind_derived_space = libchemist::orbital_space::IndDerivedSpace;
-
-/// Typedef of derived orbital space which has a sparse map
-using dep_derived_space = libchemist::orbital_space::DepDerivedSpace;
+using tot_derived_space = libchemist::orbital_space::ToTDerivedSpace;
 
 /// Typedef of an orbital space with orbitals that diagonalize the Fock matrix
 using canonical_space = libchemist::orbital_space::CanonicalSpaceD;
+
+using canonical_tot_space = libchemist::orbital_space::CanonicalToTSpace;
+
+using independent_space = libchemist::orbital_space::CanonicalIndSpace;
 
 // ---------------------- Tensors ---------------------------------------------
 
 using tensor = libchemist::type::tensor;
 
 using tensor_of_tensors = libchemist::type::tensor_of_tensors;
+
+using sparse_map = libchemist::sparse_map::SparseMapEE;
 
 // -----------------------------------------------------------------------------
 // ----------------------------- Operators -------------------------------------
@@ -116,19 +118,17 @@ using noncanonical_reference = libchemist::wavefunction::Reference;
 
 using canonical_reference = libchemist::wavefunction::CanonicalReference;
 
-using noncanonical_local_reference = libchemist::wavefunction::LocalReference;
+using local_reference = libchemist::wavefunction::SparseReference;
 
-using canonical_local_reference =
-  libchemist::wavefunction::CanonicalLocalReference;
+using local_tot_reference = libchemist::wavefunction::SparseToTReference;
 
 using many_body = libchemist::wavefunction::ManyBodyWf;
 
 using canonical_many_body = libchemist::wavefunction::CanonicalManyBodyWf;
 
-using local_many_body = libchemist::wavefunction::LocalManyBodyWf;
+using local_many_body = libchemist::wavefunction::SparseManyBodyWf;
 
-using canonical_local_many_body =
-  libchemist::wavefunction::CanonicalLocalManyBodyWf;
+using local_tot_many_body = libchemist::wavefunction::SparseToTManyBodyWf;
 
 // ---------------------------- Other ------------------------------------------
 

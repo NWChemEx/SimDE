@@ -11,34 +11,33 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(GeneralTransformedTensorRepresentation, N,
 template<std::size_t N, typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation, N,
                                OperatorType) {
-    using ao_space        = type::ao_space;
-    using sparse_ao_space = type::sparse_ao_space;
-    using iderived_space  = type::ind_derived_space;
-    using dderived_space  = type::dep_derived_space;
+    using ao_space          = type::ao_space;
+    using derived_space     = type::derived_space;
+    using tot_derived_space = type::tot_derived_space;
+    using ind_space         = type::independent_space;
 
-    using ao_traits                = detail_::TensorRepTraits<ao_space>;
-    using sparse_ao_traits         = detail_::TensorRepTraits<sparse_ao_space>;
-    using ind_derived_space_traits = detail_::TensorRepTraits<iderived_space>;
-    using dep_derived_space_traits = detail_::TensorRepTraits<dderived_space>;
+    using ao_traits            = detail_::TensorRepTraits<ao_space>;
+    using derived_space_traits = detail_::TensorRepTraits<derived_space>;
+    using tot_derived_traits   = detail_::TensorRepTraits<tot_derived_space>;
+    using ind_space_traits     = detail_::TensorRepTraits<ind_space>;
 
-    using ao_space_map          = typename ao_traits::map_type;
-    using sparse_ao_space_map   = typename sparse_ao_traits::map_type;
-    using ind_derived_space_map = typename ind_derived_space_traits::map_type;
-    using dep_derived_space_map = typename dep_derived_space_traits::map_type;
+    using ao_space_map      = typename ao_traits::map_type;
+    using derived_space_map = typename derived_space_traits::map_type;
+    using tot_space_map     = typename tot_derived_traits::map_type;
+    using ind_space_map     = typename ind_space_traits::map_type;
 
-    using ao_space_map_t          = const ao_space_map&;
-    using sparse_ao_space_map_t   = const sparse_ao_space_map&;
-    using ind_derived_space_map_t = const ind_derived_space_map&;
-    using dep_derived_space_map_t = const dep_derived_space_map&;
-    using op_t                    = const OperatorType&;
+    using ao_space_map_t      = const ao_space_map&;
+    using derived_space_map_t = const derived_space_map&;
+    using tot_space_map_t     = const tot_space_map&;
+    using ind_space_map_t     = const ind_space_map&;
+    using op_t                = const OperatorType&;
 
     auto rv =
       pluginplay::declare_input()
         .add_field<ao_space_map_t>("AO spaces")
-        .template add_field<sparse_ao_space_map_t>("Sparse AO spaces")
-        .template add_field<ind_derived_space_map_t>(
-          "Independent derived spaces")
-        .template add_field<dep_derived_space_map_t>("Dependent derived spaces")
+        .template add_field<derived_space_map_t>("derived spaces")
+        .template add_field<tot_space_map_t>("tot spaces")
+        .template add_field<ind_space_map_t>("independent derivedspaces")
         .template add_field<op_t>("Operator");
     return rv;
 }
