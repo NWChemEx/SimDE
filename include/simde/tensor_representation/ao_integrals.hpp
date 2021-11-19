@@ -50,7 +50,7 @@ using LocalMeanFieldK = TwoCenterAOTensorRepresentation<type::el_lscf_k>;
 using XC = TwoCenterAOTensorRepresentation<type::el_xc>;
 
 // The Fock matrix computed in double precision
-using Fock = TwoCenterAOTensorRepresentation<libchemist::operators::Fock>;
+using Fock = TwoCenterAOTensorRepresentation<chemist::operators::Fock>;
 
 // -----------------------------------------------------------------------------
 // ------------------------ F12 Related Integrals ------------------------------
