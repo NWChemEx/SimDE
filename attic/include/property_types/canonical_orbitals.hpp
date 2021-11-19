@@ -23,7 +23,7 @@
 //     auto rv =
 //       sde::declare_input()
 //         .add_field<const InputOrbitalType&>("Orbitals")
-//         .template add_field<const libchemist::type::tensor<double>&>("F");
+//         .template add_field<const chemist::type::tensor<double>&>("F");
 //     return rv;
 // }
 

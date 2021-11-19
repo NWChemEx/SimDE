@@ -7,7 +7,7 @@
 #include "simde/tensor_representation/general_transformed_tensor_representation.hpp"
 #include "simde/tensor_representation/transformed_tensor_representation.hpp"
 #include "simde/types.hpp"
-#include <libchemist/libchemist.hpp>
+#include <chemist/chemist.hpp>
 
 namespace simde {
 
@@ -38,7 +38,7 @@ namespace simde {
  *               For an N-center integral there should be N+1 types in parameter
  *               pack (the types of the basis functions for each of the N
  *               centers plus the type of the operator). Types are expected to
- *               be orbital spaces or derived from libchemist::OperatorBase.
+ *               be orbital spaces or derived from chemist::OperatorBase.
  *
  * @param[in] mod The module which actually computes the integral.
  *

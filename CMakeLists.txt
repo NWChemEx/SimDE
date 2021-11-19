@@ -16,8 +16,8 @@ option(BUILD_TESTING "Should we build the tests?" OFF)
 option(BUILD_PYBINDINGS "Should we build Python3 bindings?" ON)
 
 cpp_find_or_build_dependency(
-    libchemist
-    URL github.com/NWChemEx-Project/libchemist
+    chemist
+    URL github.com/NWChemEx-Project/chemist
     PRIVATE TRUE
     BUILD_TARGET chemist
     FIND_TARGET nwx::chemist
@@ -32,7 +32,7 @@ cpp_add_library(
 )
 
 include(nwx_python_mods)
-cppyy_make_python_package(PACKAGE simde NAMESPACES simde DEPPACKAGES libchemist )
+cppyy_make_python_package(PACKAGE simde NAMESPACES simde DEPPACKAGES chemist )
 
 if("${BUILD_TESTING}")
     cpp_find_or_build_dependency(
