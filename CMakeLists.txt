@@ -17,7 +17,7 @@ option(BUILD_PYBINDINGS "Should we build Python3 bindings?" ON)
 
 cpp_find_or_build_dependency(
     chemist
-    URL github.com/NWChemEx-Project/libchemist
+    URL github.com/NWChemEx-Project/chemist
     PRIVATE TRUE
     BUILD_TARGET chemist
     FIND_TARGET nwx::chemist
