@@ -71,8 +71,7 @@ using el_el_coulomb = chemist::operators::ElectronRepulsion;
 
 using el_el_delta = chemist::operators::ElectronElectronDelta;
 
-using el_el_f12_commutator =
-  chemist::operators::ElectronElectronF12Commutator;
+using el_el_f12_commutator = chemist::operators::ElectronElectronF12Commutator;
 
 using el_el_stg = chemist::operators::ElectronElectronSTG;
 
