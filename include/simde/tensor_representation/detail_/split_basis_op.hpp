@@ -1,5 +1,5 @@
 #pragma once
-#include <libchemist/libchemist.hpp>
+#include <chemist/chemist.hpp>
 
 namespace simde::detail_ {
 
@@ -33,7 +33,7 @@ auto split_basis_op(const Args&... args) {
     if constexpr(n_args == 3) {
         auto&& op            = std::get<1>(arg_tuple);
         using op_type        = std::decay_t<decltype(op)>;
-        constexpr auto is_op = libchemist::operators::is_operator_v<op_type>;
+        constexpr auto is_op = chemist::operators::is_operator_v<op_type>;
         static_assert(is_op, "For two centers, Op must be argument 1");
 
         auto&& bra = std::get<0>(arg_tuple);
@@ -44,7 +44,7 @@ auto split_basis_op(const Args&... args) {
     } else if constexpr(n_args == 4) {
         auto&& op            = std::get<1>(arg_tuple);
         using op_type        = std::decay_t<decltype(op)>;
-        constexpr auto is_op = libchemist::operators::is_operator_v<op_type>;
+        constexpr auto is_op = chemist::operators::is_operator_v<op_type>;
         static_assert(is_op, "For three centers, Op must be argument 1");
 
         auto&& bra       = std::get<0>(arg_tuple);
@@ -56,7 +56,7 @@ auto split_basis_op(const Args&... args) {
     } else if constexpr(n_args == 5) {
         auto&& op            = std::get<2>(arg_tuple);
         using op_type        = std::decay_t<decltype(op)>;
-        constexpr auto is_op = libchemist::operators::is_operator_v<op_type>;
+        constexpr auto is_op = chemist::operators::is_operator_v<op_type>;
         static_assert(is_op, "For four centers, Op must be argument 2");
 
         auto&& bra1 = std::get<0>(arg_tuple);
