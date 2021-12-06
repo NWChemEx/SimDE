@@ -24,7 +24,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(SparsityRelation, IndependType, DependType) {
 
 template<typename IndependType, typename DependType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(SparsityRelation, IndependType, DependType) {
-    using libchemist::sparse_map::SparseMapEE;
+    using chemist::sparse_map::SparseMapEE;
     auto rv = pluginplay::declare_result().add_field<SparseMapEE>("Sparse Map");
     rv["Sparse Map"].set_description(
       "Map from a given member of the independent basis to its"

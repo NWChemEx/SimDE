@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <libchemist/orbital_space/orbital_space.hpp>
+#include <chemist/orbital_space/orbital_space.hpp>
 
 namespace simde::detail_ {
 
@@ -49,7 +49,7 @@ public:
 
     /// Is T an independent space?
     static constexpr bool is_independent =
-      libchemist::orbital_space::is_independent_space_v<T>;
+      chemist::orbital_space::is_independent_space_v<T>;
 };
 
 } // namespace simde::detail_

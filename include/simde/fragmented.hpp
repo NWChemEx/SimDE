@@ -1,6 +1,6 @@
 #pragma once
 #include "simde/types.hpp"
-#include <libchemist/set_theory/set_theory.hpp>
+#include <chemist/set_theory/set_theory.hpp>
 #include <pluginplay/pluginplay.hpp>
 
 namespace simde {
@@ -19,7 +19,7 @@ struct FragmentedTraits {
     /// Type of the inputs to the Fragmented property type
     using input_type = Type2Fragment;
     /// Type of the object returned by the Fragmented property type
-    using return_type = libchemist::set_theory::FamilyOfSets<Type2Fragment>;
+    using return_type = chemist::set_theory::FamilyOfSets<Type2Fragment>;
 };
 
 /** @brief Property type for requesting that an object be Fragmented

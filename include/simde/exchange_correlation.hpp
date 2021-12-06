@@ -9,11 +9,11 @@ DECLARE_PROPERTY_TYPE(ExchangeCorrelationPotential);
 PROPERTY_TYPE_INPUTS(ExchangeCorrelationEnergy) {
     using const_ao_space_t = const simde::type::ao_space;
     using const_molecule_t = const simde::type::molecule&;
-    using OperatorType     = libchemist::operators::ExchangeCorrelation;
+    using operator_t       = simde::type::el_scf_xc;
 
     return pluginplay::declare_input()
       .add_field<const_ao_space_t>("bra")
-      .add_field<const OperatorType&>("op")
+      .add_field<const operator_t&>("op")
       .add_field<const_ao_space_t>("ket")
       .add_field<const_molecule_t>("molecule");
 }
@@ -21,11 +21,11 @@ PROPERTY_TYPE_INPUTS(ExchangeCorrelationEnergy) {
 PROPERTY_TYPE_INPUTS(ExchangeCorrelationPotential) {
     using const_ao_space_t = const simde::type::ao_space;
     using const_molecule_t = const simde::type::molecule&;
-    using OperatorType     = libchemist::operators::ExchangeCorrelation;
+    using operator_t       = simde::type::el_scf_xc;
 
     return pluginplay::declare_input()
       .add_field<const_ao_space_t>("bra")
-      .add_field<const OperatorType&>("op")
+      .add_field<const operator_t&>("op")
       .add_field<const_ao_space_t>("ket")
       .add_field<const_molecule_t>("molecule");
 }

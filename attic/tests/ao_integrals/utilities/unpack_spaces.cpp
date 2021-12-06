@@ -11,10 +11,10 @@ namespace {
 template<typename T>
 auto generate_inputs() {
     sde::type::input_map inputs;
-    using bs_t       = libchemist::AOBasisSet<T>;
+    using bs_t       = chemist::AOBasisSet<T>;
     using ao_space_t = type::ao_space_t<T>;
     bs_t bs0, bs1, bs2, bs3;
-    libchemist::Center<T> c0{0.0, 0.0, 1.0}, c1{0.0, 1.0, 0.0};
+    chemist::Center<T> c0{0.0, 0.0, 1.0}, c1{0.0, 1.0, 0.0};
     bs1.add_center(c0);
     bs2.add_center(c1);
     bs3.add_center(c0);
