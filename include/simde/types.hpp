@@ -96,7 +96,7 @@ using el_scf_k = chemist::operators::ElectronEDensityExchange;
 
 using el_lscf_k = chemist::operators::ElectronDecomposableEDensity;
 
-using el_xc = chemist::operators::ExchangeCorrelation;
+using el_scf_xc = chemist::operators::ExchangeCorrelation;
 
 using els_hamiltonian = chemist::operators::ElectronicHamiltonian;
 

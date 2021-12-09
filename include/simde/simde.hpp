@@ -5,6 +5,7 @@
 #include "simde/density/density.hpp"
 #include "simde/energy/energy.hpp"
 #include "simde/energy_denominator.hpp"
+#include "simde/exchange_correlation.hpp"
 #include "simde/fragmented.hpp"
 #include "simde/mo_charges.hpp"
 #include "simde/operators/operators.hpp"
