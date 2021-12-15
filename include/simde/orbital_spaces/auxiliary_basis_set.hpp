@@ -7,7 +7,7 @@ namespace simde {
 DECLARE_PROPERTY_TYPE(AuxiliaryBasisSet);
 
 PROPERTY_TYPE_INPUTS(AuxiliaryBasisSet) {
-    using basis_type = const simde::type::ao_basis_set&;
+    using basis_type = const simde::type::ao_space&;
     auto rv =
       pluginplay::declare_input().add_field<basis_type>("AtomicBasisSet");
     rv["AtomicBasisSet"].set_description("The atomic basis set");
@@ -15,7 +15,7 @@ PROPERTY_TYPE_INPUTS(AuxiliaryBasisSet) {
 }
 
 PROPERTY_TYPE_RESULTS(AuxiliaryBasisSet) {
-    using basis_type = simde::type::ao_basis_set;
+    using basis_type = simde::type::ao_space;
     auto rv =
       pluginplay::declare_result().add_field<basis_type>("AuxiliaryBasisSet");
     rv["AuxiliaryBasisSet"].set_description("The density fitting basis set");
