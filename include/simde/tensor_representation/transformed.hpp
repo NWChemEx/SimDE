@@ -13,6 +13,7 @@ using TransformedSTG4 = TransformedTensorRepresentation<4, type::el_el_stg>;
 using TransformedYukawa4 =
   TransformedTensorRepresentation<4, type::el_el_yukawa>;
 
-using NuclearRepulsion_Nuclear = TransformedTensorRepresentation<0, type::nuc_coulomb_nuc>;
+using NuclearRepulsion_Nuclear =
+  TransformedTensorRepresentation<0, type::nuc_coulomb_nuc>;
 
 } // namespace simde

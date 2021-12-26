@@ -116,11 +116,11 @@ using els_nuc_coulomb = libchemist::operators::NElectronNuclearAttraction;
 
 using fock = libchemist::operators::Fock;
 
-//using fock_nuc = libchemist::operators::Fock_Nuclear;
+// using fock_nuc = libchemist::operators::Fock_Nuclear;
 
 using hamiltonian = libchemist::operators::Hamiltonian;
 
-//using hamiltonian_nuc = libchemist::operators::Hamiltonian_Nuclear;
+// using hamiltonian_nuc = libchemist::operators::Hamiltonian_Nuclear;
 
 using nuc_coulomb = libchemist::operators::NuclearRepulsion;
 
