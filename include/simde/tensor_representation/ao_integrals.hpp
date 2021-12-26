@@ -50,7 +50,7 @@ using ENuclear_Nuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb_nu
 using CoreH = TwoCenterAOTensorRepresentation<type::core_hamiltonian>;
 
 // The one-electron core Hamiltonian Derivatives
-using CoreH_Nuclear = TwoCenterAOTensorRepresentation<type::core_hamiltonian_nuc>;
+// using CoreH_Nuclear = TwoCenterAOTensorRepresentation<type::core_hamiltonian_nuc>;
 
 // The Coulomb matrix (i.e. J) in SCF computed in double precision
 using MeanFieldJ = TwoCenterAOTensorRepresentation<type::el_scf_j>;
@@ -65,7 +65,7 @@ using XC = TwoCenterAOTensorRepresentation<type::el_xc>;
 using Fock = TwoCenterAOTensorRepresentation<libchemist::operators::Fock>;
 
 // The Fock matrix computed in double precision Derivatives
-using Fock_Nuclear = TwoCenterAOTensorRepresentation<libchemist::operators::Fock_Nuclear>;
+// using Fock_Nuclear = TwoCenterAOTensorRepresentation<libchemist::operators::Fock_Nuclear>;
 
 // -----------------------------------------------------------------------------
 // ------------------------ F12 Related Integrals ------------------------------

@@ -63,7 +63,7 @@ using tensor_of_tensors = libchemist::type::tensor_of_tensors;
 
 using core_hamiltonian = libchemist::operators::CoreHamiltonian;
 
-using core_hamiltonian_nuc = libchemist::operators::CoreHamiltonian_Nuclear;
+// using core_hamiltonian_nuc = libchemist::operators::CoreHamiltonian_Nuclear;
 
 using el_dipole = libchemist::operators::ElectricDipole;
 
@@ -105,7 +105,7 @@ using el_xc = libchemist::operators::ExchangeCorrelation;
 
 using els_hamiltonian = libchemist::operators::ElectronicHamiltonian;
 
-using els_hamiltonian_nuc = libchemist::operators::ElectronicHamiltonian_Nuclear;
+//using els_hamiltonian_nuc = libchemist::operators::ElectronicHamiltonian_Nuclear;
 
 using els_coulomb = libchemist::operators::NElectronRepulsion;
 
@@ -115,13 +115,15 @@ using els_nuc_coulomb = libchemist::operators::NElectronNuclearAttraction;
 
 using fock = libchemist::operators::Fock;
 
-using fock_nuc = libchemist::operators::Fock_Nuclear;
+//using fock_nuc = libchemist::operators::Fock_Nuclear;
 
 using hamiltonian = libchemist::operators::Hamiltonian;
 
-using hamiltonian_nuc = libchemist::operators::Hamiltonian_Nuclear;
+//using hamiltonian_nuc = libchemist::operators::Hamiltonian_Nuclear;
 
 using nuc_coulomb = libchemist::operators::NuclearRepulsion;
+
+using nuc_coulomb_nuc = libchemist::operators::NuclearRepulsion_Nuclear;
 
 // -----------------------------------------------------------------------------
 // ---------------------------- Wavefunctions ----------------------------------
