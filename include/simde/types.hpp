@@ -105,7 +105,8 @@ using el_xc = libchemist::operators::ExchangeCorrelation;
 
 using els_hamiltonian = libchemist::operators::ElectronicHamiltonian;
 
-//using els_hamiltonian_nuc = libchemist::operators::ElectronicHamiltonian_Nuclear;
+// using els_hamiltonian_nuc =
+//   libchemist::operators::ElectronicHamiltonian_Nuclear;
 
 using els_coulomb = libchemist::operators::NElectronRepulsion;
 
