@@ -17,7 +17,7 @@
  * the same parameters as for the BraKet quantities (the Bra basis, the operator,
  * and the Ket basis), but now also the variables with respect to which we 
  * differentiate. For example to represent the 2nd derivative wrt to the nuclear
- * coordinates we would write BraKetDeriv<Bra,Op,NucCoord,NucCoord,Ket>.
+ * coordinates we would write BraKetDeriv<Bra,Op,Ket,NucCoord,NucCoord>.
  * The coordinates wrt which we differentiate are gathered in a parameter pack.
  *
  * From here on we need to deal with two scenarios. First we need to deal with the
@@ -38,26 +38,31 @@
 
 namespace simde {
 
-template<typename BraType, typename OpType, typename... VarDeriv, typename KetType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(BraKetDeriv, BraType, OpType, VarDeriv..., KetType);
+template<typename BraType, typename OpType, typename KetType, typename VarDeriv>
+DECLARE_TEMPLATED_PROPERTY_TYPE(BraKetDeriv, BraType, OpType, KetType, VarDeriv);
 
-template<typename N, typename BraType, typename OpType, typename... VarDeriv, typename KetType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(BraKetDeriv, N, BraType, OpType, VarDeriv..., KetType);
+/*
+template<typename N, typename BraType, typename OpType, typename VarDeriv, typename KetType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(BraKetDeriv, N, BraType, OpType, VarDeriv, KetType);
+*/
 
 /* To add inputs 
  */
-template<typename BraType, typename OpType, typename... VarDeriv, typename KetType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(BraKetDeriv, BraType V1, OpType V2, VarDeriv... V3, KetType V4) {
-    constexpr int N = sizeof...(VarDeriv)-1;
-    auto rv = BraKetDeriv<N,BraType,OpType,VarDeriv...,KetType>(N,V1,V2,V3...,V4);
+/*
+template<typename BraType, typename OpType, typename VarDeriv, typename KetType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(BraKetDeriv, BraType V1, OpType V2, VarDeriv V3, KetType V4) {
+    //constexpr int N = sizeof...(VarDeriv)-1;
+    auto rv = BraKetDeriv<BraType,OpType,VarDeriv,KetType>(V1,V2,V3,V4);
     return rv;
 }
+*/
 
-template<typename N, typename BraType, typename OpType, typename VarDeriv, typename KetType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(BraKetDeriv, N V1, BraType V2, OpType V3, VarDeriv V4, KetType V5) {
+template<typename BraType, typename OpType, typename KetType, typename VarDeriv>
+TEMPLATED_PROPERTY_TYPE_INPUTS(BraKetDeriv, BraType, OpType, KetType, VarDeriv) {
     using op_t = const OpType&;
     using vard_t = const VarDeriv&;
-    constexpr char field[] = strcat("Derivative",num_to_string<V1>);
+    //constexpr char field[] = strcat("Derivative",num_to_string<0>);
+    constexpr char field[] = "Derivative";
 
     auto rv = pluginplay::declare_input()
                 .add_field<const BraType&>("Bra")
@@ -67,6 +72,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(BraKetDeriv, N V1, BraType V2, OpType V3, VarDeri
     return rv;
 }
 
+/*
 template<int N, typename BraType, typename OpType, typename... VarDerivN, typename VarDeriv, typename KetType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(BraKetDeriv, N, BraType, OpType, VarDerivN..., VarDeriv, KetType) {
     using op_t = const OpType&;
@@ -78,21 +84,22 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(BraKetDeriv, N, BraType, OpType, VarDerivN..., Va
                 .template add_field<vard_t>(field);
     return rv;
 }
+*/
 
 /* To add outputs 
  */
-template<typename BraType, typename OpType, typename... VarDerivN, typename KetType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(BraKetDeriv, BraType, OpType, VarDerivN, KetType) {
-    constexpr int N = sizeof...(VarDerivN);
+template<typename BraType, typename OpType, typename KetType, typename VarDeriv>
+TEMPLATED_PROPERTY_TYPE_RESULTS(BraKetDeriv, BraType, OpType, KetType, VarDeriv) {
+    //constexpr int N = sizeof...(VarDerivN);
     auto rv = pluginplay::declare_result()
                 .add_field<simde::type::tensor>("gradient");
     return rv;
 }
 
-// template<typename BraType>
-//using ElectronicEnergy_Nuclear = BraKetDeriv<BraType, type::els_hamiltonian_nuc, BraType>;
+template<typename BraType>
+using ElectronicEnergy_Nuclear = BraKetDeriv<BraType, type::els_hamiltonian, BraType, libchemist::type::point>;
 
-// template<typename BraType>
-// using TotalEnergy_Nuclear = BraKetDeriv<BraType, type::hamiltonian_nuc, BraType>;
+template<typename BraType>
+using TotalEnergy_Nuclear = BraKetDeriv<BraType, type::hamiltonian, BraType, libchemist::type::point>;
 
 } // namespace simde
