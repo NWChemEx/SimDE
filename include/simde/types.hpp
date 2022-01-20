@@ -58,7 +58,7 @@ using tensor = chemist::type::tensor;
 
 using tensor_of_tensors = chemist::type::tensor_of_tensors;
 
-using sparse_map = chemist::sparse_map::SparseMapEE;
+using sparse_map = chemist::type::sparse_map;
 
 // -----------------------------------------------------------------------------
 // ----------------------------- Operators -------------------------------------
