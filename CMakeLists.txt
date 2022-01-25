@@ -24,15 +24,24 @@ cpp_find_or_build_dependency(
     CMAKE_ARGS BUILD_TESTING=OFF
 )
 
+cpp_find_or_build_dependency(
+    pluginplay
+    URL github.com/NWChemEx-Project/pluginplay
+    PRIVATE TRUE
+    BUILD_TARGET pluginplay
+    FIND_TARGET nwx::pluginplay
+    CMAKE_ARGS BUILD_TESTING=OFF
+)
+
 cpp_add_library(
     ${PROJECT_NAME}
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
     INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}"
-    DEPENDS nwx::chemist
+    DEPENDS nwx::chemist nwx::pluginplay
 )
 
 include(nwx_python_mods)
-cppyy_make_python_package(PACKAGE simde NAMESPACES simde DEPPACKAGES chemist )
+cppyy_make_python_package(PACKAGE simde NAMESPACES simde DEPPACKAGES chemist pluginplay )
 
 if("${BUILD_TESTING}")
     cpp_find_or_build_dependency(
