@@ -15,14 +15,14 @@ using EOverlap = TwoCenterAOTensorRepresentation<type::el_identity>;
 
 /// Two center, double precision, 1st derivative overlap integrals wrt
 /// nuclear positions
-using EOverlap_Nuclear = TwoCenterAOTensorRepresentation<type::el_identity_nuc>;
+using EOverlap_Nuclear = TwoCenterAO_NuclearTensorRepresentation<type::el_identity_nuc>;
 
 /// double precision, electron kinetic energy
 using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
 
 /// Two center, double precision, 1st derivative kinetic energy integrals wrt
 /// nuclear positions
-using EKinetic_Nuclear = TwoCenterAOTensorRepresentation<type::el_kinetic_nuc>;
+using EKinetic_Nuclear = TwoCenterAO_NuclearTensorRepresentation<type::el_kinetic_nuc>;
 
 /// Two-center, double precision, electron-electron repulsion integrals
 using ERI2 = TwoCenterAOTensorRepresentation<type::el_el_coulomb>;
@@ -35,7 +35,7 @@ using ERI4 = FourCenterAOTensorRepresentation<type::el_el_coulomb>;
 
 /// Four center, double precision, 1st derivative electron repulsion integrals
 /// wrt nuclear positions
-using ERI4_Nuclear = FourCenterAOTensorRepresentation<type::el_el_coulomb_nuc>;
+using ERI4_Nuclear = FourCenterAO_NuclearTensorRepresentation<type::el_el_coulomb_nuc>;
 
 /// double precision, electron-nucleus attraction energies
 using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
@@ -43,7 +43,7 @@ using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
 /// Two center, double precision, 1st derivative nuclear attraction integrals
 /// wrt nuclear positions
 using ENuclear_Nuclear =
-  TwoCenterAOTensorRepresentation<type::el_nuc_coulomb_nuc>;
+  TwoCenterAO_NuclearTensorRepresentation<type::el_nuc_coulomb_nuc>;
 
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 
@@ -51,8 +51,8 @@ using ENuclear_Nuclear =
 using CoreH = TwoCenterAOTensorRepresentation<type::core_hamiltonian>;
 
 // The one-electron core Hamiltonian Derivatives
-// using CoreH_Nuclear =
-//   TwoCenterAOTensorRepresentation<type::core_hamiltonian_nuc>;
+using CoreH_Nuclear =
+   TwoCenterAO_NuclearTensorRepresentation<type::core_hamiltonian_nuc>;
 
 // The Coulomb matrix (i.e. J) in SCF computed in double precision
 using MeanFieldJ = TwoCenterAOTensorRepresentation<type::el_scf_j>;

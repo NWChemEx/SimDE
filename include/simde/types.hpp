@@ -63,7 +63,7 @@ using tensor_of_tensors = libchemist::type::tensor_of_tensors;
 
 using core_hamiltonian = libchemist::operators::CoreHamiltonian;
 
-// using core_hamiltonian_nuc = libchemist::operators::CoreHamiltonian_Nuclear;
+using core_hamiltonian_nuc = libchemist::operators::CoreHamiltonian_Nuclear;
 
 using el_dipole = libchemist::operators::ElectricDipole;
 

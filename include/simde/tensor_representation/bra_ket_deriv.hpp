@@ -97,9 +97,9 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(BraKetDeriv, BraType, OpType, KetType, VarDeriv)
 }
 
 template<typename BraType>
-using ElectronicEnergy_Nuclear = BraKetDeriv<BraType, type::els_hamiltonian, BraType, libchemist::type::point>;
+using ElectronicEnergy_Nuclear = BraKetDeriv<BraType, type::els_hamiltonian, BraType, type::molecule>;
 
 template<typename BraType>
-using TotalEnergy_Nuclear = BraKetDeriv<BraType, type::hamiltonian, BraType, libchemist::type::point>;
+using TotalEnergy_Nuclear = BraKetDeriv<BraType, type::hamiltonian, BraType, type::molecule>;
 
 } // namespace simde
