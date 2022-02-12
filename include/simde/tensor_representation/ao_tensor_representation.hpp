@@ -63,10 +63,12 @@ using FourCenterAOTensorRepresentation =
   AOTensorRepresentation<4, OperatorType>;
 
 template<std::size_t N, typename OperatorType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(AO_NuclearTensorRepresentation, N, OperatorType);
+DECLARE_TEMPLATED_PROPERTY_TYPE(AO_NuclearTensorRepresentation, N,
+                                OperatorType);
 
 template<std::size_t N, typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(AO_NuclearTensorRepresentation, N, OperatorType) {
+TEMPLATED_PROPERTY_TYPE_INPUTS(AO_NuclearTensorRepresentation, N,
+                               OperatorType) {
     using const_ao_space_t = const simde::type::ao_space;
     using const_mol_t      = const simde::type::molecule;
     OperatorType op;
@@ -99,7 +101,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(AO_NuclearTensorRepresentation, N, OperatorType) 
 }
 
 template<std::size_t N, typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(AO_NuclearTensorRepresentation, N, OperatorType) {
+TEMPLATED_PROPERTY_TYPE_RESULTS(AO_NuclearTensorRepresentation, N,
+                                OperatorType) {
     OperatorType op;
     auto op_name      = op.as_string();
     std::string r_key = "tensor representation";
@@ -114,7 +117,8 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(AO_NuclearTensorRepresentation, N, OperatorType)
 }
 
 template<typename OperatorType>
-using TwoCenterAO_NuclearTensorRepresentation = AO_NuclearTensorRepresentation<2, OperatorType>;
+using TwoCenterAO_NuclearTensorRepresentation =
+  AO_NuclearTensorRepresentation<2, OperatorType>;
 
 template<typename OperatorType>
 using ThreeCenterAO_NuclearTensorRepresentation =
