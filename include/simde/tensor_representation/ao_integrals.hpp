@@ -23,6 +23,7 @@ using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
 /// Two center, double precision, 1st derivative kinetic energy integrals wrt
 /// nuclear positions
 using EKinetic_Nuclear = TwoCenterAO_NuclearTensorRepresentation<type::el_kinetic_nuc>;
+using NEKinetic_Nuclear = TwoCenterAO_NuclearTensorRepresentation<type::els_kinetic_nuc>;
 
 /// Two-center, double precision, electron-electron repulsion integrals
 using ERI2 = TwoCenterAOTensorRepresentation<type::el_el_coulomb>;
@@ -39,11 +40,14 @@ using ERI4_Nuclear = FourCenterAO_NuclearTensorRepresentation<type::el_el_coulom
 
 /// double precision, electron-nucleus attraction energies
 using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
+using NENuclear = TwoCenterAOTensorRepresentation<type::els_nuc_coulomb>;
 
 /// Two center, double precision, 1st derivative nuclear attraction integrals
 /// wrt nuclear positions
 using ENuclear_Nuclear =
   TwoCenterAO_NuclearTensorRepresentation<type::el_nuc_coulomb_nuc>;
+using NENuclear_Nuclear =
+  TwoCenterAO_NuclearTensorRepresentation<type::els_nuc_coulomb_nuc>;
 
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 

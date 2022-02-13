@@ -88,10 +88,19 @@ using el_kinetic = libchemist::operators::ElectronKinetic;
 
 using el_kinetic_nuc = libchemist::operators::ElectronKinetic_Nuclear;
 
+using els_kinetic = libchemist::operators::NElectronKinetic;
+
+using els_kinetic_nuc = libchemist::operators::NElectronKinetic_Nuclear;
+
 using el_nuc_coulomb = libchemist::operators::ElectronNuclearAttraction;
 
 using el_nuc_coulomb_nuc =
   libchemist::operators::ElectronNuclearAttraction_Nuclear;
+
+using els_nuc_coulomb = libchemist::operators::NElectronNuclearAttraction;
+
+using els_nuc_coulomb_nuc =
+  libchemist::operators::NElectronNuclearAttraction_Nuclear;
 
 using el_octupole = libchemist::operators::ElectricOctupole;
 
