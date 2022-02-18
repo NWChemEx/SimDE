@@ -1,5 +1,5 @@
 #pragma once
-#include <libchemist/libchemist.hpp>
+#include <chemist/chemist.hpp>
 
 /** @file types.hpp
  *
@@ -9,160 +9,155 @@
  */
 namespace simde::type {
 
-using namespace libchemist::type;
+using namespace chemist::type;
 
 // --------------------- Fundamental Types -------------------------------------
 
 /// Typedef of the class used to describe a molecule
-using molecule = libchemist::Molecule;
+using molecule = chemist::Molecule;
+
+/// Typedef of the class which models a nucleus
+using atom = typename molecule::value_type;
 
 /// Typedef of the class which describes an entire chemical system
-using chemical_system = libchemist::ChemicalSystem;
+using chemical_system = chemist::ChemicalSystem;
 
 /// Typedef of the AO Basis Set
-using ao_basis_set = libchemist::AOBasisSetD;
+using ao_basis_set = chemist::AOBasisSetD;
 
 /// Typedef of an electron
-using el = libchemist::Electron;
+using el = chemist::Electron;
 
 /// Typedef of many electrons
-using many_electrons = libchemist::ManyElectrons;
+using many_electrons = chemist::ManyElectrons;
 
 /// Typedef of the electron density
-using el_density = libchemist::OneElectronDensity;
+using el_density        = chemist::OneElectronDensity;
+using decomp_el_density = chemist::Decomposable1EDensity;
 
 // ------------------------------ Orbital Spaces -------------------------------
 
 /// Typedef of class describing an AO space
-using ao_space = libchemist::orbital_space::AOSpaceD;
-
-/// Typedef of class describing an AO space with a sparse map
-using sparse_ao_space = libchemist::orbital_space::DepAOSpaceD;
+using ao_space = chemist::orbital_space::AOSpaceD;
 
 /// Typedef of orbital space obtained by transforming an ao_space
-using derived_space = libchemist::orbital_space::DerivedSpaceD;
+using derived_space = chemist::orbital_space::DerivedSpaceD;
 
-/// Typedef of orbital space obtained by transforming a sparse_ao_space
-using ind_derived_space = libchemist::orbital_space::IndDerivedSpace;
-
-/// Typedef of derived orbital space which has a sparse map
-using dep_derived_space = libchemist::orbital_space::DepDerivedSpace;
+using tot_derived_space = chemist::orbital_space::ToTDerivedSpace;
 
 /// Typedef of an orbital space with orbitals that diagonalize the Fock matrix
-using canonical_space = libchemist::orbital_space::CanonicalSpaceD;
+using canonical_space = chemist::orbital_space::CanonicalSpaceD;
+
+using canonical_tot_space = chemist::orbital_space::CanonicalToTSpace;
+
+using independent_space = chemist::orbital_space::CanonicalIndSpace;
 
 // ---------------------- Tensors ---------------------------------------------
 
-using tensor = libchemist::type::tensor;
+using tensor = chemist::type::tensor;
 
-using tensor_of_tensors = libchemist::type::tensor_of_tensors;
+using tensor_of_tensors = chemist::type::tensor_of_tensors;
+
+using sparse_map = chemist::type::sparse_map;
 
 // -----------------------------------------------------------------------------
 // ----------------------------- Operators -------------------------------------
 // -----------------------------------------------------------------------------
 
-using core_hamiltonian = libchemist::operators::CoreHamiltonian;
+using core_hamiltonian = chemist::operators::CoreHamiltonian;
 
-using core_hamiltonian_nuc = libchemist::operators::CoreHamiltonian_Nuclear;
+using core_hamiltonian_nuc = chemist::operators::CoreHamiltonian_Nuclear;
 
-using el_dipole = libchemist::operators::ElectricDipole;
+using el_dipole = chemist::operators::ElectricDipole;
 
-using el_el_coulomb = libchemist::operators::ElectronRepulsion;
+using el_el_coulomb = chemist::operators::ElectronRepulsion;
 
-using el_el_coulomb_nuc = libchemist::operators::ElectronRepulsion_Nuclear;
+using el_el_coulomb_nuc = chemist::operators::ElectronRepulsion_Nuclear;
 
-using el_el_delta = libchemist::operators::ElectronElectronDelta;
+using el_el_delta = chemist::operators::ElectronElectronDelta;
 
-using el_el_f12_commutator =
-  libchemist::operators::ElectronElectronF12Commutator;
+using el_el_f12_commutator = chemist::operators::ElectronElectronF12Commutator;
 
-using el_el_stg = libchemist::operators::ElectronElectronSTG;
+using el_el_stg = chemist::operators::ElectronElectronSTG;
 
-using el_el_yukawa = libchemist::operators::ElectronElectronYukawa;
+using el_el_yukawa = chemist::operators::ElectronElectronYukawa;
 
-using el_identity = libchemist::operators::ElectronIdentity;
+using el_identity = chemist::operators::ElectronIdentity;
 
-using el_identity_nuc = libchemist::operators::ElectronIdentity_Nuclear;
+using el_identity_nuc = chemist::operators::ElectronIdentity_Nuclear;
 
-using el_kinetic = libchemist::operators::ElectronKinetic;
+using el_kinetic = chemist::operators::ElectronKinetic;
 
-using el_kinetic_nuc = libchemist::operators::ElectronKinetic_Nuclear;
+using el_kinetic_nuc = chemist::operators::ElectronKinetic_Nuclear;
 
-using els_kinetic = libchemist::operators::NElectronKinetic;
+using els_kinetic = chemist::operators::NElectronKinetic;
 
-using els_kinetic_nuc = libchemist::operators::NElectronKinetic_Nuclear;
+using els_kinetic_nuc = chemist::operators::NElectronKinetic_Nuclear;
 
-using el_nuc_coulomb = libchemist::operators::ElectronNuclearAttraction;
+using el_nuc_coulomb = chemist::operators::ElectronNuclearAttraction;
 
 using el_nuc_coulomb_nuc =
-  libchemist::operators::ElectronNuclearAttraction_Nuclear;
+  chemist::operators::ElectronNuclearAttraction_Nuclear;
 
-using els_nuc_coulomb = libchemist::operators::NElectronNuclearAttraction;
+using els_nuc_coulomb = chemist::operators::NElectronNuclearAttraction;
 
 using els_nuc_coulomb_nuc =
-  libchemist::operators::NElectronNuclearAttraction_Nuclear;
+  chemist::operators::NElectronNuclearAttraction_Nuclear;
 
-using el_octupole = libchemist::operators::ElectricOctupole;
+using el_octupole = chemist::operators::ElectricOctupole;
 
-using el_quadrupole = libchemist::operators::ElectricQuadrupole;
+using el_quadrupole = chemist::operators::ElectricQuadrupole;
 
-using el_scf_j = libchemist::operators::ElectronEDensityCoulomb;
+using el_scf_j = chemist::operators::ElectronEDensityCoulomb;
 
-using el_scf_k = libchemist::operators::ElectronEDensityExchange;
+using el_scf_k = chemist::operators::ElectronEDensityExchange;
 
-using el_xc = libchemist::operators::ExchangeCorrelation;
+using el_lscf_k = chemist::operators::ElectronDecomposableEDensity;
 
-using els_hamiltonian = libchemist::operators::ElectronicHamiltonian;
+using el_scf_xc = chemist::operators::ExchangeCorrelation;
 
-// using els_hamiltonian_nuc =
-//   libchemist::operators::ElectronicHamiltonian_Nuclear;
+using els_hamiltonian = chemist::operators::ElectronicHamiltonian;
 
-using els_coulomb = libchemist::operators::NElectronRepulsion;
+using els_coulomb = chemist::operators::NElectronRepulsion;
 
-using els_kinetic = libchemist::operators::NElectronKinetic;
+using els_kinetic = chemist::operators::NElectronKinetic;
 
-using els_nuc_coulomb = libchemist::operators::NElectronNuclearAttraction;
+using els_nuc_coulomb = chemist::operators::NElectronNuclearAttraction;
 
-using fock = libchemist::operators::Fock;
+using fock = chemist::operators::Fock;
 
-// using fock_nuc = libchemist::operators::Fock_Nuclear;
+using hamiltonian = chemist::operators::Hamiltonian;
 
-using hamiltonian = libchemist::operators::Hamiltonian;
+using nuc_coulomb = chemist::operators::NuclearRepulsion;
 
-// using hamiltonian_nuc = libchemist::operators::Hamiltonian_Nuclear;
-
-using nuc_coulomb = libchemist::operators::NuclearRepulsion;
-
-using nuc_coulomb_nuc = libchemist::operators::NuclearRepulsion_Nuclear;
+using nuc_coulomb_nuc = chemist::operators::NuclearRepulsion_Nuclear;
 
 // -----------------------------------------------------------------------------
 // ---------------------------- Wavefunctions ----------------------------------
 // -----------------------------------------------------------------------------
 
-using noncanonical_reference = libchemist::wavefunction::Reference;
+using noncanonical_reference = chemist::wavefunction::Reference;
 
-using canonical_reference = libchemist::wavefunction::CanonicalReference;
+using canonical_reference = chemist::wavefunction::CanonicalReference;
 
-using noncanonical_local_reference = libchemist::wavefunction::LocalReference;
+using local_reference = chemist::wavefunction::SparseReference;
 
-using canonical_local_reference =
-  libchemist::wavefunction::CanonicalLocalReference;
+using local_tot_reference = chemist::wavefunction::SparseToTReference;
 
-using many_body = libchemist::wavefunction::ManyBodyWf;
+using many_body = chemist::wavefunction::ManyBodyWf;
 
-using canonical_many_body = libchemist::wavefunction::CanonicalManyBodyWf;
+using canonical_many_body = chemist::wavefunction::CanonicalManyBodyWf;
 
-using local_many_body = libchemist::wavefunction::LocalManyBodyWf;
+using local_many_body = chemist::wavefunction::SparseManyBodyWf;
 
-using canonical_local_many_body =
-  libchemist::wavefunction::CanonicalLocalManyBodyWf;
+using local_tot_many_body = chemist::wavefunction::SparseToTManyBodyWf;
 
 // ---------------------------- Other ------------------------------------------
 
 /// Typedef of the class used for connectivity information
-using connectivity_table = libchemist::topology::ConnectivityTable;
+using connectivity_table = chemist::topology::ConnectivityTable;
 
 /// Typedef of the class used for molecular topology
-using topology = libchemist::topology::Topology;
+using topology = chemist::topology::Topology;
 
 } // namespace simde::type

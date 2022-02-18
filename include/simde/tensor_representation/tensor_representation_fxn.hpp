@@ -2,11 +2,12 @@
 #include "simde/tensor_representation/detail_/ao_dispatch.hpp"
 #include "simde/tensor_representation/detail_/split_basis_op.hpp"
 #include "simde/tensor_representation/detail_/tensor_rep_parser.hpp"
+#include "simde/tensor_representation/detail_/transform_traits.hpp"
 #include "simde/tensor_representation/general_ao_tensor_representation.hpp"
 #include "simde/tensor_representation/general_transformed_tensor_representation.hpp"
 #include "simde/tensor_representation/transformed_tensor_representation.hpp"
 #include "simde/types.hpp"
-#include <libchemist/libchemist.hpp>
+#include <chemist/chemist.hpp>
 
 namespace simde {
 
@@ -37,7 +38,7 @@ namespace simde {
  *               For an N-center integral there should be N+1 types in parameter
  *               pack (the types of the basis functions for each of the N
  *               centers plus the type of the operator). Types are expected to
- *               be orbital spaces or derived from libchemist::OperatorBase.
+ *               be orbital spaces or derived from chemist::OperatorBase.
  *
  * @param[in] mod The module which actually computes the integral.
  *
@@ -48,8 +49,6 @@ namespace simde {
  * @return The tensor representation of the operator, in the specified basis
  *         set.
  *
- * @throw std::runtime_error if we can't figure out what integral you are trying
- *                           to compute. Strong throw guarantee.
  */
 template<typename... Args>
 auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
@@ -62,53 +61,28 @@ auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
 
     auto&& [op, bases] = detail_::split_basis_op(args...);
 
-    constexpr bool has_dependent =
-      (libchemist::orbital_space::is_dependent_v<std::decay_t<Args>> || ...);
-
-    constexpr bool has_independent =
-      (libchemist::orbital_space::is_independent_v<std::decay_t<Args>> || ...);
-
-    constexpr bool makes_tot = has_dependent || has_independent;
-
     detail_::TensorRepParser p(bases);
 
-    const auto n_ao_spaces          = p.m_ao_spaces.size();
-    const auto n_sparse_ao_spaces   = p.m_sparse_ao_spaces.size();
-    const auto n_derived_spaces     = p.m_derived_spaces.size();
-    const auto n_ind_spaces         = p.m_ind_spaces.size();
-    const auto n_dep_spaces         = p.m_dep_spaces.size();
-    const auto total_ao             = n_ao_spaces + n_sparse_ao_spaces;
-    const auto total_sparse_derived = n_ind_spaces + n_dep_spaces;
-
-    const bool all_ao    = (n_center == n_ao_spaces);
-    const bool sparse_ao = (n_center == total_ao);
-    const bool derived   = (n_center == (n_ao_spaces + n_derived_spaces));
-    const bool sparse    = (n_center == (total_ao + total_sparse_derived));
+    using transform_traits_t = detail_::TransformTraits<std::decay_t<Args>...>;
+    constexpr bool has_tots  = transform_traits_t::has_tots;
+    constexpr bool has_derived = transform_traits_t::has_derived;
+    constexpr bool is_general  = has_tots;
+    constexpr bool is_derived  = has_derived && (!is_general);
+    constexpr bool is_all_ao   = (!has_derived) && (!is_general);
 
     using op_type = std::decay_t<decltype(op)>;
 
-    if constexpr(makes_tot) {
-        if(sparse_ao) {
-            using pt = GeneralAOTensorRepresentation<n_center, op_type>;
-            return mod.run_as<pt>(p.m_ao_spaces, p.m_sparse_ao_spaces, op);
-        } else if(sparse) {
-            using pt =
-              GeneralTransformedTensorRepresentation<n_center, op_type>;
-            return mod.run_as<pt>(p.m_ao_spaces, p.m_sparse_ao_spaces,
-                                  p.m_ind_spaces, p.m_dep_spaces, op);
-        } else {
-            throw std::runtime_error("Unrecognized scenario");
-        }
+    if constexpr(is_all_ao) {
+        return detail_::ao_dispatch<n_center, op_type>(mod, p.m_ao_spaces, op);
+    } else if constexpr(is_derived) {
+        using pt = TransformedTensorRepresentation<n_center, op_type>;
+        // Some of the spaces may be independent, need to handle this
+
+        return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, op);
     } else {
-        if(all_ao) {
-            return detail_::ao_dispatch<n_center, op_type>(mod, p.m_ao_spaces,
-                                                           op);
-        } else if(derived) {
-            using pt = TransformedTensorRepresentation<n_center, op_type>;
-            return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, op);
-        } else {
-            throw std::runtime_error("Unrecognized scenario");
-        }
+        using pt = GeneralTransformedTensorRepresentation<n_center, op_type>;
+        return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, p.m_tot_spaces,
+                              p.m_ind_spaces, op);
     }
 }
 

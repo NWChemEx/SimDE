@@ -1,4 +1,5 @@
 #pragma once
+#include "simde/types.hpp"
 
 namespace simde {
 
@@ -26,5 +27,8 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(PairEnergy, OccType, VirtType) {
       pluginplay::declare_result().add_field<tensor_type>("Pair Energies");
     return rv;
 }
+
+using SparsePairEnergy =
+  PairEnergy<type::independent_space, type::independent_space>;
 
 } // namespace simde

@@ -53,6 +53,9 @@ using ENuclear_Nuclear =
 using NENuclear_Nuclear =
   TwoCenterAO_NuclearTensorRepresentation<type::els_nuc_coulomb_nuc>;
 
+// double precision, electronic dipole moment
+using EDipole = TwoCenterAOTensorRepresentation<type::el_dipole>;
+
 // ------------------------ SCF/DFT Derived Integrals --------------------------
 
 // The one-electron core Hamiltonian
@@ -68,11 +71,11 @@ using MeanFieldJ = TwoCenterAOTensorRepresentation<type::el_scf_j>;
 // The exchange matrix (i.e. K) in SCF computed in double precision
 using MeanFieldK = TwoCenterAOTensorRepresentation<type::el_scf_k>;
 
-// The Kohn-Sham XC matrix in DFT computed in double precision
-using XC = TwoCenterAOTensorRepresentation<type::el_xc>;
+// The exchange matrix (i.e. K) in local SCF computed in double precision
+using LocalMeanFieldK = TwoCenterAOTensorRepresentation<type::el_lscf_k>;
 
 // The Fock matrix computed in double precision
-using Fock = TwoCenterAOTensorRepresentation<libchemist::operators::Fock>;
+using Fock = TwoCenterAOTensorRepresentation<chemist::operators::Fock>;
 
 // The Fock matrix computed in double precision Derivatives
 // using Fock_Nuclear =

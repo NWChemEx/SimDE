@@ -20,11 +20,8 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(LocalizedOrbitals, InputOrbitals,
 template<typename InputOrbitals, typename OutputOrbitals>
 TEMPLATED_PROPERTY_TYPE_INPUTS(LocalizedOrbitals, InputOrbitals,
                                OutputOrbitals) {
-    auto rv = pluginplay::declare_input()
-                .add_field<const type::molecule&>("Molecule")
-                .add_field<const InputOrbitals&>("Orbitals");
-    rv["Molecule"].set_description(
-      "Molecular system to localize the orbitals of");
+    auto rv =
+      pluginplay::declare_input().add_field<const InputOrbitals&>("Orbitals");
     rv["Orbitals"].set_description("The orbitals to localize");
     return rv;
 }
