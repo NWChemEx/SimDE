@@ -43,7 +43,7 @@ using ERI4_Nuclear =
   FourCenterAO_NuclearTensorRepresentation<type::el_el_coulomb_nuc>;
 
 /// double precision, electron-nucleus attraction energies
-using ENuclear = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
+using ENuclear  = TwoCenterAOTensorRepresentation<type::el_nuc_coulomb>;
 using NENuclear = TwoCenterAOTensorRepresentation<type::els_nuc_coulomb>;
 
 /// Two center, double precision, 1st derivative nuclear attraction integrals
