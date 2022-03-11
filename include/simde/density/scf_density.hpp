@@ -4,6 +4,13 @@
 
 namespace simde {
 
+/** @brief API for modules which create SCF densities.
+ *
+ *  Modules which satisfy the `SCFDensity` property type effectively
+ *  have an API: `simde::type::el_density (const canonical_reference&)`.
+ *  For example, the `SCF::Density` will compute the density by extracting the
+ *  coeffecients for the occupied MOs from the reference and contracting them.
+ */
 DECLARE_PROPERTY_TYPE(SCFDensity);
 
 PROPERTY_TYPE_INPUTS(SCFDensity) {
