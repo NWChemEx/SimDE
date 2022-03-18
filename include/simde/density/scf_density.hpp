@@ -4,19 +4,19 @@
 
 namespace simde {
 
-/** @brief API for modules which create SCF densities.
+/** @brief API for modules which create densities from occupied orbitals.
  *
  *  Modules which satisfy the `SCFDensity` property type effectively
- *  have an API: `simde::type::el_density (const canonical_reference&)`.
- *  For example, the `SCF::Density` will compute the density by extracting the
- *  coeffecients for the occupied MOs from the reference and contracting them.
+ *  have an API: `simde::type::el_density (const canonical_space&)`.
+ *  For example, the `SCF::Density` will compute the density by contracting
+ *  the occupied orbitals together.
  */
 DECLARE_PROPERTY_TYPE(SCFDensity);
 
 PROPERTY_TYPE_INPUTS(SCFDensity) {
-    using simde::type::canonical_reference;
+    using simde::type::canonical_space;
     auto rv =
-      pluginplay::declare_input().add_field<const canonical_reference&>("Phi0");
+      pluginplay::declare_input().add_field<const canonical_space&>("Phi0");
     return rv;
 }
 
