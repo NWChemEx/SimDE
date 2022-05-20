@@ -21,7 +21,19 @@ using TransformedLocalERI4 =
 using TransformedLocalOverlap =
   GeneralTransformedTensorRepresentation<2, type::el_identity>;
 
-using NuclearRepulsion_Nuclear =
-  TransformedTensorRepresentation<0, type::nuc_coulomb_nuc>;
+using EOverlap_Nuclear =
+  ContractedTensorRepresentation<type::el_identity_nuc>;
+
+using EKinetic_Nuclear =
+  ContractedTensorRepresentation<type::el_kinetic_nuc>;
+
+using ENuclear_Nuclear =
+  ContractedTensorRepresentation<type::el_nuc_coulomb_nuc>;
+
+using ENRE_Nuclear =
+  ContractedTensorRepresentation<type::nuc_coulomb_nuc>;
+
+using EERI_Nuclear =
+  ContractedTensorRepresentation<type::el_el_coulomb_nuc>;
 
 } // namespace simde

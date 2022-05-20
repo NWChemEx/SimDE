@@ -3,6 +3,7 @@
 #include "simde/tensor_representation/ao_tensor_representation.hpp"
 #include "simde/tensor_representation/bra_ket.hpp"
 #include "simde/tensor_representation/bra_ket_deriv.hpp"
+#include "simde/tensor_representation/contracted_tensor_representation.hpp"
 #include "simde/tensor_representation/general_ao_tensor_representation.hpp"
 #include "simde/tensor_representation/general_transformed_tensor_representation.hpp"
 #include "simde/tensor_representation/tensor_representation_fxn.hpp"

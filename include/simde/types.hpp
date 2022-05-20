@@ -66,8 +66,6 @@ using sparse_map = chemist::type::sparse_map;
 
 using core_hamiltonian = chemist::operators::CoreHamiltonian;
 
-using core_hamiltonian_nuc = chemist::operators::CoreHamiltonian_Nuclear;
-
 using el_dipole = chemist::operators::ElectricDipole;
 
 using el_el_coulomb = chemist::operators::ElectronRepulsion;
