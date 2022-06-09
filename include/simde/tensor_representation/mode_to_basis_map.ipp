@@ -18,6 +18,29 @@ MODE_TO_BASIS_MAP::ModeToBasisMap(const ModeToBasisMap& other) {
 }
 
 TPARAMS
+MODE_TO_BASIS_MAP::ModeToBasisMap(ModeToBasisMap&& other) noexcept :
+  m_aliased_bs_(std::move(other.m_aliased_bs_)),
+  m_owned_bs_(std::move(other.m_owned_bs_)) {}
+
+TPARAMS
+MODE_TO_BASIS_MAP& MODE_TO_BASIS_MAP::operator=(const ModeToBasisMap& rhs) {
+    if(&rhs != this) ModeToBasisMap(rhs).swap(*this);
+    return *this;
+}
+
+TPARAMS
+MODE_TO_BASIS_MAP& MODE_TO_BASIS_MAP::operator=(ModeToBasisMap&& rhs) noexcept {
+    if(&rhs != this) ModeToBasisMap(std::move(rhs)).swap(*this);
+    return *this;
+}
+
+TPARAMS
+void MODE_TO_BASIS_MAP::swap(ModeToBasisMap& other) noexcept {
+    m_aliased_bs_.swap(other.m_aliased_bs_);
+    m_owned_bs_.swap(other.m_owned_bs_);
+}
+
+TPARAMS
 void MODE_TO_BASIS_MAP::emplace(mode_type i, const_basis_set_reference bs) {
     m_aliased_bs_.emplace(i, bs);
 }
