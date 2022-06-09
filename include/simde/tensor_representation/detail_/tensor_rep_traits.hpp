@@ -1,6 +1,7 @@
 #pragma once
-#include "simde/types.hpp"
 #include <chemist/orbital_space/orbital_space.hpp>
+#include <simde/tensor_representation/mode_to_basis_map.hpp>
+#include <simde/types.hpp>
 
 namespace simde::detail_ {
 
@@ -29,14 +30,14 @@ private:
     using tot_space_type = type::tot_derived_space;
 
 public:
-    /// Type used to index modes in the intergral
-    using mode_type = unsigned int;
+    /// Type of a map from mode offsets to orbital spaces
+    using map_type = ModeToBasisMap<T>;
+
+    /// Type used to index modes in the intergral, is unsigned integer-like
+    using mode_type = typename map_type::mode_type;
 
     /// Type used to hold a read-only reference to an orbital space of type @p T
-    using const_reference = std::reference_wrapper<const T>;
-
-    /// Type of a map from modes to orbital spaces
-    using map_type = std::map<mode_type, const_reference>;
+    using const_reference = typename map_type::const_basis_set_reference;
 
     /// Is T an AO space?
     static constexpr bool is_ao_space = std::is_base_of_v<ao_space_type, T>;
