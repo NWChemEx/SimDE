@@ -8,7 +8,7 @@ namespace simde {
  *
  *  Some properties result from tensors being contracted with, e.g. density
  *  matrices. A trivial example is the Hartree-Fock total energy. However, in 
- *  some case not indeces are contracted. For example in the Hartree-Fock 
+ *  some case not all indeces are contracted. For example in the Hartree-Fock 
  *  gradients the indeces related to the AO orbitals will be integrated out.
  *  Nevertheless, the indeces related to the atom coordinates the energy is
  *  differentiated with respect to will remain. The result is a tensor, but 
@@ -41,7 +41,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ContractedTensorRepresentation, OperatorType) {
     using density_t       = const el_density&;
 
     auto rv = pluginplay::declare_input()
-                .add_field<ao_space_map_t>("AO spaces")
+                .add_field<ao_space>("Bra AO") // Bra basis set
+                .template add_field<ao_space>("Ket AO") // Ket basis set
                 .template add_field<op_t>("Operator") // The operator implies the surviving indeces
                 .template add_field<density_t>("One Electron Density");
     return rv;
