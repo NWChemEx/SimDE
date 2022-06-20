@@ -5,12 +5,10 @@
 namespace simde {
 
 template<std::size_t N, typename OperatorType>
-DECLARE_TEMPLATED_PROPERTY_TYPE(AO_NuclearTileRepresentation, N,
-                                OperatorType);
+DECLARE_TEMPLATED_PROPERTY_TYPE(AO_NuclearTileRepresentation, N, OperatorType);
 
 template<std::size_t N, typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_INPUTS(AO_NuclearTileRepresentation, N,
-                               OperatorType) {
+TEMPLATED_PROPERTY_TYPE_INPUTS(AO_NuclearTileRepresentation, N, OperatorType) {
     using const_ao_space_t = const simde::type::ao_space;
     using const_mol_t      = const simde::type::molecule;
     OperatorType op;
@@ -43,8 +41,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(AO_NuclearTileRepresentation, N,
 }
 
 template<std::size_t N, typename OperatorType>
-TEMPLATED_PROPERTY_TYPE_RESULTS(AO_NuclearTileRepresentation, N,
-                                OperatorType) {
+TEMPLATED_PROPERTY_TYPE_RESULTS(AO_NuclearTileRepresentation, N, OperatorType) {
     OperatorType op;
     auto op_name      = op.as_string();
     std::string r_key = "tile representation";
