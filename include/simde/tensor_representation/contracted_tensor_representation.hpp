@@ -30,16 +30,16 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(ContractedTensorRepresentation, OperatorType);
 
 template<typename OperatorType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(ContractedTensorRepresentation, OperatorType) {
-    using el_density      = type::el_density;
-    using ao_space        = type::ao_space;
-    using ao_traits       = detail_::TensorRepTraits<ao_space>;
-    using ao_space_map    = typename ao_traits::map_type;
-    using molecule        = type::molecule;
+    using el_density   = type::el_density;
+    using ao_space     = type::ao_space;
+    using ao_traits    = detail_::TensorRepTraits<ao_space>;
+    using ao_space_map = typename ao_traits::map_type;
+    using molecule     = type::molecule;
 
-    using ao_space_map_t  = const ao_space_map&;
-    using op_t            = const OperatorType&;
-    using density_t       = const el_density&;
-    using molecule_t      = const molecule&;
+    using ao_space_map_t = const ao_space_map&;
+    using op_t           = const OperatorType&;
+    using density_t      = const el_density&;
+    using molecule_t     = const molecule&;
 
     auto rv = pluginplay::declare_input()
                 .add_field<ao_space>("Bra AO")          // Bra basis set
