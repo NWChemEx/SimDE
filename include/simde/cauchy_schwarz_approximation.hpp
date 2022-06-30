@@ -4,21 +4,28 @@
 
 namespace simde {
 
-DECLARE_PROPERTY_TYPE(ShellNorms);
+template<typename OperatorType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(ShellNorms, OperatorType);
 
 //------------------------Implementations---------------------------------------
 
-PROPERTY_TYPE_INPUTS(ShellNorms) {
+template<typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(ShellNorms, OperatorType) {
     using basis_type = const simde::type::ao_space&;
-    auto rv          = pluginplay::declare_input()
-                .add_field<basis_type>("Basis1")
-                .template add_field<basis_type>("Basis2");
-    rv["Basis1"].set_description("The first basis set");
-    rv["Basis2"].set_description("The second basis set");
+    OperatorType op;
+    auto op_key = op.as_string();
+    auto rv     = pluginplay::declare_input()
+                .add_field<basis_type>("bra")
+                .template add_field<const OperatorType&>(op_key)
+                .template add_field<basis_type>("ket");
+    rv["bra"].set_description("The first basis set");
+    rv[op_key].set_description("The integral operator");
+    rv["ket"].set_description("The second basis set");
     return rv;
 }
 
-PROPERTY_TYPE_RESULTS(ShellNorms) {
+template<typename OperatorType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(ShellNorms, OperatorType) {
     using return_type = std::vector<std::vector<double>>;
     auto rv =
       pluginplay::declare_result().add_field<return_type>("Screening Matrix");
