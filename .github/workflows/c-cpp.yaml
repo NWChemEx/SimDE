@@ -4,9 +4,7 @@ on:
   pull_request:
     branches:
       - master
-  push:
-    branches:
-      - reuseable-workflow
+
 jobs:
   build:
     uses: NWChemEx-Project/.github/.github/workflows/c-cpp_tmpl.yml@master
