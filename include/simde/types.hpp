@@ -126,6 +126,10 @@ using fock = chemist::operators::Fock;
 
 using hamiltonian = chemist::operators::Hamiltonian;
 
+using hamiltonian_nuc = chemist::operators::Hamiltonian_Nuclear;
+
+using nwxscf_nuc = chemist::operators::NWXSCF_Nuclear;
+
 using nuc_coulomb = chemist::operators::NuclearRepulsion;
 
 using nuc_coulomb_nuc = chemist::operators::NuclearRepulsion_Nuclear;

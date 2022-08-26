@@ -47,6 +47,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ContractedTensorRepresentation, OperatorType) {
                 .template add_field<op_t>(
                   "Operator") // The operator implies the surviving indeces
                 .template add_field<density_t>("One Electron Density")
+                .template add_field<density_t>("Energy Weighted One Electron Density")
                 .template add_field<molecule_t>("Molecule");
     return rv;
 }
