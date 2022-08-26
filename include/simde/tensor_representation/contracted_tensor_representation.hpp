@@ -41,14 +41,15 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ContractedTensorRepresentation, OperatorType) {
     using density_t      = const el_density&;
     using molecule_t     = const molecule&;
 
-    auto rv = pluginplay::declare_input()
-                .add_field<ao_space>("Bra AO")          // Bra basis set
-                .template add_field<ao_space>("Ket AO") // Ket basis set
-                .template add_field<op_t>(
-                  "Operator") // The operator implies the surviving indeces
-                .template add_field<density_t>("One Electron Density")
-                .template add_field<density_t>("Energy Weighted One Electron Density")
-                .template add_field<molecule_t>("Molecule");
+    auto rv =
+      pluginplay::declare_input()
+        .add_field<ao_space>("Bra AO")          // Bra basis set
+        .template add_field<ao_space>("Ket AO") // Ket basis set
+        .template add_field<op_t>(
+          "Operator") // The operator implies the surviving indeces
+        .template add_field<density_t>("One Electron Density")
+        .template add_field<density_t>("Energy Weighted One Electron Density")
+        .template add_field<molecule_t>("Molecule");
     return rv;
 }
 

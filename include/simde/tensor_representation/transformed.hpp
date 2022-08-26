@@ -32,7 +32,8 @@ using ENRE_Nuclear = ContractedTensorRepresentation<type::nuc_coulomb_nuc>;
 
 using EERI_Nuclear = ContractedTensorRepresentation<type::el_el_coulomb_nuc>;
 
-using Hamiltonian_Nuclear = ContractedTensorRepresentation<type::hamiltonian_nuc>;
+using Hamiltonian_Nuclear =
+  ContractedTensorRepresentation<type::hamiltonian_nuc>;
 
 using NWXSCF_Nuclear = ContractedTensorRepresentation<type::nwxscf_nuc>;
 
