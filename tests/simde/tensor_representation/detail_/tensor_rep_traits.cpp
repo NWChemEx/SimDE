@@ -27,7 +27,7 @@ TEMPLATE_LIST_TEST_CASE("TensorRepTraits", "", spaces_type) {
     }
 
     SECTION("map_type") {
-        using corr = std::map<mode_type, const_reference>;
+        using corr = ModeToBasisMap<space_type>;
         STATIC_REQUIRE(std::is_same_v<map_type, corr>);
     }
 
