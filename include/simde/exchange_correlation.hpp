@@ -12,7 +12,7 @@ PROPERTY_TYPE_INPUTS(ExchangeCorrelationEnergy) {
 
     return pluginplay::declare_input()
       .add_field<const_ao_space_t>("bra")
-      .add_field<const operator_t&>("op")
+      .add_field<const operator_t&>("xc")
       .add_field<const_ao_space_t>("ket");
 }
 
