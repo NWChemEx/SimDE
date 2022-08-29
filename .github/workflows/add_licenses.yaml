@@ -18,13 +18,10 @@ on:
   pull_request:
     branches:
       - master
-  push:
-    branches:
-      - automate-licensing
 
 jobs:
   license_files:
-    uses: NWChemEx-Project/.github/.github/workflows/add_licenses_master.yml@automate-licensing
+    uses: NWChemEx-Project/.github/.github/workflows/add_licenses_master.yml@master
     with:
       config_file: .github/.licenserc.yaml
     secrets:
