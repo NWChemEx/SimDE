@@ -43,6 +43,9 @@ using MeanFieldJ = TwoCenterAOTensorRepresentation<type::el_scf_j>;
 // The exchange matrix (i.e. K) in SCF computed in double precision
 using MeanFieldK = TwoCenterAOTensorRepresentation<type::el_scf_k>;
 
+// The XC potential matrix (i.e. VXC) in SCF computed in double precision
+using MeanFieldXCPotential = TwoCenterAOTensorRepresentation<type::el_scf_xc>;
+
 // The exchange matrix (i.e. K) in local SCF computed in double precision
 using LocalMeanFieldK = TwoCenterAOTensorRepresentation<type::el_lscf_k>;
 
