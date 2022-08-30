@@ -1,4 +1,4 @@
-# Copyright 2021 CMakePP
+# Copyright 2021 NWChemEx-Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,14 +19,8 @@ header:
 
   paths-ignore:
     - .github/
-    - src/cminx/parser/
-    - docs/source/.templates
-    - docs/source/developer/uml_diagrams/*.drawio
     - docs/Makefile
     - tests/
     - LICENSE
-    - MANIFEST.in
-    - setup.cfg
-
 
   comment: never
