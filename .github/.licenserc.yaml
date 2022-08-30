@@ -20,7 +20,6 @@ header:
   paths-ignore:
     - .github/
     - docs/Makefile
-    - tests/
     - LICENSE
 
   comment: never
