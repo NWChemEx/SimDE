@@ -16,6 +16,8 @@
 
 #pragma once
 #include <pluginplay/pluginplay.hpp>
+#include <simde/derivative/traits.hpp>
+#include <simde/types.hpp>
 
 namespace simde {
 
@@ -24,17 +26,14 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(Derivative, PT2Differentiate, WithRespectTo);
 
 template<typename PT2Differentiate, typename WithRespectTo>
 PROPERTY_TYPE_INPUTS(Derivative<PT2Differentiate, WithRespectTo>) {
-    // TODO: Get inputs from PT2Differentiate
-    // TODO: Also register the WithRespectTo object
+    using my_type = Derivative<PT2Differentiate, WithRespectTo>;
+    auto desc     = "Arg " + std::to_string(derivative_order_v<my_type>);
+    return PT2Differentiate::inputs().add_input<WithRespectTo>(desc);
 }
 
 template<typename PT2Differentiate, typename WithRespectTo>
 PROPERTY_TYPE_RESULTS(Derivative<PT2Differentiate, WithRespectTo>) {
-    // TODO: Just return a TensorWrapper?
+    return declare_result().add_result<type::tensor>("Derivative");
 }
-
-// TODO: make a header with common nuclear gradients.
-template<typename T>
-using NuclearGradient = Derivative<T, Molecule>;
 
 } // namespace simde
