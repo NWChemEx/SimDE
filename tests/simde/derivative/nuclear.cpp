@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-#pragma once
-#include <simde/derivative/derivative_pt.hpp>
-#include <simde/derivative/nuclear.hpp>
-#include <simde/derivative/traits.hpp>
+#include "simde/derivative/nuclear.hpp"
+#include "test_property_type.hpp"
 
-/** @file derivative.hpp
- *
- *  This is a convenience header for including all of the headers forming the
- *  derivative component of SimDE. Developers of SimDE should avoid including
- *  this header in other SimDE headers (aside from SimDE.hpp).
- */
+TEST_CASE("Nuclear Derivative Property Types") {
+    test_property_type<simde::AOEnergyNuclearGradient>(
+      {"AOs", "system", "Arg 1"}, {"Derivative"});
+
+    test_property_type<simde::AOEnergyNuclearHessian>(
+      {"AOs", "system", "Arg 1", "Arg 2"}, {"Derivative"});
+}

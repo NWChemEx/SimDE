@@ -19,6 +19,7 @@
 #include "simde/atomic_charges.hpp"
 #include "simde/connectivity.hpp"
 #include "simde/density/density.hpp"
+#include "simde/derivative/derivative.hpp"
 #include "simde/energy/energy.hpp"
 #include "simde/energy_denominator.hpp"
 #include "simde/exchange_correlation.hpp"

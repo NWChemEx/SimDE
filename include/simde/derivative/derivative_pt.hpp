@@ -21,6 +21,31 @@
 
 namespace simde {
 
+/** @brief Declares the Derivative property type.
+ *
+ *  The Derivative template property type is templated on the quantity we are
+ *  taking the derivative of and the type we are taking the derivative with
+ *  respect to. For example:
+ *
+ *  ```.cpp
+ *  Derivative<AOEnergy, Molecule>;
+ *  ```
+ *
+ *  is the property type for a module which computes the gradient of the total
+ *  (AO-based) energy with respect to nuclear coordinates.
+ *
+ *  N.B. that property types for higher order derivatives, e.g., Hessians, can
+ *  be formed by nesting Derivative specializations. For example the Hessian
+ *  of the total (AO-based) energy, with respect to nuclear coordinates, is:
+ *
+ *  ```.cpp
+ *  Derivative<Derivative<AOEnergy, Molecule>, Molecule>;
+ *  ```
+ *
+ *  @tparam PT2Differentiate The unqualified property type being differentiated.
+ *  @tparam WithRespectTo The unqualified type we are taking the derivative with
+ *                        respect to.
+ */
 template<typename PT2Differentiate, typename WithRespectTo>
 DECLARE_TEMPLATED_PROPERTY_TYPE(Derivative, PT2Differentiate, WithRespectTo);
 
