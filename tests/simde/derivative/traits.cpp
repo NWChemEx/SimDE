@@ -2,6 +2,7 @@
 #include <simde/derivative/derivative.hpp>
 
 using namespace simde;
+using namespace simde::detail_;
 
 using not_deriv_t = std::tuple<int, double, std::string>;
 
@@ -19,7 +20,7 @@ TEMPLATE_LIST_TEST_CASE("IsDerivative (is Derivative)", "", deriv_t) {
 
 TEST_CASE("DerivativeOrder") {
     // Uncomment to check that this does not compile
-    DerivativeOrder<int> x;
+    // DerivativeOrder<int> x;
 
     STATIC_REQUIRE(DerivativeOrder<AOEnergyNuclearGradient>::value == 1);
     STATIC_REQUIRE(derivative_order_v<AOEnergyNuclearGradient> == 1);

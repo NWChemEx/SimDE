@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
+#include "../test_property_type.hpp"
 #include "simde/derivative/nuclear.hpp"
-#include "test_property_type.hpp"
 
 TEST_CASE("Nuclear Derivative Property Types") {
     test_property_type<simde::AOEnergyNuclearGradient>(

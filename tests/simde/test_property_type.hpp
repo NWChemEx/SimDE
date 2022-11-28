@@ -26,20 +26,19 @@ using string_list = std::initializer_list<std::string>;
  * @param result_fields An initializer list of the property type's returns
  */
 template<typename T>
-inline static void test_property_type(string_list input_fields,
-                                      string_list result_fields) {
+void test_property_type(string_list input_fields, string_list result_fields) {
     SECTION("inputs") {
         auto inputs = T::inputs();
         REQUIRE(inputs.size() == input_fields.size());
-        for(const auto& field : input_fields) SECTION(field) {
-                REQUIRE(inputs.count(field) == 1);
-            }
+        for(const auto& field : input_fields) {
+            REQUIRE(inputs.count(field) == 1);
+        }
     }
     SECTION("results") {
         auto results = T::results();
         REQUIRE(results.size() == result_fields.size());
-        for(const auto& field : result_fields) SECTION(field) {
-                REQUIRE(results.count(field) == 1);
-            }
+        for(const auto& field : result_fields) {
+            REQUIRE(results.count(field) == 1);
+        }
     }
 }
