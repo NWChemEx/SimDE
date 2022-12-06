@@ -16,10 +16,18 @@ jobs:
       clang-build: false
     secrets:
       CPP_GITHUB_TOKEN: ${{ secrets.CPP_GITHUB_TOKEN }}
+<<<<<<< HEAD
   build-with-clang:
     uses: NWChemEx-Project/.github/.github/workflows/c-cpp_tmpl.yaml@parallel-template
     with: 
       dependencies: 'clang gcovr cmake openblas cblas lapacke scalapack boost eigen3 openmpi'
+=======
+
+  build-with-clang:
+    uses: NWChemEx-Project/.github/.github/workflows/c-cpp_tmpl.yaml@parallel-template
+    with: 
+      dependencies: 'gcovr cmake openblas cblas lapacke scalapack boost eigen3 openmpi clang'
+>>>>>>> edec03af184e73889bf9aeb933debf1661a6aab6
       clang-build: true
     secrets:
       CPP_GITHUB_TOKEN: ${{ secrets.CPP_GITHUB_TOKEN }}
