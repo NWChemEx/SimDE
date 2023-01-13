@@ -20,12 +20,14 @@
 
 namespace simde {
 
-/** @brief API for modules which create densities from orbitals which can have fractional occupations.
+/** @brief API for modules which create densities from orbitals which can have
+ * fractional occupations.
  *
  *  Modules which satisfy the `SCFDensityFractional` property type effectively
- *  have an API: `simde::type::el_density (const canonical_space&, std::vector<double>&)`.
- *  For example, the `SCF::DensityFractional` will compute the density by contracting
- *  the occupied orbitals together with their occupations.
+ *  have an API: `simde::type::el_density (const canonical_space&,
+ * std::vector<double>&)`. For example, the `SCF::DensityFractional` will
+ * compute the density by contracting the occupied orbitals together with their
+ * occupations.
  */
 DECLARE_DERIVED_PROPERTY_TYPE(SCFDensityFractional, SCFDensity);
 
@@ -36,6 +38,8 @@ PROPERTY_TYPE_INPUTS(SCFDensityFractional) {
     return rv;
 }
 
-PROPERTY_TYPE_RESULTS(SCFDensityFractional) { return pluginplay::declare_result(); }
+PROPERTY_TYPE_RESULTS(SCFDensityFractional) {
+    return pluginplay::declare_result();
+}
 
 } // namespace simde
