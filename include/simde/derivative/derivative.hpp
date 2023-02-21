@@ -15,18 +15,13 @@
  */
 
 #pragma once
-#include "simde/atom_to_ao.hpp"
-#include "simde/atomic_charges.hpp"
-#include "simde/connectivity.hpp"
-#include "simde/density/density.hpp"
-#include "simde/derivative/derivative.hpp"
-#include "simde/energy/energy.hpp"
-#include "simde/energy_denominator.hpp"
-#include "simde/exchange_correlation.hpp"
-#include "simde/fragmented.hpp"
-#include "simde/mo_charges.hpp"
-#include "simde/operators/operators.hpp"
-#include "simde/orbital_spaces/orbital_spaces.hpp"
-#include "simde/sparsity_relation.hpp"
-#include "simde/tensor_representation/tensor_representation.hpp"
-#include "simde/wavefunctions/wavefunctions.hpp"
+#include <simde/derivative/derivative_pt.hpp>
+#include <simde/derivative/nuclear.hpp>
+#include <simde/derivative/traits.hpp>
+
+/** @file derivative.hpp
+ *
+ *  This is a convenience header for including all of the headers forming the
+ *  derivative component of SimDE. Developers of SimDE should avoid including
+ *  this header in other SimDE headers (aside from SimDE.hpp).
+ */
