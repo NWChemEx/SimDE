@@ -14,20 +14,12 @@
  * limitations under the License.
  */
 
-#pragma once
-#include "simde/atom_to_ao.hpp"
-#include "simde/atomic_charges.hpp"
-#include "simde/connectivity.hpp"
-#include "simde/density/density.hpp"
-#include "simde/derivative/derivative.hpp"
-#include "simde/energy/energy.hpp"
-#include "simde/energy_denominator.hpp"
-#include "simde/exchange_correlation.hpp"
-#include "simde/fragmented.hpp"
 #include "simde/integral_factory.hpp"
-#include "simde/mo_charges.hpp"
-#include "simde/operators/operators.hpp"
-#include "simde/orbital_spaces/orbital_spaces.hpp"
-#include "simde/sparsity_relation.hpp"
-#include "simde/tensor_representation/tensor_representation.hpp"
-#include "simde/wavefunctions/wavefunctions.hpp"
+#include "test_property_type.hpp"
+
+using namespace simde;
+
+TEST_CASE("IntegralFactory") {
+    test_property_type<ERIFactory>({"Basis Sets", "(r\u0302₁₂)⁻¹"},
+                                   {"Integral Factory"});
+}

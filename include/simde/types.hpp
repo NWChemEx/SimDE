@@ -156,4 +156,7 @@ using connectivity_table = chemist::topology::ConnectivityTable;
 /// Typedef of the class used for molecular topology
 using topology = chemist::topology::Topology;
 
+/// Typedef of an integral factory
+using integral_factory = chemist::IntegralFactory;
+
 } // namespace simde::type
