@@ -42,6 +42,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(TransformedWavefunction, OutputType,
     return rv;
 }
 
+/*
 using NoncanonicalToLocal =
   TransformedWavefunction<type::local_reference, type::noncanonical_reference>;
 
@@ -53,5 +54,6 @@ using LocalMBToToTMB =
 
 using LocalToLocal =
   TransformedWavefunction<type::local_reference, type::local_reference>;
+*/
 
 } // namespace simde

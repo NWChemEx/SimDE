@@ -63,7 +63,7 @@ public:
     using tot_space_map_t = trt_map_t<type::tot_derived_space>;
 
     /// Type of the member holding the independent spaces
-    using ind_derived_space_map_t = trt_map_t<type::independent_space>;
+    //using ind_derived_space_map_t = trt_map_t<type::independent_space>;
 
     /// The AO spaces added to this parser
     ao_map_t m_ao_spaces;
@@ -75,7 +75,7 @@ public:
     tot_space_map_t m_tot_spaces;
 
     /// The independent spaces added to this parser
-    ind_derived_space_map_t m_ind_spaces;
+    //ind_derived_space_map_t m_ind_spaces;
 
 private:
     /** @brief Implements the ctor via recursion.
@@ -106,7 +106,7 @@ private:
     void add_space(std::size_t N, const type::ao_space& space);
     void add_space(std::size_t N, const type::derived_space& space);
     void add_space(std::size_t N, const type::tot_derived_space& space);
-    void add_space(std::size_t N, const type::independent_space& space);
+    //void add_space(std::size_t N, const type::independent_space& space);
     ///@}
 };
 
@@ -138,9 +138,9 @@ inline void TensorRepParser::add_space(std::size_t N,
     m_tot_spaces.emplace(N, std::cref(space));
 }
 
-inline void TensorRepParser::add_space(std::size_t N,
-                                       const type::independent_space& space) {
-    m_ind_spaces.emplace(N, std::cref(space));
-}
+//inline void TensorRepParser::add_space(std::size_t N,
+//                                       const type::independent_space& space) {
+//    m_ind_spaces.emplace(N, std::cref(space));
+//}
 
 } // namespace simde::detail_

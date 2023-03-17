@@ -30,30 +30,30 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(GeneralTransformedTensorRepresentation, N,
     using ao_space          = type::ao_space;
     using derived_space     = type::derived_space;
     using tot_derived_space = type::tot_derived_space;
-    using ind_space         = type::independent_space;
+    // using ind_space         = type::independent_space;
 
     using ao_traits            = detail_::TensorRepTraits<ao_space>;
     using derived_space_traits = detail_::TensorRepTraits<derived_space>;
     using tot_derived_traits   = detail_::TensorRepTraits<tot_derived_space>;
-    using ind_space_traits     = detail_::TensorRepTraits<ind_space>;
+    // using ind_space_traits     = detail_::TensorRepTraits<ind_space>;
 
     using ao_space_map      = typename ao_traits::map_type;
     using derived_space_map = typename derived_space_traits::map_type;
     using tot_space_map     = typename tot_derived_traits::map_type;
-    using ind_space_map     = typename ind_space_traits::map_type;
+    // using ind_space_map     = typename ind_space_traits::map_type;
 
     using ao_space_map_t      = const ao_space_map&;
     using derived_space_map_t = const derived_space_map&;
     using tot_space_map_t     = const tot_space_map&;
-    using ind_space_map_t     = const ind_space_map&;
-    using op_t                = const OperatorType&;
+    // using ind_space_map_t     = const ind_space_map&;
+    using op_t = const OperatorType&;
 
     auto rv =
       pluginplay::declare_input()
         .add_field<ao_space_map_t>("AO spaces")
         .template add_field<derived_space_map_t>("derived spaces")
         .template add_field<tot_space_map_t>("tot spaces")
-        .template add_field<ind_space_map_t>("independent derivedspaces")
+        //.template add_field<ind_space_map_t>("independent derivedspaces")
         .template add_field<op_t>("Operator");
     return rv;
 }

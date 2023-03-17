@@ -55,8 +55,8 @@ using NoncanonicalReference =
 using CanonicalReference =
   Wavefunction<type::ao_space, type::canonical_reference>;
 
-using CanonicalLocalReference =
-  Wavefunction<type::ao_space, type::local_reference>;
+// using CanonicalLocalReference =
+//   Wavefunction<type::ao_space, type::local_reference>;
 
 // Takes a reference wavefunction and returns a reference wavefunction
 // Generally used for SCF iterations
@@ -68,10 +68,10 @@ using SCFWf =
 using CanonicalManyBodyWf =
   Wavefunction<type::canonical_reference, type::canonical_many_body>;
 
-using LocalManyBodyWf =
-  Wavefunction<type::local_reference, type::local_many_body>;
+// using LocalManyBodyWf =
+//   Wavefunction<type::local_reference, type::local_many_body>;
 
-using LocalToTManyBodyWf =
-  Wavefunction<type::local_reference, type::local_tot_many_body>;
+// using LocalToTManyBodyWf =
+//   Wavefunction<type::local_reference, type::local_tot_many_body>;
 
 } // namespace simde

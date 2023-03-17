@@ -23,8 +23,8 @@ using namespace simde;
 // Types of orbital spaces we need to test
 using spaces_type =
   std::tuple<type::ao_space, type::derived_space, type::tot_derived_space,
-             type::canonical_space, type::canonical_tot_space,
-             type::independent_space>;
+             type::canonical_space, type::canonical_tot_space>;
+// type::independent_space>;
 
 TEMPLATE_LIST_TEST_CASE("ModeToBasisMap", "", spaces_type) {
     // Use type parameter to work out the ModeToBasisMap specialization to test
