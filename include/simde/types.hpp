@@ -66,7 +66,7 @@ using canonical_space = chemist::orbital_space::CanonicalSpaceD;
 
 using canonical_tot_space = chemist::orbital_space::CanonicalToTSpace;
 
-using independent_space = chemist::orbital_space::CanonicalIndSpace;
+// using independent_space = chemist::orbital_space::CanonicalIndSpace;
 
 // ---------------------- Tensors ---------------------------------------------
 
@@ -136,17 +136,17 @@ using noncanonical_reference = chemist::wavefunction::Reference;
 
 using canonical_reference = chemist::wavefunction::CanonicalReference;
 
-using local_reference = chemist::wavefunction::SparseReference;
+// using local_reference = chemist::wavefunction::SparseReference;
 
-using local_tot_reference = chemist::wavefunction::SparseToTReference;
+// using local_tot_reference = chemist::wavefunction::SparseToTReference;
 
 using many_body = chemist::wavefunction::ManyBodyWf;
 
 using canonical_many_body = chemist::wavefunction::CanonicalManyBodyWf;
 
-using local_many_body = chemist::wavefunction::SparseManyBodyWf;
+// using local_many_body = chemist::wavefunction::SparseManyBodyWf;
 
-using local_tot_many_body = chemist::wavefunction::SparseToTManyBodyWf;
+// using local_tot_many_body = chemist::wavefunction::SparseToTManyBodyWf;
 
 // ---------------------------- Other ------------------------------------------
 

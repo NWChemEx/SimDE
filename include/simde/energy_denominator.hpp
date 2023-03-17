@@ -51,7 +51,7 @@ using CanonicalEnergyDenominator =
   EnergyDenominator<type::canonical_space, type::canonical_space>;
 
 /// Type of energy denominator which uses tensor of tensors
-using LocalEnergyDenominator =
-  EnergyDenominator<type::independent_space, type::canonical_tot_space>;
+// using LocalEnergyDenominator =
+//   EnergyDenominator<type::independent_space, type::canonical_tot_space>;
 
 } // namespace simde

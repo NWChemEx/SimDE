@@ -44,7 +44,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(PairEnergy, OccType, VirtType) {
     return rv;
 }
 
-using SparsePairEnergy =
-  PairEnergy<type::independent_space, type::independent_space>;
+// using SparsePairEnergy =
+//   PairEnergy<type::independent_space, type::independent_space>;
 
 } // namespace simde

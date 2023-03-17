@@ -98,7 +98,8 @@ auto tensor_representation(pluginplay::Module& mod, const Args&... args) {
     } else {
         using pt = GeneralTransformedTensorRepresentation<n_center, op_type>;
         return mod.run_as<pt>(p.m_ao_spaces, p.m_derived_spaces, p.m_tot_spaces,
-                              p.m_ind_spaces, op);
+                              // p.m_ind_spaces,
+                              op);
     }
 }
 
