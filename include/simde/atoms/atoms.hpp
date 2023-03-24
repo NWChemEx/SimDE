@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include "simde/atomic_density.hpp"
-#include "test_property_type.hpp"
-
-TEST_CASE("AtomicDensity") {
-    test_property_type<simde::AtomDenFromZ>({"Atom ID"}, {"Atomic Density"});
-}
+#pragma once
+#include "simde/atoms/Z_from_symbol.hpp"
+#include "simde/atoms/atom.hpp"
+#include "simde/atoms/atomic_density.hpp"
+#include "simde/atoms/elec_configuration.hpp"
+#include "simde/atoms/symbol_from_Z.hpp"

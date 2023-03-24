@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include "simde/Z_from_symbol.hpp"
-#include "test_property_type.hpp"
+#include "../test_property_type.hpp"
+#include "simde/atoms/symbol_from_Z.hpp"
 
-TEST_CASE("ZFromSymbol") {
-    test_property_type<simde::ZFromSymbol>({"Symbol"}, {"Z"});
+TEST_CASE("SymbolFromZ") {
+    test_property_type<simde::SymbolFromZ>({"Z"}, {"Symbol"});
 }

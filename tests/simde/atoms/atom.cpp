@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "simde/atom.hpp"
-#include "test_property_type.hpp"
+#include "../test_property_type.hpp"
+#include "simde/atoms/atom.hpp"
 
 TEST_CASE("Atom") {
     test_property_type<simde::AtomFromZ>({"Atom ID"}, {"Atom"});

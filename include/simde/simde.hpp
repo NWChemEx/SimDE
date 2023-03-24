@@ -15,18 +15,15 @@
  */
 
 #pragma once
-#include "simde/Z_from_symbol.hpp"
-#include "simde/atom.hpp"
+#include "simde/atom/atoms.hpp"
 #include "simde/atom_to_ao.hpp"
 #include "simde/atomic_charges.hpp"
-#include "simde/atomic_density.hpp"
 #include "simde/basis_sets/basis_sets.hpp"
 #include "simde/cauchy_schwarz_approximation.hpp"
 #include "simde/connectivity.hpp"
 #include "simde/density/density.hpp"
 #include "simde/derivative/derivative.hpp"
 #include "simde/doubles_residual.hpp"
-#include "simde/elec_configuration.hpp"
 #include "simde/embedding_partition.hpp"
 #include "simde/energy/energy.hpp"
 #include "simde/energy_denominator.hpp"
@@ -38,7 +35,6 @@
 #include "simde/operators/operators.hpp"
 #include "simde/orbital_spaces/orbital_spaces.hpp"
 #include "simde/sparsity_relation.hpp"
-#include "simde/symbol_from_Z.hpp"
 #include "simde/tensor_representation/tensor_representation.hpp"
 #include "simde/topology.hpp"
 #include "simde/wavefunctions/wavefunctions.hpp"

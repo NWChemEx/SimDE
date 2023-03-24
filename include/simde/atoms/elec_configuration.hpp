@@ -39,7 +39,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(ElecConfiguration, InputType, ConfType) {
     auto rv = pluginplay::declare_result().add_field<ConfType>(
       "Electronic Configuration");
     rv.at("Electronic Configuration")
-      .description("The electronic configuration for the specified atom");
+      .set_description("The electronic configuration for the specified atom");
     return rv;
 }
 
