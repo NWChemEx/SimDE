@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>simde: include/simde/density/scf_density.hpp Source File</title>
+<title>simde: include/simde/atoms/atoms.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,12 +62,12 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_2359eca8484e4a6c0c1bfd14c66d102c.html">simde</a></li><li class="navelem"><a class="el" href="dir_c9c33e6d7d4e159d5520d3a744384d3a.html">density</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_2359eca8484e4a6c0c1bfd14c66d102c.html">simde</a></li><li class="navelem"><a class="el" href="dir_97928af1ca44846a27649750cee39bbb.html">atoms</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">scf_density.hpp</div>  </div>
+<div class="title">atoms.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -87,30 +87,11 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8hpp.html">simde/types.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;pluginplay/pluginplay.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>simde {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;DECLARE_PROPERTY_TYPE(SCFDensity);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;PROPERTY_TYPE_INPUTS(SCFDensity) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">using</span> <a class="code" href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">simde::type::canonical_space</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">auto</span> rv =</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      pluginplay::declare_input().add_field&lt;<span class="keyword">const</span> <a class="code" href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">canonical_space</a>&amp;&gt;(<span class="stringliteral">&quot;Phi0&quot;</span>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> rv;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;PROPERTY_TYPE_RESULTS(SCFDensity) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">using</span> <a class="code" href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">simde::type::el_density</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">auto</span> rv = pluginplay::declare_result().add_field&lt;<a class="code" href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">el_density</a>&gt;(<span class="stringliteral">&quot;Density&quot;</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> rv;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <span class="comment">// namespace simde</span></div>
-<div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
-<div class="ttc" id="atypes_8hpp_html_ab08687c1184c78a525800bd440f7fabe"><div class="ttname"><a href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">simde::type::el_density</a></div><div class="ttdeci">chemist::OneElectronDensity el_density</div><div class="ttdoc">Typedef of the electron density.</div><div class="ttdef"><b>Definition:</b> types.hpp:60</div></div>
-<div class="ttc" id="atypes_8hpp_html_af1e3088d73e17f1ecb6fd66a81677cd8"><div class="ttname"><a href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">simde::type::canonical_space</a></div><div class="ttdeci">chemist::orbital_space::CanonicalSpaceD canonical_space</div><div class="ttdoc">Typedef of an orbital space with orbitals that diagonalize the Fock matrix.</div><div class="ttdef"><b>Definition:</b> types.hpp:74</div></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;simde/atoms/Z_from_symbol.hpp&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;simde/atoms/atom.hpp&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;simde/atoms/atomic_density.hpp&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;simde/atoms/elec_configuration.hpp&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;simde/atoms/symbol_from_Z.hpp&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

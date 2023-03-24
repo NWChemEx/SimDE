@@ -99,133 +99,145 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="types_8hpp.html#a396174ec2331a84955689702dc31e730">   36</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a396174ec2331a84955689702dc31e730">atom</a> = <span class="keyword">typename</span> molecule::value_type;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="types_8hpp.html#a55500e80470680b74883f4c275af1025">   39</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a55500e80470680b74883f4c275af1025">chemical_system</a> = chemist::ChemicalSystem;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="types_8hpp.html#af1129fa0d7f0f6e5854794f80290e464">   39</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#af1129fa0d7f0f6e5854794f80290e464">atomic_symbol</a> = <span class="keyword">typename</span> atom::name_type;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="types_8hpp.html#abb059a78452d2781eaf762842181670b">   42</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#abb059a78452d2781eaf762842181670b">ao_basis_set</a> = chemist::AOBasisSetD;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="types_8hpp.html#a14c76018005aaa9fabd34390ce3f4034">   42</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a14c76018005aaa9fabd34390ce3f4034">atomic_number</a> = <span class="keyword">typename</span> atom::size_type;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="types_8hpp.html#a8acb45791cda370a16dfccc99a1eedc1">   45</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a8acb45791cda370a16dfccc99a1eedc1">el</a> = chemist::Electron;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="types_8hpp.html#a55500e80470680b74883f4c275af1025">   45</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a55500e80470680b74883f4c275af1025">chemical_system</a> = chemist::ChemicalSystem;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="types_8hpp.html#ac4ab94c22c64eaab1eb79e4f7adb7e07">   48</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#ac4ab94c22c64eaab1eb79e4f7adb7e07">many_electrons</a> = chemist::ManyElectrons;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="types_8hpp.html#abb059a78452d2781eaf762842181670b">   48</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#abb059a78452d2781eaf762842181670b">ao_basis_set</a> = chemist::AOBasisSetD;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">   51</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">el_density</a>        = chemist::OneElectronDensity;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">using</span> decomp_el_density = chemist::Decomposable1EDensity;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// ------------------------------ Orbital Spaces -------------------------------</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="types_8hpp.html#aad9abbe0011192eb9eec2420af589595">   51</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#aad9abbe0011192eb9eec2420af589595">atomic_basis_set</a> = chemist::AtomicBasisSet&lt;double&gt;;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="types_8hpp.html#a8acb45791cda370a16dfccc99a1eedc1">   54</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a8acb45791cda370a16dfccc99a1eedc1">el</a> = chemist::Electron;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">   57</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">ao_space</a> = chemist::orbital_space::AOSpaceD;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="types_8hpp.html#ac4ab94c22c64eaab1eb79e4f7adb7e07">   57</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#ac4ab94c22c64eaab1eb79e4f7adb7e07">many_electrons</a> = chemist::ManyElectrons;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="types_8hpp.html#aea49118febcced96304a1aee59e3eb15">   60</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#aea49118febcced96304a1aee59e3eb15">derived_space</a> = chemist::orbital_space::DerivedSpaceD;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">using</span> tot_derived_space = chemist::orbital_space::ToTDerivedSpace;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">   65</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">canonical_space</a> = chemist::orbital_space::CanonicalSpaceD;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">using</span> canonical_tot_space = chemist::orbital_space::CanonicalToTSpace;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">// using independent_space = chemist::orbital_space::CanonicalIndSpace;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">   60</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">el_density</a>        = chemist::OneElectronDensity;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using</span> decomp_el_density = chemist::Decomposable1EDensity;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">// ------------------------------ Orbital Spaces -------------------------------</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">   66</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">ao_space</a> = chemist::orbital_space::AOSpaceD;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="types_8hpp.html#aea49118febcced96304a1aee59e3eb15">   69</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#aea49118febcced96304a1aee59e3eb15">derived_space</a> = chemist::orbital_space::DerivedSpaceD;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">// ---------------------- Tensors ---------------------------------------------</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">using</span> tot_derived_space = chemist::orbital_space::ToTDerivedSpace;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">using</span> tensor = chemist::type::tensor;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">using</span> tensor_of_tensors = chemist::type::tensor_of_tensors;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">using</span> sparse_map = chemist::type::sparse_map;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">// ----------------------------- Operators -------------------------------------</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">using</span> core_hamiltonian = chemist::operators::CoreHamiltonian;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">using</span> el_dipole = chemist::operators::ElectricDipole;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">using</span> el_el_coulomb = chemist::operators::ElectronRepulsion;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">using</span> el_el_delta = chemist::operators::ElectronElectronDelta;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">using</span> el_el_f12_commutator = chemist::operators::ElectronElectronF12Commutator;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">using</span> el_el_stg = chemist::operators::ElectronElectronSTG;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">using</span> el_el_yukawa = chemist::operators::ElectronElectronYukawa;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">using</span> el_identity = chemist::operators::ElectronIdentity;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">using</span> el_identity_nuc = chemist::operators::ElectronIdentity_Nuclear;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">using</span> el_kinetic = chemist::operators::ElectronKinetic;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">using</span> el_nuc_coulomb = chemist::operators::ElectronNuclearAttraction;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">using</span> el_octupole = chemist::operators::ElectricOctupole;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">using</span> el_quadrupole = chemist::operators::ElectricQuadrupole;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">using</span> el_scf_j = chemist::operators::ElectronEDensityCoulomb;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">using</span> el_scf_k = chemist::operators::ElectronEDensityExchange;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">using</span> el_lscf_k = chemist::operators::ElectronDecomposableEDensity;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">using</span> el_scf_xc = chemist::operators::ExchangeCorrelation;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">using</span> els_hamiltonian = chemist::operators::ElectronicHamiltonian;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">using</span> els_coulomb = chemist::operators::NElectronRepulsion;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">using</span> els_kinetic = chemist::operators::NElectronKinetic;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">using</span> els_nuc_coulomb = chemist::operators::NElectronNuclearAttraction;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">using</span> fock = chemist::operators::Fock;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">using</span> hamiltonian = chemist::operators::Hamiltonian;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">using</span> nuc_coulomb = chemist::operators::NuclearRepulsion;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">// ---------------------------- Wavefunctions ----------------------------------</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">using</span> noncanonical_reference = chemist::wavefunction::Reference;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">using</span> canonical_reference = chemist::wavefunction::CanonicalReference;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">// using local_reference = chemist::wavefunction::SparseReference;</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">// using local_tot_reference = chemist::wavefunction::SparseToTReference;</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">using</span> many_body = chemist::wavefunction::ManyBodyWf;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">using</span> canonical_many_body = chemist::wavefunction::CanonicalManyBodyWf;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">// using local_many_body = chemist::wavefunction::SparseManyBodyWf;</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">// using local_tot_many_body = chemist::wavefunction::SparseToTManyBodyWf;</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">// ---------------------------- Other ------------------------------------------</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="types_8hpp.html#aed3968f5ae7e879aac3c6250437b7faf">  154</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#aed3968f5ae7e879aac3c6250437b7faf">connectivity_table</a> = chemist::topology::ConnectivityTable;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">   74</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">canonical_space</a> = chemist::orbital_space::CanonicalSpaceD;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">using</span> canonical_tot_space = chemist::orbital_space::CanonicalToTSpace;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">// using independent_space = chemist::orbital_space::CanonicalIndSpace;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">// ---------------------- Tensors ---------------------------------------------</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">using</span> tensor = chemist::type::tensor;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">using</span> tensor_of_tensors = chemist::type::tensor_of_tensors;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">using</span> sparse_map = chemist::type::sparse_map;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">// ----------------------------- Operators -------------------------------------</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">using</span> core_hamiltonian = chemist::operators::CoreHamiltonian;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">using</span> el_dipole = chemist::operators::ElectricDipole;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">using</span> el_el_coulomb = chemist::operators::ElectronRepulsion;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">using</span> el_el_delta = chemist::operators::ElectronElectronDelta;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">using</span> el_el_f12_commutator = chemist::operators::ElectronElectronF12Commutator;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">using</span> el_el_stg = chemist::operators::ElectronElectronSTG;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">using</span> el_el_yukawa = chemist::operators::ElectronElectronYukawa;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">using</span> el_identity = chemist::operators::ElectronIdentity;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">using</span> el_identity_nuc = chemist::operators::ElectronIdentity_Nuclear;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">using</span> el_kinetic = chemist::operators::ElectronKinetic;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">using</span> el_nuc_coulomb = chemist::operators::ElectronNuclearAttraction;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">using</span> el_octupole = chemist::operators::ElectricOctupole;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keyword">using</span> el_quadrupole = chemist::operators::ElectricQuadrupole;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">using</span> el_scf_j = chemist::operators::ElectronEDensityCoulomb;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">using</span> el_scf_k = chemist::operators::ElectronEDensityExchange;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">using</span> el_lscf_k = chemist::operators::ElectronDecomposableEDensity;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">using</span> el_scf_xc = chemist::operators::ExchangeCorrelation;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">using</span> els_hamiltonian = chemist::operators::ElectronicHamiltonian;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">using</span> els_coulomb = chemist::operators::NElectronRepulsion;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">using</span> els_kinetic = chemist::operators::NElectronKinetic;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">using</span> els_nuc_coulomb = chemist::operators::NElectronNuclearAttraction;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">using</span> fock = chemist::operators::Fock;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">using</span> hamiltonian = chemist::operators::Hamiltonian;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">using</span> nuc_coulomb = chemist::operators::NuclearRepulsion;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">// ---------------------------- Wavefunctions ----------------------------------</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword">using</span> noncanonical_reference = chemist::wavefunction::Reference;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">using</span> canonical_reference = chemist::wavefunction::CanonicalReference;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">// using local_reference = chemist::wavefunction::SparseReference;</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">// using local_tot_reference = chemist::wavefunction::SparseToTReference;</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">using</span> many_body = chemist::wavefunction::ManyBodyWf;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">using</span> canonical_many_body = chemist::wavefunction::CanonicalManyBodyWf;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="types_8hpp.html#a7ee0f87aebc8b0ac159d5ed311cde384">  157</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a7ee0f87aebc8b0ac159d5ed311cde384">topology</a> = chemist::topology::Topology;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="types_8hpp.html#a273f6e04259bc88ec0af76ca25612b21">  160</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a273f6e04259bc88ec0af76ca25612b21">integral_factory</a> = chemist::IntegralFactory;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">// using local_many_body = chemist::wavefunction::SparseManyBodyWf;</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">// using local_tot_many_body = chemist::wavefunction::SparseToTManyBodyWf;</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">// ---------------------------- Other ------------------------------------------</span></div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;} <span class="comment">// namespace simde::type</span></div>
-<div class="ttc" id="atypes_8hpp_html_a273f6e04259bc88ec0af76ca25612b21"><div class="ttname"><a href="types_8hpp.html#a273f6e04259bc88ec0af76ca25612b21">simde::type::integral_factory</a></div><div class="ttdeci">chemist::IntegralFactory integral_factory</div><div class="ttdoc">Typedef of an integral factory.</div><div class="ttdef"><b>Definition:</b> types.hpp:160</div></div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="types_8hpp.html#aed3968f5ae7e879aac3c6250437b7faf">  163</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#aed3968f5ae7e879aac3c6250437b7faf">connectivity_table</a> = chemist::topology::ConnectivityTable;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="types_8hpp.html#a7ee0f87aebc8b0ac159d5ed311cde384">  166</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a7ee0f87aebc8b0ac159d5ed311cde384">topology</a> = chemist::topology::Topology;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="types_8hpp.html#a273f6e04259bc88ec0af76ca25612b21">  169</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a273f6e04259bc88ec0af76ca25612b21">integral_factory</a> = chemist::IntegralFactory;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="types_8hpp.html#a04630a110cf5bf6d600b830e6216d42c">  172</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a04630a110cf5bf6d600b830e6216d42c">full_elec_conf</a> = std::map&lt;std::pair&lt;size, size&gt;, size&gt;;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;} <span class="comment">// namespace simde::type</span></div>
+<div class="ttc" id="atypes_8hpp_html_a04630a110cf5bf6d600b830e6216d42c"><div class="ttname"><a href="types_8hpp.html#a04630a110cf5bf6d600b830e6216d42c">simde::type::full_elec_conf</a></div><div class="ttdeci">std::map&lt; std::pair&lt; size, size &gt;, size &gt; full_elec_conf</div><div class="ttdoc">Typedef of a full atomic electronic configuration.</div><div class="ttdef"><b>Definition:</b> types.hpp:172</div></div>
+<div class="ttc" id="atypes_8hpp_html_a14c76018005aaa9fabd34390ce3f4034"><div class="ttname"><a href="types_8hpp.html#a14c76018005aaa9fabd34390ce3f4034">simde::type::atomic_number</a></div><div class="ttdeci">typename atom::size_type atomic_number</div><div class="ttdoc">Typedef of the class which models an atomic number.</div><div class="ttdef"><b>Definition:</b> types.hpp:42</div></div>
+<div class="ttc" id="atypes_8hpp_html_a273f6e04259bc88ec0af76ca25612b21"><div class="ttname"><a href="types_8hpp.html#a273f6e04259bc88ec0af76ca25612b21">simde::type::integral_factory</a></div><div class="ttdeci">chemist::IntegralFactory integral_factory</div><div class="ttdoc">Typedef of an integral factory.</div><div class="ttdef"><b>Definition:</b> types.hpp:169</div></div>
 <div class="ttc" id="atypes_8hpp_html_a396174ec2331a84955689702dc31e730"><div class="ttname"><a href="types_8hpp.html#a396174ec2331a84955689702dc31e730">simde::type::atom</a></div><div class="ttdeci">typename molecule::value_type atom</div><div class="ttdoc">Typedef of the class which models a nucleus.</div><div class="ttdef"><b>Definition:</b> types.hpp:36</div></div>
-<div class="ttc" id="atypes_8hpp_html_a55500e80470680b74883f4c275af1025"><div class="ttname"><a href="types_8hpp.html#a55500e80470680b74883f4c275af1025">simde::type::chemical_system</a></div><div class="ttdeci">chemist::ChemicalSystem chemical_system</div><div class="ttdoc">Typedef of the class which describes an entire chemical system.</div><div class="ttdef"><b>Definition:</b> types.hpp:39</div></div>
-<div class="ttc" id="atypes_8hpp_html_a7ee0f87aebc8b0ac159d5ed311cde384"><div class="ttname"><a href="types_8hpp.html#a7ee0f87aebc8b0ac159d5ed311cde384">simde::type::topology</a></div><div class="ttdeci">chemist::topology::Topology topology</div><div class="ttdoc">Typedef of the class used for molecular topology.</div><div class="ttdef"><b>Definition:</b> types.hpp:157</div></div>
-<div class="ttc" id="atypes_8hpp_html_a8acb45791cda370a16dfccc99a1eedc1"><div class="ttname"><a href="types_8hpp.html#a8acb45791cda370a16dfccc99a1eedc1">simde::type::el</a></div><div class="ttdeci">chemist::Electron el</div><div class="ttdoc">Typedef of an electron.</div><div class="ttdef"><b>Definition:</b> types.hpp:45</div></div>
+<div class="ttc" id="atypes_8hpp_html_a55500e80470680b74883f4c275af1025"><div class="ttname"><a href="types_8hpp.html#a55500e80470680b74883f4c275af1025">simde::type::chemical_system</a></div><div class="ttdeci">chemist::ChemicalSystem chemical_system</div><div class="ttdoc">Typedef of the class which describes an entire chemical system.</div><div class="ttdef"><b>Definition:</b> types.hpp:45</div></div>
+<div class="ttc" id="atypes_8hpp_html_a7ee0f87aebc8b0ac159d5ed311cde384"><div class="ttname"><a href="types_8hpp.html#a7ee0f87aebc8b0ac159d5ed311cde384">simde::type::topology</a></div><div class="ttdeci">chemist::topology::Topology topology</div><div class="ttdoc">Typedef of the class used for molecular topology.</div><div class="ttdef"><b>Definition:</b> types.hpp:166</div></div>
+<div class="ttc" id="atypes_8hpp_html_a8acb45791cda370a16dfccc99a1eedc1"><div class="ttname"><a href="types_8hpp.html#a8acb45791cda370a16dfccc99a1eedc1">simde::type::el</a></div><div class="ttdeci">chemist::Electron el</div><div class="ttdoc">Typedef of an electron.</div><div class="ttdef"><b>Definition:</b> types.hpp:54</div></div>
+<div class="ttc" id="atypes_8hpp_html_aad9abbe0011192eb9eec2420af589595"><div class="ttname"><a href="types_8hpp.html#aad9abbe0011192eb9eec2420af589595">simde::type::atomic_basis_set</a></div><div class="ttdeci">chemist::AtomicBasisSet&lt; double &gt; atomic_basis_set</div><div class="ttdoc">Typedef of an Atomic Basis Set.</div><div class="ttdef"><b>Definition:</b> types.hpp:51</div></div>
 <div class="ttc" id="atypes_8hpp_html_aaea980cebe478e0902c8dbcf480a8363"><div class="ttname"><a href="types_8hpp.html#aaea980cebe478e0902c8dbcf480a8363">simde::type::molecule</a></div><div class="ttdeci">chemist::Molecule molecule</div><div class="ttdoc">Typedef of the class used to describe a molecule.</div><div class="ttdef"><b>Definition:</b> types.hpp:33</div></div>
-<div class="ttc" id="atypes_8hpp_html_ab08687c1184c78a525800bd440f7fabe"><div class="ttname"><a href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">simde::type::el_density</a></div><div class="ttdeci">chemist::OneElectronDensity el_density</div><div class="ttdoc">Typedef of the electron density.</div><div class="ttdef"><b>Definition:</b> types.hpp:51</div></div>
-<div class="ttc" id="atypes_8hpp_html_ab7f1cf028f37d36f4e6d8fefce0c4377"><div class="ttname"><a href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">simde::type::ao_space</a></div><div class="ttdeci">chemist::orbital_space::AOSpaceD ao_space</div><div class="ttdoc">Typedef of class describing an AO space.</div><div class="ttdef"><b>Definition:</b> types.hpp:57</div></div>
-<div class="ttc" id="atypes_8hpp_html_abb059a78452d2781eaf762842181670b"><div class="ttname"><a href="types_8hpp.html#abb059a78452d2781eaf762842181670b">simde::type::ao_basis_set</a></div><div class="ttdeci">chemist::AOBasisSetD ao_basis_set</div><div class="ttdoc">Typedef of the AO Basis Set.</div><div class="ttdef"><b>Definition:</b> types.hpp:42</div></div>
-<div class="ttc" id="atypes_8hpp_html_ac4ab94c22c64eaab1eb79e4f7adb7e07"><div class="ttname"><a href="types_8hpp.html#ac4ab94c22c64eaab1eb79e4f7adb7e07">simde::type::many_electrons</a></div><div class="ttdeci">chemist::ManyElectrons many_electrons</div><div class="ttdoc">Typedef of many electrons.</div><div class="ttdef"><b>Definition:</b> types.hpp:48</div></div>
-<div class="ttc" id="atypes_8hpp_html_aea49118febcced96304a1aee59e3eb15"><div class="ttname"><a href="types_8hpp.html#aea49118febcced96304a1aee59e3eb15">simde::type::derived_space</a></div><div class="ttdeci">chemist::orbital_space::DerivedSpaceD derived_space</div><div class="ttdoc">Typedef of orbital space obtained by transforming an ao_space.</div><div class="ttdef"><b>Definition:</b> types.hpp:60</div></div>
-<div class="ttc" id="atypes_8hpp_html_aed3968f5ae7e879aac3c6250437b7faf"><div class="ttname"><a href="types_8hpp.html#aed3968f5ae7e879aac3c6250437b7faf">simde::type::connectivity_table</a></div><div class="ttdeci">chemist::topology::ConnectivityTable connectivity_table</div><div class="ttdoc">Typedef of the class used for connectivity information.</div><div class="ttdef"><b>Definition:</b> types.hpp:154</div></div>
-<div class="ttc" id="atypes_8hpp_html_af1e3088d73e17f1ecb6fd66a81677cd8"><div class="ttname"><a href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">simde::type::canonical_space</a></div><div class="ttdeci">chemist::orbital_space::CanonicalSpaceD canonical_space</div><div class="ttdoc">Typedef of an orbital space with orbitals that diagonalize the Fock matrix.</div><div class="ttdef"><b>Definition:</b> types.hpp:65</div></div>
+<div class="ttc" id="atypes_8hpp_html_ab08687c1184c78a525800bd440f7fabe"><div class="ttname"><a href="types_8hpp.html#ab08687c1184c78a525800bd440f7fabe">simde::type::el_density</a></div><div class="ttdeci">chemist::OneElectronDensity el_density</div><div class="ttdoc">Typedef of the electron density.</div><div class="ttdef"><b>Definition:</b> types.hpp:60</div></div>
+<div class="ttc" id="atypes_8hpp_html_ab7f1cf028f37d36f4e6d8fefce0c4377"><div class="ttname"><a href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">simde::type::ao_space</a></div><div class="ttdeci">chemist::orbital_space::AOSpaceD ao_space</div><div class="ttdoc">Typedef of class describing an AO space.</div><div class="ttdef"><b>Definition:</b> types.hpp:66</div></div>
+<div class="ttc" id="atypes_8hpp_html_abb059a78452d2781eaf762842181670b"><div class="ttname"><a href="types_8hpp.html#abb059a78452d2781eaf762842181670b">simde::type::ao_basis_set</a></div><div class="ttdeci">chemist::AOBasisSetD ao_basis_set</div><div class="ttdoc">Typedef of the AO Basis Set.</div><div class="ttdef"><b>Definition:</b> types.hpp:48</div></div>
+<div class="ttc" id="atypes_8hpp_html_ac4ab94c22c64eaab1eb79e4f7adb7e07"><div class="ttname"><a href="types_8hpp.html#ac4ab94c22c64eaab1eb79e4f7adb7e07">simde::type::many_electrons</a></div><div class="ttdeci">chemist::ManyElectrons many_electrons</div><div class="ttdoc">Typedef of many electrons.</div><div class="ttdef"><b>Definition:</b> types.hpp:57</div></div>
+<div class="ttc" id="atypes_8hpp_html_aea49118febcced96304a1aee59e3eb15"><div class="ttname"><a href="types_8hpp.html#aea49118febcced96304a1aee59e3eb15">simde::type::derived_space</a></div><div class="ttdeci">chemist::orbital_space::DerivedSpaceD derived_space</div><div class="ttdoc">Typedef of orbital space obtained by transforming an ao_space.</div><div class="ttdef"><b>Definition:</b> types.hpp:69</div></div>
+<div class="ttc" id="atypes_8hpp_html_aed3968f5ae7e879aac3c6250437b7faf"><div class="ttname"><a href="types_8hpp.html#aed3968f5ae7e879aac3c6250437b7faf">simde::type::connectivity_table</a></div><div class="ttdeci">chemist::topology::ConnectivityTable connectivity_table</div><div class="ttdoc">Typedef of the class used for connectivity information.</div><div class="ttdef"><b>Definition:</b> types.hpp:163</div></div>
+<div class="ttc" id="atypes_8hpp_html_af1129fa0d7f0f6e5854794f80290e464"><div class="ttname"><a href="types_8hpp.html#af1129fa0d7f0f6e5854794f80290e464">simde::type::atomic_symbol</a></div><div class="ttdeci">typename atom::name_type atomic_symbol</div><div class="ttdoc">Typedef of the class which models an atomic symbol.</div><div class="ttdef"><b>Definition:</b> types.hpp:39</div></div>
+<div class="ttc" id="atypes_8hpp_html_af1e3088d73e17f1ecb6fd66a81677cd8"><div class="ttname"><a href="types_8hpp.html#af1e3088d73e17f1ecb6fd66a81677cd8">simde::type::canonical_space</a></div><div class="ttdeci">chemist::orbital_space::CanonicalSpaceD canonical_space</div><div class="ttdoc">Typedef of an orbital space with orbitals that diagonalize the Fock matrix.</div><div class="ttdef"><b>Definition:</b> types.hpp:74</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
