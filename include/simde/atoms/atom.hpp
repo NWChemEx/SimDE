@@ -43,9 +43,9 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(Atom, InputType) {
 }
 
 /// Typedef for a module that returns atoms based on atomic number
-using AtomFromZ = Atom<type::size>;
+using AtomFromZ = Atom<type::atomic_number>;
 
 /// Typedef for a module that returns atoms from a string (e.g. atomic symbol)
-using AtomFromSym = Atom<std::string>;
+using AtomFromSym = Atom<type::atomic_symbol>;
 
 } // namespace simde

@@ -35,6 +35,12 @@ using molecule = chemist::Molecule;
 /// Typedef of the class which models a nucleus
 using atom = typename molecule::value_type;
 
+/// Typedef of the class which models an atomic symbol
+using atomic_symbol = typename atom::name_type;
+
+/// Typedef of the class which models an atomic number
+using atomic_number = typename atom::size_type;
+
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = chemist::ChemicalSystem;
 

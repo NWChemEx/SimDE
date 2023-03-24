@@ -44,22 +44,27 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(ElecConfiguration, InputType, ConfType) {
 }
 
 /// Typedef for elec config from Z
-using ElecConfigFromZ = ElecConfiguration<type::size, std::vector<type::size>>;
+using ElecConfigFromZ =
+  ElecConfiguration<type::atomic_number, std::vector<type::size>>;
 
 /// Typedef for elec config from a string
 using ElecConfigFromSym =
-  ElecConfiguration<std::string, std::vector<type::size>>;
+  ElecConfiguration<type::atomic_symbol, std::vector<type::size>>;
 
 /// Typedef for fractional elec config from Z
-using FracConfigFromZ = ElecConfiguration<type::size, std::vector<double>>;
+using FracConfigFromZ =
+  ElecConfiguration<type::atomic_number, std::vector<double>>;
 
 /// Typedef for fractional elec config from a string
-using FracConfigFromSym = ElecConfiguration<std::string, std::vector<double>>;
+using FracConfigFromSym =
+  ElecConfiguration<type::atomic_symbol, std::vector<double>>;
 
 /// Typedef for full elec config from Z
-using FullConfigFromZ = ElecConfiguration<type::size, type::full_elec_conf>;
+using FullConfigFromZ =
+  ElecConfiguration<type::atomic_number, type::full_elec_conf>;
 
 /// Typedef for full elec config from a string
-using FullConfigFromSym = ElecConfiguration<std::string, type::full_elec_conf>;
+using FullConfigFromSym =
+  ElecConfiguration<type::atomic_symbol, type::full_elec_conf>;
 
 } // namespace simde

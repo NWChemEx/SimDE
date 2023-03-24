@@ -44,9 +44,9 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(AtomicBasisSet, InputType) {
 }
 
 /// Typedef for a module that returns an atomic basis set from atomic number
-using AtomicBasisSetFromZ = AtomicBasisSet<type::size>;
+using AtomicBasisSetFromZ = AtomicBasisSet<type::atomic_number>;
 
 /// Typedef for a module that returns an atomic basis set from atomic symbol
-using AtomicBasisSetFromSym = AtomicBasisSet<std::string>;
+using AtomicBasisSetFromSym = AtomicBasisSet<type::atomic_symbol>;
 
 } // namespace simde
