@@ -44,6 +44,4 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(AtomicDensity, InputType, DensityType) {
     return rv;
 }
 
-
-
 } // namespace simde
