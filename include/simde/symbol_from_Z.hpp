@@ -20,7 +20,7 @@
 
 namespace simde {
 
-/** @brief The property for a module that returns an atomic density based on the
+/** @brief The property for a module that returns an atomic symbol based on the
  *         atomic number.
  *
  */

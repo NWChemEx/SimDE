@@ -20,8 +20,8 @@
 
 namespace simde {
 
-/** @brief The property for a module that returns an atomic density based on the
- *         atomic number.
+/** @brief The property for a module that returns an atomic number based on the
+ *         atomic symbol.
  *
  */
 DECLARE_PROPERTY_TYPE(ZFromSymbol);
