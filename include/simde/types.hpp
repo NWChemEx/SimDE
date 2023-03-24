@@ -41,6 +41,9 @@ using chemical_system = chemist::ChemicalSystem;
 /// Typedef of the AO Basis Set
 using ao_basis_set = chemist::AOBasisSetD;
 
+/// Typedef of an Atomic Basis Set
+using atomic_basis_set = chemist::AtomicBasisSet<double>;
+
 /// Typedef of an electron
 using el = chemist::Electron;
 
@@ -158,5 +161,8 @@ using topology = chemist::topology::Topology;
 
 /// Typedef of an integral factory
 using integral_factory = chemist::IntegralFactory;
+
+/// Typedef of a full atomic electronic configuration
+using full_elec_conf = std::map<std::pair<size, size>, size>
 
 } // namespace simde::type
