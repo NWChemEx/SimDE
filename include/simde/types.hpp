@@ -35,11 +35,20 @@ using molecule = chemist::Molecule;
 /// Typedef of the class which models a nucleus
 using atom = typename molecule::value_type;
 
+/// Typedef of the class which models an atomic symbol
+using atomic_symbol = typename atom::name_type;
+
+/// Typedef of the class which models an atomic number
+using atomic_number = typename atom::size_type;
+
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = chemist::ChemicalSystem;
 
 /// Typedef of the AO Basis Set
 using ao_basis_set = chemist::AOBasisSetD;
+
+/// Typedef of an Atomic Basis Set
+using atomic_basis_set = chemist::AtomicBasisSet<double>;
 
 /// Typedef of an electron
 using el = chemist::Electron;
@@ -158,5 +167,8 @@ using topology = chemist::topology::Topology;
 
 /// Typedef of an integral factory
 using integral_factory = chemist::IntegralFactory;
+
+/// Typedef of a full atomic electronic configuration
+using full_elec_conf = std::map<std::pair<size, size>, size>;
 
 } // namespace simde::type
