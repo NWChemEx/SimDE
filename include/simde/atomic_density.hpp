@@ -40,8 +40,14 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(AtomicDensity, InputType, DensityType) {
     auto rv =
       pluginplay::declare_result().add_field<DensityType>("Atomic Density");
     rv.at("Atomic Density")
-      .description("The atomic density for the specified atom");
+      .set_description("The atomic density for the specified atom");
     return rv;
 }
+
+/// Typedef for modules that return atomic densities from atomic number
+using AtomDenFromZ = AtomicDensity<type::size, std::vector<double>>;
+
+/// Typedef for modules that return atomic densities from a string
+using AtomDenFromSym = AtomicDensity<std::string, std::vector<double>>;
 
 } // namespace simde

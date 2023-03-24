@@ -163,6 +163,6 @@ using topology = chemist::topology::Topology;
 using integral_factory = chemist::IntegralFactory;
 
 /// Typedef of a full atomic electronic configuration
-using full_elec_conf = std::map<std::pair<size, size>, size>
+using full_elec_conf = std::map<std::pair<size, size>, size>;
 
 } // namespace simde::type

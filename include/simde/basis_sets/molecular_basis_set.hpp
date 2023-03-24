@@ -37,7 +37,8 @@ PROPERTY_TYPE_RESULTS(MolecularBasisSet) {
     using basis_t = type::ao_basis_set;
     auto rv =
       pluginplay::declare_result().add_field<basis_t>("Molecular Basis Set");
-    rv.at("Atomic Basis Set").set_description("The basis set for the molecule");
+    rv.at("Molecular Basis Set")
+      .set_description("The basis set for the molecule");
     return rv;
 }
 

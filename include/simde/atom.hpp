@@ -38,7 +38,7 @@ template<typename InputType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(Atom, InputType) {
     using atom_t = type::atom;
     auto rv      = pluginplay::declare_result().add_field<atom_t>("Atom");
-    rv.at("Atom").description("The requested Atom");
+    rv.at("Atom").set_description("The requested Atom");
     return rv;
 }
 

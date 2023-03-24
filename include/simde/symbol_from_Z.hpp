@@ -24,17 +24,17 @@ namespace simde {
  *         atomic number.
  *
  */
-DECLARE_PROPERTY_TYPE(AtomicDensityFromZ);
+DECLARE_PROPERTY_TYPE(SymbolFromZ);
 
-PROPERTY_TYPE_INPUTS(AtomicDensityFromZ) {
+PROPERTY_TYPE_INPUTS(SymbolFromZ) {
     auto rv = pluginplay::declare_input().add_field<type::size>("Z");
-    rv.at("Z").description("Atomic Number");
+    rv.at("Z").set_description("Atomic Number");
     return rv;
 }
 
-PROPERTY_TYPE_RESULTS(AtomicDensityFromZ) {
+PROPERTY_TYPE_RESULTS(SymbolFromZ) {
     auto rv = pluginplay::declare_result().add_field<std::string>("Symbol");
-    rv.at("Symbol").description("Atomic Symbol");
+    rv.at("Symbol").set_description("Atomic Symbol");
     return rv;
 }
 
