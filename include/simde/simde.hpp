@@ -15,9 +15,9 @@
  */
 
 #pragma once
-#include "simde/atoms/atoms.hpp"
 #include "simde/atom_to_ao.hpp"
 #include "simde/atomic_charges.hpp"
+#include "simde/atoms/atoms.hpp"
 #include "simde/basis_sets/basis_sets.hpp"
 #include "simde/cauchy_schwarz_approximation.hpp"
 #include "simde/connectivity.hpp"
