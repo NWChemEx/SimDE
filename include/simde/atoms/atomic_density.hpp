@@ -45,7 +45,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(AtomicDensity, InputType, DensityType) {
 }
 
 /// Typedef for modules that return atomic densities from atomic number
-using AtomDenFromZ = AtomicDensity<type::atomic_symbol, std::vector<double>>;
+using AtomDenFromZ = AtomicDensity<type::atomic_number, std::vector<double>>;
 
 /// Typedef for modules that return atomic densities from a string
 using AtomDenFromSym = AtomicDensity<type::atomic_symbol, std::vector<double>>;
