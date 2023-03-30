@@ -26,8 +26,8 @@ namespace simde {
 DECLARE_PROPERTY_TYPE(MolecularBasisSet);
 
 PROPERTY_TYPE_INPUTS(MolecularBasisSet) {
-    using mol_t = type::molecule;
-    auto rv     = pluginplay::declare_result().add_field<mol_t>("Molecule");
+    using mol_t = const type::molecule&;
+    auto rv     = pluginplay::declare_input().add_field<mol_t>("Molecule");
     rv.at("Molecule")
       .set_description("The molecule for which to generate the basis set");
     return rv;
