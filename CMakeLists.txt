@@ -18,8 +18,8 @@ project(simde VERSION "${VERSION}" LANGUAGES CXX)
 
 include(FetchContent)
 FetchContent_Declare(
-        nwx_cmake
-        GIT_REPOSITORY https://github.com/NWChemEx-Project/NWXCMake
+    nwx_cmake
+    GIT_REPOSITORY https://github.com/NWChemEx-Project/NWXCMake
 )
 FetchContent_MakeAvailable(nwx_cmake)
 list(APPEND CMAKE_MODULE_PATH "${nwx_cmake_SOURCE_DIR}/cmake")
@@ -29,7 +29,7 @@ set(
     CACHE STRING "" FORCE
 )
 
-include(get_cpp)
+include(get_cmaize)
 include(nwx_cxx_api_docs)
 
 nwx_cxx_api_docs("${CMAKE_CURRENT_SOURCE_DIR}/src" 
@@ -39,7 +39,7 @@ nwx_cxx_api_docs("${CMAKE_CURRENT_SOURCE_DIR}/src"
 option(BUILD_TESTING "Should we build the tests?" OFF)
 option(BUILD_PYBINDINGS "Should we build Python3 bindings?" ON)
 
-cpp_find_or_build_dependency(
+cmaize_find_or_build_dependency(
     chemist
     URL github.com/NWChemEx-Project/chemist
     PRIVATE TRUE
@@ -48,7 +48,7 @@ cpp_find_or_build_dependency(
     CMAKE_ARGS BUILD_TESTING=OFF
 )
 
-cpp_find_or_build_dependency(
+cmaize_find_or_build_dependency(
     pluginplay
     URL github.com/NWChemEx-Project/pluginplay
     PRIVATE TRUE
@@ -57,28 +57,30 @@ cpp_find_or_build_dependency(
     CMAKE_ARGS BUILD_TESTING=OFF
 )
 
-cpp_add_library(
+cmaize_add_library(
     ${PROJECT_NAME}
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
-    INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}"
-    DEPENDS nwx::chemist nwx::pluginplay
+    INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}"
+    DEPENDS chemist pluginplay
 )
 
 include(nwx_python_mods)
 cppyy_make_python_package(PACKAGE simde NAMESPACES simde DEPPACKAGES chemist pluginplay )
 
 if("${BUILD_TESTING}")
-    cpp_find_or_build_dependency(
+    cmaize_find_or_build_dependency(
         Catch2
         URL github.com/catchorg/Catch2
         BUILD_TARGET Catch2
-        VERSION v2.x
         FIND_TARGET Catch2::Catch2
+        VERSION v2.x
     )
-    cpp_add_tests(
+    cmaize_add_tests(
         test_${PROJECT_NAME}
         SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests/${PROJECT_NAME}"
-        INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
-        DEPENDS Catch2::Catch2 ${PROJECT_NAME}
+        INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
+        DEPENDS Catch2 ${PROJECT_NAME}
     )
 endif()
+
+cmaize_add_package(${PROJECT_NAME} NAMESPACE nwx::)
