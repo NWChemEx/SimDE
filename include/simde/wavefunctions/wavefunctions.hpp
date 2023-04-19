@@ -55,6 +55,9 @@ using NoncanonicalReference =
 using CanonicalReference =
   Wavefunction<type::ao_space, type::canonical_reference>;
 
+// Not a wavefunction, but used in a similar way to other guess PTs
+using WfDensity = Wavefunction<type::ao_space, type::el_density>;
+
 // using CanonicalLocalReference =
 //   Wavefunction<type::ao_space, type::local_reference>;
 
