@@ -50,7 +50,7 @@ TEST_CASE("tensor_representation") {
               REQUIRE(k == aos);
               return t;
           });
-        auto [rv] = tensor_representation(mod, aos, r12, aos);
+        auto rv = tensor_representation(mod, aos, r12, aos);
         REQUIRE(rv == t);
     }
 
@@ -71,7 +71,7 @@ TEST_CASE("tensor_representation") {
               REQUIRE(op == r12);
               return t;
           });
-        auto [rv] = tensor_representation(mod, mos, aos, r12, mos, aos);
+        auto rv = tensor_representation(mod, mos, aos, r12, mos, aos);
         REQUIRE(rv == t);
     }
 
