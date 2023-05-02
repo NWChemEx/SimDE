@@ -47,7 +47,6 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(Wavefunction, InputWavefunction,
     return rv;
 }
 
-
 // References all take in an AO space and return a reference wavefunction
 // Generally used for initial guesses
 using NoncanonicalReference =
