@@ -45,7 +45,7 @@ TEST_CASE("ao_dispatch") {
               return t;
           });
 
-        auto [rv] = detail_::ao_dispatch<2>(l, aos, r12);
+        auto rv = detail_::ao_dispatch<2>(l, aos, r12);
         REQUIRE(rv == t);
     }
 
@@ -70,7 +70,7 @@ TEST_CASE("ao_dispatch") {
               return t;
           });
 
-        auto [rv] = detail_::ao_dispatch<3>(l, aos, r12);
+        auto rv = detail_::ao_dispatch<3>(l, aos, r12);
         REQUIRE(rv == t);
     }
 
@@ -98,7 +98,7 @@ TEST_CASE("ao_dispatch") {
               return t;
           });
 
-        auto [rv] = detail_::ao_dispatch<4>(l, aos, r12);
+        auto rv = detail_::ao_dispatch<4>(l, aos, r12);
         REQUIRE(rv == t);
     }
 }
