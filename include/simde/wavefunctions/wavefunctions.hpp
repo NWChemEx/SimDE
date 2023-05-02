@@ -47,6 +47,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(Wavefunction, InputWavefunction,
     return rv;
 }
 
+
 // References all take in an AO space and return a reference wavefunction
 // Generally used for initial guesses
 using NoncanonicalReference =
@@ -57,6 +58,18 @@ using CanonicalReference =
 
 // Not a wavefunction, but used in a similar way to other guess PTs
 using WfDensity = Wavefunction<type::ao_space, type::el_density>;
+
+// Generally used to get initial wf from guess density
+using SCFDensWf = Wavefunction<type::el_density, type::canonical_reference>;
+
+DECLARE_DERIVED_PROPERTY_TYPE(SCFAODensWf, SCFDensWf);
+PROPERTY_TYPE_INPUTS(SCFAODensWf) {
+    using ao_space = const type::ao_space&;
+    auto rv        = pluginplay::declare_input().add_field<ao_space>("AOs");
+    rv["AOs"].set_description("The atomic orbital basis set");
+    return rv;
+}
+PROPERTY_TYPE_RESULTS(SCFAODensWf) { return pluginplay::declare_result(); }
 
 // using CanonicalLocalReference =
 //   Wavefunction<type::ao_space, type::local_reference>;
