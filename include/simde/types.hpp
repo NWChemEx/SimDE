@@ -33,7 +33,7 @@ using namespace chemist::type;
 using molecule = chemist::Molecule;
 
 /// Typedef of the class which models a nucleus
-using atom = typename molecule::value_type;
+using atom = typename molecule::atom_type;
 
 /// Typedef of the class which models an atomic symbol
 using atomic_symbol = typename atom::name_type;
