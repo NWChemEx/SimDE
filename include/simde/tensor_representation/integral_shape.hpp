@@ -36,4 +36,4 @@ PROPERTY_TYPE_RESULTS(IntegralShape) {
     return rv;
 }
 
-} // namespace 
+} // namespace simde
