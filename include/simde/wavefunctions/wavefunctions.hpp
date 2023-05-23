@@ -55,9 +55,6 @@ using NoncanonicalReference =
 using CanonicalReference =
   Wavefunction<type::ao_space, type::canonical_reference>;
 
-// Not a wavefunction, but used in a similar way to other guess PTs
-using WfDensity = Wavefunction<type::ao_space, type::el_density>;
-
 // Generally used to get initial wf from guess density
 using SCFDensWf = Wavefunction<type::el_density, type::canonical_reference>;
 

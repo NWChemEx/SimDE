@@ -42,4 +42,28 @@ PROPERTY_TYPE_RESULTS(SCFDensity) {
     return rv;
 }
 
+template<typename Input, typename OutputDensity>
+DECLARE_TEMPLATED_PROPERTY_TYPE(SCFBaseDensity, Input, OutputDensity);
+
+template<typename Input, typename OutputDensity>
+TEMPLATED_PROPERTY_TYPE_INPUTS(SCFBaseDensity, Input, OutputDensity) {
+    using op   = const type::els_hamiltonian&;
+    using in_t = const Input&;
+
+    auto rv = pluginplay::declare_input()
+                .add_field<op>("Hamiltonian")
+                .template add_field<in_t>("Input Space");
+    return rv;
+}
+
+template<typename Input, typename OutputDensity>
+TEMPLATED_PROPERTY_TYPE_RESULTS(SCFBaseDensity, Input, OutputDensity) {
+    auto rv =
+      pluginplay::declare_result().add_field<OutputDensity>("Output Density");
+
+    return rv;
+}
+
+using SCFGuessDensity = SCFBaseDensity<type::ao_space, type::el_density>;
+
 } // namespace simde
