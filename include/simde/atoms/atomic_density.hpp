@@ -50,7 +50,7 @@ using AtomDenFromZ = AtomicDensity<type::atomic_number, std::vector<double>>;
 DECLARE_DERIVED_PROPERTY_TYPE(AtomDenAOFromZ, AtomDenFromZ);
 PROPERTY_TYPE_INPUTS(AtomDenAOFromZ) { return pluginplay::declare_input(); }
 PROPERTY_TYPE_RESULTS(AtomDenAOFromZ) {
-    using ao_basis_t = const type::atomic_basis_set&;
+    using ao_basis_t = type::atomic_basis_set;
     auto rv =
       pluginplay::declare_result().add_field<ao_basis_t>("Atomic Basis");
     rv["Atomic Basis"].set_description(
