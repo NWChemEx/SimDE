@@ -24,6 +24,7 @@
 #include "simde/tensor_representation/transformed.hpp"
 #include "simde/tensor_representation/transformed_tensor_representation.hpp"
 #include "simde/tensor_representation/type_traits.hpp"
+#include "simde/tensor_representation/integral_shape.hpp"
 
 namespace simde {
 
