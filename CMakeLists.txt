@@ -30,6 +30,7 @@ set(
 )
 
 include(get_cmaize)
+include(nwx_versions)
 include(nwx_cxx_api_docs)
 
 nwx_cxx_api_docs("${CMAKE_CURRENT_SOURCE_DIR}/src" 
@@ -43,6 +44,7 @@ cmaize_find_or_build_dependency(
     chemist
     URL github.com/NWChemEx-Project/chemist
     PRIVATE TRUE
+    VERSION ${NWX_CHEMIST_VERSION}
     BUILD_TARGET chemist
     FIND_TARGET nwx::chemist
     CMAKE_ARGS BUILD_TESTING=OFF
@@ -51,7 +53,7 @@ cmaize_find_or_build_dependency(
 cmaize_find_or_build_dependency(
     pluginplay
     URL github.com/NWChemEx-Project/pluginplay
-    PRIVATE TRUE
+    VERSION ${NWX_PLUGINPLAY_VERSION}
     BUILD_TARGET pluginplay
     FIND_TARGET nwx::pluginplay
     CMAKE_ARGS BUILD_TESTING=OFF
@@ -73,7 +75,7 @@ if("${BUILD_TESTING}")
         URL github.com/catchorg/Catch2
         BUILD_TARGET Catch2
         FIND_TARGET Catch2::Catch2
-        VERSION v2.x
+        VERSION ${NWX_CATCH2_VERSION}
     )
     cmaize_add_tests(
         test_${PROJECT_NAME}
