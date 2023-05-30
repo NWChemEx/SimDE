@@ -34,8 +34,7 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(IntegralFactory, OpType) {
     rv.at("Basis Sets")
       .set_description("A vector of the basis sets used in the integrals.");
     rv.at(op_key).set_description("The operator for the desired integrals.");
-    rv.at("Derivative Order")
-      .set_description("The derivative order");
+    rv.at("Derivative Order").set_description("The derivative order");
     return rv;
 }
 
