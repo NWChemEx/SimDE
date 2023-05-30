@@ -20,6 +20,6 @@
 using namespace simde;
 
 TEST_CASE("IntegralFactory") {
-    test_property_type<ERIFactory>({"Basis Sets", "(r\u0302₁₂)⁻¹"},
+    test_property_type<ERIFactory>({"Basis Sets", "(r\u0302₁₂)⁻¹", "DerivativeOrder"},
                                    {"Integral Factory"});
 }

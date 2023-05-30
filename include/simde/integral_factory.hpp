@@ -29,10 +29,13 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(IntegralFactory, OpType) {
     auto op_key = op.as_string();
     auto rv     = pluginplay::declare_input()
                 .add_field<ao_basis_set_input_t>("Basis Sets")
-                .template add_field<const OpType&>(op_key);
+                .template add_field<const OpType&>(op_key)
+                .template add_field<size_t>("Derivative Order");
     rv.at("Basis Sets")
       .set_description("A vector of the basis sets used in the integrals.");
     rv.at(op_key).set_description("The operator for the desired integrals.");
+    rv.at("Derivative Order")
+      .set_description("The derivative order");
     return rv;
 }
 
