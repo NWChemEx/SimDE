@@ -33,12 +33,15 @@ include(get_cmaize)
 include(nwx_versions)
 include(nwx_cxx_api_docs)
 
-nwx_cxx_api_docs("${CMAKE_CURRENT_SOURCE_DIR}/src" 
+nwx_cxx_api_docs("${CMAKE_CURRENT_SOURCE_DIR}/src"
                  "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 ### Options ###
 option(BUILD_TESTING "Should we build the tests?" OFF)
-option(BUILD_PYBINDINGS "Should we build Python3 bindings?" ON)
+option(BUILD_PYBIND11_PYBINDINGS "Build pybind11 python3 bindings?" OFF)
+option(BUILD_CPPYY_PYBINDINGS "Should we build Python3 bindings?" OFF)
+
+set(simde_depends "")
 
 cmaize_find_or_build_dependency(
     chemist
@@ -48,7 +51,9 @@ cmaize_find_or_build_dependency(
     BUILD_TARGET chemist
     FIND_TARGET nwx::chemist
     CMAKE_ARGS BUILD_TESTING=OFF
+               BUILD_PYBIND11_PYBINDINGS=${BUILD_PYBIND11_PYBINDINGS}
 )
+set(simde_depends chemist)
 
 cmaize_find_or_build_dependency(
     pluginplay
@@ -57,19 +62,35 @@ cmaize_find_or_build_dependency(
     BUILD_TARGET pluginplay
     FIND_TARGET nwx::pluginplay
     CMAKE_ARGS BUILD_TESTING=OFF
+               BUILD_PYBIND11_PYBINDINGS=${BUILD_PYBIND11_PYBINDINGS}
 )
+list(APPEND simde_depends pluginplay)
 
 cmaize_add_library(
     ${PROJECT_NAME}
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
     INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}"
-    DEPENDS chemist pluginplay
+    DEPENDS "${simde_depends}"
 )
 
-include(nwx_python_mods)
-cppyy_make_python_package(PACKAGE simde NAMESPACES simde DEPPACKAGES chemist pluginplay )
+# N.B. this is a no-op if BUILD_PYBIND11_PYBINDINGS is not turned on
+include(nwx_pybind11)
+nwx_add_pybind11_module(
+    ${PROJECT_NAME}
+    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/python"
+    DEPENDS "${PROJECT_NAME}"
+)
+
+if("${BUILD_CPPYY_PYBINDINGS}")
+    include(nwx_python_mods)
+    cppyy_make_python_package(
+        PACKAGE simde NAMESPACES simde DEPPACKAGES chemist pluginplay
+    )
+endif()
 
 if("${BUILD_TESTING}")
+    set(CXX_TEST_DIR ${CMAKE_CURRENT_LIST_DIR}/tests/cxx)
+    set(PYTHON_TEST_DIR ${CMAKE_CURRENT_LIST_DIR}/tests/python)
     cmaize_find_or_build_dependency(
         Catch2
         URL github.com/catchorg/Catch2
@@ -79,9 +100,14 @@ if("${BUILD_TESTING}")
     )
     cmaize_add_tests(
         test_${PROJECT_NAME}
-        SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/tests/${PROJECT_NAME}"
+        SOURCE_DIR "${CXX_TEST_DIR}/${PROJECT_NAME}"
         INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
         DEPENDS Catch2 ${PROJECT_NAME}
+    )
+    # N.B. these are no-ops if BUILD_PYBIND11_PYBINDINGS is not turned on
+    nwx_pybind11_tests(
+        py_simde "${PYTHON_TEST_DIR}/unit_tests/test_simde.py"
+        SUBMODULES pluginplay chemist parallelzone
     )
 endif()
 
