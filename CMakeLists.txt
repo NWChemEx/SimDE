@@ -53,16 +53,11 @@ cmaize_find_or_build_dependency(
 )
 set(simde_depends chemist)
 
-set(pluginplay_target pluginplay)
-if("${BUILD_PYBIND11_PYBINDINGS}")
-    set(pluginplay_target py_pluginplay)
-endif()
-
 cmaize_find_or_build_dependency(
     pluginplay
     URL github.com/NWChemEx-Project/pluginplay
     PRIVATE TRUE
-    BUILD_TARGET ${pluginplay_target}
+    BUILD_TARGET pluginplay
     FIND_TARGET nwx::pluginplay
     CMAKE_ARGS BUILD_TESTING=OFF
                BUILD_PYBIND11_PYBINDINGS=${BUILD_PYBIND11_PYBINDINGS}
@@ -75,7 +70,6 @@ cmaize_add_library(
     INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}"
     DEPENDS "${simde_depends}"
 )
-set(simde_install_targets ${PROJECT_NAME})
 
 # N.B. this is a no-op if BUILD_PYBIND11_PYBINDINGS is not turned on
 include(nwx_pybind11)
@@ -84,10 +78,6 @@ nwx_add_pybind11_module(
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/python"
     DEPENDS "${PROJECT_NAME}"
 )
-
-if("${BUILD_PYBIND11_PYBINDINGS}")
-    list(APPEND simde_install_targets py_${PROJECT_NAME})
-endif()
 
 if("${BUILD_CPPYY_PYBINDINGS}")
     include(nwx_python_mods)
@@ -115,11 +105,8 @@ if("${BUILD_TESTING}")
     # N.B. these are no-ops if BUILD_PYBIND11_PYBINDINGS is not turned on
     nwx_pybind11_tests(
         py_simde "${PYTHON_TEST_DIR}/unit_tests/test_simde.py"
+        SUBMODULES pluginplay chemist parallelzone
     )
 endif()
 
-cmaize_add_package(
-    ${PROJECT_NAME}
-    NAMESPACE nwx::
-    TARGETS "${simde_install_targets}"
-)
+cmaize_add_package(${PROJECT_NAME} NAMESPACE nwx::)
