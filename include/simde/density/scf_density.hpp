@@ -42,6 +42,20 @@ PROPERTY_TYPE_RESULTS(SCFDensity) {
     return rv;
 }
 
+DECLARE_PROPERTY_TYPE(InitialDensity);
+
+PROPERTY_TYPE_INPUTS(InitialDensity) {
+    using op = const type::els_hamiltonian&;
+    auto rv  = pluginplay::declare_input().add_field<op>("Hamiltonian");
+    return rv;
+}
+
+PROPERTY_TYPE_RESULTS(InitialDensity) {
+    using type::el_density;
+    auto rv = pluginplay::declare_result().add_field<el_density>("Density");
+    return rv;
+}
+
 template<typename Input, typename OutputDensity>
 DECLARE_TEMPLATED_PROPERTY_TYPE(SCFBaseDensity, Input, OutputDensity);
 
