@@ -20,6 +20,7 @@
 #include "simde/tensor_representation/bra_ket.hpp"
 #include "simde/tensor_representation/general_ao_tensor_representation.hpp"
 #include "simde/tensor_representation/general_transformed_tensor_representation.hpp"
+#include "simde/tensor_representation/integral_shape.hpp"
 #include "simde/tensor_representation/tensor_representation_fxn.hpp"
 #include "simde/tensor_representation/transformed.hpp"
 #include "simde/tensor_representation/transformed_tensor_representation.hpp"
