@@ -79,5 +79,6 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(SCFBaseDensity, Input, OutputDensity) {
 }
 
 using SCFGuessDensity = SCFBaseDensity<type::ao_space, type::el_density>;
+using SCFDensityStep  = SCFBaseDensity<type::el_density, type::el_density>;
 
 } // namespace simde
