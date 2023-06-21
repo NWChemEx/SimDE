@@ -45,20 +45,9 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(AtomicDensity, InputType, DensityType) {
 }
 
 /// Typedef for modules that return atomic densities from atomic number
-using AtomDenFromZ = AtomicDensity<type::atomic_number, std::vector<double>>;
-
-DECLARE_DERIVED_PROPERTY_TYPE(AtomDenAOFromZ, AtomDenFromZ);
-PROPERTY_TYPE_INPUTS(AtomDenAOFromZ) { return pluginplay::declare_input(); }
-PROPERTY_TYPE_RESULTS(AtomDenAOFromZ) {
-    using ao_basis_t = type::atomic_basis_set;
-    auto rv =
-      pluginplay::declare_result().add_field<ao_basis_t>("Atomic Basis");
-    rv["Atomic Basis"].set_description(
-      "Atomic basis set in which density is represented");
-    return rv;
-}
+using AtomDenFromZ = AtomicDensity<type::atomic_number, type::el_density>;
 
 /// Typedef for modules that return atomic densities from a string
-using AtomDenFromSym = AtomicDensity<type::atomic_symbol, std::vector<double>>;
+using AtomDenFromSym = AtomicDensity<type::atomic_symbol, type::el_density>;
 
 } // namespace simde
