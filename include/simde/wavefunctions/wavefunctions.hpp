@@ -56,16 +56,20 @@ using CanonicalReference =
   Wavefunction<type::ao_space, type::canonical_reference>;
 
 // Generally used to get initial wf from guess density
-using CanonicalRefFromDensity = Wavefunction<type::el_density, type::canonical_reference>;
+using CanonicalRefFromDensity =
+  Wavefunction<type::el_density, type::canonical_reference>;
 
-DECLARE_DERIVED_PROPERTY_TYPE(CanonicalRefFromGuessDensity, CanonicalRefFromDensity);
+DECLARE_DERIVED_PROPERTY_TYPE(CanonicalRefFromGuessDensity,
+                              CanonicalRefFromDensity);
 PROPERTY_TYPE_INPUTS(CanonicalRefFromGuessDensity) {
     using ao_space = const type::ao_space&;
     auto rv        = pluginplay::declare_input().add_field<ao_space>("AOs");
     rv["AOs"].set_description("The atomic orbital basis set");
     return rv;
 }
-PROPERTY_TYPE_RESULTS(CanonicalRefFromGuessDensity) { return pluginplay::declare_result(); }
+PROPERTY_TYPE_RESULTS(CanonicalRefFromGuessDensity) {
+    return pluginplay::declare_result();
+}
 
 // using CanonicalLocalReference =
 //   Wavefunction<type::ao_space, type::local_reference>;
