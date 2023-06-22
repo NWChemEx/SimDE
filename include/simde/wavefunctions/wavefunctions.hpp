@@ -55,6 +55,10 @@ using NoncanonicalReference =
 using CanonicalReference =
   Wavefunction<type::ao_space, type::canonical_reference>;
 
+// Generally used to get initial wf from guess density
+using CanonicalRefFromDensity =
+  Wavefunction<type::el_density, type::canonical_reference>;
+
 // using CanonicalLocalReference =
 //   Wavefunction<type::ao_space, type::local_reference>;
 

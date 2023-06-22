@@ -15,16 +15,14 @@
  */
 
 #include "../test_property_type.hpp"
-#include "simde/wavefunctions/wavefunctions.hpp"
+#include "simde/tensor_representation/one_elec_density.hpp"
 
 using namespace simde;
 
-TEST_CASE("Wavefunction") {
-    test_property_type<NoncanonicalReference>({"Hamiltonian", "Input Space"},
-                                              {"Output Wavefunction"});
+TEST_CASE("DM elec energy 1e") {
+    test_property_type<OneEDensityElecEnergy>({"Operator", "Rho"}, {"value"});
 }
 
-TEST_CASE("Wavefunction From Density") {
-    test_property_type<CanonicalRefFromDensity>({"Hamiltonian", "Input Space"},
-                                                {"Output Wavefunction"});
+TEST_CASE("DM total energy 1e") {
+    test_property_type<OneEDensityTotalEnergy>({"Operator", "Rho"}, {"value"});
 }
