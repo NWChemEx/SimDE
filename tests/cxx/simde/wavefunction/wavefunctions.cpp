@@ -28,7 +28,3 @@ TEST_CASE("Wavefunction From Density") {
     test_property_type<CanonicalRefFromDensity>({"Hamiltonian", "Input Space"},
                                                 {"Output Wavefunction"});
 }
-TEST_CASE("Wavefunction From Guess Density") {
-    test_property_type<CanonicalRefFromGuessDensity>(
-      {"AOs", "Hamiltonian", "Input Space"}, {"Output Wavefunction"});
-}
