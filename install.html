@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installing SimDE &mdash; SimDE 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Structure of the SimDE Repo" href="structure.html" />
+    <link rel="prev" title="SimDE: The Simulation Development Environment" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SimDE
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing SimDE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requisites-for-installing-simde">Pre-Requisites for Installing SimDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-simde-proper">Installing SimDE Proper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hello-world-with-simde">Hello World With SimDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-simde-install">Troubleshooting SimDE Install</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">Structure of the SimDE Repo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nwchemex-project.github.io/SimDE/simde_cxx_api/index.html">C++ API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SimDE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installing SimDE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="installing-simde">
+<h1>Installing SimDE<a class="headerlink" href="#installing-simde" title="Permalink to this heading"></a></h1>
+<p>For the purposes of this tutorial we will assume you want to make a local
+installation of SimDE (and its dependencies). To that end, we assume you have
+created a directory <code class="docutils literal notranslate"><span class="pre">nwx_workspace</span></code> where you would like to install SimDE and
+other NWChemEx projects. The full path to <code class="docutils literal notranslate"><span class="pre">nwx_workspace</span></code> will be denoted as
+<code class="docutils literal notranslate"><span class="pre">${NWX_WORKSPACE}</span></code> in the following code snippets.</p>
+<div class="section" id="pre-requisites-for-installing-simde">
+<h2>Pre-Requisites for Installing SimDE<a class="headerlink" href="#pre-requisites-for-installing-simde" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pre-installing TiledArray is presently required to avoid runtime linking
+issues. When those issues are resolved, pre-installing TiledArray will be
+optional.</p>
+</div>
+<p>Before we can build SimDE we must build TiledArray. TiledArray depends on
+several common dependencies, dependencies it’s build process can not install
+on its own. These dependencies are:</p>
+<ul class="simple">
+<li><p>MPI (Ubuntu package: libopenmpi-dev)</p></li>
+<li><p>BLAS (Ubuntu package: libopenblas-dev)</p></li>
+<li><p>LAPACK (Ubuntu package: liblapack-dev)</p></li>
+</ul>
+<p>For convenience we have listed the name of the Ubuntu package which provides the
+dependency; however, we also stress that while packages provided by most package
+managers will provide adequate performance, they usually suffer from a
+performance penalty associated with their portability. Point being, if you are
+doing performance critical work, you may want install these dependencies
+yourself. Also note these are very common libraries in the HPC community and
+are likely already installed (in a performant configuration) on most clusters
+you may run on.</p>
+<p>It is assumed that you have previously installed these dependencies and that
+CMake is able to find these dependencies, either because they are installed to
+a location where CMake looks by default (<em>e.g.</em>, <code class="docutils literal notranslate"><span class="pre">/usr/lib</span></code>) or because you
+will ensure that their install locations are part of <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code>.
+To install TiledArray:</p>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/valeevgroup/tiledarray
+cd tiledarray
+git checkout ${NWX_TILEDARRAY_VERSION}
+cmake -H. \
+      -Bbuild \
+      -DCMAKE_INSTALL_PREFIX:PATH=${NWX_WORKSPACE}/tiledarray \
+      -DBUILD_SHARED_LIBS:BOOL=TRUE \
+          -DCMAKE_INSTALL_RPATH=&quot;\$ORIGIN&quot;
+ cmake --build build --target install --parallel 2
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">${NWX_TILEDARRAY_VERSION}</span></code> should be replaced by the value of the
+CMake variable specified <a class="reference external" href="bit.ly/3pcmGme">here</a> and you should feel free to
+change the <code class="docutils literal notranslate"><span class="pre">2</span></code> on the last line to the number of CPU cores on your computer
+(the <code class="docutils literal notranslate"><span class="pre">2</span></code> specifies how many CPU cores will be used to compile).</p>
+</div>
+<div class="section" id="installing-simde-proper">
+<h2>Installing SimDE Proper<a class="headerlink" href="#installing-simde-proper" title="Permalink to this heading"></a></h2>
+<p>After a successful installation of TiledArray we are ready to install SimDE
+proper. First we obtain the source for SimDE:</p>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/NWChemEx-Project/SimDE
+cd SimDE
+</pre></div>
+</div>
+<p>Now we strongly recommend making a toolchain file (see
+<a class="reference external" href="bit.ly/43PXmBx">here</a> for more details). We will assume that you have
+called your toolchain file <code class="docutils literal notranslate"><span class="pre">toolchain.cmake</span></code>, that you made it inside the
+<code class="docutils literal notranslate"><span class="pre">SimDE</span></code> directory you just cloned, and that the toolchain minimally contains:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">NWX_WORKSPACE</span><span class="w"> </span><span class="c">#[[The full path to nwx_workspace goes here #]]</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_PREFIX_PATH</span><span class="w"> </span><span class="o">${</span><span class="nv">NWX_WORKSPACE</span><span class="o">}</span><span class="s">/tiledarray</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">BUILD_PYBIND11_PYBINDINGS</span><span class="w"> </span><span class="s">ON</span><span class="p">)</span><span class="w"> </span><span class="c"># Highly recommended</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">BUILD_SHARED_LIBRARIES</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span><span class="w">  </span><span class="c"># Needed for Python bindings</span>
+
+<span class="c"># This is where NWChemEx Python modules will be installed</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">NWX_MODULE_DIR</span><span class="w"> </span><span class="o">${</span><span class="nv">NWX_WORKSPACE</span><span class="o">}</span><span class="s">/nwx_modules</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we are ready to compile SimDE:</p>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>cmake -H. \
+     -Bbuild \
+     -DCMAKE_INSTALL_PREFIX:PATH=${NWX_WORKSPACE}/simde \
+     -DCMAKE_TOOLCHAIN_FILE:PATH=${PWD}/toolchain.cmake
+cmake --build build --target install --parallel 2
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">${PWD}</span></code> is the full path to the current directory (this variable is set
+by default by most Linux shells), and again you may increase <code class="docutils literal notranslate"><span class="pre">2</span></code> if your
+system has more CPU cores available.</p>
+</div>
+<div class="section" id="hello-world-with-simde">
+<h2>Hello World With SimDE<a class="headerlink" href="#hello-world-with-simde" title="Permalink to this heading"></a></h2>
+<p>After executing the above commands you should have a working SimDE installation,
+this can be tested by creating a Python script, <code class="docutils literal notranslate"><span class="pre">run_simde.py</span></code>,  containing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">simde</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Getting here means Python found SimDE, oh and Hello World!!!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This script can then be run by:</p>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>PYTHONPATH=${NWX_WORKSPACE}/nwx_modules python3 run_simde.py
+</pre></div>
+</div>
+<p>(assuming <code class="docutils literal notranslate"><span class="pre">${NWX_WORKSPACE}/nwx_modules</span></code> isn’t already included in your
+Python path).</p>
+</div>
+<div class="section" id="troubleshooting-simde-install">
+<h2>Troubleshooting SimDE Install<a class="headerlink" href="#troubleshooting-simde-install" title="Permalink to this heading"></a></h2>
+<p>The contents of the toolchain above are fairly minimal. Depending on how far
+your system differs from ideality you may need to set additional variables. The
+most common ones are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CMAKE_C_COMPILER</span></code>/ <code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_COMPILER</span></code> the full path to your C and C++
+compilers, respectively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CMAIZE_GITHUB_TOKEN</span></code> this needs to be set to a GitHub PAT while the
+NWChemEx repos are still private.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Python3_EXECUTABLE</span></code> point this to the Python command you want to use.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="SimDE: The Simulation Development Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="structure.html" class="btn btn-neutral float-right" title="Structure of the SimDE Repo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, NWChemEx Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
