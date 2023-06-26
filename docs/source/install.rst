@@ -33,8 +33,8 @@ Pre-Requisites for Installing SimDE
    optional.
 
 Before we can build SimDE we must build TiledArray. TiledArray depends on
-several common dependencies, dependencies it can not install. These
-dependencies are:
+several common dependencies, dependencies it's build process can not install
+on its own. These dependencies are:
 
 - MPI (Ubuntu package: libopenmpi-dev)
 - BLAS (Ubuntu package: libopenblas-dev)
