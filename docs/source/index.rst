@@ -12,12 +12,18 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
-Welcome to SimDE's Documentation!
-=================================
+#############################################
+SimDE: The Simulation Development Environment
+#############################################
+
+SimDE provides a development environment for writing computational chemistry
+plugins compatible with PluginPlay.
+
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   install
    structure
    C++ API <https://nwchemex-project.github.io/SimDE/simde_cxx_api/index.html>
