@@ -28,8 +28,9 @@ Pre-Requisites for Installing SimDE
 
 .. note::
 
-   Pre-installing TiledArray is presently required to avoid RPATH issues. When
-   those issues are resolved, pre-installing TiledArray will be optional.
+   Pre-installing TiledArray is presently required to avoid runtime linking
+   issues. When those issues are resolved, pre-installing TiledArray will be
+   optional.
 
 Before we can build SimDE we must build TiledArray. TiledArray depends on
 several common dependencies, dependencies it can not install. These
@@ -132,7 +133,8 @@ This script can then be run by:
 
    PYTHONPATH=${NWX_WORKSPACE}/nwx_modules python3 run_simde.py
 
-(assuming ``${NWX_WORKSPACE}`` isn't already included in your Python path).
+(assuming ``${NWX_WORKSPACE}/nwx_modules`` isn't already included in your
+Python path).
 
 *****************************
 Troubleshooting SimDE Install
