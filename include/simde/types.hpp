@@ -45,10 +45,10 @@ using atomic_number = typename atom::size_type;
 using chemical_system = chemist::ChemicalSystem;
 
 /// Typedef of the AO Basis Set
-using ao_basis_set = chemist::AOBasisSetD;
+using ao_basis_set = chemist::basis_set::AOBasisSetD;
 
 /// Typedef of an Atomic Basis Set
-using atomic_basis_set = chemist::AtomicBasisSet<double>;
+using atomic_basis_set = chemist::basis_set::AtomicBasisSetD;
 
 /// Typedef of an electron
 using el = chemist::Electron;
