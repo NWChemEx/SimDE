@@ -14,7 +14,7 @@
 ARG dep_repo_tag
 ARG base_tag
 
-FROM ghcr.io/nwchemex-project/release_simde:$dep_repo_tag
+FROM ghcr.io/nwchemex-project/release_chemist:$dep_repo_tag
 
 FROM ghcr.io/nwchemex-project/release_pluginplay:$dep_repo_tag
 
