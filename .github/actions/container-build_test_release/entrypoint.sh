@@ -38,7 +38,7 @@ docker build -t docker-action --build-arg cr_pat=$CR_PAT --build-arg user=$USER 
 
 container_id="$(docker ps -a  | grep 'docker-action')"
 container_id="${container_id%% *}"
-docker cp ${container_id}:/install_simde ./install
+docker cp ${container_id}:/install ./install
 
 cat <<EOF>> release.Dockerfile
 FROM scratch
