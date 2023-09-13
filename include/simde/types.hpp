@@ -71,6 +71,9 @@ using contracted_gaussian = chemist::basis_set::ContractedGaussianD;
 /// Typdef of a Primitive
 using primitive = chemist::basis_set::PrimitiveD;
 
+/// Typedef of a cartesian point
+using point = chemist::Point<double>;
+
 // ------------------------------ Orbital Spaces -------------------------------
 
 /// Typedef of class describing an AO space
