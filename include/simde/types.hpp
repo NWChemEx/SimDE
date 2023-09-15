@@ -44,12 +44,6 @@ using atomic_number = typename atom::size_type;
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = chemist::ChemicalSystem;
 
-/// Typedef of the AO Basis Set
-using ao_basis_set = chemist::AOBasisSetD;
-
-/// Typedef of an Atomic Basis Set
-using atomic_basis_set = chemist::AtomicBasisSet<double>;
-
 /// Typedef of an electron
 using el = chemist::Electron;
 
@@ -59,6 +53,26 @@ using many_electrons = chemist::ManyElectrons;
 /// Typedef of the electron density
 using el_density        = chemist::OneElectronDensity;
 using decomp_el_density = chemist::Decomposable1EDensity;
+
+// ------------------------------ Basis Sets -----------------------------------
+
+/// Typedef of the AO Basis Set
+using ao_basis_set = chemist::basis_set::AOBasisSetD;
+
+/// Typedef of an Atomic Basis Set
+using atomic_basis_set = chemist::basis_set::AtomicBasisSetD;
+
+/// Typdef of a Shell
+using shell = chemist::basis_set::ShellD;
+
+/// Typedef of a Contracted Gaussian
+using contracted_gaussian = chemist::basis_set::ContractedGaussianD;
+
+/// Typdef of a Primitive
+using primitive = chemist::basis_set::PrimitiveD;
+
+/// Typedef of a cartesian point
+using point = chemist::Point<double>;
 
 // ------------------------------ Orbital Spaces -------------------------------
 
