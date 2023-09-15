@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['topology_131',['topology',['../types_8hpp.html#a7ee0f87aebc8b0ac159d5ed311cde384',1,'simde::type']]],
-  ['tot_5fspace_5fmap_5ft_132',['tot_space_map_t',['../structsimde_1_1detail___1_1TensorRepParser.html#abe52143f215fe3672f4834e9c2d33e76',1,'simde::detail_::TensorRepParser']]]
+  ['return_5ftype_137',['return_type',['../structsimde_1_1detail___1_1AtomToCenterTraits.html#a3b7f9a0893e059b1a30ace7e13cba859',1,'simde::detail_::AtomToCenterTraits::return_type()'],['../structsimde_1_1FragmentedTraits.html#aed77ae062d9870d36fad492bcd422ee6',1,'simde::FragmentedTraits::return_type()']]]
 ];

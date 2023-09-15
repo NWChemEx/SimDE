@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['return_5ftype_130',['return_type',['../structsimde_1_1detail___1_1AtomToCenterTraits.html#a3b7f9a0893e059b1a30ace7e13cba859',1,'simde::detail_::AtomToCenterTraits::return_type()'],['../structsimde_1_1FragmentedTraits.html#aed77ae062d9870d36fad492bcd422ee6',1,'simde::FragmentedTraits::return_type()']]]
+  ['point_135',['point',['../types_8hpp.html#a16e3b3cf9542820a8400b42d76caf5c0',1,'simde::type']]],
+  ['primitive_136',['primitive',['../types_8hpp.html#adfd2a407c8780610f1bfbd155c70ceaf',1,'simde::type']]]
 ];
