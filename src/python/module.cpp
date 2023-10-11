@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "energy/export_energy.hpp"
 #include "basis_set/export_basis_set.hpp"
+#include "energy/export_energy.hpp"
 #include "export_simde.hpp"
 
 namespace simde {

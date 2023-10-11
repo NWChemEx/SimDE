@@ -17,7 +17,7 @@ import pluginplay
 import unittest
 
 class TestEnergy(unittest.TestCase):
-    def test_energy_pt(self):
+    def test_molecular_basis_set_pt(self):
         pt = simde.MolecularBasisSet()
         self.assertIn('Molecule', pt.inputs())
-        self.assertIn('MolecularBasisSet', pt.results())
+        self.assertIn('Molecular Basis Set', pt.results())
