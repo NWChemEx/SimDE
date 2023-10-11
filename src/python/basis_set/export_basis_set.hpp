@@ -14,18 +14,15 @@
  * limitations under the License.
  */
 
-#include "energy/export_energy.hpp"
-#include "basis_set/export_basis_set.hpp"
-#include "export_simde.hpp"
+#pragma once
+#include "../export_simde.hpp"
+#include <pluginplay/pluginplay.hpp>
+#include <simde/basis_sets/molecular_basis_set.hpp>
 
 namespace simde {
 
-PYBIND11_MODULE(simde, m) {
-    m.doc() =
-      "PySimDE: Python bindings for the Simulation development environment";
-
-    export_energy(m);
-    export_molecular_basis_set(m);
+inline void export_molecular_basis_set(python_module_reference m) {
+    EXPORT_PROPERTY_TYPE(MolecularBasisSet, m);
 }
 
 } // namespace simde
