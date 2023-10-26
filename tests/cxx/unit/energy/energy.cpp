@@ -19,4 +19,4 @@
 
 using namespace simde;
 
-TEST_CASE("Energy") { test_property_type<Energy>({"system"}, {"Energy"}); }
+TEST_CASE("Energy") { test_property_type<Energy>({"Chemical System"}, {"Energy"}); }

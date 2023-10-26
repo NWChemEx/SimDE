@@ -19,10 +19,11 @@ import unittest
 class TestEnergy(unittest.TestCase):
     def test_energy_pt(self):
         pt = simde.Energy()
-        self.assertIn('system', pt.inputs())
+        self.assertIn('Chemical System', pt.inputs())
         self.assertIn('Energy', pt.results())
 
     def test_aoenergy_pt(self):
         pt = simde.AOEnergy()
-        self.assertIn('system', pt.inputs())
+        self.assertIn('Chemical System', pt.inputs())
+        self.assertIn('AOs', pt.inputs())
         self.assertIn('Energy', pt.results())

@@ -19,8 +19,8 @@
 
 TEST_CASE("Nuclear Derivative Property Types") {
     test_property_type<simde::AOEnergyNuclearGradient>(
-      {"AOs", "system", "Arg 1"}, {"Derivative"});
+      {"AOs", "Chemical System", "Arg 1"}, {"Derivative"});
 
     test_property_type<simde::AOEnergyNuclearHessian>(
-      {"AOs", "system", "Arg 1", "Arg 2"}, {"Derivative"});
+      {"AOs", "Chemical System", "Arg 1", "Arg 2"}, {"Derivative"});
 }
