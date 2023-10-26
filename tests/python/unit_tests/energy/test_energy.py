@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import simde
+import pluginplay
 import unittest
 
 class TestEnergy(unittest.TestCase):
