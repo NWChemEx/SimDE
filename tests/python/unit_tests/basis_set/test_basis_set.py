@@ -19,4 +19,6 @@ class TestBasisSet(unittest.TestCase):
     def test_molecular_basis_set_pt(self):
         pt = simde.MolecularBasisSet()
         self.assertIn('Molecule', pt.inputs())
+        self.assertEqual(len(pt.inputs()), 1)
         self.assertIn('Molecular Basis Set', pt.results())
+        self.assertEqual(len(pt.results()), 1)
