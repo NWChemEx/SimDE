@@ -13,11 +13,15 @@
 # limitations under the License.
 
 import simde
-import pluginplay
 import unittest
 
 class TestEnergy(unittest.TestCase):
     def test_energy_pt(self):
         pt = simde.Energy()
+        self.assertIn('system', pt.inputs())
+        self.assertIn('Energy', pt.results())
+
+    def test_aoenergy_pt(self):
+        pt = simde.AOEnergy()
         self.assertIn('system', pt.inputs())
         self.assertIn('Energy', pt.results())
