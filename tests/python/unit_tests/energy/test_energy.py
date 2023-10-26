@@ -26,4 +26,6 @@ class TestEnergy(unittest.TestCase):
         pt = simde.AOEnergy()
         self.assertIn('Chemical System', pt.inputs())
         self.assertIn('AOs', pt.inputs())
+        self.assertEqual(len(pt.inputs()), 2)
         self.assertIn('Energy', pt.results())
+        self.assertEqual(len(pt.results()), 1)
