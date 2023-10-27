@@ -34,8 +34,9 @@ DECLARE_PROPERTY_TYPE(Energy);
 //-------------------------------Implementations--------------------------------
 PROPERTY_TYPE_INPUTS(Energy) {
     using chem_sys_t = const type::chemical_system&;
-    auto rv = pluginplay::declare_input().add_field<chem_sys_t>("system");
-    rv["system"].set_description("The molecular system");
+    auto rv =
+      pluginplay::declare_input().add_field<chem_sys_t>("Chemical System");
+    rv["Chemical System"].set_description("The chemical system");
     return rv;
 }
 

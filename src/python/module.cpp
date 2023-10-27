@@ -25,6 +25,7 @@ PYBIND11_MODULE(simde, m) {
       "PySimDE: Python bindings for the Simulation development environment";
 
     export_energy(m);
+    export_aoenergy(m);
     export_molecular_basis_set(m);
 }
 
