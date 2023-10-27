@@ -97,18 +97,19 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">//-------------------------------Implementations--------------------------------</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;PROPERTY_TYPE_INPUTS(Energy) {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">using</span> chem_sys_t = <span class="keyword">const</span> type::chemical_system&amp;;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">auto</span> rv = pluginplay::declare_input().add_field&lt;chem_sys_t&gt;(<span class="stringliteral">&quot;system&quot;</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    rv[<span class="stringliteral">&quot;system&quot;</span>].set_description(<span class="stringliteral">&quot;The molecular system&quot;</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> rv;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;PROPERTY_TYPE_RESULTS(Energy) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">auto</span> rv = pluginplay::declare_result().add_field&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;Energy&quot;</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    rv[<span class="stringliteral">&quot;Energy&quot;</span>].set_description(<span class="stringliteral">&quot;The computed energy&quot;</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> rv;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} <span class="comment">// namespace simde</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">auto</span> rv =</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      pluginplay::declare_input().add_field&lt;chem_sys_t&gt;(<span class="stringliteral">&quot;Chemical System&quot;</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    rv[<span class="stringliteral">&quot;Chemical System&quot;</span>].set_description(<span class="stringliteral">&quot;The chemical system&quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;PROPERTY_TYPE_RESULTS(Energy) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">auto</span> rv = pluginplay::declare_result().add_field&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;Energy&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    rv[<span class="stringliteral">&quot;Energy&quot;</span>].set_description(<span class="stringliteral">&quot;The computed energy&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;} <span class="comment">// namespace simde</span></div>
 <div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
