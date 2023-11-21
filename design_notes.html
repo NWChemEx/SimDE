@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Design Notes &mdash; SimDE 1.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -13,9 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -75,21 +74,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="design-notes">
-<h1>Design Notes<a class="headerlink" href="#design-notes" title="Permalink to this heading"></a></h1>
-<div class="section" id="tensorrepresentation">
-<h2>TensorRepresentation<a class="headerlink" href="#tensorrepresentation" title="Permalink to this heading"></a></h2>
+  <section id="design-notes">
+<h1>Design Notes<a class="headerlink" href="#design-notes" title="Permalink to this headline"></a></h1>
+<section id="tensorrepresentation">
+<h2>TensorRepresentation<a class="headerlink" href="#tensorrepresentation" title="Permalink to this headline"></a></h2>
 <p>To convert an operator into a tensor in she some basis set the target API is:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Two-center</span>
-<span class="n">Tensor</span><span class="w"> </span><span class="nf">TensorRepresentation</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span><span class="w"> </span><span class="k">operator</span><span class="p">,</span><span class="w"> </span><span class="n">ket</span><span class="p">);</span>
+<span class="n">Tensor</span><span class="w"> </span><span class="nf">TensorRepresentation</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span><span class="w"> </span><span class="k">operator</span><span class="p">,</span><span class="w"> </span><span class="n">ket</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Three-center</span>
-<span class="n">Tensor</span><span class="w"> </span><span class="nf">TensorRepresentation</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span><span class="w"> </span><span class="k">operator</span><span class="p">,</span><span class="w"> </span><span class="n">ket1</span><span class="p">,</span><span class="w"> </span><span class="n">ket2</span><span class="p">);</span>
+<span class="n">Tensor</span><span class="w"> </span><span class="nf">TensorRepresentation</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span><span class="w"> </span><span class="k">operator</span><span class="p">,</span><span class="w"> </span><span class="n">ket1</span><span class="p">,</span><span class="w"> </span><span class="n">ket2</span><span class="p">);</span><span class="w"></span>
 <span class="c1">// or</span>
-<span class="n">Tensor</span><span class="w"> </span><span class="nf">TensorRepresentation</span><span class="p">(</span><span class="n">bra1</span><span class="p">,</span><span class="w"> </span><span class="n">bra2</span><span class="p">,</span><span class="w"> </span><span class="k">operator</span><span class="p">,</span><span class="w"> </span><span class="n">ket</span><span class="p">);</span>
+<span class="n">Tensor</span><span class="w"> </span><span class="nf">TensorRepresentation</span><span class="p">(</span><span class="n">bra1</span><span class="p">,</span><span class="w"> </span><span class="n">bra2</span><span class="p">,</span><span class="w"> </span><span class="k">operator</span><span class="p">,</span><span class="w"> </span><span class="n">ket</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Four-center</span>
-<span class="n">Tensor</span><span class="w"> </span><span class="nf">TensorRepresentation</span><span class="p">(</span><span class="n">bra1</span><span class="p">,</span><span class="w"> </span><span class="n">bra2</span><span class="p">,</span><span class="w"> </span><span class="k">operator</span><span class="p">,</span><span class="w"> </span><span class="n">ket1</span><span class="p">,</span><span class="w"> </span><span class="n">ket2</span><span class="p">);</span>
+<span class="n">Tensor</span><span class="w"> </span><span class="nf">TensorRepresentation</span><span class="p">(</span><span class="n">bra1</span><span class="p">,</span><span class="w"> </span><span class="n">bra2</span><span class="p">,</span><span class="w"> </span><span class="k">operator</span><span class="p">,</span><span class="w"> </span><span class="n">ket1</span><span class="p">,</span><span class="w"> </span><span class="n">ket2</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Focusing on only the AO basis set for the moment we have <code class="docutils literal notranslate"><span class="pre">AOSpace&lt;T&gt;</span></code>
@@ -132,82 +131,82 @@ then fill in the ToT appropriately</p></li>
 </ol>
 <p>For scenario 1 it’s pretty easy to have the API we want and we define the
 property type’s API:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OperatorType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="n">type</span><span class="o">::</span><span class="n">tensor</span><span class="w"> </span><span class="n">AOTensorRepresentation</span><span class="p">(</span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                                  </span><span class="n">OperatorType</span><span class="p">,</span>
-<span class="w">                                  </span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OperatorType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">type</span><span class="o">::</span><span class="n">tensor</span><span class="w"> </span><span class="n">AOTensorRepresentation</span><span class="p">(</span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                  </span><span class="n">OperatorType</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                  </span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>For scenarios 2-4 we provide a free function (for API symmetry the free function
 also works with scenario 1):</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="n">Args</span><span class="o">&gt;</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">TensorRepresentation</span><span class="p">(</span><span class="n">sde</span><span class="o">::</span><span class="n">Module</span><span class="o">&amp;</span><span class="w"> </span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">args</span><span class="p">)</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="n">Args</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">TensorRepresentation</span><span class="p">(</span><span class="n">sde</span><span class="o">::</span><span class="n">Module</span><span class="o">&amp;</span><span class="w"> </span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">args</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>which is used like:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Two center call</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TensorRepresentation</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">bra</span><span class="p">,</span><span class="w"> </span><span class="n">op</span><span class="p">,</span><span class="w"> </span><span class="n">ket</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TensorRepresentation</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">bra</span><span class="p">,</span><span class="w"> </span><span class="n">op</span><span class="p">,</span><span class="w"> </span><span class="n">ket</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Four center call</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TensorRepresentation</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="n">bra1</span><span class="p">,</span><span class="w"> </span><span class="n">bra2</span><span class="p">,</span><span class="w"> </span><span class="n">op</span><span class="p">,</span><span class="w"> </span><span class="n">ket1</span><span class="p">,</span><span class="w"> </span><span class="n">ket2</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TensorRepresentation</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="n">bra1</span><span class="p">,</span><span class="w"> </span><span class="n">bra2</span><span class="p">,</span><span class="w"> </span><span class="n">op</span><span class="p">,</span><span class="w"> </span><span class="n">ket1</span><span class="p">,</span><span class="w"> </span><span class="n">ket2</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This function takes a module to call, the bra(s), the operator, and the ket(s).
 Internally it then packages the arguments based on type (<code class="docutils literal notranslate"><span class="pre">type::ao_space&lt;T&gt;</span></code>
 vs <code class="docutils literal notranslate"><span class="pre">type::derived_spaceD</span></code> vs…), calls the module, and returns the result.</p>
 <p>The actual property type API for scenarios 2 is:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">typeanme</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">sparse_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">sparse_ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">typeanme</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">sparse_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">sparse_ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">dense_map</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">dense_map</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OperatorType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ElementType</span><span class="o">&gt;</span>
-<span class="n">type</span><span class="o">::</span><span class="n">tensor_of_tensors</span>
-<span class="n">GeneralAOTensorRepresentation</span><span class="p">(</span><span class="n">sparse_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                              </span><span class="n">dense_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                              </span><span class="n">OperatorType</span><span class="p">);</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OperatorType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ElementType</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">type</span><span class="o">::</span><span class="n">tensor_of_tensors</span><span class="w"></span>
+<span class="n">GeneralAOTensorRepresentation</span><span class="p">(</span><span class="n">sparse_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="n">dense_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="n">OperatorType</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>where the maps map from tensor mode to AO spaces, e.g. sparse_map[1] is the
 AO space for the 1-st mode of the output tensor (if <cite>sparse_map.count(1) == 0</cite>
 then mode 1 isn’t sparse…). The property type API for scenarios 3 and 4 are
 similar. For scenario 3:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">typeanme</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">ao_space_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">typeanme</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">ao_space_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">derived_map</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">derived_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">derived_map</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">derived_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OperatorType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ElementType</span><span class="o">&gt;</span>
-<span class="n">type</span><span class="o">::</span><span class="n">tensor</span><span class="w"> </span><span class="n">TransformedTensorRepresentation</span><span class="p">(</span><span class="n">ao_space_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                                             </span><span class="n">derived_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                                             </span><span class="n">OperatorType</span><span class="p">);</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OperatorType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ElementType</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">type</span><span class="o">::</span><span class="n">tensor</span><span class="w"> </span><span class="n">TransformedTensorRepresentation</span><span class="p">(</span><span class="n">ao_space_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                             </span><span class="n">derived_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                             </span><span class="n">OperatorType</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>and for scenario 4:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">typeanme</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">ao_space_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">typeanme</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">ao_space_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">sparse_ao_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">sparse_ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">sparse_ao_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">sparse_ao_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">ind_derived_map</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">ind_derived_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">ind_derived_map</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">ind_derived_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">dep_derived_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">dep_derived_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">dep_derived_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">::</span><span class="n">dep_derived_space</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OperatorType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ElementType</span><span class="o">&gt;</span>
-<span class="n">type</span><span class="o">::</span><span class="n">tensor</span><span class="w"> </span><span class="n">GeneralTransformedTensorRepresentation</span><span class="p">(</span><span class="n">ao_space_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                                             </span><span class="n">sparse_ao_space</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                                             </span><span class="n">ind_derived_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                                             </span><span class="n">dep_derived_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                                             </span><span class="n">OperatorType</span><span class="p">);</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OperatorType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ElementType</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">type</span><span class="o">::</span><span class="n">tensor</span><span class="w"> </span><span class="n">GeneralTransformedTensorRepresentation</span><span class="p">(</span><span class="n">ao_space_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                             </span><span class="n">sparse_ao_space</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                             </span><span class="n">ind_derived_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                             </span><span class="n">dep_derived_map</span><span class="o">&lt;</span><span class="n">ElementType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                             </span><span class="n">OperatorType</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
