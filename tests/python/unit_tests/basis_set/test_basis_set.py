@@ -22,3 +22,15 @@ class TestBasisSet(unittest.TestCase):
         self.assertEqual(len(pt.inputs()), 1)
         self.assertIn('Molecular Basis Set', pt.results())
         self.assertEqual(len(pt.results()), 1)
+    
+    def test_atomic_basis_set_pt(self):
+        pt = simde.AtomicBasisSetFromZ()
+        self.assertIn('Atom ID', pt.inputs())
+        self.assertEqual(len(pt.inputs()), 1)
+        self.assertIn('Atomic Basis Set', pt.results())
+        self.assertEqual(len(pt.results()), 1)
+        pt = simde.AtomicBasisSetFromSym()
+        self.assertIn('Atom ID', pt.inputs())
+        self.assertEqual(len(pt.inputs()), 1)
+        self.assertIn('Atomic Basis Set', pt.results())
+        self.assertEqual(len(pt.results()), 1)

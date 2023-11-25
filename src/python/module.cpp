@@ -17,6 +17,7 @@
 #include "basis_set/export_basis_set.hpp"
 #include "energy/export_energy.hpp"
 #include "export_simde.hpp"
+#include "wavefunctions/export_wavefunctions.hpp"
 
 namespace simde {
 
@@ -27,6 +28,13 @@ PYBIND11_MODULE(simde, m) {
     export_energy(m);
     export_aoenergy(m);
     export_molecular_basis_set(m);
+    export_atomic_basis_set_from_sym(m);
+    export_atomic_basis_set_from_z(m);
+    export_NoncanonicalReference(m);
+    export_CanonicalReference(m);
+    export_CanonicalRefFromDensity(m);
+    export_SCFWf(m);
+    export_CanonicalManyBodyWf(m);
 }
 
 } // namespace simde
