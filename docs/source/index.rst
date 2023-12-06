@@ -26,4 +26,4 @@ plugins compatible with PluginPlay.
 
    install
    structure
-   C++ API <https://nwchemex-project.github.io/SimDE/simde_cxx_api/index.html>
+   C++ API <https://nwchemex.github.io/SimDE/simde_cxx_api/index.html>

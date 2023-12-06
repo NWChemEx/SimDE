@@ -14,9 +14,9 @@
   ~ limitations under the License.
 -->
 
-[![Actions](https://github.com/NWChemEx-Project/SimDE/workflows/C_C++_CI/badge.svg)](https://github.com/NWChemEx-Project/SimDE)
+[![Actions](https://github.com/NWChemEx/SimDE/workflows/C_C++_CI/badge.svg)](https://github.com/NWChemEx/SimDE)
 
-[![Codecov](https://codecov.io/github/NWChemEx-Project/PropertyTypes/branch/master/graphs/sunburst.svg?token=pnZIgAq5yN)](https://codecov.io/github/NWChemEx-Project/PropertyTypes/branch/master)
+[![Codecov](https://codecov.io/github/NWChemEx/PropertyTypes/branch/master/graphs/sunburst.svg?token=pnZIgAq5yN)](https://codecov.io/github/NWChemEx/PropertyTypes/branch/master)
 
 # Simulation Development Environment (SimDE)
 
