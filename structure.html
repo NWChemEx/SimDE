@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Structure of the SimDE Repo &mdash; SimDE 1.0.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -56,7 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#wavefunctions">Wavefunctions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="https://nwchemex-project.github.io/SimDE/simde_cxx_api/index.html">C++ API</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nwchemex.github.io/SimDE/simde_cxx_api/index.html">C++ API</a></li>
 </ul>
 
         </div>
@@ -84,18 +87,18 @@
            <div itemprop="articleBody">
              
   <section id="structure-of-the-simde-repo">
-<h1>Structure of the SimDE Repo<a class="headerlink" href="#structure-of-the-simde-repo" title="Permalink to this headline"></a></h1>
+<h1>Structure of the SimDE Repo<a class="headerlink" href="#structure-of-the-simde-repo" title="Link to this heading"></a></h1>
 <p>Ultimately there’s a lot of property types used throughout an electronic
 structure code. To make the user’s life easier we have organized the property
 types into groups. This page provides an explanation of the groups</p>
 <section id="density">
-<h2>Density<a class="headerlink" href="#density" title="Permalink to this headline"></a></h2>
+<h2>Density<a class="headerlink" href="#density" title="Link to this heading"></a></h2>
 <p>Property types focused on computing electron densities. These include property
 types for computing and updating guesses for mean-field theories (<em>i.e.</em>,
 respectively the <code class="docutils literal notranslate"><span class="pre">GuessDensity</span></code> and <code class="docutils literal notranslate"><span class="pre">UpdateDenstiy</span></code> property types).</p>
 </section>
 <section id="energy">
-<h2>Energy<a class="headerlink" href="#energy" title="Permalink to this headline"></a></h2>
+<h2>Energy<a class="headerlink" href="#energy" title="Link to this heading"></a></h2>
 <p>Property types focused on computing energies. For the most part these property
 types differ from one another in terms of the inputs they accept. For example
 <code class="docutils literal notranslate"><span class="pre">Energy</span></code> serves as a base property type which takes a <code class="docutils literal notranslate"><span class="pre">ChemicalSystem</span></code> and
@@ -103,29 +106,29 @@ computes the energy of it, whereas <code class="docutils literal notranslate"><s
 <code class="docutils literal notranslate"><span class="pre">ChemicalSystem</span></code>.</p>
 </section>
 <section id="linear-algebra">
-<h2>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline"></a></h2>
+<h2>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Link to this heading"></a></h2>
 <p>These are property types related to performing numeric linear algebra on
 tensors.</p>
 </section>
 <section id="operators">
-<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline"></a></h2>
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading"></a></h2>
 <p>These are property types which compute operators, for example <code class="docutils literal notranslate"><span class="pre">Fock</span></code> takes a
 <code class="docutils literal notranslate"><span class="pre">Hamiltonian</span></code> instance and a one-electron desnity and turns it into a <code class="docutils literal notranslate"><span class="pre">Fock</span></code>
 operator.</p>
 </section>
 <section id="orbital-spaces">
-<h2>Orbital Spaces<a class="headerlink" href="#orbital-spaces" title="Permalink to this headline"></a></h2>
+<h2>Orbital Spaces<a class="headerlink" href="#orbital-spaces" title="Link to this heading"></a></h2>
 <p>These are property types which focus on computing new orbital spaces. For
 example <code class="docutils literal notranslate"><span class="pre">LocalizedOrbitals</span></code> takes an existing orbital space and localizes it.</p>
 </section>
 <section id="tensor-representations">
-<h2>Tensor Representations<a class="headerlink" href="#tensor-representations" title="Permalink to this headline"></a></h2>
+<h2>Tensor Representations<a class="headerlink" href="#tensor-representations" title="Link to this heading"></a></h2>
 <p>These are property types which deal with formation of tensor representations of
 operators. Also included are property types which perform orbital
 transformations of tensor representations.</p>
 </section>
 <section id="wavefunctions">
-<h2>Wavefunctions<a class="headerlink" href="#wavefunctions" title="Permalink to this headline"></a></h2>
+<h2>Wavefunctions<a class="headerlink" href="#wavefunctions" title="Link to this heading"></a></h2>
 <p>These are property types which deal with computing wavefunctions.</p>
 </section>
 </section>

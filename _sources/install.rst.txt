@@ -81,7 +81,7 @@ proper. First we obtain the source for SimDE:
 
 .. code-block:: terminal
 
-   git clone https://github.com/NWChemEx-Project/SimDE
+   git clone https://github.com/NWChemEx/SimDE
    cd SimDE
 
 Now we strongly recommend making a toolchain file (see
