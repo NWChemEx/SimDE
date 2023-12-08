@@ -19,7 +19,7 @@ project(simde VERSION "${VERSION}" LANGUAGES CXX)
 include(FetchContent)
 FetchContent_Declare(
     nwx_cmake
-    GIT_REPOSITORY https://github.com/NWChemEx-Project/NWXCMake
+    GIT_REPOSITORY https://github.com/NWChemEx/NWXCMake
 )
 FetchContent_MakeAvailable(nwx_cmake)
 list(APPEND CMAKE_MODULE_PATH "${nwx_cmake_SOURCE_DIR}/cmake")
@@ -45,7 +45,7 @@ set(simde_depends "")
 
 cmaize_find_or_build_dependency(
     chemist
-    URL github.com/NWChemEx-Project/chemist
+    URL github.com/NWChemEx/chemist
     PRIVATE TRUE
     VERSION ${NWX_CHEMIST_VERSION}
     BUILD_TARGET chemist
@@ -57,7 +57,7 @@ set(simde_depends chemist)
 
 cmaize_find_or_build_dependency(
     pluginplay
-    URL github.com/NWChemEx-Project/pluginplay
+    URL github.com/NWChemEx/pluginplay
     VERSION ${NWX_PLUGINPLAY_VERSION}
     BUILD_TARGET pluginplay
     FIND_TARGET nwx::pluginplay
