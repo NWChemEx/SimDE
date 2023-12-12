@@ -21,19 +21,10 @@
 
 namespace simde {
 
-inline void export_scf_density(python_module_reference m) {
+inline void export_density(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(SCFDensity, m);
-}
-
-inline void export_initial_density(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(InitialDensity, m);
-}
-
-inline void export_scf_guess_density(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(SCFGuessDensity, m);
-}
-
-inline void export_scf_density_step(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(SCFDensityStep, m);
 }
 
