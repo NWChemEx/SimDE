@@ -13,12 +13,10 @@
 # limitations under the License.
 
 import simde
-import unittest
+from test_property_type import BaseTestPropertyType
 
-class TestBasisSet(unittest.TestCase):
-    def test_molecular_basis_set_pt(self):
-        pt = simde.MolecularBasisSet()
-        self.assertIn('Molecule', pt.inputs())
-        self.assertEqual(len(pt.inputs()), 1)
-        self.assertIn('Molecular Basis Set', pt.results())
-        self.assertEqual(len(pt.results()), 1)
+class TestMolecularBasisSet(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.MolecularBasisSet()
+        self.input_labels= ['Molecule']
+        self.result_labels = ['Molecular Basis Set']
