@@ -22,15 +22,9 @@
 
 namespace simde {
 
-inline void export_atomic_basis_set_from_z(python_module_reference m) {
+inline void export_basis_set(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomicBasisSetFromZ, m);
-}
-
-inline void export_atomic_basis_set_from_sym(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomicBasisSetFromSym, m);
-}
-
-inline void export_molecular_basis_set(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(MolecularBasisSet, m);
 }
 
