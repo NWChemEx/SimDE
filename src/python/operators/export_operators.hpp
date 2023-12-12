@@ -21,11 +21,8 @@
 
 namespace simde {
 
-inline void export_fock_op(python_module_reference m) {
+inline void export_operators(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(FockOp, m);
-}
-
-inline void export_system_hamiltonian(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(SystemHamiltonian, m);
 }
 
