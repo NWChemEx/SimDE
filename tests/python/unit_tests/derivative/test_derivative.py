@@ -16,22 +16,14 @@ import simde
 import pluginplay
 import unittest
 
-class TestEnergy(unittest.TestCase):
-    def test_aoenergynucleargradient_pt(self):
-        pt = simde.AOEnergyNuclearGradient()
-        self.assertIn('AOs', pt.inputs())
-        self.assertIn('Chemical System', pt.inputs())
-        self.assertIn('Arg 1', pt.inputs())
-        self.assertEqual(len(pt.inputs()), 3)
-        self.assertIn('Derivative', pt.results())
-        self.assertEqual(len(pt.results()), 1)
+class TestAOEnergyNuclearGradient(unittest.TestCase):
+    def setUp(self):
+        self.pt = simde.AOEnergyNuclearGradient()
+        self.input_labels = ['AOs', 'Chemical System', 'Arg 1']
+        self.return_labels = ['Derivative']
 
-    def test_aoenergynuclearhessian_pt(self):
-        pt = simde.AOEnergyNuclearHessian()
-        self.assertIn('AOs', pt.inputs())
-        self.assertIn('Chemical System', pt.inputs())
-        self.assertIn('Arg 1', pt.inputs())
-        self.assertIn('Arg 2', pt.inputs())
-        self.assertEqual(len(pt.inputs()), 4)
-        self.assertIn('Derivative', pt.results())
-        self.assertEqual(len(pt.results()), 1)
+class TestAOEnergyNuclearHessian(unittest.TestCase):
+    def setUp(self):
+        self.pt = simde.AOEnergyNuclearHessian()
+        self.input_labels = ['AOs', 'Chemical System', 'Arg 1', 'Arg 2']
+        self.return_labels = ['Derivative']
