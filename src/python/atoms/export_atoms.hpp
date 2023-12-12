@@ -21,51 +21,18 @@
 
 namespace simde {
 
-inline void export_atomfromz(python_module_reference m) {
+inline void export_atoms(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomFromZ, m);
-}
-
-inline void export_atomfromsym(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomFromSym, m);
-}
-
-inline void export_atomdenfromz(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomDenFromZ, m);
-}
-
-inline void export_atomdenfromsym(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomDenFromSym, m);
-}
-
-inline void export_elecconfigfromz(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(ElecConfigFromZ, m);
-}
-
-inline void export_elecconfigfromsym(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(ElecConfigFromSym, m);
-}
-
-inline void export_fracconfigfromz(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(FracConfigFromZ, m);
-}
-
-inline void export_fracconfigfromsym(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(FracConfigFromSym, m);
-}
-
-inline void export_fullconfigfromz(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(FullConfigFromZ, m);
-}
-
-inline void export_fullconfigfromsym(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(FullConfigFromSym, m);
-}
-
-inline void export_symbolfromz(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(SymbolFromZ, m);
-}
-
-inline void export_zfromsymbol(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(ZFromSymbol, m);
 }
 
