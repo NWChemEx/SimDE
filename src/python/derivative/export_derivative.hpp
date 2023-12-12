@@ -21,11 +21,8 @@
 
 namespace simde {
 
-inline void export_aoenergynucleargradient(python_module_reference m) {
+inline void export_derivative(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AOEnergyNuclearGradient, m);
-}
-
-inline void export_aoenergynuclearhessian(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AOEnergyNuclearHessian, m);
 }
 

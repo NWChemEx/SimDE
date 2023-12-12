@@ -27,31 +27,12 @@ namespace simde {
 PYBIND11_MODULE(simde, m) {
     m.doc() =
       "PySimDE: Python bindings for the Simulation development environment";
-    export_atomfromz(m);
-    export_atomfromsym(m);
-    export_atomdenfromz(m);
-    export_atomdenfromsym(m);
-    export_elecconfigfromz(m);
-    export_elecconfigfromsym(m);
-    export_fracconfigfromz(m);
-    export_fracconfigfromsym(m);
-    export_fullconfigfromz(m);
-    export_fullconfigfromsym(m);
-    export_symbolfromz(m);
-    export_zfromsymbol(m);
+    export_atoms(m);
+    export_basis_set(m);
+    export_density(m);
+    export_derivative(m);
     export_energy(m);
-    export_aoenergy(m);
-    export_aoenergynucleargradient(m);
-    export_aoenergynuclearhessian(m);
-    export_atomic_basis_set_from_z(m);
-    export_atomic_basis_set_from_sym(m);
-    export_molecular_basis_set(m);
-    export_scf_density(m);
-    export_initial_density(m);
-    export_scf_guess_density(m);
-    export_scf_density_step(m);
-    export_fock_op(m);
-    export_system_hamiltonian(m);
+    export_operators(m);
 }
 
 } // namespace simde
