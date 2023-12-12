@@ -13,19 +13,16 @@
 # limitations under the License.
 
 import simde
-import pluginplay
-import unittest
+from test_property_type import BaseTestPropertyType
 
-class TestEnergy(unittest.TestCase):
-    def test_energy_pt(self):
-        pt = simde.Energy()
-        self.assertIn('Chemical System', pt.inputs())
-        self.assertIn('Energy', pt.results())
+class TestEnergy(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.Energy()
+        self.input_labels= ['Chemical System']
+        self.result_labels = ['Energy']
 
-    def test_aoenergy_pt(self):
-        pt = simde.AOEnergy()
-        self.assertIn('Chemical System', pt.inputs())
-        self.assertIn('AOs', pt.inputs())
-        self.assertEqual(len(pt.inputs()), 2)
-        self.assertIn('Energy', pt.results())
-        self.assertEqual(len(pt.results()), 1)
+class TestAOEnergy(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.AOEnergy()
+        self.input_labels= ['Chemical System', 'AOs']
+        self.result_labels = ['Energy']
