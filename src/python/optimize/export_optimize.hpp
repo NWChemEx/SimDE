@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2023 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,15 @@
  * limitations under the License.
  */
 
-#include "simde/molecule_from_string.hpp"
-#include "test_property_type.hpp"
+#pragma once
+#include "../export_simde.hpp"
+#include <pluginplay/pluginplay.hpp>
+#include <simde/optimize/optimize.hpp>
 
-TEST_CASE("MoleculeFromString") {
-    test_property_type<simde::MoleculeFromString>({"String"}, {"Molecule"});
+namespace simde {
+
+inline void export_optimize(python_module_reference m) {
+    EXPORT_PROPERTY_TYPE(OptimizeCoordinates, m);
 }
+
+} // namespace simde
