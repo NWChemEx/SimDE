@@ -15,5 +15,5 @@
  */
 
 #pragma once
+#include "simde/molecule/molecule_from_molecule.hpp"
 #include "simde/molecule/molecule_from_string.hpp"
-#include "simde/molecule/molecule_to_molecule.hpp"

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-#include "simde/molecule/molecule_to_molecule.hpp"
+#include "simde/molecule/molecule_from_molecule.hpp"
 #include "test_property_type.hpp"
 
-TEST_CASE("MoleculeToMolecule") {
-    test_property_type<simde::MoleculeToMolecule>({"Initial molecule"},
-                                                  {"Final molecule"});
+TEST_CASE("MoleculeFromMolecule") {
+    test_property_type<simde::MoleculeFromMolecule>({"Initial molecule"},
+                                                    {"Final molecule"});
 }

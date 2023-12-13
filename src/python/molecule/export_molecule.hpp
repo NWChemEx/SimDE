@@ -23,7 +23,7 @@ namespace simde {
 
 inline void export_molecule(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(MoleculeFromString, m);
-    EXPORT_PROPERTY_TYPE(MoleculeToMolecule, m);
+    EXPORT_PROPERTY_TYPE(MoleculeFromMolecule, m);
 }
 
 } // namespace simde

@@ -23,6 +23,6 @@ class TestMoleculeFromString(BaseTestPropertyType):
 
 class TestMoleculeToMolecule(BaseTestPropertyType):
     def setUp(self):
-        self.pt = simde.MoleculeToMolecule()
+        self.pt = simde.MoleculeFromMolecule()
         self.input_labels= ['Initial molecule']
         self.result_labels = ['Final molecule']

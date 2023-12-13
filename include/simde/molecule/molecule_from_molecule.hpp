@@ -29,15 +29,15 @@ namespace simde {
  * the molecule (i.e. add/remove hydrogens, fucntional groups).
  *
  */
-DECLARE_PROPERTY_TYPE(MoleculeToMolecule);
+DECLARE_PROPERTY_TYPE(MoleculeFromMolecule);
 
-PROPERTY_TYPE_INPUTS(MoleculeToMolecule) {
+PROPERTY_TYPE_INPUTS(MoleculeFromMolecule) {
     using mol_t = const type::molecule&;
     auto rv = pluginplay::declare_input().add_field<mol_t>("Initial molecule");
     return rv;
 }
 
-PROPERTY_TYPE_RESULTS(MoleculeToMolecule) {
+PROPERTY_TYPE_RESULTS(MoleculeFromMolecule) {
     using mol_t = type::molecule;
     auto rv = pluginplay::declare_result().add_field<mol_t>("Final molecule");
     return rv;
