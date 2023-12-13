@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>simde: src/python/basis_set/export_basis_set.hpp Source File</title>
+<title>simde: src/python/density/export_density.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,12 +62,12 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="dir_2cf4f5df5e3d48e31b4a40d5c2643610.html">basis_set</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="dir_d7c1b893c9c93ac51dddc29edd7c4007.html">density</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">export_basis_set.hpp</div>  </div>
+<div class="title">export_density.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -89,15 +89,15 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../export_simde.hpp&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;pluginplay/pluginplay.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;simde/basis_sets/atomic_basis_set.hpp&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;simde/basis_sets/molecular_basis_set.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>simde {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> export_basis_set(python_module_reference m) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    EXPORT_PROPERTY_TYPE(AtomicBasisSetFromZ, m);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    EXPORT_PROPERTY_TYPE(AtomicBasisSetFromSym, m);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    EXPORT_PROPERTY_TYPE(MolecularBasisSet, m);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;simde/density/density.hpp&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>simde {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> export_density(python_module_reference m) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    EXPORT_PROPERTY_TYPE(SCFDensity, m);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    EXPORT_PROPERTY_TYPE(InitialDensity, m);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    EXPORT_PROPERTY_TYPE(SCFGuessDensity, m);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    EXPORT_PROPERTY_TYPE(SCFDensityStep, m);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} <span class="comment">// namespace simde</span></div>
