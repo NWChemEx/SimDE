@@ -20,7 +20,9 @@
 #include "derivative/export_derivative.hpp"
 #include "energy/export_energy.hpp"
 #include "export_simde.hpp"
+#include "molecule/export_molecule.hpp"
 #include "operators/export_operators.hpp"
+#include "optimize/export_optimize.hpp"
 
 namespace simde {
 
@@ -32,7 +34,9 @@ PYBIND11_MODULE(simde, m) {
     export_density(m);
     export_derivative(m);
     export_energy(m);
+    export_molecule(m);
     export_operators(m);
+    export_optimize(m);
 }
 
 } // namespace simde
