@@ -34,8 +34,8 @@ namespace simde {
  *  AOEnergy with respect to nuclear coordinates.
  *
  *
- *  @tparam PT2Optimize The unqualified property type being differentiated.
- *  @tparam WithRespectTo The unqualified type we are taking the Optimize with
+ *  @tparam PT2Optimize The property type being optimized.
+ *  @tparam WithRespectTo The type we are optimizing with
  *                        respect to.
  */
 template<typename PT2Optimize, typename WithRespectTo>
