@@ -11,18 +11,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-import simde
-from test_property_type import BaseTestPropertyType
-
-class TestEnergy(BaseTestPropertyType):
-    def setUp(self):
-        self.pt = simde.Energy()
-        self.input_labels= ['Chemical System']
-        self.result_labels = ['Energy']
-
-class TestAOEnergy(BaseTestPropertyType):
-    def setUp(self):
-        self.pt = simde.AOEnergy()
-        self.input_labels= ['Chemical System', 'AOs']
-        self.result_labels = ['Energy']

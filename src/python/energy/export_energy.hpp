@@ -23,9 +23,6 @@ namespace simde {
 
 inline void export_energy(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(Energy, m);
-}
-
-inline void export_aoenergy(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AOEnergy, m);
 }
 

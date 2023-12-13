@@ -15,20 +15,14 @@
 import simde
 from test_property_type import BaseTestPropertyType
 
-class TestAtomicBasisSetFromZ(BaseTestPropertyType):
+class TestFockOp(BaseTestPropertyType):
     def setUp(self):
-        self.pt = simde.AtomicBasisSetFromZ()
-        self.input_labels= ['Atom ID']
-        self.result_labels = ['Atomic Basis Set']
+        self.pt = simde.FockOp()
+        self.input_labels= ['Electronic Hamiltonian', 'One Electron Density']
+        self.result_labels = ['Fock operator']
 
-class TestAtomicBasisSetFromSym(BaseTestPropertyType):
+class TestSystemHamiltonian(BaseTestPropertyType):
     def setUp(self):
-        self.pt = simde.AtomicBasisSetFromSym()
-        self.input_labels= ['Atom ID']
-        self.result_labels = ['Atomic Basis Set']
-
-class TestMolecularBasisSet(BaseTestPropertyType):
-    def setUp(self):
-        self.pt = simde.MolecularBasisSet()
-        self.input_labels= ['Molecule']
-        self.result_labels = ['Molecular Basis Set']
+        self.pt = simde.SystemHamiltonian()
+        self.input_labels= ['Chemical System']
+        self.result_labels = ['Hamiltonian']

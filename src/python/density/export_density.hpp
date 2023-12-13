@@ -17,15 +17,15 @@
 #pragma once
 #include "../export_simde.hpp"
 #include <pluginplay/pluginplay.hpp>
-#include <simde/basis_sets/atomic_basis_set.hpp>
-#include <simde/basis_sets/molecular_basis_set.hpp>
+#include <simde/density/density.hpp>
 
 namespace simde {
 
-inline void export_basis_set(python_module_reference m) {
-    EXPORT_PROPERTY_TYPE(AtomicBasisSetFromZ, m);
-    EXPORT_PROPERTY_TYPE(AtomicBasisSetFromSym, m);
-    EXPORT_PROPERTY_TYPE(MolecularBasisSet, m);
+inline void export_density(python_module_reference m) {
+    EXPORT_PROPERTY_TYPE(SCFDensity, m);
+    EXPORT_PROPERTY_TYPE(InitialDensity, m);
+    EXPORT_PROPERTY_TYPE(SCFGuessDensity, m);
+    EXPORT_PROPERTY_TYPE(SCFDensityStep, m);
 }
 
 } // namespace simde

@@ -13,16 +13,17 @@
 # limitations under the License.
 
 import simde
-from test_property_type import BaseTestPropertyType
+import pluginplay
+import unittest
 
-class TestEnergy(BaseTestPropertyType):
+class TestAOEnergyNuclearGradient(unittest.TestCase):
     def setUp(self):
-        self.pt = simde.Energy()
-        self.input_labels= ['Chemical System']
-        self.result_labels = ['Energy']
+        self.pt = simde.AOEnergyNuclearGradient()
+        self.input_labels = ['AOs', 'Chemical System', 'Arg 1']
+        self.return_labels = ['Derivative']
 
-class TestAOEnergy(BaseTestPropertyType):
+class TestAOEnergyNuclearHessian(unittest.TestCase):
     def setUp(self):
-        self.pt = simde.AOEnergy()
-        self.input_labels= ['Chemical System', 'AOs']
-        self.result_labels = ['Energy']
+        self.pt = simde.AOEnergyNuclearHessian()
+        self.input_labels = ['AOs', 'Chemical System', 'Arg 1', 'Arg 2']
+        self.return_labels = ['Derivative']

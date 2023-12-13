@@ -17,15 +17,13 @@
 #pragma once
 #include "../export_simde.hpp"
 #include <pluginplay/pluginplay.hpp>
-#include <simde/basis_sets/atomic_basis_set.hpp>
-#include <simde/basis_sets/molecular_basis_set.hpp>
+#include <simde/operators/operators.hpp>
 
 namespace simde {
 
-inline void export_basis_set(python_module_reference m) {
-    EXPORT_PROPERTY_TYPE(AtomicBasisSetFromZ, m);
-    EXPORT_PROPERTY_TYPE(AtomicBasisSetFromSym, m);
-    EXPORT_PROPERTY_TYPE(MolecularBasisSet, m);
+inline void export_operators(python_module_reference m) {
+    EXPORT_PROPERTY_TYPE(FockOp, m);
+    EXPORT_PROPERTY_TYPE(SystemHamiltonian, m);
 }
 
 } // namespace simde
