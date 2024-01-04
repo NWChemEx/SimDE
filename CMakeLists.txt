@@ -13,35 +13,33 @@
 # limitations under the License.
 
 cmake_minimum_required(VERSION 3.14)
-file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/version.txt" VERSION)
-project(simde VERSION "${VERSION}" LANGUAGES CXX)
 
-include(FetchContent)
-FetchContent_Declare(
-    nwx_cmake
-    GIT_REPOSITORY https://github.com/NWChemEx/NWXCMake
-)
-FetchContent_MakeAvailable(nwx_cmake)
-list(APPEND CMAKE_MODULE_PATH "${nwx_cmake_SOURCE_DIR}/cmake")
+#Downloads common CMake modules used throughout NWChemEx
+include(cmake/get_nwx_cmake.cmake)
 
-set(
-    CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmake"
-    CACHE STRING "" FORCE
-)
+#Sets the version to whatever git thinks it is
+include(get_version_from_git)
+get_version_from_git(simde_version "${CMAKE_CURRENT_LIST_DIR}")
+project(simde VERSION "${simde_version}" LANGUAGES CXX)
 
-include(get_cmaize)
 include(nwx_versions)
+include(get_cmaize)
 include(nwx_cxx_api_docs)
 
-nwx_cxx_api_docs("${CMAKE_CURRENT_SOURCE_DIR}/src"
-                 "${CMAKE_CURRENT_SOURCE_DIR}/include")
+### Paths ###
+set(SIMDE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
+set(SIMDE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+set(SIMDE_TESTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tests")
+set(SIMDE_EXP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/experimental")
+
+nwx_cxx_api_docs("${SIMDE_SOURCE_DIR}" "${SIMDE_INCLUDE_DIR}")
 
 ### Options ###
-option(BUILD_TESTING "Should we build the tests?" OFF)
-option(BUILD_PYBIND11_PYBINDINGS "Build pybind11 python3 bindings?" OFF)
-option(BUILD_CPPYY_PYBINDINGS "Should we build Python3 bindings?" OFF)
-
-set(simde_depends "")
+cmaize_option_list(
+    BUILD_TESTING OFF "Should we build the tests?"
+    BUILD_PYBIND11_PYBINDINGS OFF "Build pybind11 python3 bindings?"
+    ENABLE_EXPERIMENTAL_FEATURES OFF "Build features which are not 1.0-ed yet?"
+)
 
 cmaize_find_or_build_dependency(
     chemist
@@ -52,8 +50,8 @@ cmaize_find_or_build_dependency(
     FIND_TARGET nwx::chemist
     CMAKE_ARGS BUILD_TESTING=OFF
                BUILD_PYBIND11_PYBINDINGS=${BUILD_PYBIND11_PYBINDINGS}
+               ENABLE_EXPERIMENTAL_FEATURES=${ENABLE_EXPERIMENTAL_FEATURES}
 )
-set(simde_depends chemist)
 
 cmaize_find_or_build_dependency(
     pluginplay
@@ -64,33 +62,39 @@ cmaize_find_or_build_dependency(
     CMAKE_ARGS BUILD_TESTING=OFF
                BUILD_PYBIND11_PYBINDINGS=${BUILD_PYBIND11_PYBINDINGS}
 )
-list(APPEND simde_depends pluginplay)
 
 cmaize_add_library(
     ${PROJECT_NAME}
-    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
-    INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}"
-    DEPENDS "${simde_depends}"
+    SOURCE_DIR "${SIMDE_SOURCE_DIR}/${PROJECT_NAME}"
+    INCLUDE_DIRS "${SIMDE_INCLUDE_DIR}/${PROJECT_NAME}"
+    DEPENDS chemist pluginplay
 )
+
+if("${ENABLE_EXPERIMENTAL_FEATURES}")
+
+    cmaize_add_library(
+        experimental_${PROJECT_NAME}
+        SOURCE_DIR "${SIMDE_EXP_DIR}/src/${PROJECT_NAME}"
+        INCLUDE_DIRS "${SIMDE_EXP_DIR}/include/${PROJECT_NAME}"
+        DEPENDS ${PROJECT_NAME}
+    )
+
+else()
+    add_library(experimental_${PROJECT_NAME} INTERFACE)
+endif()
 
 # N.B. this is a no-op if BUILD_PYBIND11_PYBINDINGS is not turned on
 include(nwx_pybind11)
 nwx_add_pybind11_module(
     ${PROJECT_NAME}
-    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src/python"
+    SOURCE_DIR "${SIMDE_SOURCE_DIR}/python"
     DEPENDS "${PROJECT_NAME}"
 )
 
-if("${BUILD_CPPYY_PYBINDINGS}")
-    include(nwx_python_mods)
-    cppyy_make_python_package(
-        PACKAGE simde NAMESPACES simde DEPPACKAGES chemist pluginplay
-    )
-endif()
-
 if("${BUILD_TESTING}")
-    set(CXX_TEST_DIR ${CMAKE_CURRENT_LIST_DIR}/tests/cxx)
-    set(PYTHON_TEST_DIR ${CMAKE_CURRENT_LIST_DIR}/tests/python)
+    set(CXX_TEST_DIR ${SIMDE_TESTS_DIR}/cxx)
+    set(PYTHON_TEST_DIR ${SIMDE_TESTS_DIR}/python)
+
     cmaize_find_or_build_dependency(
         Catch2
         URL github.com/catchorg/Catch2
@@ -98,23 +102,39 @@ if("${BUILD_TESTING}")
         FIND_TARGET Catch2::Catch2
         VERSION ${NWX_CATCH2_VERSION}
     )
+
     cmaize_add_tests(
         test_unit_${PROJECT_NAME}
         SOURCE_DIR "${CXX_TEST_DIR}/unit"
-        INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
+        INCLUDE_DIRS "${SIMDE_SOURCE_DIR}/${PROJECT_NAME}"
         DEPENDS Catch2 ${PROJECT_NAME}
     )
-    cmaize_add_tests(
-        test_integration_${PROJECT_NAME}
-        SOURCE_DIR "${CXX_TEST_DIR}/integration"
-        INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}"
-        DEPENDS Catch2 ${PROJECT_NAME}
-    )
+
     # N.B. these are no-ops if BUILD_PYBIND11_PYBINDINGS is not turned on
     nwx_pybind11_tests(
         py_simde "${PYTHON_TEST_DIR}/unit_tests/test_simde.py"
         SUBMODULES pluginplay chemist parallelzone
     )
+
+    if("${ENABLE_EXPERIMENTAL_FEATURES}")
+
+        cmaize_add_tests(
+            test_unit_experimental_${PROJECT_NAME}
+            SOURCE_DIR "${SIMDE_EXP_DIR}/tests/cxx/unit_tests"
+            INCLUDE_DIRS "${SIMDE_EXP_DIR}/src/${PROJECT_NAME}"
+            DEPENDS Catch2::Catch2 experimental_${PROJECT_NAME}
+        )
+
+        nwx_pybind11_tests(
+            py_experimental_${PROJECT_NAME}
+            "${SIMDE_EXP_DIR}/tests/python/unit_tests/test_python.py"
+            SUBMODULES pluginplay chemist parallelzone
+        )
+
+    endif()
+
 endif()
 
-cmaize_add_package(${PROJECT_NAME} NAMESPACE nwx::)
+cmaize_add_package(
+    ${PROJECT_NAME} experimental_${PROJECT_NAME} NAMESPACE nwx::
+)

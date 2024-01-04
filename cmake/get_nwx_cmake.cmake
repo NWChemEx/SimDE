@@ -1,5 +1,4 @@
-#
-# Copyright 2023 NWChemEx-Project
+# Copyright 2024 NWChemEx-Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,23 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-import os
-import parallelzone as pz
-import pluginplay as pp
-import sys
-import unittest
+include_guard()
 
+macro(get_nwx_cmake)
+    include(FetchContent)
+    FetchContent_Declare(
+        nwx_cmake
+        GIT_REPOSITORY https://github.com/NWChemEx/NWXCMake
+    )
+    FetchContent_MakeAvailable(nwx_cmake)
+    set(
+        CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${nwx_cmake_SOURCE_DIR}/cmake"
+        CACHE STRING ""
+        FORCE
+    )
+endmacro()
 
-
-if __name__ == '__main__':
-    rv = pz.runtime.RuntimeView()
-
-    my_dir = os.path.dirname(os.path.realpath(__file__))
-
-    loader = unittest.TestLoader()
-    tests  = loader.discover(my_dir)
-    testrunner = unittest.runner.TextTestRunner()
-    ret = not testrunner.run(tests).wasSuccessful()
-    sys.exit(ret)
+get_nwx_cmake()

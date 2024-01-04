@@ -16,11 +16,8 @@
 
 #include "atoms/export_atoms.hpp"
 #include "basis_set/export_basis_set.hpp"
-#include "density/export_density.hpp"
-#include "derivative/export_derivative.hpp"
 #include "energy/export_energy.hpp"
 #include "export_simde.hpp"
-#include "operators/export_operators.hpp"
 
 namespace simde {
 
@@ -29,10 +26,7 @@ PYBIND11_MODULE(simde, m) {
       "PySimDE: Python bindings for the Simulation development environment";
     export_atoms(m);
     export_basis_set(m);
-    export_density(m);
-    export_derivative(m);
     export_energy(m);
-    export_operators(m);
 }
 
 } // namespace simde

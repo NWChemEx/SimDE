@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2024 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,19 @@
  */
 
 #pragma once
-#include <pluginplay/property_type/property_type.hpp>
-#include <simde/energy/energy_class.hpp>
-#include <simde/types.hpp>
+#include "../export_simde.hpp"
+#include <pluginplay/pluginplay.hpp>
+#include <simde/atoms/atoms.hpp>
 
 namespace simde {
 
-DECLARE_DERIVED_PROPERTY_TYPE(AOEnergy, Energy);
-
-PROPERTY_TYPE_INPUTS(AOEnergy) {
-    using ao_basis = const type::ao_basis_set&;
-    auto rv        = pluginplay::declare_input().add_field<ao_basis>("AOs");
-    rv["AOs"].set_description("The atomic orbital basis set");
-    return rv;
+inline void export_atoms(python_module_reference m) {
+    EXPORT_PROPERTY_TYPE(ElecConfigFromZ, m);
+    EXPORT_PROPERTY_TYPE(ElecConfigFromSym, m);
+    EXPORT_PROPERTY_TYPE(FracConfigFromZ, m);
+    EXPORT_PROPERTY_TYPE(FracConfigFromSym, m);
+    EXPORT_PROPERTY_TYPE(FullConfigFromZ, m);
+    EXPORT_PROPERTY_TYPE(FullConfigFromSym, m);
 }
-
-PROPERTY_TYPE_RESULTS(AOEnergy) { return pluginplay::declare_result(); }
 
 } // namespace simde
