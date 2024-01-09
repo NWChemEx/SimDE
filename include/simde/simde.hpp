@@ -15,5 +15,8 @@
  */
 
 #pragma once
+#include <simde/atoms/atoms.hpp>
+#include <simde/basis_sets/basis_sets.hpp>
+#include <simde/energy/energy.hpp>
 #include <simde/molecule_from_string.hpp>
 #include <simde/types.hpp>
