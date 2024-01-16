@@ -24,14 +24,6 @@ namespace simde {
 inline void export_atoms(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomFromZ, m);
     EXPORT_PROPERTY_TYPE(AtomFromSym, m);
-    EXPORT_PROPERTY_TYPE(AtomDenFromZ, m);
-    EXPORT_PROPERTY_TYPE(AtomDenFromSym, m);
-    EXPORT_PROPERTY_TYPE(ElecConfigFromZ, m);
-    EXPORT_PROPERTY_TYPE(ElecConfigFromSym, m);
-    EXPORT_PROPERTY_TYPE(FracConfigFromZ, m);
-    EXPORT_PROPERTY_TYPE(FracConfigFromSym, m);
-    EXPORT_PROPERTY_TYPE(FullConfigFromZ, m);
-    EXPORT_PROPERTY_TYPE(FullConfigFromSym, m);
     EXPORT_PROPERTY_TYPE(SymbolFromZ, m);
     EXPORT_PROPERTY_TYPE(ZFromSymbol, m);
 }

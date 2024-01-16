@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2023 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,16 @@
  */
 
 #pragma once
-#include <pluginplay/property_type/property_type.hpp>
-#include <simde/energy/energy_class.hpp>
-#include <simde/types.hpp>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 namespace simde {
 
-DECLARE_DERIVED_PROPERTY_TYPE(AOEnergy, Energy);
+using python_module_type = pybind11::module_;
 
-PROPERTY_TYPE_INPUTS(AOEnergy) {
-    using ao_basis = const type::ao_basis_set&;
-    auto rv        = pluginplay::declare_input().add_field<ao_basis>("AOs");
-    rv["AOs"].set_description("The atomic orbital basis set");
-    return rv;
-}
+using python_module_reference = python_module_type&;
 
-PROPERTY_TYPE_RESULTS(AOEnergy) { return pluginplay::declare_result(); }
+template<typename... Args>
+using python_class_type = pybind11::class_<Args...>;
 
 } // namespace simde

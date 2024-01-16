@@ -1,5 +1,5 @@
 #
-# Copyright 2023 NWChemEx-Project
+# Copyright 2024 NWChemEx-Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 import os
 import parallelzone as pz
-import pluginplay as pp
 import sys
 import unittest
 
