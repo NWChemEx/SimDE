@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['basis_5fset_5ftype_117',['basis_set_type',['../classsimde_1_1ModeToBasisMap.html#af0022fce73f15acb13c22c51d033fc48',1,'simde::ModeToBasisMap']]]
+  ['chemical_5fsystem_20',['chemical_system',['../types_8hpp.html#a55500e80470680b74883f4c275af1025',1,'simde::type']]],
+  ['contracted_5fgaussian_21',['contracted_gaussian',['../types_8hpp.html#aa3cb88d6d302b1fa5f3f420d96818c84',1,'simde::type']]]
 ];

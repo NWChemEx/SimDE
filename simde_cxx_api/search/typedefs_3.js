@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['derived_5fspace_124',['derived_space',['../types_8hpp.html#aea49118febcced96304a1aee59e3eb15',1,'simde::type']]],
-  ['derived_5fspace_5fmap_5ft_125',['derived_space_map_t',['../structsimde_1_1detail___1_1TensorRepParser.html#a814cfd3c9b0f4f73e3f81e1e6e878f1b',1,'simde::detail_::TensorRepParser']]]
+  ['point_23',['point',['../types_8hpp.html#a16e3b3cf9542820a8400b42d76caf5c0',1,'simde::type']]],
+  ['primitive_24',['primitive',['../types_8hpp.html#adfd2a407c8780610f1bfbd155c70ceaf',1,'simde::type']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['el_126',['el',['../types_8hpp.html#a8acb45791cda370a16dfccc99a1eedc1',1,'simde::type']]],
-  ['el_5fdensity_127',['el_density',['../types_8hpp.html#ab08687c1184c78a525800bd440f7fabe',1,'simde::type']]]
+  ['shell_25',['shell',['../types_8hpp.html#a6c5c40bb7ad10f1df40dab4a01611438',1,'simde::type']]]
 ];

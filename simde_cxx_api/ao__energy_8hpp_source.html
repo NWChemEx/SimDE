@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">0.0.27</span>
    </div>
   </td>
  </tr>
@@ -87,17 +87,17 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;simde/energy/energy_class.hpp&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8hpp.html">simde/types.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;pluginplay/property_type/property_type.hpp&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;pluginplay/property_type/property_type.hpp&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;simde/energy/energy_class.hpp&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="types_8hpp.html">simde/types.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>simde {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;DECLARE_DERIVED_PROPERTY_TYPE(AOEnergy, Energy);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;PROPERTY_TYPE_INPUTS(AOEnergy) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">using</span> <a class="code" href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">ao_space</a> = <span class="keyword">const</span> type::ao_space&amp;;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">auto</span> rv        = pluginplay::declare_input().add_field&lt;<a class="code" href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">ao_space</a>&gt;(<span class="stringliteral">&quot;AOs&quot;</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">using</span> ao_basis = <span class="keyword">const</span> type::ao_basis_set&amp;;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">auto</span> rv        = pluginplay::declare_input().add_field&lt;ao_basis&gt;(<span class="stringliteral">&quot;AOs&quot;</span>);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    rv[<span class="stringliteral">&quot;AOs&quot;</span>].set_description(<span class="stringliteral">&quot;The atomic orbital basis set&quot;</span>);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> rv;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
@@ -106,7 +106,6 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <span class="comment">// namespace simde</span></div>
 <div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
-<div class="ttc" id="atypes_8hpp_html_ab7f1cf028f37d36f4e6d8fefce0c4377"><div class="ttname"><a href="types_8hpp.html#ab7f1cf028f37d36f4e6d8fefce0c4377">simde::type::ao_space</a></div><div class="ttdeci">chemist::orbital_space::AOSpaceD ao_space</div><div class="ttdoc">Typedef of class describing an AO space.</div><div class="ttdef"><b>Definition:</b> types.hpp:80</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
