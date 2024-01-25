@@ -17,8 +17,13 @@ Structure of the SimDE Repo
 ###########################
 
 Ultimately there's a lot of property types used throughout an electronic
-structure code. To make the user's life easier we have organized the property
-types into groups. This page provides an explanation of the groups
+structure code. To make the developer's life easier we have organized the
+property types into groups. This page provides an explanation of the groups
+
+.. note::
+
+   Many of the property types on this page are experimental features and the
+   groupings are thus subject to change
 
 *******
 Density
