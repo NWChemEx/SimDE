@@ -12,12 +12,16 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
+.. _simde_statement_of_need:
+
 #######################
 SimDE Statement of Need
 #######################
 
 The :ref:`simde_motivation` provided some background on developing and working
-with modular software.
+with modular software and the importance of community standards. Ultimately,
+we argue that the creation of a computational chemistry development environment
+is needed thus motivating the development of SimDE.
 
 **********************************
 Enforcement of Community Standards

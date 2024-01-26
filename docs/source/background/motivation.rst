@@ -36,14 +36,25 @@ facilitates among other things:
 - Adoption (code that is easier to use gets adopted faster).
 - Reusability (easy to call from different contexts).
 
-Arguably the largest disadvantage of modular software is that without community
-standards developers are unlikely to develop compatible software. In other
-words, if each developer writes their modules in isolation, it is very likely
-that the resulting modules will rely on different data layouts, argument orders,
-conventions, etc. This pitfall is avoided by creating modular software as a
-community and adhering to community standards.
+Compared to monolithic software packages, software packages assembled from
+modular components can face unique challenges. In particular, if each modular
+component is developed in relative isolation (e.g., little to no communication
+among development teams) the resulting modules are unlikely to be compatible
+with each other. Examples of compatibility issues can include the presence of
+different:
 
-As a community it
+- input/return orderings,
+- data structures,
+- implicit conventions,
+- resource management strategies, and
+- parallel runtime systems.
 
-Many of these pitfalls of modularity can be avoided by adhering to community
-standards for data classes and module interfaces.
+Left unchecked, developers and maintainers can quickly spend a significant
+fraction of their time addressing incompatibilities, thereby negating the
+benefits of writing modular software in the first place. Thankfully there is a
+straightforward solution, i.e., community standards.
+
+Ultimately the NWChemEx Community develops and maintains SimDE to provide a
+resource for members of the computational chemistry community who want to
+develop modular software and ensure that software is compatible with other
+modular software within the NWChemEx Community.
