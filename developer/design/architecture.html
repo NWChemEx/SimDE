@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture of SimDE &mdash; SimDE v0.0.29 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=29adac46"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SimDE Property Type Design Documentation" href="property_types/index.html" />
+    <link rel="prev" title="SimDE Design Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v0.0.29
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing SimDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/index.html">SimDE Background</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developer Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">SimDE Design Documentation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Architecture of SimDE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#architecture-considerations">Architecture Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-simde-s-architecture">Overview of SimDE’s Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="property_types/index.html">SimDE Property Type Design Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design_notes.html">Design Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="https://nwchemex.github.io/.github/">NWChemEx author documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://nwchemex.github.io/SimDE/simde_cxx_api/index.html">C++ API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SimDE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Developer Documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">SimDE Design Documentation</a></li>
+      <li class="breadcrumb-item active">Architecture of SimDE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/developer/design/architecture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architecture-of-simde">
+<span id="id1"></span><h1>Architecture of SimDE<a class="headerlink" href="#architecture-of-simde" title="Link to this heading"></a></h1>
+<p>In <a class="reference internal" href="../../background/statement_of_need.html#simde-statement-of-need"><span class="std std-ref">SimDE Statement of Need</span></a> we described the needs SimDE was designed
+to address. The actual SimDE library is largely a meta-package, i.e., it bundles
+a number of development libraries together into a single package. Architecture
+and design of those libraries is outside our present scope and falls under the
+purview of the respective libraries. The discussions here focus on the
+architecture and design of the pieces of SimDE for which development occurs in
+the SimDE repo. For the most part, this limits our discussion to computational
+chemistry property types.</p>
+<section id="architecture-considerations">
+<h2>Architecture Considerations<a class="headerlink" href="#architecture-considerations" title="Link to this heading"></a></h2>
+<p>The present architecture of SimDE was developed from the following
+considerations.</p>
+<dl class="simple" id="as-parallel-chemist-architecture">
+<dt>parallel Chemist architecture</dt><dd><p>From a computer science perspective, modules are pure functions. Pure
+functions are maps from inputs to results. Having a module map to multiple
+results has its time and place, but most modules will map to a single result.
+Since these results are usually Chemist objects, there is a natural mapping
+from the architecture of Chemist to the architecture of SimDE.</p>
+<ul class="simple">
+<li><p>The consequences of this consideration are that developers will have an
+easier time finding things and figuring out where to put things if we
+define the same components as Chemist.</p></li>
+</ul>
+</dd>
+<dt>properties beyond Chemist</dt><dd><p>While many property types will result in Chemist objects, not all will. For
+example a number of property types will result in plain old data or tensors.</p>
+<ul class="simple">
+<li><p>The consequence here is that the <a class="reference internal" href="#as-parallel-chemist-architecture"><span class="std std-ref">parallel Chemist architecture</span></a>
+consideration alone is not sufficient for defining all of SimDE’s
+architecture.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple" id="as-energies">
+<dt>energies</dt><dd><p>One of the most important properties in computational chemistry are
+“energies”. This includes not only total energies, but also relative
+energies, and components of total/relative energies.</p>
+</dd>
+</dl>
+</section>
+<section id="overview-of-simde-s-architecture">
+<h2>Overview of SimDE’s Architecture<a class="headerlink" href="#overview-of-simde-s-architecture" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id2">
+<span id="fig-simde-architecture"></span><img alt="../../_images/architecture.png" src="../../_images/architecture.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Architecture of the SimDE library.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#fig-simde-architecture"><span class="std std-numref">Fig. 3</span></a> shows the current architecture of SimDE. At
+present SimDE’s source consists of a single property type component.</p>
+<section id="property-types">
+<h3>Property Types<a class="headerlink" href="#property-types" title="Link to this heading"></a></h3>
+<p>Following from <a class="reference internal" href="#as-parallel-chemist-architecture"><span class="std std-ref">parallel Chemist architecture</span></a>, SimDE’s property type
+component is structured to contain sub-components for each component of Chemist.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Modules are assumed to wrap algorithms, so property types should only be
+defined when there is a need for an algorithm to convert from the inputs to
+the result. For example, modules should not be used for trivial calls to an
+object’s constructor.</p>
+</div>
+<section id="basis-set">
+<h4>Basis Set<a class="headerlink" href="#basis-set" title="Link to this heading"></a></h4>
+<p>Main page: <a class="reference internal" href="property_types/basis_set.html#design-of-basis-set-property-types"><span class="std std-ref">Design of Basis Set Property Types</span></a>.</p>
+<p>Property types in the “Basis Set” sub-component of SimDE define APIs for
+creating Chemist objects such as <code class="docutils literal notranslate"><span class="pre">AOBasisSet</span></code> and <code class="docutils literal notranslate"><span class="pre">AtomicBasisSet</span></code>.
+Typically these property types are used for modules which go from more
+traditional user inputs such as a molecular geometry and an atomic basis set
+specification like “6-31G*” to an actual <code class="docutils literal notranslate"><span class="pre">AOBasisSet</span></code> object.</p>
+</section>
+<section id="chemical-system">
+<h4>Chemical System<a class="headerlink" href="#chemical-system" title="Link to this heading"></a></h4>
+<p>Main page: <a class="reference internal" href="property_types/chemical_system.html#design-of-chemical-system-property-types"><span class="std std-ref">Design of Chemical System Property Types</span></a>.</p>
+<p>Property types in the “Chemical System” sub-component of SimDE define APIs for
+creating Chemist objects such as <code class="docutils literal notranslate"><span class="pre">Molecule</span></code> and <code class="docutils literal notranslate"><span class="pre">ChemicalSystem</span></code>. Like the
+“Basis Set” sub-component, many of these modules are primarily used to convert
+from more traditional user inputs like atomic symbols and Cartesian coordinates
+to an actual <code class="docutils literal notranslate"><span class="pre">Molecule</span></code> object.</p>
+</section>
+<section id="energy">
+<h4>Energy<a class="headerlink" href="#energy" title="Link to this heading"></a></h4>
+<p>Main page: <a class="reference internal" href="property_types/energy.html#design-of-energy-property-types"><span class="std std-ref">Design of Energy Property Types</span></a>.</p>
+<p>The energy of a chemical system is a fundamental property in computational
+chemistry. Unsurprisingly many computational chemistry methods strive to be
+black boxes for computing the total energy of a chemical system. The mapping
+from a <code class="docutils literal notranslate"><span class="pre">ChemicalSystem</span></code> object to a total energy defines the <code class="docutils literal notranslate"><span class="pre">TotalEnergy</span></code>
+property type. In practice, methods often require additional inputs in order
+to compute the total energy. The “Energy” sub-component collects property types
+for computing the total energy, relative energies, and components of the
+other energies.</p>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><a class="reference internal" href="#as-parallel-chemist-architecture"><span class="std std-ref">parallel Chemist architecture</span></a></dt><dd><p>The “Property Types” component contains sub-components for each component of
+Chemist.</p>
+</dd>
+<dt><a class="reference internal" href="#as-energies"><span class="std std-ref">energies</span></a></dt><dd><p>SimDE’s “Property Type” component contains an “Energy” sub-component.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="SimDE Design Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="property_types/index.html" class="btn btn-neutral float-right" title="SimDE Property Type Design Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, NWChemEx Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>simde: src/python/atoms/export_atoms.hpp Source File</title>
+<title>simde: src/python/chemical_system/export_chemical_system.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">0.0.28</span>
+   &#160;<span id="projectnumber">0.0.29</span>
    </div>
   </td>
  </tr>
@@ -62,12 +62,12 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="dir_4604ab3d2067fc30cca7363d368f91d5.html">atoms</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="dir_0d451391fd065a8d934a1a859bd80ad6.html">chemical_system</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">export_atoms.hpp</div>  </div>
+<div class="title">export_chemical_system.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -89,18 +89,19 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../export_simde.hpp&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;pluginplay/pluginplay.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;simde/atoms/atoms.hpp&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;simde/chemical_system/chemical_system.hpp&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>simde {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> export_atoms(python_module_reference m) {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> export_chemical_system(python_module_reference m) {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    EXPORT_PROPERTY_TYPE(AtomFromZ, m);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    EXPORT_PROPERTY_TYPE(AtomFromSym, m);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    EXPORT_PROPERTY_TYPE(SymbolFromZ, m);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    EXPORT_PROPERTY_TYPE(ZFromSymbol, m);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} <span class="comment">// namespace simde</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    EXPORT_PROPERTY_TYPE(MoleculeFromString, m);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <span class="comment">// namespace simde</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

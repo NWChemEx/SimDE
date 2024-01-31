@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installing SimDE &mdash; SimDE 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-
-  
+  <title>Installing SimDE &mdash; SimDE v0.0.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=29adac46"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Structure of the SimDE Repo" href="structure.html" />
+    <link rel="next" title="SimDE Background" href="background/index.html" />
     <link rel="prev" title="SimDE: The Simulation Development Environment" href="index.html" /> 
 </head>
 
@@ -33,11 +32,12 @@
 
           
           
-          <a href="index.html" class="icon icon-home">
-            SimDE
+          <a href="index.html">
+            
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.0.0
+                v0.0.29
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -50,13 +50,34 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installing SimDE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pre-requisites-for-installing-simde">Pre-Requisites for Installing SimDE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-simde-proper">Installing SimDE Proper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hello-world-with-simde">Hello World With SimDE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-simde-install">Troubleshooting SimDE Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-command">Install Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-options">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simde-dependencies">SimDE Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-dependencies">Required Dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c-compiler">C++ Compiler</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">Structure of the SimDE Repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-dependencies">Optional Dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#doxygen">Doxygen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-dependencies">Other Dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#catch2">Catch2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chemist">Chemist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmaize">CMaize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parallelzone">ParallelZone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pluginplay">PluginPlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tensorwrapper">TensorWrapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utilities">utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="background/index.html">SimDE Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://nwchemex.github.io/SimDE/simde_cxx_api/index.html">C++ API</a></li>
 </ul>
 
@@ -85,118 +106,149 @@
            <div itemprop="articleBody">
              
   <section id="installing-simde">
-<h1>Installing SimDE<a class="headerlink" href="#installing-simde" title="Link to this heading"></a></h1>
-<p>For the purposes of this tutorial we will assume you want to make a local
-installation of SimDE (and its dependencies). To that end, we assume you have
-created a directory <code class="docutils literal notranslate"><span class="pre">nwx_workspace</span></code> where you would like to install SimDE and
-other NWChemEx projects. The full path to <code class="docutils literal notranslate"><span class="pre">nwx_workspace</span></code> will be denoted as
-<code class="docutils literal notranslate"><span class="pre">${NWX_WORKSPACE}</span></code> in the following code snippets.</p>
-<section id="pre-requisites-for-installing-simde">
-<h2>Pre-Requisites for Installing SimDE<a class="headerlink" href="#pre-requisites-for-installing-simde" title="Link to this heading"></a></h2>
+<span id="id1"></span><h1>Installing SimDE<a class="headerlink" href="#installing-simde" title="Link to this heading"></a></h1>
+<p>SimDE uses <a class="reference external" href="https://cmakepp.github.io/CMaize/index.html">CMaize</a> as
+its build system, more detailed build instructions can be found
+<a class="reference external" href="https://cmakepp.github.io/CMaize/getting_started/building/index.html">here</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Pre-installing TiledArray is presently required to avoid runtime linking
-issues. When those issues are resolved, pre-installing TiledArray will be
-optional.</p>
+<p>We strongly recommend users use CMake toolchains to pass arguments to the
+<code class="docutils literal notranslate"><span class="pre">cmake</span></code> command. Typically CMake toolchains live in files named
+<code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;-toolchain.cmake</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;-</span></code> is an optional prefix to
+distinguish among toolchains. The contents of the CMake toolchain file
+usually just sets configuration values set via the standard CMake <code class="docutils literal notranslate"><span class="pre">set</span></code>
+function, <em>i.e.</em>, <code class="docutils literal notranslate"><span class="pre">set(&lt;option_name&gt;</span> <span class="pre">&lt;value&gt;)</span></code>.</p>
 </div>
-<p>Before we can build SimDE we must build TiledArray. TiledArray depends on
-several common dependencies, dependencies it’s build process can not install
-on its own. These dependencies are:</p>
-<ul class="simple">
-<li><p>MPI (Ubuntu package: libopenmpi-dev)</p></li>
-<li><p>BLAS (Ubuntu package: libopenblas-dev)</p></li>
-<li><p>LAPACK (Ubuntu package: liblapack-dev)</p></li>
-</ul>
-<p>For convenience we have listed the name of the Ubuntu package which provides the
-dependency; however, we also stress that while packages provided by most package
-managers will provide adequate performance, they usually suffer from a
-performance penalty associated with their portability. Point being, if you are
-doing performance critical work, you may want install these dependencies
-yourself. Also note these are very common libraries in the HPC community and
-are likely already installed (in a performant configuration) on most clusters
-you may run on.</p>
-<p>It is assumed that you have previously installed these dependencies and that
-CMake is able to find these dependencies, either because they are installed to
-a location where CMake looks by default (<em>e.g.</em>, <code class="docutils literal notranslate"><span class="pre">/usr/lib</span></code>) or because you
-will ensure that their install locations are part of <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code>.
-To install TiledArray:</p>
-<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/valeevgroup/tiledarray
-cd tiledarray
-git checkout ${NWX_TILEDARRAY_VERSION}
-cmake -H. \
-      -Bbuild \
-      -DCMAKE_INSTALL_PREFIX:PATH=${NWX_WORKSPACE}/tiledarray \
-      -DBUILD_SHARED_LIBS:BOOL=TRUE \
-          -DCMAKE_INSTALL_RPATH=&quot;\$ORIGIN&quot;
- cmake --build build --target install --parallel 2
+<section id="install-command">
+<h2>Install Command<a class="headerlink" href="#install-command" title="Link to this heading"></a></h2>
+<p>In many cases SimDE can be installed by:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/NWChemEx/SimDE</span>
+<span class="go">cd SimDE</span>
+<span class="go">cmake -H. -Bbuild -DCMAKE_TOOLCHAIN_FILE=&lt;path/to/toolchain/file&gt; \</span>
+<span class="go">                  -DCMAKE_INSTALL_PREFIX=&lt;where/to/install/SimDE&gt;</span>
+<span class="go">cmake --build build --target install</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">${NWX_TILEDARRAY_VERSION}</span></code> should be replaced by the value of the
-CMake variable specified <a class="reference external" href="bit.ly/3pcmGme">here</a> and you should feel free to
-change the <code class="docutils literal notranslate"><span class="pre">2</span></code> on the last line to the number of CPU cores on your computer
-(the <code class="docutils literal notranslate"><span class="pre">2</span></code> specifies how many CPU cores will be used to compile).</p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;path/to/toolchain/file&gt;</span></code> should be replaced by the path to your
+toolchain file, and <code class="docutils literal notranslate"><span class="pre">&lt;where/to/install/SimDE&gt;</span></code> should be replaced
+with where you want to put the installed library (absolute path is recommended
+in both cases).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above command will build serially. To build SimDE with <code class="docutils literal notranslate"><span class="pre">N</span></code>
+processors additionally pass <code class="docutils literal notranslate"><span class="pre">--parallel</span> <span class="pre">&lt;N&gt;</span></code> to the last command in the
+above code block, <em>i.e.</em>,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cmake --build build --parallel &lt;N&gt; --target install</span>
+</pre></div>
+</div>
+</div>
 </section>
-<section id="installing-simde-proper">
-<h2>Installing SimDE Proper<a class="headerlink" href="#installing-simde-proper" title="Link to this heading"></a></h2>
-<p>After a successful installation of TiledArray we are ready to install SimDE
-proper. First we obtain the source for SimDE:</p>
-<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/NWChemEx/SimDE
-cd SimDE
-</pre></div>
-</div>
-<p>Now we strongly recommend making a toolchain file (see
-<a class="reference external" href="bit.ly/43PXmBx">here</a> for more details). We will assume that you have
-called your toolchain file <code class="docutils literal notranslate"><span class="pre">toolchain.cmake</span></code>, that you made it inside the
-<code class="docutils literal notranslate"><span class="pre">SimDE</span></code> directory you just cloned, and that the toolchain minimally contains:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">NWX_WORKSPACE</span><span class="w"> </span><span class="c">#[[The full path to nwx_workspace goes here #]]</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_PREFIX_PATH</span><span class="w"> </span><span class="o">${</span><span class="nv">NWX_WORKSPACE</span><span class="o">}</span><span class="s">/tiledarray</span><span class="p">)</span>
-<span class="nb">set</span><span class="p">(</span><span class="s">BUILD_PYBIND11_PYBINDINGS</span><span class="w"> </span><span class="s">ON</span><span class="p">)</span><span class="w"> </span><span class="c"># Highly recommended</span>
-<span class="nb">set</span><span class="p">(</span><span class="s">BUILD_SHARED_LIBRARIES</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span><span class="w">  </span><span class="c"># Needed for Python bindings</span>
-
-<span class="c"># This is where NWChemEx Python modules will be installed</span>
-<span class="nb">set</span><span class="p">(</span><span class="s">NWX_MODULE_DIR</span><span class="w"> </span><span class="o">${</span><span class="nv">NWX_WORKSPACE</span><span class="o">}</span><span class="s">/nwx_modules</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now we are ready to compile SimDE:</p>
-<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>cmake -H. \
-     -Bbuild \
-     -DCMAKE_INSTALL_PREFIX:PATH=${NWX_WORKSPACE}/simde \
-     -DCMAKE_TOOLCHAIN_FILE:PATH=${PWD}/toolchain.cmake
-cmake --build build --target install --parallel 2
-</pre></div>
-</div>
-<p>Here <code class="docutils literal notranslate"><span class="pre">${PWD}</span></code> is the full path to the current directory (this variable is set
-by default by most Linux shells), and again you may increase <code class="docutils literal notranslate"><span class="pre">2</span></code> if your
-system has more CPU cores available.</p>
+<section id="configuration-options">
+<h2>Configuration Options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
+<p>This is a list of configuration options recognized by SimDE’s build
+system.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code>.</dt><dd><p>Off by default. Set to a truth-y value to enable testing.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code>.</dt><dd><p>Off by default. Set to a truth-y value to build the C++ API documentation.
+This variable is defined by the <code class="docutils literal notranslate"><span class="pre">nwx_cxx_api_docs</span></code> CMake module.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ONLY_BUILD_DOCS</span></code>.</dt><dd><p>Off by default. If <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> is set to a truth-y value and
+<code class="docutils literal notranslate"><span class="pre">ONLY_BUILD_DOCS</span></code> is also set to a truth-y value, then the configure
+process will skip all other aspects of the configuration aside from creating
+the <code class="docutils literal notranslate"><span class="pre">simde_cxx_api</span></code> target. This variable is defined by the
+<code class="docutils literal notranslate"><span class="pre">nwx_cxx_api_docs</span></code> CMake module.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">BUILD_PYBIND11_PYBINDINGS</span></code>.</dt><dd><p>On by default. When enabled the optional Python API is built.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ENABLE_EXPERIMENTAL_FEATURES</span></code>.</dt><dd><p>Off by default. When set to a truth-y value classes and functions which are in
+a pre-release state will be built.</p>
+</dd>
+</dl>
 </section>
-<section id="hello-world-with-simde">
-<h2>Hello World With SimDE<a class="headerlink" href="#hello-world-with-simde" title="Link to this heading"></a></h2>
-<p>After executing the above commands you should have a working SimDE installation,
-this can be tested by creating a Python script, <code class="docutils literal notranslate"><span class="pre">run_simde.py</span></code>,  containing:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">simde</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Getting here means Python found SimDE, oh and Hello World!!!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This script can then be run by:</p>
-<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>PYTHONPATH=${NWX_WORKSPACE}/nwx_modules python3 run_simde.py
-</pre></div>
-</div>
-<p>(assuming <code class="docutils literal notranslate"><span class="pre">${NWX_WORKSPACE}/nwx_modules</span></code> isn’t already included in your
-Python path).</p>
+<section id="simde-dependencies">
+<h2>SimDE Dependencies<a class="headerlink" href="#simde-dependencies" title="Link to this heading"></a></h2>
+<p>If you have a problem building SimDE it’s most likely because you
+don’t have a new enough version of CMake installed or because CMake can’t find
+one of SimDE’s dependencies. This section enumerates SimDE’s dependencies.</p>
+<section id="required-dependencies">
+<h3>Required Dependencies<a class="headerlink" href="#required-dependencies" title="Link to this heading"></a></h3>
+<p>These are dependencies which must be pre-installed and can not be built by
+SimDE’s build system.</p>
+<section id="c-compiler">
+<h4>C++ Compiler<a class="headerlink" href="#c-compiler" title="Link to this heading"></a></h4>
+<p>SimDE relies on the C++17 standard and should work with any C++17
+compliant compiler (GCC 9.x or newer). C++ compilers can often be installed by
+your OS’s package manager. CMake detects your C++ compiler via the value of
+<code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_COMPILER</span></code>. So ensure <code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_COMPILER</span></code> is set to the C++
+compiler you want to use.</p>
 </section>
-<section id="troubleshooting-simde-install">
-<h2>Troubleshooting SimDE Install<a class="headerlink" href="#troubleshooting-simde-install" title="Link to this heading"></a></h2>
-<p>The contents of the toolchain above are fairly minimal. Depending on how far
-your system differs from ideality you may need to set additional variables. The
-most common ones are:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CMAKE_C_COMPILER</span></code>/ <code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_COMPILER</span></code> the full path to your C and C++
-compilers, respectively.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CMAIZE_GITHUB_TOKEN</span></code> this needs to be set to a GitHub PAT while the
-NWChemEx repos are still private.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Python3_EXECUTABLE</span></code> point this to the Python command you want to use.</p></li>
-</ul>
+</section>
+<section id="optional-dependencies">
+<h3>Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Link to this heading"></a></h3>
+<p>These are dependencies that SimDE’s build system can not build; however,
+they are only required if certain features are enabled.</p>
+<section id="doxygen">
+<h4>Doxygen<a class="headerlink" href="#doxygen" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://www.doxygen.nl/">Home Page</a></p>
+<p>Used to generate the C++ API documentation. Only needed if <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> is
+set to a truth-y value.</p>
+</section>
+<section id="python">
+<h4>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h4>
+<p>Needed if <code class="docutils literal notranslate"><span class="pre">BUILD_PYBIND11_PYTHONBINDINGS</span></code> is enabled. You will need the
+developer headers and libraries for Python.</p>
+</section>
+</section>
+<section id="other-dependencies">
+<h3>Other Dependencies<a class="headerlink" href="#other-dependencies" title="Link to this heading"></a></h3>
+<p>The dependencies in this section can be built by SimDE’s build system
+when they are not located. Under normal circumstances users can ignore them.
+They are listed here primarily for completeness.</p>
+<section id="catch2">
+<h4>Catch2<a class="headerlink" href="#catch2" title="Link to this heading"></a></h4>
+<p>URL: <a class="reference external" href="https://github.com/catchorg/Catch2">https://github.com/catchorg/Catch2</a></p>
+<p>Used for unit testing. Only needed if unit testing is enabled (controlled by
+the CMake variable <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code>, which is <code class="docutils literal notranslate"><span class="pre">OFF</span></code> by default).</p>
+</section>
+<section id="chemist">
+<h4>Chemist<a class="headerlink" href="#chemist" title="Link to this heading"></a></h4>
+<p>URL: <a class="reference external" href="https://github.com/NWChemEx/Chemist">https://github.com/NWChemEx/Chemist</a></p>
+<p>Provides the computational chemistry classes used to define the property types
+contained in SimDE.</p>
+</section>
+<section id="cmaize">
+<h4>CMaize<a class="headerlink" href="#cmaize" title="Link to this heading"></a></h4>
+<p>URL: <a class="reference external" href="https://cmakepp.github.io/CMaize/index.html">https://cmakepp.github.io/CMaize/index.html</a></p>
+<p>Used to simplify writing a CMake-based build system. The build system will grab
+it for you.</p>
+</section>
+<section id="parallelzone">
+<h4>ParallelZone<a class="headerlink" href="#parallelzone" title="Link to this heading"></a></h4>
+<p>URL: <a class="reference external" href="https://www.github.com/NWChemEx/ParallelZone">https://www.github.com/NWChemEx/ParallelZone</a></p>
+<p>Parallel runtime system built and maintained by the NWChemEx team. As a
+slight caveat, SimDE’s build system can only automatically build
+ParallelZone if MPI is installed and visible to CMake.</p>
+</section>
+<section id="pluginplay">
+<h4>PluginPlay<a class="headerlink" href="#pluginplay" title="Link to this heading"></a></h4>
+<p>URL: <a class="reference external" href="https://github.com/NWChemEx/PluginPlay">https://github.com/NWChemEx/PluginPlay</a></p>
+<p>Interfaces defined by SimDE are designed to be used as property types in the
+PluginPlay framework.</p>
+</section>
+<section id="tensorwrapper">
+<h4>TensorWrapper<a class="headerlink" href="#tensorwrapper" title="Link to this heading"></a></h4>
+<p>URL: <a class="reference external" href="https://github.com/NWChemEx/TensorWrapper">https://github.com/NWChemEx/TensorWrapper</a></p>
+<p>Provides a unified API to a number of tensor libraries. TensorWrapper is
+currently under heavy development and not considered stable. It is only needed
+when <code class="docutils literal notranslate"><span class="pre">ENABLE_EXPERIMENTAL_FEATURES</span></code> is set to a truth-y value.</p>
+</section>
+<section id="utilities">
+<h4>utilities<a class="headerlink" href="#utilities" title="Link to this heading"></a></h4>
+<p>URL: <a class="reference external" href="https://www.github.com/NWChemEx/utilities">https://www.github.com/NWChemEx/utilities</a></p>
+<p>Utility classes used throughout the NWChemEx stack.</p>
+</section>
+</section>
 </section>
 </section>
 
@@ -205,7 +257,7 @@ NWChemEx repos are still private.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="SimDE: The Simulation Development Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="structure.html" class="btn btn-neutral float-right" title="Structure of the SimDE Repo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="background/index.html" class="btn btn-neutral float-right" title="SimDE Background" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

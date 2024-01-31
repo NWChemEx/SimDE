@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SimDE: The Simulation Development Environment &mdash; SimDE 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-
-  
+  <title>SimDE: The Simulation Development Environment &mdash; SimDE v0.0.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/documentation_options.js?v=29adac46"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -32,11 +31,12 @@
 
           
           
-          <a href="#" class="icon icon-home">
-            SimDE
+          <a href="#">
+            
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.0.0
+                v0.0.29
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -49,7 +49,8 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installing SimDE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">Structure of the SimDE Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background/index.html">SimDE Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developer Documentation</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://nwchemex.github.io/SimDE/simde_cxx_api/index.html">C++ API</a></li>
 </ul>
 
@@ -79,26 +80,27 @@
              
   <section id="simde-the-simulation-development-environment">
 <h1>SimDE: The Simulation Development Environment<a class="headerlink" href="#simde-the-simulation-development-environment" title="Link to this heading"></a></h1>
-<p>SimDE provides a development environment for writing computational chemistry
-plugins compatible with PluginPlay.</p>
+<p>SimDE provides a development kit for writing computational chemistry
+plugins compatible with PluginPlay and the NWChemEx Community.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installing SimDE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#pre-requisites-for-installing-simde">Pre-Requisites for Installing SimDE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#installing-simde-proper">Installing SimDE Proper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#hello-world-with-simde">Hello World With SimDE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#troubleshooting-simde-install">Troubleshooting SimDE Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#install-command">Install Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configuration-options">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#simde-dependencies">SimDE Dependencies</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">Structure of the SimDE Repo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="structure.html#density">Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure.html#energy">Energy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure.html#linear-algebra">Linear Algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure.html#operators">Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure.html#orbital-spaces">Orbital Spaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure.html#tensor-representations">Tensor Representations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure.html#wavefunctions">Wavefunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background/index.html">SimDE Background</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="background/motivation.html">SimDE Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background/statement_of_need.html">SimDE Statement of Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background/overview.html">SimDE Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background/terminology.html">Terminology and Abbreviations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer/index.html">Developer Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer/design/index.html">SimDE Design Documentation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nwchemex.github.io/.github/">NWChemEx author documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference external" href="https://nwchemex.github.io/SimDE/simde_cxx_api/index.html">C++ API</a></li>

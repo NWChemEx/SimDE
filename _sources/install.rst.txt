@@ -1,4 +1,4 @@
-.. Copyright 2023 NWChemEx-Project
+.. Copyright 2022 NWChemEx-Project
 ..
 .. Licensed under the Apache License, Version 2.0 (the "License");
 .. you may not use this file except in compliance with the License.
@@ -12,141 +12,183 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
+.. _installing_simde:
+
 ################
 Installing SimDE
 ################
 
-For the purposes of this tutorial we will assume you want to make a local
-installation of SimDE (and its dependencies). To that end, we assume you have
-created a directory ``nwx_workspace`` where you would like to install SimDE and
-other NWChemEx projects. The full path to ``nwx_workspace`` will be denoted as
-``${NWX_WORKSPACE}`` in the following code snippets.
-
-***********************************
-Pre-Requisites for Installing SimDE
-***********************************
+SimDE uses `CMaize <https://cmakepp.github.io/CMaize/index.html>`__ as
+its build system, more detailed build instructions can be found
+`here <https://cmakepp.github.io/CMaize/getting_started/building/index.html>`__.
 
 .. note::
 
-   Pre-installing TiledArray is presently required to avoid runtime linking
-   issues. When those issues are resolved, pre-installing TiledArray will be
-   optional.
+   We strongly recommend users use CMake toolchains to pass arguments to the
+   ``cmake`` command. Typically CMake toolchains live in files named
+   ``<prefix>-toolchain.cmake``, where ``<prefix>-`` is an optional prefix to
+   distinguish among toolchains. The contents of the CMake toolchain file
+   usually just sets configuration values set via the standard CMake ``set``
+   function, *i.e.*, ``set(<option_name> <value>)``.
 
-Before we can build SimDE we must build TiledArray. TiledArray depends on
-several common dependencies, dependencies it's build process can not install
-on its own. These dependencies are:
+***************
+Install Command
+***************
 
-- MPI (Ubuntu package: libopenmpi-dev)
-- BLAS (Ubuntu package: libopenblas-dev)
-- LAPACK (Ubuntu package: liblapack-dev)
+In many cases SimDE can be installed by:
 
-For convenience we have listed the name of the Ubuntu package which provides the
-dependency; however, we also stress that while packages provided by most package
-managers will provide adequate performance, they usually suffer from a
-performance penalty associated with their portability. Point being, if you are
-doing performance critical work, you may want install these dependencies
-yourself. Also note these are very common libraries in the HPC community and
-are likely already installed (in a performant configuration) on most clusters
-you may run on.
-
-It is assumed that you have previously installed these dependencies and that
-CMake is able to find these dependencies, either because they are installed to
-a location where CMake looks by default (*e.g.*, ``/usr/lib``) or because you
-will ensure that their install locations are part of ``CMAKE_PREFIX_PATH``.
-To install TiledArray:
-
-.. code-block:: terminal
-
-   git clone https://github.com/valeevgroup/tiledarray
-   cd tiledarray
-   git checkout ${NWX_TILEDARRAY_VERSION}
-   cmake -H. \
-         -Bbuild \
-         -DCMAKE_INSTALL_PREFIX:PATH=${NWX_WORKSPACE}/tiledarray \
-         -DBUILD_SHARED_LIBS:BOOL=TRUE \
-   	     -DCMAKE_INSTALL_RPATH="\$ORIGIN"
-    cmake --build build --target install --parallel 2
-
-where ``${NWX_TILEDARRAY_VERSION}`` should be replaced by the value of the
-CMake variable specified `here <bit.ly/3pcmGme>`__ and you should feel free to
-change the ``2`` on the last line to the number of CPU cores on your computer
-(the ``2`` specifies how many CPU cores will be used to compile).
-
-***********************
-Installing SimDE Proper
-***********************
-
-After a successful installation of TiledArray we are ready to install SimDE
-proper. First we obtain the source for SimDE:
-
-.. code-block:: terminal
+.. code-block:: console
 
    git clone https://github.com/NWChemEx/SimDE
    cd SimDE
+   cmake -H. -Bbuild -DCMAKE_TOOLCHAIN_FILE=<path/to/toolchain/file> \
+                     -DCMAKE_INSTALL_PREFIX=<where/to/install/SimDE>
+   cmake --build build --target install
 
-Now we strongly recommend making a toolchain file (see
-`here <bit.ly/43PXmBx>`__ for more details). We will assume that you have
-called your toolchain file ``toolchain.cmake``, that you made it inside the
-``SimDE`` directory you just cloned, and that the toolchain minimally contains:
+Where ``<path/to/toolchain/file>`` should be replaced by the path to your
+toolchain file, and ``<where/to/install/SimDE>`` should be replaced
+with where you want to put the installed library (absolute path is recommended
+in both cases).
 
-.. code-block:: cmake
+.. note::
 
-   set(NWX_WORKSPACE #[[The full path to nwx_workspace goes here #]])
-   set(CMAKE_PREFIX_PATH ${NWX_WORKSPACE}/tiledarray)
-   set(BUILD_PYBIND11_PYBINDINGS ON) # Highly recommended
-   set(BUILD_SHARED_LIBRARIES TRUE)  # Needed for Python bindings
+   The above command will build serially. To build SimDE with ``N``
+   processors additionally pass ``--parallel <N>`` to the last command in the
+   above code block, *i.e.*,
 
-   # This is where NWChemEx Python modules will be installed
-   set(NWX_MODULE_DIR ${NWX_WORKSPACE}/nwx_modules)
+   .. code-block:: console
 
-Now we are ready to compile SimDE:
+      cmake --build build --parallel <N> --target install
 
-.. code-block:: terminal
+*********************
+Configuration Options
+*********************
 
-    cmake -H. \
-         -Bbuild \
-         -DCMAKE_INSTALL_PREFIX:PATH=${NWX_WORKSPACE}/simde \
-         -DCMAKE_TOOLCHAIN_FILE:PATH=${PWD}/toolchain.cmake
-    cmake --build build --target install --parallel 2
+This is a list of configuration options recognized by SimDE's build
+system.
 
-Here ``${PWD}`` is the full path to the current directory (this variable is set
-by default by most Linux shells), and again you may increase ``2`` if your
-system has more CPU cores available.
-
-**********************
-Hello World With SimDE
-**********************
-
-After executing the above commands you should have a working SimDE installation,
-this can be tested by creating a Python script, ``run_simde.py``,  containing:
-
-.. code-block:: python
-
-   import simde
-
-   print("Getting here means Python found SimDE, oh and Hello World!!!")
-
-
-This script can then be run by:
-
-.. code-block:: terminal
-
-   PYTHONPATH=${NWX_WORKSPACE}/nwx_modules python3 run_simde.py
-
-(assuming ``${NWX_WORKSPACE}/nwx_modules`` isn't already included in your
-Python path).
-
-*****************************
-Troubleshooting SimDE Install
-*****************************
-
-The contents of the toolchain above are fairly minimal. Depending on how far
-your system differs from ideality you may need to set additional variables. The
-most common ones are:
+``BUILD_TESTING``.
+   Off by default. Set to a truth-y value to enable testing.
+``BUILD_DOCS``.
+   Off by default. Set to a truth-y value to build the C++ API documentation.
+   This variable is defined by the ``nwx_cxx_api_docs`` CMake module.
+``ONLY_BUILD_DOCS``.
+   Off by default. If ``BUILD_DOCS`` is set to a truth-y value and
+   ``ONLY_BUILD_DOCS`` is also set to a truth-y value, then the configure
+   process will skip all other aspects of the configuration aside from creating
+   the ``simde_cxx_api`` target. This variable is defined by the
+   ``nwx_cxx_api_docs`` CMake module.
+``BUILD_PYBIND11_PYBINDINGS``.
+  On by default. When enabled the optional Python API is built.
+``ENABLE_EXPERIMENTAL_FEATURES``.
+  Off by default. When set to a truth-y value classes and functions which are in
+  a pre-release state will be built.
 
 
-- ``CMAKE_C_COMPILER``/ ``CMAKE_CXX_COMPILER`` the full path to your C and C++
-  compilers, respectively.
-- ``CMAIZE_GITHUB_TOKEN`` this needs to be set to a GitHub PAT while the
-  NWChemEx repos are still private.
-- ``Python3_EXECUTABLE`` point this to the Python command you want to use.
+******************
+SimDE Dependencies
+******************
+
+If you have a problem building SimDE it's most likely because you
+don't have a new enough version of CMake installed or because CMake can't find
+one of SimDE's dependencies. This section enumerates SimDE's dependencies.
+
+Required Dependencies
+=====================
+
+These are dependencies which must be pre-installed and can not be built by
+SimDE's build system.
+
+C++ Compiler
+------------
+
+SimDE relies on the C++17 standard and should work with any C++17
+compliant compiler (GCC 9.x or newer). C++ compilers can often be installed by
+your OS's package manager. CMake detects your C++ compiler via the value of
+``CMAKE_CXX_COMPILER``. So ensure ``CMAKE_CXX_COMPILER`` is set to the C++
+compiler you want to use.
+
+Optional Dependencies
+=====================
+
+These are dependencies that SimDE's build system can not build; however,
+they are only required if certain features are enabled.
+
+Doxygen
+-------
+
+`Home Page <https://www.doxygen.nl/>`__
+
+Used to generate the C++ API documentation. Only needed if ``BUILD_DOCS`` is
+set to a truth-y value.
+
+Python
+------
+
+Needed if ``BUILD_PYBIND11_PYTHONBINDINGS`` is enabled. You will need the
+developer headers and libraries for Python.
+
+Other Dependencies
+==================
+
+The dependencies in this section can be built by SimDE's build system
+when they are not located. Under normal circumstances users can ignore them.
+They are listed here primarily for completeness.
+
+Catch2
+------
+
+URL: `<https://github.com/catchorg/Catch2>`__
+
+Used for unit testing. Only needed if unit testing is enabled (controlled by
+the CMake variable ``BUILD_TESTING``, which is ``OFF`` by default).
+
+
+Chemist
+-------
+
+URL: `<https://github.com/NWChemEx/Chemist>`__
+
+Provides the computational chemistry classes used to define the property types
+contained in SimDE.
+
+CMaize
+------
+
+URL: `<https://cmakepp.github.io/CMaize/index.html>`__
+
+Used to simplify writing a CMake-based build system. The build system will grab
+it for you.
+
+ParallelZone
+------------
+
+URL: `<https://www.github.com/NWChemEx/ParallelZone>`__
+
+Parallel runtime system built and maintained by the NWChemEx team. As a
+slight caveat, SimDE's build system can only automatically build
+ParallelZone if MPI is installed and visible to CMake.
+
+PluginPlay
+----------
+
+URL: `<https://github.com/NWChemEx/PluginPlay>`__
+
+Interfaces defined by SimDE are designed to be used as property types in the
+PluginPlay framework.
+
+TensorWrapper
+-------------
+
+URL: `<https://github.com/NWChemEx/TensorWrapper>`__
+
+Provides a unified API to a number of tensor libraries. TensorWrapper is
+currently under heavy development and not considered stable. It is only needed
+when ``ENABLE_EXPERIMENTAL_FEATURES`` is set to a truth-y value.
+
+utilities
+---------
+
+URL: `<https://www.github.com/NWChemEx/utilities>`__
+
+Utility classes used throughout the NWChemEx stack.

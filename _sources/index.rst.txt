@@ -16,8 +16,8 @@
 SimDE: The Simulation Development Environment
 #############################################
 
-SimDE provides a development environment for writing computational chemistry
-plugins compatible with PluginPlay.
+SimDE provides a development kit for writing computational chemistry
+plugins compatible with PluginPlay and the NWChemEx Community.
 
 
 .. toctree::
@@ -25,5 +25,6 @@ plugins compatible with PluginPlay.
    :caption: Contents:
 
    install
-   structure
+   background/index
+   developer/index
    C++ API <https://nwchemex.github.io/SimDE/simde_cxx_api/index.html>
