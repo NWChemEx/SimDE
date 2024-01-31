@@ -37,7 +37,7 @@ nwx_cxx_api_docs("${SIMDE_SOURCE_DIR}" "${SIMDE_INCLUDE_DIR}")
 ### Options ###
 cmaize_option_list(
     BUILD_TESTING OFF "Should we build the tests?"
-    BUILD_PYBIND11_PYBINDINGS OFF "Build pybind11 python3 bindings?"
+    BUILD_PYBIND11_PYBINDINGS ON "Build pybind11 python3 bindings?"
     ENABLE_EXPERIMENTAL_FEATURES OFF "Build features which are not 1.0-ed yet?"
 )
 
@@ -105,7 +105,7 @@ if("${BUILD_TESTING}")
 
     cmaize_add_tests(
         test_unit_${PROJECT_NAME}
-        SOURCE_DIR "${CXX_TEST_DIR}/unit"
+        SOURCE_DIR "${CXX_TEST_DIR}/unit_tests"
         INCLUDE_DIRS "${SIMDE_SOURCE_DIR}/${PROJECT_NAME}"
         DEPENDS Catch2 ${PROJECT_NAME}
     )

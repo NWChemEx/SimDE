@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
-#pragma once
-#include "simde/basis_sets/atomic_basis_set.hpp"
-#include "simde/basis_sets/molecular_basis_set.hpp"
+#include "../test_property_type.hpp"
+#include <simde/basis_set/atomic_basis_set.hpp>
+
+TEST_CASE("AtomicBasisSet") {
+    test_property_type<simde::AtomicBasisSetFromZ>({"Atom ID"},
+                                                   {"Atomic Basis Set"});
+}

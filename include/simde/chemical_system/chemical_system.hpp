@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-#include "../test_property_type.hpp"
-#include "simde/atoms/atom.hpp"
-
-TEST_CASE("Atom") {
-    test_property_type<simde::AtomFromZ>({"Atom ID"}, {"Atom"});
-}
+#pragma once
+#include <simde/chemical_system/Z_from_symbol.hpp>
+#include <simde/chemical_system/atom.hpp>
+#include <simde/chemical_system/molecule_from_string.hpp>
+#include <simde/chemical_system/symbol_from_Z.hpp>

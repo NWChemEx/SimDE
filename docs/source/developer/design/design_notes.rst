@@ -16,6 +16,11 @@
 Design Notes
 ************
 
+.. note::
+
+   TensorRepresentation is an experimental feature and subject to change.
+
+
 TensorRepresentation
 ====================
 

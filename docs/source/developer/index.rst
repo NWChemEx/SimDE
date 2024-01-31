@@ -1,4 +1,4 @@
-.. Copyright 2022 NWChemEx-Project
+.. Copyright 2024 NWChemEx-Project
 ..
 .. Licensed under the Apache License, Version 2.0 (the "License");
 .. you may not use this file except in compliance with the License.
@@ -12,19 +12,17 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
-#############################################
-SimDE: The Simulation Development Environment
-#############################################
+#######################
+Developer Documentation
+#######################
 
-SimDE provides a development kit for writing computational chemistry
-plugins compatible with PluginPlay and the NWChemEx Community.
-
+Topics in this section are concerned with helping the reader understand the
+design of SimDE, and how to develop/contribute to the SimDE repository. It
+assumed that the reader is already familiar with :ref:`simde_background`.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   install
-   background/index
-   developer/index
-   C++ API <https://nwchemex.github.io/SimDE/simde_cxx_api/index.html>
+   design/index
+   NWChemEx author documentation <https://nwchemex.github.io/.github/>

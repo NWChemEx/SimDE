@@ -15,9 +15,9 @@
 import simde
 from test_property_type import BaseTestPropertyType
 
-class TestEnergy(BaseTestPropertyType):
+class TestTotalEnergy(BaseTestPropertyType):
     def setUp(self):
-        self.pt = simde.Energy()
+        self.pt = simde.TotalEnergy()
         self.input_labels= ['Chemical System']
         self.result_labels = ['Energy']
 

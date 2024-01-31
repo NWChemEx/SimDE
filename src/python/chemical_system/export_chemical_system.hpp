@@ -17,15 +17,16 @@
 #pragma once
 #include "../export_simde.hpp"
 #include <pluginplay/pluginplay.hpp>
-#include <simde/atoms/atoms.hpp>
+#include <simde/chemical_system/chemical_system.hpp>
 
 namespace simde {
 
-inline void export_atoms(python_module_reference m) {
+inline void export_chemical_system(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomFromZ, m);
     EXPORT_PROPERTY_TYPE(AtomFromSym, m);
     EXPORT_PROPERTY_TYPE(SymbolFromZ, m);
     EXPORT_PROPERTY_TYPE(ZFromSymbol, m);
+    EXPORT_PROPERTY_TYPE(MoleculeFromString, m);
 }
 
 } // namespace simde

@@ -14,11 +14,6 @@
  * limitations under the License.
  */
 
-#include "../test_property_type.hpp"
-#include "simde/energy/energy_class.hpp"
-
-using namespace simde;
-
-TEST_CASE("Energy") {
-    test_property_type<Energy>({"Chemical System"}, {"Energy"});
-}
+#pragma once
+#include <simde/basis_set/atomic_basis_set.hpp>
+#include <simde/basis_set/molecular_basis_set.hpp>

@@ -17,8 +17,8 @@
 #pragma once
 #include "../export_simde.hpp"
 #include <pluginplay/pluginplay.hpp>
-#include <simde/basis_sets/atomic_basis_set.hpp>
-#include <simde/basis_sets/molecular_basis_set.hpp>
+#include <simde/basis_set/atomic_basis_set.hpp>
+#include <simde/basis_set/molecular_basis_set.hpp>
 
 namespace simde {
 

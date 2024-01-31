@@ -15,9 +15,9 @@
  */
 
 #include "../test_property_type.hpp"
-#include "simde/basis_sets/atomic_basis_set.hpp"
+#include <simde/basis_set/molecular_basis_set.hpp>
 
-TEST_CASE("AtomicBasisSet") {
-    test_property_type<simde::AtomicBasisSetFromZ>({"Atom ID"},
-                                                   {"Atomic Basis Set"});
+TEST_CASE("MolecularBasisSet") {
+    test_property_type<simde::MolecularBasisSet>({"Molecule"},
+                                                 {"Molecular Basis Set"});
 }

@@ -15,9 +15,8 @@
  */
 
 #include "../test_property_type.hpp"
-#include "simde/basis_sets/molecular_basis_set.hpp"
+#include <simde/chemical_system/symbol_from_Z.hpp>
 
-TEST_CASE("MolecularBasisSet") {
-    test_property_type<simde::MolecularBasisSet>({"Molecule"},
-                                                 {"Molecular Basis Set"});
+TEST_CASE("SymbolFromZ") {
+    test_property_type<simde::SymbolFromZ>({"Z"}, {"Symbol"});
 }

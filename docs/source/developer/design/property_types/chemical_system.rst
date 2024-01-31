@@ -1,4 +1,4 @@
-.. Copyright 2022 NWChemEx-Project
+.. Copyright 2024 NWChemEx-Project
 ..
 .. Licensed under the Apache License, Version 2.0 (the "License");
 .. you may not use this file except in compliance with the License.
@@ -12,19 +12,17 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
-#############################################
-SimDE: The Simulation Development Environment
-#############################################
+.. _design_of_chemical_system_property_types:
 
-SimDE provides a development kit for writing computational chemistry
-plugins compatible with PluginPlay and the NWChemEx Community.
+########################################
+Design of Chemical System Property Types
+########################################
 
+The need for property types to define interfaces for creating objects from
+Chemist's "Chemical System" component was motivated in
+:ref:`architecture_of_simde`. This page details the design of those property
+types.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. note::
 
-   install
-   background/index
-   developer/index
-   C++ API <https://nwchemex.github.io/SimDE/simde_cxx_api/index.html>
+   TODO: Write me!!!
