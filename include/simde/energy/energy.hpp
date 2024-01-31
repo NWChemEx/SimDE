@@ -21,5 +21,5 @@
  */
 #pragma once
 
-#include "simde/energy/ao_energy.hpp"
-#include "simde/energy/energy_class.hpp"
+#include <simde/energy/ao_energy.hpp>
+#include <simde/energy/total_energy.hpp>

@@ -105,7 +105,7 @@ if("${BUILD_TESTING}")
 
     cmaize_add_tests(
         test_unit_${PROJECT_NAME}
-        SOURCE_DIR "${CXX_TEST_DIR}/unit"
+        SOURCE_DIR "${CXX_TEST_DIR}/unit_tests"
         INCLUDE_DIRS "${SIMDE_SOURCE_DIR}/${PROJECT_NAME}"
         DEPENDS Catch2 ${PROJECT_NAME}
     )

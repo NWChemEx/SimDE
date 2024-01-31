@@ -12,17 +12,19 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
-#######################
-Developer Documentation
-#######################
+#############################
+Terminology and Abbreviations
+#############################
 
-Topics in this section are concerned with helping the reader understand the
-design of SimDE, and how to develop/contribute to the SimDE repository. It
-assumed that the reader is already familiar with :ref:`simde_background`.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. glossary::
 
-   design/index
-   NWChemEx author documentation <https://nwchemex.github.io/.github/>
+   API
+      Short for application programming interface. This is the interface a
+      program exposes so that it can be called by other software.
+
+   SDK
+      Short for software development kit. SDKs are packages meant to facilitate
+      developing software for specific platforms. Most SDKs contain the
+      libraries and tools necessary to deploy on the platform as well as
+      extensions which facilitate development and/or deployment.

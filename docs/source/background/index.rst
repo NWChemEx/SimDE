@@ -27,3 +27,4 @@ project.
    motivation
    statement_of_need
    overview
+   terminology

@@ -12,17 +12,17 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
-#######################
-Developer Documentation
-#######################
+.. _design_of_chemical_system_property_types:
 
-Topics in this section are concerned with helping the reader understand the
-design of SimDE, and how to develop/contribute to the SimDE repository. It
-assumed that the reader is already familiar with :ref:`simde_background`.
+########################################
+Design of Chemical System Property Types
+########################################
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+The need for property types to define interfaces for creating objects from
+Chemist's "Chemical System" component was motivated in
+:ref:`architecture_of_simde`. This page details the design of those property
+types.
 
-   design/index
-   NWChemEx author documentation <https://nwchemex.github.io/.github/>
+.. note::
+
+   TODO: Write me!!!

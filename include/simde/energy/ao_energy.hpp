@@ -16,12 +16,12 @@
 
 #pragma once
 #include <pluginplay/property_type/property_type.hpp>
-#include <simde/energy/energy_class.hpp>
+#include <simde/energy/total_energy.hpp>
 #include <simde/types.hpp>
 
 namespace simde {
 
-DECLARE_DERIVED_PROPERTY_TYPE(AOEnergy, Energy);
+DECLARE_DERIVED_PROPERTY_TYPE(AOEnergy, TotalEnergy);
 
 PROPERTY_TYPE_INPUTS(AOEnergy) {
     using ao_basis = const type::ao_basis_set&;

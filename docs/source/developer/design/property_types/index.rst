@@ -12,17 +12,14 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 
-#######################
-Developer Documentation
-#######################
-
-Topics in this section are concerned with helping the reader understand the
-design of SimDE, and how to develop/contribute to the SimDE repository. It
-assumed that the reader is already familiar with :ref:`simde_background`.
+########################################
+SimDE Property Type Design Documentation
+########################################
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
-   design/index
-   NWChemEx author documentation <https://nwchemex.github.io/.github/>
+   basis_set
+   chemical_system
+   energy

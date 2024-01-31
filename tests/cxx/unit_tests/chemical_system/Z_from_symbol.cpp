@@ -15,7 +15,7 @@
  */
 
 #include "../test_property_type.hpp"
-#include "simde/atoms/Z_from_symbol.hpp"
+#include <simde/chemical_system/Z_from_symbol.hpp>
 
 TEST_CASE("ZFromSymbol") {
     test_property_type<simde::ZFromSymbol>({"Symbol"}, {"Z"});

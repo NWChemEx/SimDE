@@ -15,8 +15,10 @@
  */
 
 #include "../test_property_type.hpp"
-#include "simde/atoms/symbol_from_Z.hpp"
+#include <simde/energy/total_energy.hpp>
 
-TEST_CASE("SymbolFromZ") {
-    test_property_type<simde::SymbolFromZ>({"Z"}, {"Symbol"});
+using namespace simde;
+
+TEST_CASE("TotalEnergy") {
+    test_property_type<TotalEnergy>({"Chemical System"}, {"Energy"});
 }

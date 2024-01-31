@@ -16,8 +16,8 @@
 SimDE: The Simulation Development Environment
 #############################################
 
-SimDE provides a development environment for writing computational chemistry
-plugins compatible with PluginPlay.
+SimDE provides a development kit for writing computational chemistry
+plugins compatible with PluginPlay and the NWChemEx Community.
 
 
 .. toctree::

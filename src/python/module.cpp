@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "atoms/export_atoms.hpp"
 #include "basis_set/export_basis_set.hpp"
+#include "chemical_system/export_chemical_system.hpp"
 #include "energy/export_energy.hpp"
 #include "export_simde.hpp"
 
@@ -24,7 +24,7 @@ namespace simde {
 PYBIND11_MODULE(simde, m) {
     m.doc() =
       "PySimDE: Python bindings for the Simulation development environment";
-    export_atoms(m);
+    export_chemical_system(m);
     export_basis_set(m);
     export_energy(m);
 }

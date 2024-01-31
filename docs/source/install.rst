@@ -99,14 +99,6 @@ Required Dependencies
 These are dependencies which must be pre-installed and can not be built by
 SimDE's build system.
 
-Boost
------
-
-SimDE's Chemist and PluginPlay dependencies need access to some of Boost's
-header-only libraries. If SimDE is building either Chemist or PluginPlay then
-SimDE will need to know where to find Boost. Boost is a very common C++
-dependency so check your OS's package manager.
-
 C++ Compiler
 ------------
 
@@ -115,24 +107,6 @@ compliant compiler (GCC 9.x or newer). C++ compilers can often be installed by
 your OS's package manager. CMake detects your C++ compiler via the value of
 ``CMAKE_CXX_COMPILER``. So ensure ``CMAKE_CXX_COMPILER`` is set to the C++
 compiler you want to use.
-
-MPI
-----
-
-SimDE's parallel runtime, ParallelZone,  implicitly brings in MPI (the message
-passing interface). Users must have an MPI distribution
-installed prior to building ParallelZone. MPI distributions exist in most
-major OS-level package managers, so check your package manager before
-installing MPI from source.While CMake can find MPI if it is installed in your
-OS's standard spot, you may need to give CMake a hint in some cases. MPI
-provides compiler wrappers and it's best to let CMake discover MPI via the C++
-wrapper. Add:
-
-.. code-block:: cmake
-
-   set(MPI_CXX_COMPILER <path/to/mpicxx>)
-
-to your toolchain to point CMake to MPI's C++ compiler wrapper.
 
 Optional Dependencies
 =====================
@@ -173,7 +147,7 @@ the CMake variable ``BUILD_TESTING``, which is ``OFF`` by default).
 Chemist
 -------
 
-URL: `https://github.com/NWChemEx/Chemist`__
+URL: `<https://github.com/NWChemEx/Chemist>`__
 
 Provides the computational chemistry classes used to define the property types
 contained in SimDE.

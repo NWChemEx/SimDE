@@ -20,19 +20,18 @@
 
 namespace simde {
 
-/** @brief The property type for modules that compute energies and energy
- *         derivatives of molecular systems.
+/** @brief The property type for modules that compute the total energy of a
+ *         chemical system.
  *
  *  Arguably one of the most important quantities in electronic structure theory
- *  is the energy of the system. Modules that are capable of computing the
- *  energy of a molecular system satisfy the Energy property type.
+ *  is the total energy of the system. Modules that are capable of computing the
+ *  total energy of a chemical system satisfy the TotalEnergy property type.
  *
- *  @tparam ElementType The type of the elements in the tensors.
  */
-DECLARE_PROPERTY_TYPE(Energy);
+DECLARE_PROPERTY_TYPE(TotalEnergy);
 
 //-------------------------------Implementations--------------------------------
-PROPERTY_TYPE_INPUTS(Energy) {
+PROPERTY_TYPE_INPUTS(TotalEnergy) {
     using chem_sys_t = const type::chemical_system&;
     auto rv =
       pluginplay::declare_input().add_field<chem_sys_t>("Chemical System");
@@ -40,7 +39,7 @@ PROPERTY_TYPE_INPUTS(Energy) {
     return rv;
 }
 
-PROPERTY_TYPE_RESULTS(Energy) {
+PROPERTY_TYPE_RESULTS(TotalEnergy) {
     auto rv = pluginplay::declare_result().add_field<double>("Energy");
     rv["Energy"].set_description("The computed energy");
     return rv;
