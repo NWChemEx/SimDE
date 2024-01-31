@@ -21,24 +21,47 @@
 # http://www.sphinx-doc.org/en/master/config
 
 import os
+import git
 
 # -- Project information -----------------------------------------------------
 
 project = u'SimDE'
 copyright = u'2020, NWChemEx Team'
 author = u'NWChemEx Team'
-version = '1.0.0'
-release = version
 
 ##############################################################################
 #           Shouldn't need to change anything below this point               #
 ##############################################################################
 
+# -- Project Paths -----------------------------------------------------------
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+doc_path = os.path.dirname(dir_path)
+root_path = os.path.dirname(doc_path)
+
+# -- Package Version ---------------------------------------------------------
+
+# Read the git tags, from ../../.git and find the most recent one
+repo = git.Repo(root_path)
+tags = sorted(repo.tags, key=lambda t: t.commit.committed_datetime)
+
+if len(tags):
+    last_tag = tags[-1]
+else:
+    last_tag = "1.0.0"
+
+# This is the strictly numeric version (e.g., no "beta" qualifier)
+version = str(last_tag)
+
+# This is the full version (includes qualifiers like "beta" or
+# "release candidate")
+release = version
+
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
-needs_sphinx = '1.3'
+needs_sphinx = 'v7.2.6'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -53,9 +76,7 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx.ext.intersphinx',
 ]
-dir_path = os.path.dirname(os.path.realpath(__file__))
-doc_path = os.path.dirname(dir_path)
-root_path = os.path.dirname(doc_path)
+
 
 # Add any paths that contain templates here, relative to this directory.
 #templates_path = ['_templates']
