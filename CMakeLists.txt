@@ -44,7 +44,6 @@ cmaize_option_list(
 cmaize_find_or_build_dependency(
     chemist
     URL github.com/NWChemEx/chemist
-    PRIVATE TRUE
     VERSION ${NWX_CHEMIST_VERSION}
     BUILD_TARGET chemist
     FIND_TARGET nwx::chemist
