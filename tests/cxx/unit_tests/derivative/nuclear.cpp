@@ -15,7 +15,15 @@
  */
 
 #include "../test_property_type.hpp"
-#include "simde/derivative/nuclear.hpp"
+#include <simde/derivative/derivative_pt.hpp>
+#include <simde/energy/aoenergy.hpp>
+
+template<typename PT, typename TensorType = std::vector<double>>
+using NuclearDerivative =
+  simde::Derivative<PT, chemist::PointSet<double>, TensorType>;
+
+using AOEnergyNuclearGradient = NuclearDerivative<AOEnergy>;
+using AOEnergyNuclearHessian  = NuclearDerivative<AOEnergyNuclearGradient>;
 
 TEST_CASE("Nuclear Derivative Property Types") {
     test_property_type<simde::AOEnergyNuclearGradient>(

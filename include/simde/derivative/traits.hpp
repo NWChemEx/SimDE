@@ -15,13 +15,12 @@
  */
 
 #pragma once
-
 #include <type_traits>
 
 namespace simde {
 
 /// Forward declare Derivative property type
-template<typename T, typename U>
+template<typename PropertyType, typename WithRespectTo, typename ReturnType>
 class Derivative;
 
 namespace detail_ {
@@ -47,11 +46,13 @@ struct IsDerivative : std::false_type {};
  *  parameter is a specialization of Derivative. Instances of this class
  *  template contain a static constexpr member `value` set to true.
  *
- *  @tparam T The property type we are taking the derivative of.
- *  @tparam U The type we are taking the derivative with respect to.
+ *  @tparam PropertyType The property type we are taking the derivative of.
+ *  @tparam WithRespectTo The type we are taking the derivative with respect to.
+ *  @tparam ReturnType The type of derivative
  */
-template<typename T, typename U>
-struct IsDerivative<Derivative<T, U>> : std::true_type {};
+template<typename PropertyType, typename WithRespectTo, typename ReturnType>
+struct IsDerivative<Derivative<PropertyType, WithRespectTo, ReturnType>>
+  : std::true_type {};
 
 /** @brief Deduces the derivative order of a property type.
  *
@@ -78,25 +79,26 @@ struct DerivativeOrder;
  *  property type is for a gradient, 2 if the property type is for a Hessian,
  *  etc.
  *
- *  @tparam T The property type we are taking the derivative of.
- *  @tparam U The type we are taking the derivative with respect to.
+ *  @tparam PropertyType The property type we are taking the derivative of.
+ *  @tparam WithRespectTo The type we are taking the derivative with respect to.
+ *  @tparam ReturnType The type of the derivative
  *
  */
-template<typename T, typename U>
-struct DerivativeOrder<Derivative<T, U>> {
+template<typename PropertyType, typename WithRespectTo, typename ReturnType>
+struct DerivativeOrder<Derivative<PropertyType, WithRespectTo, ReturnType>> {
 private:
     /** @brief Actually works out the derivative order.
      *
      *  This method is basically a ternary condition based on whether or not
-     *  @p T is itself a specialization of Derivative. If @p T is a
-     *  specialization of Derivative it recurses into the class resulting from
-     *  instantiating DerivativeOrder<T>. If @p T is not a specialization of
-     *  Derivative it returns 1.
+     *  @p PropertyType is itself a specialization of Derivative. If
+     *  @p PropertyType is a specialization of Derivative it recurses into the
+     *  class resulting from instantiating DerivativeOrder<PropertyType>. If
+     *  @p PropertyType is not a specialization of Derivative it returns 1.
      *
-     *  @return The number of Derivative nestings in @p T plus 1.
+     *  @return The number of Derivative nestings in @p PropertyType plus 1.
      */
     static constexpr std::size_t value_() {
-        if constexpr(IsDerivative<T>::value) {
+        if constexpr(IsDerivative<PropertyType>::value) {
             return DerivativeOrder<T>::value + 1;
         } else {
             return 1;
