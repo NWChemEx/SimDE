@@ -52,3 +52,35 @@ derivative of ``PT``.
 
   - Will need to specify the value at which to take the derivative, i.e. need to
     take as an input an object of the denominator type.
+
+- Consistent with general PT philosophy PTs should be for one derivative at a
+  time, e.g., if one wants say the kinetic energy gradient with respect to the
+  nuclear positions and the nuclear gradient of the electron-nuclear attraction
+  this should be two separate PTs.
+
+  - Can rely on memoization and satisfying multiple PTs to avoid duplicate
+    work.
+
+- Ambiguity arises when/if we are taking the derivative with respect to an
+  object of type ``T`` and ``PT`` takes more than one ``T``.
+
+  - Could decorate ``T``, e.g., ``WithRespectTo<1, T>`` means take the 
+    derivative with respect to the second ``T`` object (recall C++ is 0-based).
+  - Could use strong types. Say the first ``T`` is the old one and the second
+    ``T`` is the new one, then could make a type ``NewT`` which represents the
+    second ``T`` and use that instead of ``T``.
+
+  *****************
+  Derivative Design
+  *****************
+
+  - Decided on ``Derivative<PropertyType, WithRespectTo, ReturnType>``.
+
+    - ``PropertyType`` defines the quantity (and the API for obtaining the
+      quantity) we are taking the derivative of, i.e., the numerator in Leibniz
+      notation.
+    - ``WithRespectTo`` defines the quantity the derivative is with respect to,
+      i.e., the denominator in Leibniz notation.
+    - ``ReturnType`` is how the derivative is returned. Eventually this Will
+      default to our tensor object, but in the mean time we leave it up to the
+      downstream modules to decide.
