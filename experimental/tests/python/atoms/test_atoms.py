@@ -15,49 +15,65 @@
 import experimental_simde as simde
 from test_property_type import BaseTestPropertyType
 
+
 class TestAtomDenFromZ(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.AtomDenFromZ()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Atomic Density']
 
+
 class TestAtomDenFromSym(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.AtomDenFromSym()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Atomic Density']
 
+
 class TestElecConfigFromZ(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.ElecConfigFromZ()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Electronic Configuration']
 
+
 class TestElecConfigFromSym(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.ElecConfigFromSym()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Electronic Configuration']
 
+
 class TestFracConfigFromZ(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.FracConfigFromZ()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Electronic Configuration']
 
+
 class TestFracConfigFromSym(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.FracConfigFromSym()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Electronic Configuration']
 
+
 class TestFullConfigFromZ(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.FullConfigFromZ()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Electronic Configuration']
 
+
 class TestFullConfigFromSym(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.FullConfigFromSym()
         self.input_labels = ['Atom ID']

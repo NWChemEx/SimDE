@@ -15,25 +15,33 @@
 import simde
 from test_property_type import BaseTestPropertyType
 
+
 class TestAtomFromZ(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.AtomFromZ()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Atom']
 
+
 class TestAtomFromSym(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.AtomFromSym()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Atom']
 
+
 class testSymbolFromZ(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.SymbolFromZ()
         self.input_labels = ['Z']
         self.result_labels = ['Symbol']
 
+
 class testZFromSymbol(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.ZFromSymbol()
         self.input_labels = ['Symbol']

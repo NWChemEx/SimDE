@@ -14,7 +14,9 @@
 
 import unittest
 
+
 class BaseTestPropertyType(unittest.TestCase):
+
     def setUp(self):
         self.pt = None
         self.input_labels = None
@@ -25,7 +27,7 @@ class BaseTestPropertyType(unittest.TestCase):
             self.assertEqual(len(self.pt.inputs()), len(self.input_labels))
             for label in self.input_labels:
                 self.assertIn(label, self.pt.inputs())
-    
+
     def test_results(self):
         if self.pt:
             self.assertEqual(len(self.pt.results()), len(self.result_labels))
