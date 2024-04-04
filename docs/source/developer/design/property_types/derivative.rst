@@ -70,9 +70,9 @@ derivative of ``PT``.
     ``T`` is the new one, then could make a type ``NewT`` which represents the
     second ``T`` and use that instead of ``T``.
 
-  *****************
-  Derivative Design
-  *****************
+*****************
+Derivative Design
+*****************
 
   - Decided on ``Derivative<PropertyType, WithRespectTo, ReturnType>``.
 
