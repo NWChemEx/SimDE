@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design of Derivative Property Types &mdash; SimDE v0.0.31 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=6ef14f0d"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Design Notes" href="../design_notes.html" />
+    <link rel="prev" title="Design of Energy Property Types" href="energy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v0.0.31
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing SimDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../background/index.html">SimDE Background</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Developer Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">SimDE Design Documentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html">Architecture of SimDE</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">SimDE Property Type Design Documentation</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="basis_set.html">Design of Basis Set Property Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="chemical_system.html">Design of Chemical System Property Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="energy.html">Design of Energy Property Types</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Design of Derivative Property Types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../design_notes.html">Design Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="https://nwchemex.github.io/.github/">NWChemEx author documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://nwchemex.github.io/SimDE/simde_cxx_api/index.html">C++ API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SimDE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Developer Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">SimDE Design Documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">SimDE Property Type Design Documentation</a></li>
+      <li class="breadcrumb-item active">Design of Derivative Property Types</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/developer/design/property_types/derivative.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="design-of-derivative-property-types">
+<span id="id1"></span><h1>Design of Derivative Property Types<a class="headerlink" href="#design-of-derivative-property-types" title="Link to this heading"></a></h1>
+<p>TODO: Motivate need for computing derivatives (i.e., explain why calculus
+exists).</p>
+<section id="derivative-considerations">
+<h2>Derivative Considerations<a class="headerlink" href="#derivative-considerations" title="Link to this heading"></a></h2>
+<p>For simplicity let <code class="docutils literal notranslate"><span class="pre">PT</span></code> be the property type of the quantity we want the
+derivative of and <code class="docutils literal notranslate"><span class="pre">Derivative&lt;PT&gt;</span></code> be the property type for computing the
+derivative of <code class="docutils literal notranslate"><span class="pre">PT</span></code>.</p>
+<ul class="simple">
+<li><p>Common to think about energy with respect to nuclear coordinates, but even
+that can be chain ruled to for example include derivatives involving molecular
+orbital coefficients.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PT</span></code> may return multiple quantities. In this case <code class="docutils literal notranslate"><span class="pre">Derivative&lt;PT&gt;</span></code> should
+return the derivative of each quantity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Derivative&lt;PT&gt;</span></code> minimally needs the same inputs as <code class="docutils literal notranslate"><span class="pre">PT</span></code>.</p></li>
+<li><p>Thinking of the derivative in Leibniz notation (quotient of two
+differentials), the choice for the numerator is fixed by the return(s) of
+<code class="docutils literal notranslate"><span class="pre">PT</span></code>; there are however an infinite number of choices for the denominator.
+We thus need a mechanism for specifying the denominator.</p>
+<ul>
+<li><p>As a corollary, the choice of practical denominators should be limited by
+the inputs to <code class="docutils literal notranslate"><span class="pre">PT</span></code>, i.e., if you try to take the derivative of <code class="docutils literal notranslate"><span class="pre">PT</span></code> with
+respect to a quantity that <code class="docutils literal notranslate"><span class="pre">PT</span></code> does not depend on the value is 0.</p>
+<ul>
+<li><p>As a corollary to the corollary, one may conceivably want to take the
+derivative with respect to a piece of an input, or an internal quantity
+which stems from an input. An example is the nuclear gradient where the
+input is a <code class="docutils literal notranslate"><span class="pre">ChemicalSystem</span></code>, but we only want the derivative with
+respect to nuclear coordinates (an object of type <code class="docutils literal notranslate"><span class="pre">PointSet</span></code>).</p></li>
+</ul>
+</li>
+<li><p>Will need to specify the value at which to take the derivative, i.e. need to
+take as an input an object of the denominator type.</p></li>
+</ul>
+</li>
+<li><p>Consistent with general PT philosophy PTs should be for one derivative at a
+time, e.g., if one wants say the kinetic energy gradient with respect to the
+nuclear positions and the nuclear gradient of the electron-nuclear attraction
+this should be two separate PTs.</p>
+<ul>
+<li><p>Can rely on memoization and satisfying multiple PTs to avoid duplicate
+work.</p></li>
+</ul>
+</li>
+<li><p>Ambiguity arises when/if we are taking the derivative with respect to an
+object of type <code class="docutils literal notranslate"><span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">PT</span></code> takes more than one <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p>
+<ul>
+<li><p>Could decorate <code class="docutils literal notranslate"><span class="pre">T</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">WithRespectTo&lt;1,</span> <span class="pre">T&gt;</span></code> means take the
+derivative with respect to the second <code class="docutils literal notranslate"><span class="pre">T</span></code> object (recall C++ is 0-based).</p></li>
+<li><p>Could use strong types. Say the first <code class="docutils literal notranslate"><span class="pre">T</span></code> is the old one and the second
+<code class="docutils literal notranslate"><span class="pre">T</span></code> is the new one, then could make a type <code class="docutils literal notranslate"><span class="pre">NewT</span></code> which represents the
+second <code class="docutils literal notranslate"><span class="pre">T</span></code> and use that instead of <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="derivative-design">
+<h2>Derivative Design<a class="headerlink" href="#derivative-design" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Decided on <code class="docutils literal notranslate"><span class="pre">Derivative&lt;PropertyType,</span> <span class="pre">WithRespectTo,</span> <span class="pre">ReturnType&gt;</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PropertyType</span></code> defines the quantity (and the API for obtaining the
+quantity) we are taking the derivative of, i.e., the numerator in Leibniz
+notation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WithRespectTo</span></code> defines the quantity the derivative is with respect to,
+i.e., the denominator in Leibniz notation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ReturnType</span></code> is how the derivative is returned. Eventually this Will
+default to our tensor object, but in the mean time we leave it up to the
+downstream modules to decide.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="energy.html" class="btn btn-neutral float-left" title="Design of Energy Property Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../design_notes.html" class="btn btn-neutral float-right" title="Design Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, NWChemEx Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

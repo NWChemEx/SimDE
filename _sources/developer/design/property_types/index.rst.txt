@@ -23,3 +23,4 @@ SimDE Property Type Design Documentation
    basis_set
    chemical_system
    energy
+   derivative
