@@ -15,20 +15,26 @@
 import simde
 from test_property_type import BaseTestPropertyType
 
+
 class TestAtomicBasisSetFromZ(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.AtomicBasisSetFromZ()
-        self.input_labels= ['Atom ID']
+        self.input_labels = ['Atom ID']
         self.result_labels = ['Atomic Basis Set']
+
 
 class TestAtomicBasisSetFromSym(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.AtomicBasisSetFromSym()
-        self.input_labels= ['Atom ID']
+        self.input_labels = ['Atom ID']
         self.result_labels = ['Atomic Basis Set']
 
+
 class TestMolecularBasisSet(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.MolecularBasisSet()
-        self.input_labels= ['Molecule']
+        self.input_labels = ['Molecule']
         self.result_labels = ['Molecular Basis Set']

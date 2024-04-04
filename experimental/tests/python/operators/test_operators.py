@@ -15,14 +15,18 @@
 import simde
 from test_property_type import BaseTestPropertyType
 
+
 class TestFockOp(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.FockOp()
-        self.input_labels= ['Electronic Hamiltonian', 'One Electron Density']
+        self.input_labels = ['Electronic Hamiltonian', 'One Electron Density']
         self.result_labels = ['Fock operator']
 
+
 class TestSystemHamiltonian(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.SystemHamiltonian()
-        self.input_labels= ['Chemical System']
+        self.input_labels = ['Chemical System']
         self.result_labels = ['Hamiltonian']

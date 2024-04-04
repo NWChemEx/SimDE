@@ -15,25 +15,33 @@
 import simde
 from test_property_type import BaseTestPropertyType
 
+
 class TestSCFDensity(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.SCFDensity()
         self.input_labels = ['Phi0']
         self.result_labels = ['Density']
 
+
 class TestInitialDensity(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.InitialDensity()
         self.input_labels = ['Hamiltonian']
         self.result_labels = ['Density']
 
+
 class TestSCFGuessDensity(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.SCFGuessDensity()
         self.input_labels = ['Hamiltonian', 'Input Space']
         self.result_labels = ['Output Density']
 
+
 class TestSCFDensityStep(BaseTestPropertyType):
+
     def setUp(self):
         self.pt = simde.SCFDensityStep()
         self.input_labels = ['Hamiltonian', 'Input Space']

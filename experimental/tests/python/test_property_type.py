@@ -14,7 +14,9 @@
 
 import unittest
 
+
 class BaseTestPropertyType(unittest.TestCase):
+
     def setUp(self):
         self.pt = None
         self.input_labels = None
