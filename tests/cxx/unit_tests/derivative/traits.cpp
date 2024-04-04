@@ -20,9 +20,12 @@
 using namespace simde;
 using namespace simde::detail_;
 
+using Gradient = simde::AOEnergyNuclearGradient<std::vector<double>>;
+using Hessian  = simde::AOEnergyNuclearHessian<std::vector<double>>;
+
 using not_deriv_t = std::tuple<int, double, std::string>;
 
-using deriv_t = std::tuple<AOEnergyNuclearGradient, AOEnergyNuclearHessian>;
+using deriv_t = std::tuple<Gradient, Hessian>;
 
 TEMPLATE_LIST_TEST_CASE("IsDerivative (not Derivative)", "", not_deriv_t) {
     STATIC_REQUIRE_FALSE(detail_::IsDerivative<TestType>::value);
@@ -38,8 +41,8 @@ TEST_CASE("DerivativeOrder") {
     // Uncomment to check that this does not compile
     // DerivativeOrder<int> x;
 
-    STATIC_REQUIRE(DerivativeOrder<AOEnergyNuclearGradient>::value == 1);
-    STATIC_REQUIRE(derivative_order_v<AOEnergyNuclearGradient> == 1);
-    STATIC_REQUIRE(DerivativeOrder<AOEnergyNuclearHessian>::value == 2);
-    STATIC_REQUIRE(derivative_order_v<AOEnergyNuclearHessian> == 2);
+    STATIC_REQUIRE(DerivativeOrder<Gradient>::value == 1);
+    STATIC_REQUIRE(derivative_order_v<Gradient> == 1);
+    STATIC_REQUIRE(DerivativeOrder<Hessian>::value == 2);
+    STATIC_REQUIRE(derivative_order_v<Hessian> == 2);
 }

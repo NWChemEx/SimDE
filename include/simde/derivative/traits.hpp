@@ -99,7 +99,7 @@ private:
      */
     static constexpr std::size_t value_() {
         if constexpr(IsDerivative<PropertyType>::value) {
-            return DerivativeOrder<T>::value + 1;
+            return DerivativeOrder<PropertyType>::value + 1;
         } else {
             return 1;
         }

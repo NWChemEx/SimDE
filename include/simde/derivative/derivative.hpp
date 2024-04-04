@@ -16,6 +16,7 @@
 
 #pragma once
 #include <simde/derivative/derivative_pt.hpp>
+#include <simde/derivative/nuclear.hpp>
 #include <simde/derivative/traits.hpp>
 
 /** @file derivative.hpp
