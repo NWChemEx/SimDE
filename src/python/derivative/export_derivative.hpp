@@ -14,24 +14,20 @@
  * limitations under the License.
  */
 
-#include "basis_set/export_basis_set.hpp"
-#include "chemical_system/export_chemical_system.hpp"
-#include "derivative/export_derivative.hpp"
-#include "energy/export_energy.hpp"
-#include "export_simde.hpp"
+#pragma once
+#include "../export_simde.hpp"
+#include <pluginplay/pluginplay.hpp>
+#include <simde/derivative/derivative.hpp>
 
 namespace simde {
 
-PYBIND11_MODULE(simde, m) {
-    m.doc() =
-      "PySimDE: Python bindings for the Simulation development environment";
-    export_chemical_system(m);
-    export_basis_set(m);
-    export_energy(m);
+namespace provisional {
 
-    // Submodule for 
-    auto m_provisional = m.def_submodule("provisional");
-    provisional::export_derivative(m_provisional);
+inline void export_derivative(python_module_reference m) {
+    EXPORT_PROPERTY_TYPE(AOEnergyNuclearGradientD, m);
+    EXPORT_PROPERTY_TYPE(AOEnergyNuclearHessianD, m);
 }
+
+} // namespace provisional
 
 } // namespace simde

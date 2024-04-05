@@ -31,4 +31,12 @@ template<typename TensorType>
 using AOEnergyNuclearHessian =
   NuclearDerivative<AOEnergyNuclearGradient<TensorType>, TensorType>;
 
+// These typedefs are not yet part of the official API and are subject to change
+namespace provisional {
+
+using AOEnergyNuclearGradientD = AOEnergyNuclearGradient<std::vector<double>>;
+using AOEnergyNuclearHessianD  = AOEnergyNuclearHessian<std::vector<double>>;
+
+} // namespace provisional
+
 } // namespace simde

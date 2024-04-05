@@ -19,8 +19,8 @@
 #include <simde/energy/ao_energy.hpp>
 #include <vector>
 
-using Gradient = simde::AOEnergyNuclearGradient<std::vector<double>>;
-using Hessian  = simde::AOEnergyNuclearHessian<std::vector<double>>;
+using Gradient = simde::provisional::AOEnergyNuclearGradientD;
+using Hessian  = simde::provisional::AOEnergyNuclearHessianD;
 
 TEST_CASE("Nuclear Derivative Property Types") {
     test_property_type<Gradient>({"AOs", "Chemical System", "Arg 1"},
