@@ -29,7 +29,7 @@ PYBIND11_MODULE(simde, m) {
     export_basis_set(m);
     export_energy(m);
 
-    // Submodule for 
+    // Submodule for
     auto m_provisional = m.def_submodule("provisional");
     provisional::export_derivative(m_provisional);
 }
