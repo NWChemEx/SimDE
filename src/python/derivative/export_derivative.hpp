@@ -26,6 +26,7 @@ namespace provisional {
 inline void export_derivative(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AOEnergyNuclearGradientD, m);
     EXPORT_PROPERTY_TYPE(AOEnergyNuclearHessianD, m);
+    EXPORT_PROPERTY_TYPE(EnergyNuclearGradientD, m);
 }
 
 } // namespace provisional

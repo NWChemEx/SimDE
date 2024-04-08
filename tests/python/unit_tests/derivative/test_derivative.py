@@ -30,3 +30,10 @@ class TestAOEnergyNuclearHessianD(BaseTestPropertyType):
         self.pt = simde.provisional.AOEnergyNuclearHessianD()
         self.input_labels = ["AOs", "Chemical System", "Arg 1", "Arg 2"]
         self.result_labels = ["Derivative"]
+
+class TestEnergyNuclearGradientD(BaseTestPropertyType):
+
+    def setUp(self):
+        self.pt = simde.provisional.EnergyNuclearGradientD()
+        self.input_labels = ["Chemical System"]
+        self.result_labels = ["Derivative"]
