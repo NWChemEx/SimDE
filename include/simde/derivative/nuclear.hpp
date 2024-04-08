@@ -39,7 +39,7 @@ using AOEnergyNuclearHessianD  = AOEnergyNuclearHessian<std::vector<double>>;
 
 /** @brief The property type for modules that compute an energy gradient for a
  *         chemical system.
- * 
+ *
  * Analogous interface as TotalEnergy
  */
 template<typename TensorType>
@@ -56,8 +56,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(EnergyNuclearGradient, TensorType) {
 
 template<typename TensorType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(EnergyNuclearGradient, TensorType) {
-    auto rv = pluginplay::declare_result().template add_field<TensorType>(
-      "Derivative");
+    auto rv =
+      pluginplay::declare_result().template add_field<TensorType>("Derivative");
     rv["Derivative"].set_description("The computed derivative");
     return rv;
 }

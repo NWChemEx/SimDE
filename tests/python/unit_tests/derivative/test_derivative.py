@@ -31,6 +31,7 @@ class TestAOEnergyNuclearHessianD(BaseTestPropertyType):
         self.input_labels = ["AOs", "Chemical System", "Arg 1", "Arg 2"]
         self.result_labels = ["Derivative"]
 
+
 class TestEnergyNuclearGradientD(BaseTestPropertyType):
 
     def setUp(self):
