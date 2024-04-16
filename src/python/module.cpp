@@ -16,6 +16,7 @@
 
 #include "basis_set/export_basis_set.hpp"
 #include "chemical_system/export_chemical_system.hpp"
+#include "dynamics/export_dynamics.hpp"
 #include "energy/export_energy.hpp"
 #include "export_simde.hpp"
 
@@ -25,6 +26,7 @@ PYBIND11_MODULE(simde, m) {
     m.doc() =
       "PySimDE: Python bindings for the Simulation development environment";
     export_chemical_system(m);
+    export_dynamics(m);
     export_basis_set(m);
     export_energy(m);
 }
