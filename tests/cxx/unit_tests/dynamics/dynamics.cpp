@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2024 NWChemEx
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-#pragma once
-#include <simde/basis_set/basis_set.hpp>
-#include <simde/chemical_system/chemical_system.hpp>
-#include <simde/derivative/derivative.hpp>
-#include <simde/dynamics/dynamics.hpp>
-#include <simde/energy/energy.hpp>
-#include <simde/types.hpp>
+#include "../test_property_type.hpp"
+#include <simde/dynamics/time_step.hpp>
+
+using namespace simde;
+
+TEST_CASE("Dynamics") {
+    test_property_type<TimeStep>({"Chemical System"},
+                                 {"New Chemical System", "Momentum"});
+}
