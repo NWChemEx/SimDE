@@ -25,11 +25,12 @@ using AOGradient = simde::AOEnergyNuclearGradientStdVectorD;
 using AOHessian  = simde::AOEnergyNuclearHessianStdVectorD;
 
 TEST_CASE("Nuclear Derivative Property Types") {
+    test_property_type<Gradient>({"Chemical System", "Arg 1"}, {"Derivative"});
+    test_property_type<Hessian>({"Chemical System", "Arg 1", "Arg2"},
+                                {"Derivative"});
     test_property_type<AOGradient>({"AOs", "Chemical System", "Arg 1"},
                                    {"Derivative"});
 
     test_property_type<AOHessian>({"AOs", "Chemical System", "Arg 1", "Arg 2"},
                                   {"Derivative"});
-
-    test_property_type<Gradient>({"Chemical System"}, {"Derivative"});
 }
