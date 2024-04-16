@@ -21,14 +21,11 @@
 
 namespace simde {
 
-namespace provisional {
-
 inline void export_derivative(python_module_reference m) {
-    EXPORT_PROPERTY_TYPE(AOEnergyNuclearGradientD, m);
-    EXPORT_PROPERTY_TYPE(AOEnergyNuclearHessianD, m);
-    EXPORT_PROPERTY_TYPE(EnergyNuclearGradientD, m);
+    EXPORT_PROPERTY_TYPE(EnergyNuclearGradientStdVectorD, m);
+    EXPORT_PROPERTY_TYPE(EnergyNuclearHessianStdVectorD, m);
+    EXPORT_PROPERTY_TYPE(AOEnergyNuclearGradientStdVectorD, m);
+    EXPORT_PROPERTY_TYPE(AOEnergyNuclearHessianStdVectorD, m);
 }
-
-} // namespace provisional
 
 } // namespace simde

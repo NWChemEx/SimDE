@@ -16,25 +16,33 @@ import simde
 from test_property_type import BaseTestPropertyType
 
 
-class TestAOEnergyNuclearGradientD(BaseTestPropertyType):
+class TestEnergyNuclearGradientStdVectorD(BaseTestPropertyType):
 
     def setUp(self):
-        self.pt = simde.provisional.AOEnergyNuclearGradientD()
+        self.pt = simde.EnergyNuclearGradientStdVectorD()
+        self.input_labels = ["Chemical System", "Arg 1"]
+        self.result_labels = ["Derivative"]
+
+
+class TestEnergyNuclearHessianStdVectorD(BaseTestPropertyType):
+
+    def setUp(self):
+        self.pt = simde.EnergyNuclearHessianStdVectorD()
+        self.input_labels = ["Chemical System", "Arg 1", "Arg 2"]
+        self.result_labels = ["Derivative"]
+
+
+class TestAOEnergyNuclearGradientStdVectorD(BaseTestPropertyType):
+
+    def setUp(self):
+        self.pt = simde.AOEnergyNuclearGradientStdVectorD()
         self.input_labels = ["AOs", "Chemical System", "Arg 1"]
         self.result_labels = ["Derivative"]
 
 
-class TestAOEnergyNuclearHessianD(BaseTestPropertyType):
+class TestAOEnergyNuclearHessianStdVectorD(BaseTestPropertyType):
 
     def setUp(self):
-        self.pt = simde.provisional.AOEnergyNuclearHessianD()
+        self.pt = simde.AOEnergyNuclearHessianStdVectorD()
         self.input_labels = ["AOs", "Chemical System", "Arg 1", "Arg 2"]
-        self.result_labels = ["Derivative"]
-
-
-class TestEnergyNuclearGradientD(BaseTestPropertyType):
-
-    def setUp(self):
-        self.pt = simde.provisional.EnergyNuclearGradientD()
-        self.input_labels = ["Chemical System"]
         self.result_labels = ["Derivative"]
