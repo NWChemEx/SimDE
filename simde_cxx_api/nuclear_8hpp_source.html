@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">0.0.31</span>
+   &#160;<span id="projectnumber">0.0.32</span>
    </div>
   </td>
  </tr>
@@ -89,21 +89,40 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;chemist/chemist.hpp&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;simde/derivative/derivative_pt.hpp&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;simde/energy/ao_energy.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>simde {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> PropertyType, <span class="keyword">typename</span> TensorType&gt;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> NuclearDerivative =</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  Derivative&lt;PropertyType, chemist::PointSet&lt;double&gt;, TensorType&gt;;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> TensorType&gt;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> AOEnergyNuclearGradient = NuclearDerivative&lt;AOEnergy, TensorType&gt;;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> TensorType&gt;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> AOEnergyNuclearHessian =</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  NuclearDerivative&lt;AOEnergyNuclearGradient&lt;TensorType&gt;, TensorType&gt;;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;simde/energy/total_energy.hpp&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>simde {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> PropertyType, <span class="keyword">typename</span> TensorType&gt;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> NuclearDerivative =</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  Derivative&lt;PropertyType, chemist::PointSet&lt;double&gt;, TensorType&gt;;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} <span class="comment">// namespace simde</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> TensorType&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">using</span> EnergyNuclearGradient = NuclearDerivative&lt;TotalEnergy, TensorType&gt;;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> TensorType&gt;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">using</span> EnergyNuclearHessian =</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  NuclearDerivative&lt;EnergyNuclearGradient&lt;TensorType&gt;, TensorType&gt;;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> TensorType&gt;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">using</span> AOEnergyNuclearGradient = NuclearDerivative&lt;AOEnergy, TensorType&gt;;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> TensorType&gt;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using</span> AOEnergyNuclearHessian =</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  NuclearDerivative&lt;AOEnergyNuclearGradient&lt;TensorType&gt;, TensorType&gt;;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">// --  Assumes tensors are stored as std::vector objects</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">using</span> EnergyNuclearGradientStdVectorD =</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  EnergyNuclearGradient&lt;std::vector&lt;double&gt;&gt;;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">using</span> EnergyNuclearHessianStdVectorD =</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  EnergyNuclearHessian&lt;std::vector&lt;double&gt;&gt;;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">using</span> AOEnergyNuclearGradientStdVectorD =</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  AOEnergyNuclearGradient&lt;std::vector&lt;double&gt;&gt;;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">using</span> AOEnergyNuclearHessianStdVectorD =</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  AOEnergyNuclearHessian&lt;std::vector&lt;double&gt;&gt;;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace simde</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

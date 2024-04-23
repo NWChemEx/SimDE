@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>simde: src/python/energy/export_energy.hpp Source File</title>
+<title>simde: src/python/derivative/export_derivative.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,12 +62,12 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="dir_dae6c93c9fcc849a19617cffd1d8d80f.html">energy</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="dir_9469df59bb86947af43ebf69b107d843.html">derivative</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">export_energy.hpp</div>  </div>
+<div class="title">export_derivative.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -89,17 +89,19 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../export_simde.hpp&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;pluginplay/pluginplay.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="energy_8hpp.html">simde/energy/energy.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="derivative_8hpp.html">simde/derivative/derivative.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>simde {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> export_energy(python_module_reference m) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    EXPORT_PROPERTY_TYPE(TotalEnergy, m);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    EXPORT_PROPERTY_TYPE(AOEnergy, m);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <span class="comment">// namespace simde</span></div>
-<div class="ttc" id="aenergy_8hpp_html"><div class="ttname"><a href="energy_8hpp.html">energy.hpp</a></div></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> export_derivative(python_module_reference m) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    EXPORT_PROPERTY_TYPE(EnergyNuclearGradientStdVectorD, m);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    EXPORT_PROPERTY_TYPE(EnergyNuclearHessianStdVectorD, m);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    EXPORT_PROPERTY_TYPE(AOEnergyNuclearGradientStdVectorD, m);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    EXPORT_PROPERTY_TYPE(AOEnergyNuclearHessianStdVectorD, m);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} <span class="comment">// namespace simde</span></div>
+<div class="ttc" id="aderivative_8hpp_html"><div class="ttname"><a href="derivative_8hpp.html">derivative.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
