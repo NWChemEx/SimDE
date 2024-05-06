@@ -39,7 +39,7 @@ using atom = typename molecule::atom_type;
 using atomic_symbol = typename atom::name_type;
 
 /// Typedef of the class which models an atomic number
-using atomic_number = typename atom::size_type;
+using atomic_number = typename atom::atomic_number_type;
 
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = chemist::ChemicalSystem;
