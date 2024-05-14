@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">0.0.34</span>
+   &#160;<span id="projectnumber">0.0.35</span>
    </div>
   </td>
  </tr>
@@ -83,7 +83,7 @@ $(function() {
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:ab21e08aebf2e900e6bf7e9e5e944fd2d"><td class="memItemLeft" align="right" valign="top"><a id="ab21e08aebf2e900e6bf7e9e5e944fd2d"></a>
 static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsimde_1_1detail___1_1DerivativeOrder_3_01Derivative_3_01PropertyType_00_01WithRespectTo_00_01ReturnType_01_4_01_4.html#ab21e08aebf2e900e6bf7e9e5e944fd2d">value</a> = value_()</td></tr>
-<tr class="memdesc:ab21e08aebf2e900e6bf7e9e5e944fd2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of times <a class="el" href="classsimde_1_1Derivative.html" title="Forward declare Derivative property type.">Derivative</a> is nested in <code>T</code>, plus 1. <br /></td></tr>
+<tr class="memdesc:ab21e08aebf2e900e6bf7e9e5e944fd2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of times <a class="el" href="structsimde_1_1Derivative.html" title="Forward declare Derivative property type.">Derivative</a> is nested in <code>T</code>, plus 1. <br /></td></tr>
 <tr class="separator:ab21e08aebf2e900e6bf7e9e5e944fd2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -91,7 +91,7 @@ static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a clas
 struct simde::detail_::DerivativeOrder&lt; Derivative&lt; PropertyType, WithRespectTo, ReturnType &gt; &gt;</h3>
 
 <p>Deduces the derivative order of a property type. </p>
-<p>This partial specialization is used when the template parameter for <a class="el" href="structsimde_1_1detail___1_1DerivativeOrder.html" title="Deduces the derivative order of a property type.">DerivativeOrder</a> is a specialization of <a class="el" href="classsimde_1_1Derivative.html" title="Forward declare Derivative property type.">Derivative</a>. The resulting class will have a member <code>value</code> set to the order of the derivative, i.e., 1 if the property type is for a gradient, 2 if the property type is for a Hessian, etc.</p>
+<p>This partial specialization is used when the template parameter for <a class="el" href="structsimde_1_1detail___1_1DerivativeOrder.html" title="Deduces the derivative order of a property type.">DerivativeOrder</a> is a specialization of <a class="el" href="structsimde_1_1Derivative.html" title="Forward declare Derivative property type.">Derivative</a>. The resulting class will have a member <code>value</code> set to the order of the derivative, i.e., 1 if the property type is for a gradient, 2 if the property type is for a Hessian, etc.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">PropertyType</td><td>The property type we are taking the derivative of. </td></tr>
