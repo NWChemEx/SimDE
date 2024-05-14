@@ -21,7 +21,7 @@ namespace simde {
 
 /// Forward declare Derivative property type
 template<typename PropertyType, typename WithRespectTo, typename ReturnType>
-class Derivative;
+struct Derivative;
 
 namespace detail_ {
 
