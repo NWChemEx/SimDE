@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "test_property_type.hpp"
+#include "../test_property_type.hpp"
 #include <simde/chemical_system/molecule_from_string.hpp>
 
 TEST_CASE("MoleculeFromString") {
