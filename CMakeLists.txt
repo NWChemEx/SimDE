@@ -44,7 +44,6 @@ cmaize_option_list(
 cmaize_find_or_build_dependency(
     chemist
     URL github.com/NWChemEx/chemist
-    VERSION ${NWX_CHEMIST_VERSION}
     BUILD_TARGET chemist
     FIND_TARGET nwx::chemist
     CMAKE_ARGS BUILD_TESTING=OFF
@@ -55,7 +54,6 @@ cmaize_find_or_build_dependency(
 cmaize_find_or_build_dependency(
     pluginplay
     URL github.com/NWChemEx/pluginplay
-    VERSION ${NWX_PLUGINPLAY_VERSION}
     BUILD_TARGET pluginplay
     FIND_TARGET nwx::pluginplay
     CMAKE_ARGS BUILD_TESTING=OFF
@@ -99,7 +97,7 @@ if("${BUILD_TESTING}")
         URL github.com/catchorg/Catch2
         BUILD_TARGET Catch2
         FIND_TARGET Catch2::Catch2
-        VERSION ${NWX_CATCH2_VERSION}
+        VERSION v3.6.0
     )
 
     cmaize_add_tests(
