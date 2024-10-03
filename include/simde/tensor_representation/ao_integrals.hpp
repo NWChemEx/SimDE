@@ -15,8 +15,15 @@
  */
 
 #pragma once
-#include <simde/basis_set/basis_set.hpp>
-#include <simde/chemical_system/chemical_system.hpp>
-#include <simde/energy/energy.hpp>
-#include <simde/tensor_representation/tensor_representation.hpp>
-#include <simde/types.hpp>
+#include "simde/tensor_representation/ao_tensor_representation.hpp"
+#include "simde/types.hpp"
+
+namespace simde {
+
+// -----------------------------------------------------------------------------
+// ------------------------ Fundamental Integrals ------------------------------
+// -----------------------------------------------------------------------------
+
+using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
+
+} // namespace simde

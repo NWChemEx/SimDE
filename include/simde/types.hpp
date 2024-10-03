@@ -16,6 +16,7 @@
 
 #pragma once
 #include <chemist/chemist.hpp>
+#include <tensorwrapper/tensorwrapper.hpp>
 #include <map>
 #include <utility>
 
@@ -26,6 +27,8 @@
  *  the remainder of the library.
  */
 namespace simde::type {
+
+using tensor = tensorwrapper::Tensor;
 
 // --------------------- Fundamental Types -------------------------------------
 
@@ -43,6 +46,9 @@ using atomic_number = typename atom::atomic_number_type;
 
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = chemist::ChemicalSystem;
+
+/// Typdef of the class representing an electron
+using electron = chemist::Electron;
 
 // ------------------------------ Basis Sets -----------------------------------
 
@@ -66,5 +72,13 @@ using point = chemist::Point<double>;
 
 /// Typedef of a full atomic electronic configuration
 // using full_elec_conf = std::map<std::pair<size, size>, size>;
+
+// ------------------------- Quantum Mechanics ---------------------------------
+
+/// Type representing an AO space
+using ao_space = chemist::wavefunction::AOs;
+
+/// Type representing the electron kinetic operator
+using el_kinetic = chemist::qm_operator::Kinetic<electron>;
 
 } // namespace simde::type

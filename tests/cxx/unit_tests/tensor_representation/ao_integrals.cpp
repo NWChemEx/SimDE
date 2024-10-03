@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2024 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-#pragma once
-#include <simde/basis_set/basis_set.hpp>
-#include <simde/chemical_system/chemical_system.hpp>
-#include <simde/energy/energy.hpp>
-#include <simde/tensor_representation/tensor_representation.hpp>
-#include <simde/types.hpp>
+#include "../test_property_type.hpp"
+#include <simde/tensor_representation/ao_integrals.hpp>
+
+using namespace simde;
+
+TEST_CASE("EKinetic") {
+    test_property_type<EKinetic>({"bra", "operator", "ket"},
+                                 {"tensor representation"});
+}
