@@ -16,8 +16,8 @@
 
 #pragma once
 #include <chemist/chemist.hpp>
-#include <tensorwrapper/tensorwrapper.hpp>
 #include <map>
+#include <tensorwrapper/tensorwrapper.hpp>
 #include <utility>
 
 /** @file types.hpp
