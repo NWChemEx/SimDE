@@ -15,15 +15,24 @@
  */
 
 #pragma once
-#include "simde/tensor_representation/ao_tensor_representation.hpp"
 #include "simde/types.hpp"
+#include <pluginplay/property_type/property_type.hpp>
 
 namespace simde {
 
-// -----------------------------------------------------------------------------
-// ------------------------ Fundamental Integrals ------------------------------
-// -----------------------------------------------------------------------------
+template<typename BraKetType>
+DECLARE_TEMPLATED_PROPERTY_TYPE(EvaluateBraKet, BraKetType);
 
-using EKinetic = TwoCenterAOTensorRepresentation<type::el_kinetic>;
+template<typename BraKetType>
+TEMPLATED_PROPERTY_TYPE_INPUTS(EvaluateBraKet, BraKetType) {
+    using const_braket_t = const BraKetType;
+    return pluginplay::declare_input().add_field<const_braket_t>("BraKet");
+}
+
+template<typename BraKetType>
+TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
+    return pluginplay::declare_result().add_field<type::tensor>(
+      "tensor representation");
+}
 
 } // namespace simde

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2024 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
-#pragma once
-#include "simde/tensor_representation/ao_integrals.hpp"
-#include "simde/tensor_representation/ao_tensor_representation.hpp"
+#include "../test_property_type.hpp"
+#include <simde/evaluate_braket/evaluate_braket.hpp>
+
+using namespace simde;
+
+TEST_CASE("EvaluateBraKet") {
+    using pt = EvaluateBraKet<double>; // BraKetType doesn't matter here
+    test_property_type<pt>({"BraKet"}, {"tensor representation"});
+}

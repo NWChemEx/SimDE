@@ -18,5 +18,5 @@
 #include <simde/basis_set/basis_set.hpp>
 #include <simde/chemical_system/chemical_system.hpp>
 #include <simde/energy/energy.hpp>
-#include <simde/tensor_representation/tensor_representation.hpp>
+#include <simde/evaluate_braket/evaluate_braket.hpp>
 #include <simde/types.hpp>
