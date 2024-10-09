@@ -35,4 +35,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
       "tensor representation");
 }
 
+using EKinetic =
+  EvaluateBraKet<type::braket<type::aos, type::t_e_type, type::aos>>;
+
 } // namespace simde

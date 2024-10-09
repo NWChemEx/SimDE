@@ -28,6 +28,7 @@
  */
 namespace simde::type {
 
+/// Typedef of the class that represents a tensor
 using tensor = tensorwrapper::Tensor;
 
 // --------------------- Fundamental Types -------------------------------------
@@ -67,7 +68,15 @@ using primitive = chemist::basis_set::PrimitiveD;
 /// Typedef of a cartesian point
 using point = chemist::Point<double>;
 
-/// Typedef of a full atomic electronic configuration
-// using full_elec_conf = std::map<std::pair<size, size>, size>;
+// -------------------------- Quantum Mechanics --------------------------------
+
+template<typename BraType, typename OpType, typename KetType>
+using braket = chemist::braket::BraKet<BraType, OpType, KetType>;
+
+/// Typedef of the class used to represent an atomic orbital space
+using aos = chemist::wavefunction::AOs;
+
+/// Import the operator types
+using namespace chemist::qm_operator::types;
 
 } // namespace simde::type
