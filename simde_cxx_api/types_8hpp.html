@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">0.0.36</span>
+   &#160;<span id="projectnumber">0.0.37</span>
    </div>
   </td>
  </tr>
@@ -74,16 +74,18 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;chemist/chemist.hpp&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
+<code>#include &lt;tensorwrapper/tensorwrapper.hpp&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for types.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="types_8hpp__incl.png" border="0" usemap="#ainclude_2simde_2types_8hpp" alt=""/></div>
 <map name="ainclude_2simde_2types_8hpp" id="ainclude_2simde_2types_8hpp">
-<area shape="rect" title=" " alt="" coords="123,5,305,32"/>
+<area shape="rect" title=" " alt="" coords="209,5,390,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,164,107"/>
 <area shape="rect" title=" " alt="" coords="189,80,239,107"/>
-<area shape="rect" title=" " alt="" coords="264,80,324,107"/>
+<area shape="rect" title=" " alt="" coords="264,80,505,107"/>
+<area shape="rect" title=" " alt="" coords="529,80,589,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -91,25 +93,26 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="types_8hpp__dep__incl.png" border="0" usemap="#ainclude_2simde_2types_8hppdep" alt=""/></div>
 <map name="ainclude_2simde_2types_8hppdep" id="ainclude_2simde_2types_8hppdep">
-<area shape="rect" title=" " alt="" coords="708,5,889,32"/>
-<area shape="rect" href="atomic__basis__set_8hpp_source.html" title=" " alt="" coords="5,87,200,129"/>
-<area shape="rect" href="simde_8hpp_source.html" title=" " alt="" coords="403,385,589,411"/>
-<area shape="rect" href="molecular__basis__set_8hpp_source.html" title=" " alt="" coords="225,80,383,136"/>
-<area shape="rect" href="atom_8hpp_source.html" title=" " alt="" coords="928,87,1104,129"/>
-<area shape="rect" href="molecule__from__string_8hpp_source.html" title=" " alt="" coords="1128,80,1307,136"/>
-<area shape="rect" href="symbol__from__Z_8hpp_source.html" title=" " alt="" coords="459,87,669,129"/>
-<area shape="rect" href="Z__from__symbol_8hpp_source.html" title=" " alt="" coords="693,87,904,129"/>
-<area shape="rect" href="ao__energy_8hpp_source.html" title=" " alt="" coords="1263,184,1425,225"/>
-<area shape="rect" href="total__energy_8hpp_source.html" title=" " alt="" coords="1381,87,1544,129"/>
-<area shape="rect" href="export__basis__set_8hpp_source.html" title=" " alt="" coords="31,184,195,225"/>
-<area shape="rect" href="basis__set_8hpp_source.html" title=" " alt="" coords="229,184,379,225"/>
-<area shape="rect" href="chemical__system_8hpp_source.html" title=" " alt="" coords="687,184,910,225"/>
-<area shape="rect" href="export__chemical__system_8hpp_source.html" title=" " alt="" coords="704,273,893,329"/>
-<area shape="rect" href="nuclear_8hpp_source.html" title=" " alt="" coords="1422,281,1605,322"/>
-<area shape="rect" href="energy_8hpp.html" title=" " alt="" coords="1229,281,1392,322"/>
-<area shape="rect" href="derivative_8hpp.html" title=" " alt="" coords="1425,377,1607,419"/>
-<area shape="rect" href="export__derivative_8hpp_source.html" title=" " alt="" coords="1431,467,1601,508"/>
-<area shape="rect" href="export__energy_8hpp_source.html" title=" " alt="" coords="1215,377,1401,419"/>
+<area shape="rect" title=" " alt="" coords="805,5,986,32"/>
+<area shape="rect" href="atomic__basis__set_8hpp_source.html" title=" " alt="" coords="278,87,473,129"/>
+<area shape="rect" href="simde_8hpp_source.html" title=" " alt="" coords="927,385,1112,411"/>
+<area shape="rect" href="molecular__basis__set_8hpp_source.html" title=" " alt="" coords="95,80,253,136"/>
+<area shape="rect" href="atom_8hpp_source.html" title=" " alt="" coords="497,87,673,129"/>
+<area shape="rect" href="molecule__from__string_8hpp_source.html" title=" " alt="" coords="697,80,875,136"/>
+<area shape="rect" href="symbol__from__Z_8hpp_source.html" title=" " alt="" coords="899,87,1110,129"/>
+<area shape="rect" href="Z__from__symbol_8hpp_source.html" title=" " alt="" coords="1134,87,1345,129"/>
+<area shape="rect" href="ao__energy_8hpp_source.html" title=" " alt="" coords="1566,184,1729,225"/>
+<area shape="rect" href="total__energy_8hpp_source.html" title=" " alt="" coords="1445,87,1607,129"/>
+<area shape="rect" href="evaluate__braket_8hpp_source.html" title=" " alt="" coords="5,281,212,322"/>
+<area shape="rect" href="export__basis__set_8hpp_source.html" title=" " alt="" coords="104,184,268,225"/>
+<area shape="rect" href="basis__set_8hpp_source.html" title=" " alt="" coords="300,184,451,225"/>
+<area shape="rect" href="chemical__system_8hpp_source.html" title=" " alt="" coords="841,184,1064,225"/>
+<area shape="rect" href="export__chemical__system_8hpp_source.html" title=" " alt="" coords="793,273,982,329"/>
+<area shape="rect" href="nuclear_8hpp_source.html" title=" " alt="" coords="1591,281,1773,322"/>
+<area shape="rect" href="energy_8hpp.html" title=" " alt="" coords="1403,281,1566,322"/>
+<area shape="rect" href="derivative_8hpp.html" title=" " alt="" coords="1596,377,1779,419"/>
+<area shape="rect" href="export__derivative_8hpp_source.html" title=" " alt="" coords="1603,467,1772,508"/>
+<area shape="rect" href="export__energy_8hpp_source.html" title=" " alt="" coords="1387,377,1572,419"/>
 </map>
 </div>
 </div>
@@ -117,6 +120,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a3bcce5c90e112a4dafe6df96e45fbc27"><td class="memItemLeft" align="right" valign="top"><a id="a3bcce5c90e112a4dafe6df96e45fbc27"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="types_8hpp.html#a3bcce5c90e112a4dafe6df96e45fbc27">simde::type::tensor</a> = tensorwrapper::Tensor</td></tr>
+<tr class="memdesc:a3bcce5c90e112a4dafe6df96e45fbc27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of the class that represents a tensor. <br /></td></tr>
+<tr class="separator:a3bcce5c90e112a4dafe6df96e45fbc27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaea980cebe478e0902c8dbcf480a8363"><td class="memItemLeft" align="right" valign="top"><a id="aaea980cebe478e0902c8dbcf480a8363"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="types_8hpp.html#aaea980cebe478e0902c8dbcf480a8363">simde::type::molecule</a> = chemist::Molecule</td></tr>
 <tr class="memdesc:aaea980cebe478e0902c8dbcf480a8363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of the class used to describe a molecule. <br /></td></tr>
@@ -161,6 +168,14 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="typ
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="types_8hpp.html#a16e3b3cf9542820a8400b42d76caf5c0">simde::type::point</a> = chemist::Point&lt; double &gt;</td></tr>
 <tr class="memdesc:a16e3b3cf9542820a8400b42d76caf5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of a cartesian point. <br /></td></tr>
 <tr class="separator:a16e3b3cf9542820a8400b42d76caf5c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a18b0791430fdf8fc89c1641ca44e84"><td class="memTemplParams" colspan="2"><a id="a7a18b0791430fdf8fc89c1641ca44e84"></a>
+template&lt;typename BraType , typename OpType , typename KetType &gt; </td></tr>
+<tr class="memitem:a7a18b0791430fdf8fc89c1641ca44e84"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>simde::type::braket</b> = chemist::braket::BraKet&lt; BraType, OpType, KetType &gt;</td></tr>
+<tr class="separator:a7a18b0791430fdf8fc89c1641ca44e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fc0faac435bbc78be5169a390e31cf2"><td class="memItemLeft" align="right" valign="top"><a id="a7fc0faac435bbc78be5169a390e31cf2"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="types_8hpp.html#a7fc0faac435bbc78be5169a390e31cf2">simde::type::aos</a> = chemist::wavefunction::AOs</td></tr>
+<tr class="memdesc:a7fc0faac435bbc78be5169a390e31cf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of the class used to represent an atomic orbital space. <br /></td></tr>
+<tr class="separator:a7fc0faac435bbc78be5169a390e31cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>These are typedefs of the fundamental types used in the property types. Property types are encouraged to use these typedefs to stay in sync with the remainder of the library. </p>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>simde: include/simde/derivative/derivative_pt.hpp Source File</title>
+<title>simde: include/simde/evaluate_braket/evaluate_braket.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,12 +62,12 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_2359eca8484e4a6c0c1bfd14c66d102c.html">simde</a></li><li class="navelem"><a class="el" href="dir_1348134401610f7c939605d11f07b3d4.html">derivative</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_2359eca8484e4a6c0c1bfd14c66d102c.html">simde</a></li><li class="navelem"><a class="el" href="dir_260699d57c22738613d49ae6131ecc21.html">evaluate_braket</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">derivative_pt.hpp</div>  </div>
+<div class="title">evaluate_braket.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -87,31 +87,37 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;pluginplay/pluginplay.hpp&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;simde/derivative/traits.hpp&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8hpp.html">simde/types.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;pluginplay/property_type/property_type.hpp&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>simde {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> PropertyType, <span class="keyword">typename</span> WithRespectTo, <span class="keyword">typename</span> ReturnType&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;DECLARE_TEMPLATED_PROPERTY_TYPE(Derivative, PropertyType, WithRespectTo,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                ReturnType);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> PropertyType, <span class="keyword">typename</span> WithRespectTo, <span class="keyword">typename</span> ReturnType&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;TEMPLATED_PROPERTY_TYPE_INPUTS(Derivative, PropertyType, WithRespectTo,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                               ReturnType) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">using</span> my_type = Derivative&lt;PropertyType, WithRespectTo, ReturnType&gt;;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">auto</span> desc     = <span class="stringliteral">&quot;Arg &quot;</span> + std::to_string(derivative_order_v&lt;my_type&gt;);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> PropertyType::inputs().template add_field&lt;WithRespectTo&gt;(desc);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> PropertyType, <span class="keyword">typename</span> WithRespectTo, <span class="keyword">typename</span> ReturnType&gt;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;TEMPLATED_PROPERTY_TYPE_RESULTS(Derivative, PropertyType, WithRespectTo,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                ReturnType) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> pluginplay::declare_result().template add_field&lt;ReturnType&gt;(</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="stringliteral">&quot;Derivative&quot;</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace simde</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> BraKetType&gt;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;DECLARE_TEMPLATED_PROPERTY_TYPE(EvaluateBraKet, BraKetType);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> BraKetType&gt;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;TEMPLATED_PROPERTY_TYPE_INPUTS(EvaluateBraKet, BraKetType) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">using</span> const_braket_t = <span class="keyword">const</span> BraKetType;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> pluginplay::declare_input().add_field&lt;const_braket_t&gt;(<span class="stringliteral">&quot;BraKet&quot;</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> BraKetType&gt;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> pluginplay::declare_result().add_field&lt;type::tensor&gt;(</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <span class="stringliteral">&quot;tensor representation&quot;</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">using</span> ElectronKineticMatrix =</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  EvaluateBraKet&lt;type::braket&lt;type::aos, type::t_e_type, type::aos&gt;&gt;;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">using</span> ElectronNucleiCoulombMatrix =</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  EvaluateBraKet&lt;type::braket&lt;type::aos, type::v_en_type, type::aos&gt;&gt;;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">using</span> ERI2 =</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  EvaluateBraKet&lt;type::braket&lt;type::aos, type::v_ee_type, type::aos&gt;&gt;;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">// namespace simde</span></div>
+<div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

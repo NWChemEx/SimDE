@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['todo_20list_18',['Todo List',['../todo.html',1,'']]],
-  ['types_2ehpp_19',['types.hpp',['../types_8hpp.html',1,'']]]
+  ['tensor_19',['tensor',['../types_8hpp.html#a3bcce5c90e112a4dafe6df96e45fbc27',1,'simde::type']]],
+  ['todo_20list_20',['Todo List',['../todo.html',1,'']]],
+  ['types_2ehpp_21',['types.hpp',['../types_8hpp.html',1,'']]]
 ];
