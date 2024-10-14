@@ -35,7 +35,13 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
       "tensor representation");
 }
 
-using EKinetic =
+using ElectronKineticMatrix =
   EvaluateBraKet<type::braket<type::aos, type::t_e_type, type::aos>>;
+
+using ElectronNucleiCoulombMatrix =
+  EvaluateBraKet<type::braket<type::aos, type::v_en_type, type::aos>>;
+
+using ERI2 =
+  EvaluateBraKet<type::braket<type::aos, type::v_ee_type, type::aos>>;
 
 } // namespace simde
