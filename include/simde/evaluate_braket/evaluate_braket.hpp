@@ -25,7 +25,7 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(EvaluateBraKet, BraKetType);
 
 template<typename BraKetType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(EvaluateBraKet, BraKetType) {
-    using const_braket_t = const BraKetType;
+    using const_braket_t = const BraKetType&;
     return pluginplay::declare_input().add_field<const_braket_t>("BraKet");
 }
 
@@ -35,13 +35,15 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
       "tensor representation");
 }
 
-using ElectronKineticMatrix =
-  EvaluateBraKet<type::braket<type::aos, type::t_e_type, type::aos>>;
+#define EBK(bra, op, ket) EvaluateBraKet<type::braket<bra, op, ket>>
 
-using ElectronNucleiCoulombMatrix =
-  EvaluateBraKet<type::braket<type::aos, type::v_en_type, type::aos>>;
+using ElectronKineticMatrix       = EBK(type::aos, type::t_e_type, type::aos);
+using ElectronNucleiCoulombMatrix = EBK(type::aos, type::v_en_type, type::aos);
 
-using ERI2 =
-  EvaluateBraKet<type::braket<type::aos, type::v_ee_type, type::aos>>;
+using ERI2 = EBK(type::aos, type::v_ee_type, type::aos);
+using ERI3 = EBK(type::aos, type::v_ee_type, type::aos_product);
+using ERI4 = EBK(type::aos_product, type::v_ee_type, type::aos_product);
+
+#undef EBK
 
 } // namespace simde
