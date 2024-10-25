@@ -77,7 +77,7 @@ using braket = chemist::braket::BraKet<BraType, OpType, KetType>;
 using aos = chemist::wavefunction::AOs;
 
 /// Typedef of the class used to represent a product of atomic orbital spaces
-using aos_product = chemist::dsl::Multiply<aos, aos>;
+using aos_squared = chemist::dsl::Multiply<aos, aos>;
 
 /// Import the operator types
 using namespace chemist::qm_operator::types;
