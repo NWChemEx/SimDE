@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">0.0.37</span>
+   &#160;<span id="projectnumber">0.0.38</span>
    </div>
   </td>
  </tr>
@@ -129,15 +129,18 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="types_8hpp.html#a7fc0faac435bbc78be5169a390e31cf2">   77</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a7fc0faac435bbc78be5169a390e31cf2">aos</a> = chemist::wavefunction::AOs;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">using namespace </span>chemist::qm_operator::types;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="types_8hpp.html#a84599638dcb49fb875ed7a6c171a7fac">   80</a></span>&#160;<span class="keyword">using</span> <a class="code" href="types_8hpp.html#a84599638dcb49fb875ed7a6c171a7fac">aos_squared</a> = chemist::dsl::Multiply&lt;aos, aos&gt;;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;} <span class="comment">// namespace simde::type</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">using namespace </span>chemist::qm_operator::types;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} <span class="comment">// namespace simde::type</span></div>
 <div class="ttc" id="atypes_8hpp_html_a16e3b3cf9542820a8400b42d76caf5c0"><div class="ttname"><a href="types_8hpp.html#a16e3b3cf9542820a8400b42d76caf5c0">simde::type::point</a></div><div class="ttdeci">chemist::Point&lt; double &gt; point</div><div class="ttdoc">Typedef of a cartesian point.</div><div class="ttdef"><b>Definition:</b> types.hpp:69</div></div>
 <div class="ttc" id="atypes_8hpp_html_a3bcce5c90e112a4dafe6df96e45fbc27"><div class="ttname"><a href="types_8hpp.html#a3bcce5c90e112a4dafe6df96e45fbc27">simde::type::tensor</a></div><div class="ttdeci">tensorwrapper::Tensor tensor</div><div class="ttdoc">Typedef of the class that represents a tensor.</div><div class="ttdef"><b>Definition:</b> types.hpp:32</div></div>
 <div class="ttc" id="atypes_8hpp_html_a444827d911af1008df53b663916ca50d"><div class="ttname"><a href="types_8hpp.html#a444827d911af1008df53b663916ca50d">simde::type::atomic_basis_set</a></div><div class="ttdeci">chemist::basis_set::AtomicBasisSetD atomic_basis_set</div><div class="ttdoc">Typedef of an Atomic Basis Set.</div><div class="ttdef"><b>Definition:</b> types.hpp:57</div></div>
 <div class="ttc" id="atypes_8hpp_html_a55500e80470680b74883f4c275af1025"><div class="ttname"><a href="types_8hpp.html#a55500e80470680b74883f4c275af1025">simde::type::chemical_system</a></div><div class="ttdeci">chemist::ChemicalSystem chemical_system</div><div class="ttdoc">Typedef of the class which describes an entire chemical system.</div><div class="ttdef"><b>Definition:</b> types.hpp:49</div></div>
 <div class="ttc" id="atypes_8hpp_html_a6c5c40bb7ad10f1df40dab4a01611438"><div class="ttname"><a href="types_8hpp.html#a6c5c40bb7ad10f1df40dab4a01611438">simde::type::shell</a></div><div class="ttdeci">chemist::basis_set::ShellD shell</div><div class="ttdoc">Typdef of a Shell.</div><div class="ttdef"><b>Definition:</b> types.hpp:60</div></div>
 <div class="ttc" id="atypes_8hpp_html_a7fc0faac435bbc78be5169a390e31cf2"><div class="ttname"><a href="types_8hpp.html#a7fc0faac435bbc78be5169a390e31cf2">simde::type::aos</a></div><div class="ttdeci">chemist::wavefunction::AOs aos</div><div class="ttdoc">Typedef of the class used to represent an atomic orbital space.</div><div class="ttdef"><b>Definition:</b> types.hpp:77</div></div>
+<div class="ttc" id="atypes_8hpp_html_a84599638dcb49fb875ed7a6c171a7fac"><div class="ttname"><a href="types_8hpp.html#a84599638dcb49fb875ed7a6c171a7fac">simde::type::aos_squared</a></div><div class="ttdeci">chemist::dsl::Multiply&lt; aos, aos &gt; aos_squared</div><div class="ttdoc">Typedef of the class used to represent a product of atomic orbital spaces.</div><div class="ttdef"><b>Definition:</b> types.hpp:80</div></div>
 <div class="ttc" id="atypes_8hpp_html_a9a38b93106424a406c2e496a4685a554"><div class="ttname"><a href="types_8hpp.html#a9a38b93106424a406c2e496a4685a554">simde::type::ao_basis_set</a></div><div class="ttdeci">chemist::basis_set::AOBasisSetD ao_basis_set</div><div class="ttdoc">Typedef of the AO Basis Set.</div><div class="ttdef"><b>Definition:</b> types.hpp:54</div></div>
 <div class="ttc" id="atypes_8hpp_html_aa3cb88d6d302b1fa5f3f420d96818c84"><div class="ttname"><a href="types_8hpp.html#aa3cb88d6d302b1fa5f3f420d96818c84">simde::type::contracted_gaussian</a></div><div class="ttdeci">chemist::basis_set::ContractedGaussianD contracted_gaussian</div><div class="ttdoc">Typedef of a Contracted Gaussian.</div><div class="ttdef"><b>Definition:</b> types.hpp:63</div></div>
 <div class="ttc" id="atypes_8hpp_html_aaea980cebe478e0902c8dbcf480a8363"><div class="ttname"><a href="types_8hpp.html#aaea980cebe478e0902c8dbcf480a8363">simde::type::molecule</a></div><div class="ttdeci">chemist::Molecule molecule</div><div class="ttdoc">Typedef of the class used to describe a molecule.</div><div class="ttdef"><b>Definition:</b> types.hpp:37</div></div>
