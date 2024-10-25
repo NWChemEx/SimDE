@@ -37,12 +37,11 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
 
 #define EBK(bra, op, ket) EvaluateBraKet<type::braket<bra, op, ket>>
 
-using ElectronKineticMatrix       = EBK(type::aos, type::t_e_type, type::aos);
-using ElectronNucleiCoulombMatrix = EBK(type::aos, type::v_en_type, type::aos);
-
-using ERI2 = EBK(type::aos, type::v_ee_type, type::aos);
-using ERI3 = EBK(type::aos, type::v_ee_type, type::aos_product);
-using ERI4 = EBK(type::aos_product, type::v_ee_type, type::aos_product);
+using aos_t_e_aos  = EBK(type::aos, type::t_e_type, type::aos);
+using aos_v_en_aos = EBK(type::aos, type::v_en_type, type::aos);
+using ERI2         = EBK(type::aos, type::v_ee_type, type::aos);
+using ERI3         = EBK(type::aos, type::v_ee_type, type::aos_squared);
+using ERI4         = EBK(type::aos_squared, type::v_ee_type, type::aos_squared);
 
 #undef EBK
 
