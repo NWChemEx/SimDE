@@ -82,4 +82,7 @@ using aos_squared = chemist::dsl::Multiply<aos, aos>;
 /// Import the operator types
 using namespace chemist::qm_operator::types;
 
+/// Pull in the Hamiltonian operator in case-consistent manner
+using hamiltonian = chemist::qm_operator::Hamiltonian;
+
 } // namespace simde::type

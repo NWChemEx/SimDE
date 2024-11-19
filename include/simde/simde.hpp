@@ -20,3 +20,4 @@
 #include <simde/energy/energy.hpp>
 #include <simde/evaluate_braket/evaluate_braket.hpp>
 #include <simde/types.hpp>
+#include <simde/wavefunction/wavefunction.hpp>
