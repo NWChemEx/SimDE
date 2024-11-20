@@ -15,8 +15,8 @@
  */
 
 #pragma once
-#include "simde/types.hpp"
 #include <pluginplay/property_type/property_type.hpp>
+#include <simde/types.hpp>
 
 namespace simde {
 
@@ -31,7 +31,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(EvaluateBraKet, BraKetType) {
 
 template<typename BraKetType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
-    return pluginplay::declare_result().add_field<type::tensor>(
+    using result_type = typename BraKetType::result_type;
+    return pluginplay::declare_result().add_field<result_type>(
       "tensor representation");
 }
 
@@ -43,6 +44,9 @@ using ERI2         = EBK(type::aos, type::v_ee_type, type::aos);
 using ERI3         = EBK(type::aos, type::v_ee_type, type::aos_squared);
 using ERI4         = EBK(type::aos_squared, type::v_ee_type, type::aos_squared);
 
+template<typename OrbitalType>
+using ESCF = EBK(type::determinant<OrbitalType>, type::hamiltonian,
+                 type::determinant<OrbitalType>);
 #undef EBK
 
 } // namespace simde

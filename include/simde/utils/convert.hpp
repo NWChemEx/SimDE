@@ -24,12 +24,13 @@ DECLARE_TEMPLATED_PROPERTY_TYPE(Convert, ToType, FromType);
 
 template<typename ToType, typename FromType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(Convert, ToType, FromType) {
-    return PropertyType::inputs().template add_field<FromType>(
+    using from_type = const FromType&;
+    return pluginplay::declare_input().template add_field<from_type>(
       "Object to convert from");
 }
 
 template<typename ToType, typename FromType>
-TEMPLATED_PROPERTY_TYPE_Results(Convert, ToType, FromType) {
+TEMPLATED_PROPERTY_TYPE_RESULTS(Convert, ToType, FromType) {
     return pluginplay::declare_result().template add_field<ToType>(
       "Converted object");
 }

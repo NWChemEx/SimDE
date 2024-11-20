@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2024 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,14 @@
  * limitations under the License.
  */
 
-#pragma once
-#include <simde/basis_set/basis_set.hpp>
-#include <simde/chemical_system/chemical_system.hpp>
-#include <simde/energy/energy.hpp>
-#include <simde/evaluate_braket/evaluate_braket.hpp>
-#include <simde/quantum_mechanics/quantum_mechanics.hpp>
-#include <simde/types.hpp>
+#include "../test_property_type.hpp"
+#include <simde/quantum_mechanics/initial_guess.hpp>
+
+using namespace simde;
+
+using types2test = std::tuple<type::rscf_wf>;
+
+TEMPLATE_LIST_TEST_CASE("InitialGuess", "", types2test) {
+    using pt = InitialGuess<TestType>;
+    test_property_type<pt>({"Hamiltonian", "AOs"}, {"Initial Wavefunction"});
+}

@@ -27,7 +27,7 @@ template<typename ResultType>
 TEMPLATED_PROPERTY_TYPE_INPUTS(InitialGuess, ResultType) {
     using hamiltonian_type = const type::hamiltonian&;
     using aos_type         = const type::aos&;
-    return PropertyType::inputs()
+    return pluginplay::declare_input()
       .template add_field<hamiltonian_type>("Hamiltonian")
       .template add_field<aos_type>("AOs");
 }

@@ -15,4 +15,6 @@
  */
 
 #pragma once
-#include <simde/wavefunction/initial_guess.hpp>
+#include <simde/quantum_mechanics/fock_operator.hpp>
+#include <simde/quantum_mechanics/initial_guess.hpp>
+#include <simde/quantum_mechanics/update_guess.hpp>

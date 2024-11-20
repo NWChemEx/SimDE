@@ -36,6 +36,9 @@ using tensor = tensorwrapper::Tensor;
 /// Typedef of the class used to describe a molecule
 using molecule = chemist::Molecule;
 
+/// Typedef of the class used to describe an electron
+using electron = chemist::Electron;
+
 /// Typedef of the class which models a nucleus
 using atom = typename molecule::atom_type;
 
@@ -47,6 +50,12 @@ using atomic_number = typename atom::atomic_number_type;
 
 /// Typedef of the class which describes an entire chemical system
 using chemical_system = chemist::ChemicalSystem;
+
+/// Typedef of the electron density
+using e_density = chemist::Density<electron>;
+
+/// Typedef of a decomposable electron density
+using decomposable_e_density = chemist::DecomposableDensity<electron>;
 
 // ------------------------------ Basis Sets -----------------------------------
 
@@ -79,10 +88,24 @@ using aos = chemist::wavefunction::AOs;
 /// Typedef of the class used to represent a product of atomic orbital spaces
 using aos_squared = chemist::dsl::Multiply<aos, aos>;
 
+/// Typedef of the class used to represent the space spanned by the canonical
+/// molecular orbitals
+using cmos = chemist::wavefunction::CMOs;
+
+/// Typedef of the class for a many-fermion wavefunction
+template<typename OrbitalType>
+using determinant = chemist::wavefunction::Determinant<OrbitalType>;
+
+/// Typedef of the class for the (restricted) canonical SCF wavefunction
+using rscf_wf = determinant<cmos>;
+
 /// Import the operator types
 using namespace chemist::qm_operator::types;
 
 /// Pull in the Hamiltonian operator in case-consistent manner
 using hamiltonian = chemist::qm_operator::Hamiltonian;
+
+/// Pull in the Fock operator in case-consistent manner
+using fock = chemist::qm_operator::Fock;
 
 } // namespace simde::type

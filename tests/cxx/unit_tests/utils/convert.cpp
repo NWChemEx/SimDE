@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2024 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,19 @@
  * limitations under the License.
  */
 
-#pragma once
-#include <simde/basis_set/basis_set.hpp>
-#include <simde/chemical_system/chemical_system.hpp>
-#include <simde/energy/energy.hpp>
-#include <simde/evaluate_braket/evaluate_braket.hpp>
-#include <simde/quantum_mechanics/quantum_mechanics.hpp>
+#include "../test_property_type.hpp"
 #include <simde/types.hpp>
+#include <simde/utils/convert.hpp>
+
+using namespace simde;
+
+using to_from_pairs =
+  std::tuple<std::pair<type::hamiltonian, type::chemical_system>>;
+
+TEMPLATE_LIST_TEST_CASE("Convert", "", to_from_pairs) {
+    using to_type   = std::tuple_element_t<0, TestType>;
+    using from_type = std::tuple_element_t<1, TestType>;
+    using pt        = Convert<to_type, from_type>;
+
+    test_property_type<pt>({"Object to convert from"}, {"Converted object"});
+}
