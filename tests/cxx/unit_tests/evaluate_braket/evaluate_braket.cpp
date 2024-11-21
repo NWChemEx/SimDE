@@ -23,7 +23,8 @@ using namespace simde;
 // compile
 
 using types2test =
-  std::tuple<aos_t_e_aos, aos_v_en_aos, ERI2, ERI3, ERI4, ESCF<type::cmos>>;
+  std::tuple<aos_t_e_aos, aos_v_en_aos, aos_rho_e_aos<type::cmos>, ERI2, ERI3,
+             ERI4, ESCF<type::cmos>>;
 
 TEMPLATE_LIST_TEST_CASE("EvaluateBraKet", "", types2test) {
     using pt = TestType;

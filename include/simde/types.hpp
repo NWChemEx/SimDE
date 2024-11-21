@@ -102,6 +102,10 @@ using rscf_wf = determinant<cmos>;
 /// Import the operator types
 using namespace chemist::qm_operator::types;
 
+/// The one-electron density operator expressed in the CMO basis set
+template<typename OrbitalType>
+using rho_e = chemist::qm_operator::Density<OrbitalType, electron>;
+
 /// Pull in the Hamiltonian operator in case-consistent manner
 using hamiltonian = chemist::qm_operator::Hamiltonian;
 

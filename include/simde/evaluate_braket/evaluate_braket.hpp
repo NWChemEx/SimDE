@@ -40,9 +40,13 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
 
 using aos_t_e_aos  = EBK(type::aos, type::t_e_type, type::aos);
 using aos_v_en_aos = EBK(type::aos, type::v_en_type, type::aos);
-using ERI2         = EBK(type::aos, type::v_ee_type, type::aos);
-using ERI3         = EBK(type::aos, type::v_ee_type, type::aos_squared);
-using ERI4         = EBK(type::aos_squared, type::v_ee_type, type::aos_squared);
+
+template<typename OrbitalType>
+using aos_rho_e_aos = EBK(type::aos, type::rho_e<OrbitalType>, type::aos);
+
+using ERI2 = EBK(type::aos, type::v_ee_type, type::aos);
+using ERI3 = EBK(type::aos, type::v_ee_type, type::aos_squared);
+using ERI4 = EBK(type::aos_squared, type::v_ee_type, type::aos_squared);
 
 template<typename OrbitalType>
 using ESCF = EBK(type::determinant<OrbitalType>, type::hamiltonian,
