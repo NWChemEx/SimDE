@@ -41,6 +41,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
 using aos_t_e_aos  = EBK(type::aos, type::t_e_type, type::aos);
 using aos_v_en_aos = EBK(type::aos, type::v_en_type, type::aos);
 
+// One electron density templated on the representation of the density operator
 template<typename OrbitalType>
 using aos_rho_e_aos = EBK(type::aos, type::rho_e<OrbitalType>, type::aos);
 

@@ -19,5 +19,6 @@
 #include <simde/chemical_system/chemical_system.hpp>
 #include <simde/energy/energy.hpp>
 #include <simde/evaluate_braket/evaluate_braket.hpp>
+#include <simde/optimize/optimize.hpp>
 #include <simde/quantum_mechanics/quantum_mechanics.hpp>
 #include <simde/types.hpp>
