@@ -33,23 +33,32 @@ using tensor = tensorwrapper::Tensor;
 
 // --------------------- Fundamental Types -------------------------------------
 
-/// Typedef of the class used to describe a molecule
-using molecule = chemist::Molecule;
-
 /// Typedef of the class used to describe an electron
 using electron = chemist::Electron;
 
-/// Typedef of the class which models a nucleus
-using atom = typename molecule::atom_type;
+/// Typedef of the class used to describe a set of electrons
+using many_electrons = chemist::ManyElectrons;
+
+/// Typedef of the class used to describe a nucleus
+using nucleus = chemist::Nucleus;
+
+/// Typedef of the class describing a set of nucleus objects
+using nuclei = chemist::Nuclei;
+
+/// Typedef of the class which models an atom (nucleus + electrons)
+using atom = chemist::Atom;
+
+/// Typedef of the class used to describe a set of atom objects
+using molecule = chemist::Molecule;
+
+/// Typedef of the class which describes an entire chemical system
+using chemical_system = chemist::ChemicalSystem;
 
 /// Typedef of the class which models an atomic symbol
 using atomic_symbol = typename atom::name_type;
 
 /// Typedef of the class which models an atomic number
 using atomic_number = typename atom::atomic_number_type;
-
-/// Typedef of the class which describes an entire chemical system
-using chemical_system = chemist::ChemicalSystem;
 
 /// Typedef of the electron density
 using e_density = chemist::Density<electron>;
