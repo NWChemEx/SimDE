@@ -15,18 +15,13 @@
  */
 
 #include "../test_property_type.hpp"
-#include <simde/evaluate_braket/evaluate_braket.hpp>
+#include <simde/quantum_mechanics/update_guess.hpp>
 
 using namespace simde;
 
-// N.b. BraKetType matters if we want to ensure all instantiations we care about
-// compile
+using types2test = std::tuple<type::rscf_wf>;
 
-using types2test =
-  std::tuple<aos_t_e_aos, aos_v_en_aos, aos_rho_e_aos<type::cmos>, ERI2, ERI3,
-             ERI4, ESCF<type::cmos>>;
-
-TEMPLATE_LIST_TEST_CASE("EvaluateBraKet", "", types2test) {
-    using pt = TestType;
-    test_property_type<pt>({"BraKet"}, {"tensor representation"});
+TEMPLATE_LIST_TEST_CASE("UpdateGuess", "", types2test) {
+    using pt = UpdateGuess<TestType>;
+    test_property_type<pt>({"New Fock Operator", "Old guess"}, {"New guess"});
 }

@@ -14,19 +14,7 @@
  * limitations under the License.
  */
 
-#include "../test_property_type.hpp"
-#include <simde/evaluate_braket/evaluate_braket.hpp>
-
-using namespace simde;
-
-// N.b. BraKetType matters if we want to ensure all instantiations we care about
-// compile
-
-using types2test =
-  std::tuple<aos_t_e_aos, aos_v_en_aos, aos_rho_e_aos<type::cmos>, ERI2, ERI3,
-             ERI4, ESCF<type::cmos>>;
-
-TEMPLATE_LIST_TEST_CASE("EvaluateBraKet", "", types2test) {
-    using pt = TestType;
-    test_property_type<pt>({"BraKet"}, {"tensor representation"});
-}
+#pragma once
+#include <simde/quantum_mechanics/fock_operator.hpp>
+#include <simde/quantum_mechanics/initial_guess.hpp>
+#include <simde/quantum_mechanics/update_guess.hpp>

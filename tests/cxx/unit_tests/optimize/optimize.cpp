@@ -15,18 +15,16 @@
  */
 
 #include "../test_property_type.hpp"
-#include <simde/evaluate_braket/evaluate_braket.hpp>
+#include <simde/simde.hpp>
 
 using namespace simde;
 
-// N.b. BraKetType matters if we want to ensure all instantiations we care about
-// compile
-
-using types2test =
-  std::tuple<aos_t_e_aos, aos_v_en_aos, aos_rho_e_aos<type::cmos>, ERI2, ERI3,
-             ERI4, ESCF<type::cmos>>;
-
-TEMPLATE_LIST_TEST_CASE("EvaluateBraKet", "", types2test) {
-    using pt = TestType;
-    test_property_type<pt>({"BraKet"}, {"tensor representation"});
+TEST_CASE("Optimize<ESCF, rscf_wf>") {
+    using pt2opt  = ESCF<type::cmos>;
+    using wrt     = type::rscf_wf;
+    using pt      = Optimize<pt2opt, wrt>;
+    auto inp_desc = "Object to optimize the objective function with respect to";
+    auto out_desc = "Object that optimizes the objective function";
+    test_property_type<pt>({"BraKet", inp_desc},
+                           {"tensor representation", out_desc});
 }

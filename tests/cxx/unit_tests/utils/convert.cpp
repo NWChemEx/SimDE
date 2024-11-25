@@ -15,18 +15,18 @@
  */
 
 #include "../test_property_type.hpp"
-#include <simde/evaluate_braket/evaluate_braket.hpp>
+#include <simde/types.hpp>
+#include <simde/utils/convert.hpp>
 
 using namespace simde;
 
-// N.b. BraKetType matters if we want to ensure all instantiations we care about
-// compile
+using to_from_pairs =
+  std::tuple<std::pair<type::hamiltonian, type::chemical_system>>;
 
-using types2test =
-  std::tuple<aos_t_e_aos, aos_v_en_aos, aos_rho_e_aos<type::cmos>, ERI2, ERI3,
-             ERI4, ESCF<type::cmos>>;
+TEMPLATE_LIST_TEST_CASE("Convert", "", to_from_pairs) {
+    using to_type   = std::tuple_element_t<0, TestType>;
+    using from_type = std::tuple_element_t<1, TestType>;
+    using pt        = Convert<to_type, from_type>;
 
-TEMPLATE_LIST_TEST_CASE("EvaluateBraKet", "", types2test) {
-    using pt = TestType;
-    test_property_type<pt>({"BraKet"}, {"tensor representation"});
+    test_property_type<pt>({"Object to convert from"}, {"Converted object"});
 }
