@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['point_43',['point',['../types_8hpp.html#a16e3b3cf9542820a8400b42d76caf5c0',1,'simde::type']]],
-  ['primitive_44',['primitive',['../types_8hpp.html#adfd2a407c8780610f1bfbd155c70ceaf',1,'simde::type']]]
+  ['e_5fdensity_54',['e_density',['../types_8hpp.html#af24a27427a686065a3f07c8df941654d',1,'simde::type']]],
+  ['electron_55',['electron',['../types_8hpp.html#a3d683e69658fb99abc821969495cf7e9',1,'simde::type']]]
 ];

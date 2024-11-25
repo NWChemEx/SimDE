@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tensor_46',['tensor',['../types_8hpp.html#a3bcce5c90e112a4dafe6df96e45fbc27',1,'simde::type']]]
+  ['hamiltonian_57',['hamiltonian',['../types_8hpp.html#aeb2b7a58b843b33ac6a7e21e9976b5ec',1,'simde::type']]]
 ];
