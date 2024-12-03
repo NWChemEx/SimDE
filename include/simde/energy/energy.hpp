@@ -22,4 +22,5 @@
 #pragma once
 
 #include <simde/energy/ao_energy.hpp>
+#include <simde/energy/electrostatic_energy.hpp>
 #include <simde/energy/total_energy.hpp>
