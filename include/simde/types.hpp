@@ -97,6 +97,9 @@ using aos = chemist::wavefunction::AOs;
 /// Typedef of the class used to represent a product of atomic orbital spaces
 using aos_squared = chemist::dsl::Multiply<aos, aos>;
 
+/// Typedef of the class used to represent transformed AOs
+using mos = chemist::wavefunction::MOs;
+
 /// Typedef of the class used to represent the space spanned by the canonical
 /// molecular orbitals
 using cmos = chemist::wavefunction::CMOs;
