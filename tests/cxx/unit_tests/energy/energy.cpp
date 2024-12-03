@@ -15,10 +15,19 @@
  */
 
 #include "../test_property_type.hpp"
-#include <simde/energy/total_energy.hpp>
+#include <simde/energy/energy.hpp>
 
 using namespace simde;
 
 TEST_CASE("TotalEnergy") {
     test_property_type<TotalEnergy>({"Chemical System"}, {"Energy"});
+}
+
+TEST_CASE("AOEnergy") {
+    test_property_type<AOEnergy>({"AOs", "Chemical System"}, {"Energy"});
+}
+
+TEST_CASE("ElectrostaticEnergy<charges, charges>") {
+    test_property_type<charge_charge_interaction>({"Objects", "Potential"},
+                                                  {"Energy"});
 }

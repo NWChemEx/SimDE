@@ -33,6 +33,9 @@ using tensor = tensorwrapper::Tensor;
 
 // --------------------- Fundamental Types -------------------------------------
 
+/// Typedef of the class used to hold a set of point charges
+using charges = chemist::Charges<double>;
+
 /// Typedef of the class used to describe an electron
 using electron = chemist::Electron;
 
