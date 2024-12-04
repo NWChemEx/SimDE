@@ -18,6 +18,7 @@
 #include <chemist/chemist.hpp>
 #include <map>
 #include <tensorwrapper/tensorwrapper.hpp>
+#include <utilities/dsl/dsl.hpp>
 #include <utility>
 
 /** @file types.hpp
@@ -98,7 +99,7 @@ using braket = chemist::braket::BraKet<BraType, OpType, KetType>;
 using aos = chemist::wavefunction::AOs;
 
 /// Typedef of the class used to represent a product of atomic orbital spaces
-using aos_squared = chemist::dsl::Multiply<aos, aos>;
+using aos_squared = utilities::dsl::Multiply<aos, aos>;
 
 /// Typedef of the class used to represent transformed AOs
 using mos = chemist::wavefunction::MOs;
