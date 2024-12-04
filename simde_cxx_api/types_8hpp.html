@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">0.0.42</span>
+   &#160;<span id="projectnumber">0.0.43</span>
    </div>
   </td>
  </tr>
@@ -75,17 +75,19 @@ $(function() {
 <div class="textblock"><code>#include &lt;chemist/chemist.hpp&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;tensorwrapper/tensorwrapper.hpp&gt;</code><br />
+<code>#include &lt;utilities/dsl/dsl.hpp&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for types.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="types_8hpp__incl.png" border="0" usemap="#ainclude_2simde_2types_8hpp" alt=""/></div>
 <map name="ainclude_2simde_2types_8hpp" id="ainclude_2simde_2types_8hpp">
-<area shape="rect" title=" " alt="" coords="209,5,390,32"/>
+<area shape="rect" title=" " alt="" coords="294,5,475,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,164,107"/>
 <area shape="rect" title=" " alt="" coords="189,80,239,107"/>
 <area shape="rect" title=" " alt="" coords="264,80,505,107"/>
-<area shape="rect" title=" " alt="" coords="529,80,589,107"/>
+<area shape="rect" title=" " alt="" coords="529,80,675,107"/>
+<area shape="rect" title=" " alt="" coords="699,80,759,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -213,10 +215,10 @@ template&lt;typename BraType , typename OpType , typename KetType &gt; </td></tr
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="types_8hpp.html#a7fc0faac435bbc78be5169a390e31cf2">simde::type::aos</a> = chemist::wavefunction::AOs</td></tr>
 <tr class="memdesc:a7fc0faac435bbc78be5169a390e31cf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of the class used to represent an atomic orbital space. <br /></td></tr>
 <tr class="separator:a7fc0faac435bbc78be5169a390e31cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84599638dcb49fb875ed7a6c171a7fac"><td class="memItemLeft" align="right" valign="top"><a id="a84599638dcb49fb875ed7a6c171a7fac"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="types_8hpp.html#a84599638dcb49fb875ed7a6c171a7fac">simde::type::aos_squared</a> = chemist::dsl::Multiply&lt; aos, aos &gt;</td></tr>
-<tr class="memdesc:a84599638dcb49fb875ed7a6c171a7fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of the class used to represent a product of atomic orbital spaces. <br /></td></tr>
-<tr class="separator:a84599638dcb49fb875ed7a6c171a7fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2825931df0758641de27c6d84c1afc9d"><td class="memItemLeft" align="right" valign="top"><a id="a2825931df0758641de27c6d84c1afc9d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="types_8hpp.html#a2825931df0758641de27c6d84c1afc9d">simde::type::aos_squared</a> = utilities::dsl::Multiply&lt; aos, aos &gt;</td></tr>
+<tr class="memdesc:a2825931df0758641de27c6d84c1afc9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of the class used to represent a product of atomic orbital spaces. <br /></td></tr>
+<tr class="separator:a2825931df0758641de27c6d84c1afc9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ce4d5acaebdec9e44410d093ef88fc1"><td class="memItemLeft" align="right" valign="top"><a id="a9ce4d5acaebdec9e44410d093ef88fc1"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="types_8hpp.html#a9ce4d5acaebdec9e44410d093ef88fc1">simde::type::mos</a> = chemist::wavefunction::MOs</td></tr>
 <tr class="memdesc:a9ce4d5acaebdec9e44410d093ef88fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef of the class used to represent transformed AOs. <br /></td></tr>
