@@ -20,6 +20,7 @@
 #include "energy/export_energy.hpp"
 #include "evaluate_braket/export_evaluate_braket.hpp"
 #include "export_simde.hpp"
+#include "numerical_methods/export_numerical_methods.hpp"
 #include "optimize/export_optimize.hpp"
 #include "quantum_mechanics/export_quantum_mechanics.hpp"
 #include "utils/export_utils.hpp"
@@ -34,6 +35,7 @@ PYBIND11_MODULE(simde, m) {
     export_energy(m);
     export_evaluate_braket(m);
     export_derivative(m);
+    export_numerical_methods(m);
     export_optimize(m);
     export_utils(m);
     export_quantum_mechanics(m);
