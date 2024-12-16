@@ -38,7 +38,7 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
 
 #define EBK(bra, op, ket) EvaluateBraKet<type::braket<bra, op, ket>>
 
-using aos_s_e_aos  = EBK(type::aos, chemist::qm_operator::Identity, type::aos);
+using aos_s_e_aos  = EBK(type::aos, type::s_e_type, type::aos);
 using aos_t_e_aos  = EBK(type::aos, type::t_e_type, type::aos);
 using aos_v_en_aos = EBK(type::aos, type::v_en_type, type::aos);
 using aos_f_e_aos  = EBK(type::aos, type::fock, type::aos);
