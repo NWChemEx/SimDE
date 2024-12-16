@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 NWChemEx-Project
+ * Copyright 2024 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-#pragma once
-#include <simde/basis_set/basis_set.hpp>
-#include <simde/chemical_system/chemical_system.hpp>
-#include <simde/energy/energy.hpp>
-#include <simde/evaluate_braket/evaluate_braket.hpp>
+#include "../test_property_type.hpp"
 #include <simde/numerical_methods/numerical_methods.hpp>
-#include <simde/optimize/optimize.hpp>
-#include <simde/quantum_mechanics/quantum_mechanics.hpp>
-#include <simde/types.hpp>
-#include <simde/utils/convert.hpp>
+
+using namespace simde;
+
+TEST_CASE("GeneralizedEigenSolve") {
+    test_property_type<GeneralizedEigenSolve>(
+      {"Matrix", "Metric"}, {"Eigen values", "Eigen vectors"});
+}
