@@ -125,6 +125,9 @@ using rho_e = chemist::qm_operator::Density<OrbitalType, electron>;
 /// Pull in the Hamiltonian operator in case-consistent manner
 using hamiltonian = chemist::qm_operator::Hamiltonian;
 
+/// Pull in the CoreHamiltonian operator in case-consistent manner
+using core_hamiltonian = chemist::qm_operator::CoreHamiltonian;
+
 /// Pull in the Fock operator in case-consistent manner
 using fock = chemist::qm_operator::Fock;
 
