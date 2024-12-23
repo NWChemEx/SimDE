@@ -36,7 +36,10 @@ TEMPLATED_PROPERTY_TYPE_RESULTS(EvaluateBraKet, BraKetType) {
       "tensor representation");
 }
 
-#define EBK(bra, op, ket) EvaluateBraKet<type::braket<bra, op, ket>>
+template<typename BraType, typename OpType, typename KetType>
+using eval_braket = EvaluateBraKet<type::braket<BraType, OpType, KetType>>;
+
+#define EBK(bra, op, ket) eval_braket<bra, op, ket>
 
 using aos_op_base_aos = EBK(type::aos, type::op_base_type, type::aos);
 using aos_s_e_aos     = EBK(type::aos, type::s_e_type, type::aos);

@@ -128,6 +128,9 @@ using hamiltonian = chemist::qm_operator::Hamiltonian;
 /// Pull in the CoreHamiltonian operator in case-consistent manner
 using core_hamiltonian = chemist::qm_operator::CoreHamiltonian;
 
+/// Pull in the ElectronicHamiltonian operator in case-consistent manner
+using electronic_hamiltonian = chemist::qm_operator::ElectronicHamiltonian;
+
 /// Pull in the Fock operator in case-consistent manner
 using fock = chemist::qm_operator::Fock;
 
