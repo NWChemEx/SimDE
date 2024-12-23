@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">0.0.46</span>
+   &#160;<span id="projectnumber">0.0.47</span>
    </div>
   </td>
  </tr>
@@ -108,31 +108,34 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <span class="stringliteral">&quot;tensor representation&quot;</span>);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define EBK(bra, op, ket) EvaluateBraKet&lt;type::braket&lt;bra, op, ket&gt;&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">using</span> aos_op_base_aos = EBK(type::aos, type::op_base_type, type::aos);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">using</span> aos_s_e_aos     = EBK(type::aos, type::s_e_type, type::aos);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">using</span> aos_t_e_aos     = EBK(type::aos, type::t_e_type, type::aos);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">using</span> aos_v_en_aos    = EBK(type::aos, type::v_en_type, type::aos);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">using</span> aos_h_e_aos     = EBK(type::aos, type::core_hamiltonian, type::aos);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">using</span> aos_f_e_aos     = EBK(type::aos, type::fock, type::aos);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">using</span> aos_j_e_aos     = EBK(type::aos, type::j_e_type, type::aos);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">using</span> aos_k_e_aos     = EBK(type::aos, type::k_e_type, type::aos);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">// One electron density templated on the representation of the density operator</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> OrbitalType&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">using</span> aos_rho_e_aos = EBK(type::aos, type::rho_e&lt;OrbitalType&gt;, type::aos);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">using</span> ERI2 = EBK(type::aos, type::v_ee_type, type::aos);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">using</span> ERI3 = EBK(type::aos, type::v_ee_type, type::aos_squared);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">using</span> ERI4 = EBK(type::aos_squared, type::v_ee_type, type::aos_squared);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> OrbitalType&gt;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">using</span> ESCF = EBK(type::determinant&lt;OrbitalType&gt;, type::hamiltonian,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                 type::determinant&lt;OrbitalType&gt;);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#undef EBK</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace simde</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> BraType, <span class="keyword">typename</span> OpType, <span class="keyword">typename</span> KetType&gt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using</span> eval_braket = EvaluateBraKet&lt;type::braket&lt;BraType, OpType, KetType&gt;&gt;;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define EBK(bra, op, ket) eval_braket&lt;bra, op, ket&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">using</span> aos_op_base_aos = EBK(type::aos, type::op_base_type, type::aos);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">using</span> aos_s_e_aos     = EBK(type::aos, type::s_e_type, type::aos);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">using</span> aos_t_e_aos     = EBK(type::aos, type::t_e_type, type::aos);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">using</span> aos_v_en_aos    = EBK(type::aos, type::v_en_type, type::aos);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">using</span> aos_h_e_aos     = EBK(type::aos, type::core_hamiltonian, type::aos);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">using</span> aos_f_e_aos     = EBK(type::aos, type::fock, type::aos);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">using</span> aos_j_e_aos     = EBK(type::aos, type::j_e_type, type::aos);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">using</span> aos_k_e_aos     = EBK(type::aos, type::k_e_type, type::aos);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// One electron density templated on the representation of the density operator</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> OrbitalType&gt;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">using</span> aos_rho_e_aos = EBK(type::aos, type::rho_e&lt;OrbitalType&gt;, type::aos);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">using</span> ERI2 = EBK(type::aos, type::v_ee_type, type::aos);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">using</span> ERI3 = EBK(type::aos, type::v_ee_type, type::aos_squared);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">using</span> ERI4 = EBK(type::aos_squared, type::v_ee_type, type::aos_squared);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> OrbitalType&gt;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">using</span> ESCF = EBK(type::determinant&lt;OrbitalType&gt;, type::hamiltonian,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                 type::determinant&lt;OrbitalType&gt;);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#undef EBK</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">// namespace simde</span></div>
 <div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
