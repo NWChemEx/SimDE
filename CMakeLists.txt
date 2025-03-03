@@ -38,6 +38,7 @@ nwx_cxx_api_docs("${SIMDE_SOURCE_DIR}" "${SIMDE_INCLUDE_DIR}")
 cmaize_option_list(
     BUILD_TESTING OFF "Should we build the tests?"
     BUILD_PYBIND11_PYBINDINGS ON "Build pybind11 python3 bindings?"
+    ENABLE_SIGMA OFF "Should we enable Sigma for uncertainty tracking?"
 )
 
 include(get_chemist)
