@@ -39,7 +39,8 @@ TEMPLATED_PROPERTY_TYPE_INPUTS(ElectrostaticEnergy, ObjectType, PotentialType) {
 template<typename ObjectType, typename PotentialType>
 TEMPLATED_PROPERTY_TYPE_RESULTS(ElectrostaticEnergy, ObjectType,
                                 PotentialType) {
-    auto rv = pluginplay::declare_result().add_field<double>("Energy");
+    auto rv =
+      pluginplay::declare_result().add_field<simde::type::tensor>("Energy");
     return rv;
 }
 
