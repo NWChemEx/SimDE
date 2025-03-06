@@ -40,7 +40,8 @@ PROPERTY_TYPE_INPUTS(TotalEnergy) {
 }
 
 PROPERTY_TYPE_RESULTS(TotalEnergy) {
-    auto rv = pluginplay::declare_result().add_field<double>("Energy");
+    auto rv =
+      pluginplay::declare_result().add_field<simde::type::tensor>("Energy");
     rv["Energy"].set_description("The computed energy");
     return rv;
 }
