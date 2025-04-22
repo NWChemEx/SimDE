@@ -39,4 +39,4 @@ using TotalEnergyNuclearOptimization = NuclearOptimization<TotalEnergy>;
  */
 using AOEnergyNuclearOptimization = NuclearOptimization<AOEnergy>;
 
-}
+} // namespace simde
