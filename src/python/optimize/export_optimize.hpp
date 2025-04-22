@@ -26,5 +26,7 @@ inline void export_optimize(python_module_reference m) {
       Optimize<ESCF<type::cmos>, type::rscf_wf>;
 
     EXPORT_PROPERTY_TYPE(OptimizeRSCFEnergyWRTRSCFWavefunction, m);
+    EXPORT_PROPERTY_TYPE(TotalEnergyNuclearOptimization, m);
+    EXPORT_PROPERTY_TYPE(AOEnergyNuclearOptimization, m);
 }
 } // namespace simde
