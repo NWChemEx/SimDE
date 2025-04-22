@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">simde
-   &#160;<span id="projectnumber">0.0.51</span>
+   &#160;<span id="projectnumber">0.0.52</span>
    </div>
   </td>
  </tr>
@@ -87,27 +87,8 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;pluginplay/pluginplay.hpp&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>simde {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> PropertyType, <span class="keyword">typename</span> WithRespectTo&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;DECLARE_TEMPLATED_PROPERTY_TYPE(Optimize, PropertyType, WithRespectTo);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> PropertyType, <span class="keyword">typename</span> WithRespectTo&gt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;TEMPLATED_PROPERTY_TYPE_INPUTS(Optimize, PropertyType, WithRespectTo) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">using</span> input_type = <span class="keyword">const</span> WithRespectTo&amp;;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">auto</span> desc = <span class="stringliteral">&quot;Object to optimize the objective function with respect to&quot;</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> PropertyType::inputs().template add_field&lt;input_type&gt;((desc));</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> PropertyType, <span class="keyword">typename</span> WithRespectTo&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;TEMPLATED_PROPERTY_TYPE_RESULTS(Optimize, PropertyType, WithRespectTo) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">auto</span> desc = <span class="stringliteral">&quot;Object that optimizes the objective function&quot;</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> PropertyType::results().template add_field&lt;WithRespectTo&gt;(desc);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <span class="comment">// namespace simde</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;simde/optimize/optimize_energy.hpp&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;simde/optimize/optimize_pt.hpp&gt;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
