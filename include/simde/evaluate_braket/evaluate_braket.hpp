@@ -49,6 +49,7 @@ using aos_h_e_aos     = EBK(type::aos, type::core_hamiltonian, type::aos);
 using aos_f_e_aos     = EBK(type::aos, type::fock, type::aos);
 using aos_j_e_aos     = EBK(type::aos, type::j_e_type, type::aos);
 using aos_k_e_aos     = EBK(type::aos, type::k_e_type, type::aos);
+using aos_xc_e_aos    = EBK(type::aos, type::xc_e_type, type::aos);
 
 // One electron density templated on the representation of the density operator
 template<typename OrbitalType>
