@@ -1,4 +1,4 @@
-# Copyright 2023 NWChemEx-Project
+# Copyright 2025 NWChemEx-Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,6 +30,21 @@ class TestAtomFromSym(BaseTestPropertyType):
         self.pt = simde.AtomFromSym()
         self.input_labels = ['Atom ID']
         self.result_labels = ['Atom']
+
+class TestAtomicDensityMatrixFromZ(BaseTestPropertyType):
+
+    def setUp(self):
+        self.pt = simde.AtomicDensityMatrixFromZ()
+        self.input_labels = ['Atom ID']
+        self.result_labels = ['Atomic Density Matrix']
+
+
+class TestAtomicDensityMatrixFromSym(BaseTestPropertyType):
+
+    def setUp(self):
+        self.pt = simde.AtomicDensityMatrixFromSym()
+        self.input_labels = ['Atom ID']
+        self.result_labels = ['Atomic Density Matrix']
 
 
 class testSymbolFromZ(BaseTestPropertyType):

@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 NWChemEx-Project
+ * Copyright 2025 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ namespace simde {
 inline void export_chemical_system(python_module_reference m) {
     EXPORT_PROPERTY_TYPE(AtomFromZ, m);
     EXPORT_PROPERTY_TYPE(AtomFromSym, m);
+    EXPORT_PROPERTY_TYPE(AtomicDensityMatrixFromZ, m);
+    EXPORT_PROPERTY_TYPE(AtomicDensityMatrixFromSym, m);
     EXPORT_PROPERTY_TYPE(SymbolFromZ, m);
     EXPORT_PROPERTY_TYPE(ZFromSymbol, m);
     EXPORT_PROPERTY_TYPE(MoleculeFromString, m);

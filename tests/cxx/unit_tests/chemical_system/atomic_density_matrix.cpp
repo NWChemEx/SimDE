@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-#pragma once
-#include <simde/chemical_system/Z_from_symbol.hpp>
-#include <simde/chemical_system/atom.hpp>
+#include "../test_property_type.hpp"
 #include <simde/chemical_system/atomic_density_matrix.hpp>
-#include <simde/chemical_system/molecule_from_string.hpp>
-#include <simde/chemical_system/symbol_from_Z.hpp>
+
+TEST_CASE("Atomic Density Matrix") {
+    test_property_type<simde::AtomicDensityMatrixFromZ>(
+      {"Atom ID"}, {"Atomic Density Matrix"});
+}
