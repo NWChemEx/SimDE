@@ -31,6 +31,7 @@ class TestAtomFromSym(BaseTestPropertyType):
         self.input_labels = ['Atom ID']
         self.result_labels = ['Atom']
 
+
 class TestAtomicDensityMatrixFromZ(BaseTestPropertyType):
 
     def setUp(self):
