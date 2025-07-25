@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-#pragma once
-#include <simde/basis_set/basis_set.hpp>
-#include <simde/chemical_system/chemical_system.hpp>
-#include <simde/density/density.hpp>
-#include <simde/energy/energy.hpp>
-#include <simde/evaluate_braket/evaluate_braket.hpp>
-#include <simde/numerical_methods/numerical_methods.hpp>
-#include <simde/optimize/optimize.hpp>
-#include <simde/quantum_mechanics/quantum_mechanics.hpp>
-#include <simde/types.hpp>
-#include <simde/utils/convert.hpp>
+#include "../test_property_type.hpp"
+#include <simde/density/initial_density.hpp>
+
+using init_density = simde::InitialDensity;
+
+TEST_CASE("Initial Density") {
+    test_property_type<init_density>({"Hamiltonian"}, {"Density"});
+}

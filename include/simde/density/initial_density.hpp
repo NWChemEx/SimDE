@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 NWChemEx-Project
+ * Copyright 2025 NWChemEx-Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,24 @@
  */
 
 #pragma once
-#include "../export_simde.hpp"
+#include "simde/types.hpp"
 #include <pluginplay/pluginplay.hpp>
-#include <simde/chemical_system/chemical_system.hpp>
 
 namespace simde {
 
-inline void export_chemical_system(python_module_reference m) {
-    EXPORT_PROPERTY_TYPE(AtomFromZ, m);
-    EXPORT_PROPERTY_TYPE(AtomFromSym, m);
-    EXPORT_PROPERTY_TYPE(AtomicDensityMatrixFromZ, m);
-    EXPORT_PROPERTY_TYPE(AtomicDensityMatrixFromSym, m);
-    EXPORT_PROPERTY_TYPE(SymbolFromZ, m);
-    EXPORT_PROPERTY_TYPE(ZFromSymbol, m);
-    EXPORT_PROPERTY_TYPE(MoleculeFromString, m);
+/** @brief The property for a module that returns an initial Electronic density
+ */
+DECLARE_PROPERTY_TYPE(InitialDensity);
+
+PROPERTY_TYPE_INPUTS(InitialDensity) {
+    using hamiltonian_type = const type::hamiltonian&;
+    return pluginplay::declare_input().template add_field<hamiltonian_type>(
+      "Hamiltonian");
+}
+
+PROPERTY_TYPE_RESULTS(InitialDensity) {
+    using density_type = simde::type::decomposable_e_density;
+    return pluginplay::declare_result().add_field<density_type>("Density");
 }
 
 } // namespace simde
