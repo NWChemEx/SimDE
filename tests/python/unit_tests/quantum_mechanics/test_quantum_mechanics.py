@@ -17,32 +17,28 @@ from test_property_type import BaseTestPropertyType
 
 
 class TestFockOperator_e_density(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.FockOperator_e_density()
-        self.input_labels = ['Hamiltonian', 'Density']
-        self.result_labels = ['Fock operator']
+        self.input_labels = ["Hamiltonian", "Density"]
+        self.result_labels = ["Fock operator"]
 
 
 class TestFockOperator_decomposable_e_density(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.FockOperator_decomposable_e_density()
-        self.input_labels = ['Hamiltonian', 'Density']
-        self.result_labels = ['Fock operator']
+        self.input_labels = ["Hamiltonian", "Density"]
+        self.result_labels = ["Fock operator"]
 
 
 class TestRSCFGuess(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.RSCFGuess()
-        self.input_labels = ['Hamiltonian', 'AOs']
-        self.result_labels = ['Initial Wavefunction']
+        self.input_labels = ["Hamiltonian", "AOs"]
+        self.result_labels = ["Initial Wavefunction"]
 
 
 class TestUpdateRSCFGuess(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.UpdateRSCFGuess()
-        self.input_labels = ['New Fock Operator', 'Old guess']
-        self.result_labels = ['New guess']
+        self.input_labels = ["New Fock Operator", "Old guess"]
+        self.result_labels = ["New guess"]

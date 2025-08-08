@@ -17,48 +17,42 @@ from test_property_type import BaseTestPropertyType
 
 
 class TestAtomFromZ(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.AtomFromZ()
-        self.input_labels = ['Atom ID']
-        self.result_labels = ['Atom']
+        self.input_labels = ["Atom ID"]
+        self.result_labels = ["Atom"]
 
 
 class TestAtomFromSym(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.AtomFromSym()
-        self.input_labels = ['Atom ID']
-        self.result_labels = ['Atom']
+        self.input_labels = ["Atom ID"]
+        self.result_labels = ["Atom"]
 
 
 class TestAtomicDensityMatrixFromZ(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.AtomicDensityMatrixFromZ()
-        self.input_labels = ['Atom ID']
-        self.result_labels = ['Atomic Density Matrix']
+        self.input_labels = ["Atom ID"]
+        self.result_labels = ["Atomic Density Matrix"]
 
 
 class TestAtomicDensityMatrixFromSym(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.AtomicDensityMatrixFromSym()
-        self.input_labels = ['Atom ID']
-        self.result_labels = ['Atomic Density Matrix']
+        self.input_labels = ["Atom ID"]
+        self.result_labels = ["Atomic Density Matrix"]
 
 
 class testSymbolFromZ(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.SymbolFromZ()
-        self.input_labels = ['Z']
-        self.result_labels = ['Symbol']
+        self.input_labels = ["Z"]
+        self.result_labels = ["Symbol"]
 
 
 class testZFromSymbol(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.ZFromSymbol()
-        self.input_labels = ['Symbol']
-        self.result_labels = ['Z']
+        self.input_labels = ["Symbol"]
+        self.result_labels = ["Z"]

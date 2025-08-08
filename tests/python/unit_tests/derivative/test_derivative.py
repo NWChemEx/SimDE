@@ -17,7 +17,6 @@ from test_property_type import BaseTestPropertyType
 
 
 class TestEnergyNuclearGradientStdVectorD(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.EnergyNuclearGradientStdVectorD()
         self.input_labels = ["Chemical System", "Arg 1"]
@@ -25,7 +24,6 @@ class TestEnergyNuclearGradientStdVectorD(BaseTestPropertyType):
 
 
 class TestEnergyNuclearHessianStdVectorD(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.EnergyNuclearHessianStdVectorD()
         self.input_labels = ["Chemical System", "Arg 1", "Arg 2"]
@@ -33,7 +31,6 @@ class TestEnergyNuclearHessianStdVectorD(BaseTestPropertyType):
 
 
 class TestAOEnergyNuclearGradientStdVectorD(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.AOEnergyNuclearGradientStdVectorD()
         self.input_labels = ["AOs", "Chemical System", "Arg 1"]
@@ -41,7 +38,6 @@ class TestAOEnergyNuclearGradientStdVectorD(BaseTestPropertyType):
 
 
 class TestAOEnergyNuclearHessianStdVectorD(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.AOEnergyNuclearHessianStdVectorD()
         self.input_labels = ["AOs", "Chemical System", "Arg 1", "Arg 2"]

@@ -64,7 +64,7 @@ derivative of ``PT``.
 - Ambiguity arises when/if we are taking the derivative with respect to an
   object of type ``T`` and ``PT`` takes more than one ``T``.
 
-  - Could decorate ``T``, e.g., ``WithRespectTo<1, T>`` means take the 
+  - Could decorate ``T``, e.g., ``WithRespectTo<1, T>`` means take the
     derivative with respect to the second ``T`` object (recall C++ is 0-based).
   - Could use strong types. Say the first ``T`` is the old one and the second
     ``T`` is the new one, then could make a type ``NewT`` which represents the
