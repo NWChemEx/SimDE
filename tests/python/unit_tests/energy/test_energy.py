@@ -17,16 +17,14 @@ from test_property_type import BaseTestPropertyType
 
 
 class TestTotalEnergy(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.TotalEnergy()
-        self.input_labels = ['Chemical System']
-        self.result_labels = ['Energy']
+        self.input_labels = ["Chemical System"]
+        self.result_labels = ["Energy"]
 
 
 class TestAOEnergy(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.AOEnergy()
-        self.input_labels = ['Chemical System', 'AOs']
-        self.result_labels = ['Energy']
+        self.input_labels = ["Chemical System", "AOs"]
+        self.result_labels = ["Energy"]

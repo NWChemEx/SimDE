@@ -17,8 +17,7 @@ from test_property_type import BaseTestPropertyType
 
 
 class TestHamiltonianFromChemicalSystem(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.HamiltonianFromChemicalSystem()
-        self.input_labels = ['Object to convert from']
-        self.result_labels = ['Converted object']
+        self.input_labels = ["Object to convert from"]
+        self.result_labels = ["Converted object"]

@@ -17,8 +17,7 @@ from test_property_type import BaseTestPropertyType
 
 
 class TestGeneralizedEigenSolve(BaseTestPropertyType):
-
     def setUp(self):
         self.pt = simde.GeneralizedEigenSolve()
-        self.input_labels = ['Matrix', 'Metric']
-        self.result_labels = ['Eigen values', 'Eigen vectors']
+        self.input_labels = ["Matrix", "Metric"]
+        self.result_labels = ["Eigen values", "Eigen vectors"]

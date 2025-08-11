@@ -63,6 +63,6 @@ More detailed install instructions can be found
 
 # Acknowledgments
 
-This research was supported by the Exascale Computing Project (17-SC-20-SC), a 
-collaborative effort of the U.S. Department of Energy Office of Science and the 
+This research was supported by the Exascale Computing Project (17-SC-20-SC), a
+collaborative effort of the U.S. Department of Energy Office of Science and the
 National Nuclear Security Administration.

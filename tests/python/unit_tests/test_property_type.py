@@ -14,9 +14,10 @@
 
 import unittest
 
+import pluginplay as pp  # noqa F401, needed for inputs() and results()
+
 
 class BaseTestPropertyType(unittest.TestCase):
-
     def setUp(self):
         self.pt = None
         self.input_labels = None
