@@ -30,6 +30,10 @@ namespace simde {
 PYBIND11_MODULE(simde, m) {
     m.doc() =
       "PySimDE: Python bindings for the Simulation development environment";
+
+    // Import dependencies
+    python_module_type::import("chemist");
+
     export_chemical_system(m);
     export_basis_set(m);
     export_energy(m);
