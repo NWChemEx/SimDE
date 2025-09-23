@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
-#pragma once
+#include "../test_property_type.hpp"
 #include <simde/integration_grids/collocation_matrix.hpp>
-#include <simde/integration_grids/molecular_grid.hpp>
+
+using property_type = simde::CollocationMatrix;
+
+TEST_CASE("CollocationMatrix") {
+    test_property_type<property_type>({"Grid", "AO Basis Set"},
+                                      {"Collocation Matrix"});
+}
