@@ -21,20 +21,25 @@
 
 namespace simde {
 
-DECLARE_PROPERTY_TYPE(CollocationMatrix);
+template<typename QuantityToCollocate>
+DECLARE_TEMPLATED_PROPERTY_TYPE(CollocationMatrix, QuantityToCollocate);
 
-PROPERTY_TYPE_INPUTS(CollocationMatrix) {
-    using grid_type     = chemist::Grid;
-    using ao_basis_type = simde::type::ao_basis_set;
+template<typename QuantityToCollocate>
+TEMPLATED_PROPERTY_TYPE_INPUTS(CollocationMatrix, QuantityToCollocate) {
+    using grid_type = chemist::Grid;
     return pluginplay::declare_input()
       .add_field<grid_type>("Grid")
-      .add_field<const ao_basis_type&>("AO Basis Set");
+      .add_field<const QuantityToCollocate&>("Quantity to Collocate");
 }
 
-PROPERTY_TYPE_RESULTS(CollocationMatrix) {
+template<typename QuantityToCollocate>
+TEMPLATED_PROPERTY_TYPE_RESULTS(CollocationMatrix, QuantityToCollocate) {
     using result_type = simde::type::tensor;
     return pluginplay::declare_result().add_field<result_type>(
       "Collocation Matrix");
 }
+
+using AOCollocationMatrix       = CollocationMatrix<simde::type::ao_basis_set>;
+using EDensityCollocationMatrix = CollocationMatrix<simde::type::e_density>;
 
 } // namespace simde

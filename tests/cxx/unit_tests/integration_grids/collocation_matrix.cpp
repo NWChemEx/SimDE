@@ -17,9 +17,10 @@
 #include "../test_property_type.hpp"
 #include <simde/integration_grids/collocation_matrix.hpp>
 
-using property_type = simde::CollocationMatrix;
+using property_types =
+  std::tuple<simde::AOCollocationMatrix, simde::EDensityCollocationMatrix>;
 
-TEST_CASE("CollocationMatrix") {
-    test_property_type<property_type>({"Grid", "AO Basis Set"},
-                                      {"Collocation Matrix"});
+TEMPLATE_LIST_TEST_CASE("CollocationMatrix", "", property_types) {
+    test_property_type<TestType>({"Grid", "Quantity to Collocate"},
+                                 {"Collocation Matrix"});
 }
