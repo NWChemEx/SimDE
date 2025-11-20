@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['point_31',['point',['../types_8hpp.html#a16e3b3cf9542820a8400b42d76caf5c0',1,'simde::type']]],
-  ['primitive_32',['primitive',['../types_8hpp.html#adfd2a407c8780610f1bfbd155c70ceaf',1,'simde::type']]]
+  ['nuclei_0',['nuclei',['../types_8hpp.html#ab1219d1ef940972a1e525f5ad6af64bb',1,'simde::type']]],
+  ['nucleus_1',['nucleus',['../types_8hpp.html#a13d4c4c2e53f68523c4e21f9d058f17b',1,'simde::type']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['value_39',['value',['../structsimde_1_1detail___1_1DerivativeOrder_3_01Derivative_3_01PropertyType_00_01WithRespectTo_00_01ReturnType_01_4_01_4.html#ab21e08aebf2e900e6bf7e9e5e944fd2d',1,'simde::detail_::DerivativeOrder&lt; Derivative&lt; PropertyType, WithRespectTo, ReturnType &gt; &gt;']]]
+  ['tensor_0',['tensor',['../types_8hpp.html#a3bcce5c90e112a4dafe6df96e45fbc27',1,'simde::type']]],
+  ['todo_20list_1',['Todo List',['../todo.html',1,'']]],
+  ['types_2ehpp_2',['types.hpp',['../types_8hpp.html',1,'']]]
 ];
