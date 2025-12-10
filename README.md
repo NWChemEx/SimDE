@@ -18,6 +18,8 @@
 
 [Documentation](https://nwchemex.github.io/SimDE)
 
+[![Nightly Workflow](https://github.com/NWChemEx/SimDE/actions/workflows/nightly.yaml/badge.svg)](https://github.com/NWChemEx/SimDE/actions/workflows/nightly.yaml)
+
 [![Citation Badge](https://api.juleskreuer.eu/citation-badge.php?doi=10.1109/MCSE.2018.2884921)](https://juleskreuer.eu/projekte/citation-badge/)
 
 The Simulation Development Environment (SimDE) includes software designed to
