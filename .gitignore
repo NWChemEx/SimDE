@@ -24,6 +24,7 @@
 # These are common Python virtual enviornment directory names
 venv/
 docs/venv/
+.cache/
 
 # This is where Jupyter/IPython store backup files
 .ipynb_checkpoints/
