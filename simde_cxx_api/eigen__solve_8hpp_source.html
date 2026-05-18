@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>simde: include/simde/numerical_methods/numerical_methods.hpp Source File</title>
+<title>simde: include/simde/numerical_methods/eigen_solve.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -78,7 +78,7 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">numerical_methods.hpp</div></div>
+  <div class="headertitle"><div class="title">eigen_solve.hpp</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
@@ -98,9 +98,30 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;simde/numerical_methods/eigen_solve.hpp&gt;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;simde/numerical_methods/generalized_eigen_solve.hpp&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;pluginplay/property_type/property_type.hpp&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;<a class="code" href="types_8hpp.html">simde/types.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span>simde {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>DECLARE_PROPERTY_TYPE(EigenSolve);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>PROPERTY_TYPE_INPUTS(EigenSolve) {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">using </span>input_type = <span class="keyword">const</span> type::tensor&amp;;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">auto</span> rv = pluginplay::declare_input().add_field&lt;input_type&gt;(<span class="stringliteral">&quot;Matrix&quot;</span>);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    rv[<span class="stringliteral">&quot;Matrix&quot;</span>].set_description(<span class="stringliteral">&quot;The matrix to diagonalize.&quot;</span>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>PROPERTY_TYPE_RESULTS(EigenSolve) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">using </span>result_type = type::tensor;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">auto</span> rv           = pluginplay::declare_result()</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                .add_field&lt;result_type&gt;(<span class="stringliteral">&quot;Eigen values&quot;</span>)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                .<span class="keyword">template</span> add_field&lt;result_type&gt;(<span class="stringliteral">&quot;Eigen vectors&quot;</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>} <span class="comment">// namespace simde</span></div>
+<div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
