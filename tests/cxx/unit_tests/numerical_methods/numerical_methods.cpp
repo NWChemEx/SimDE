@@ -19,6 +19,11 @@
 
 using namespace simde;
 
+TEST_CASE("EigenSolve") {
+    test_property_type<EigenSolve>({"Matrix"},
+                                   {"Eigen values", "Eigen vectors"});
+}
+
 TEST_CASE("GeneralizedEigenSolve") {
     test_property_type<GeneralizedEigenSolve>(
       {"Matrix", "Metric"}, {"Eigen values", "Eigen vectors"});
