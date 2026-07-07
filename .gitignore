@@ -48,3 +48,6 @@ toolchain.cmake
 
 # Commonly install to a subdirectory called install
 install/
+
+# These are MacOS files
+.DS_Store
