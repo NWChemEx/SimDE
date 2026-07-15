@@ -28,8 +28,8 @@ description = "Simulation Domain Extensions for the NWChemEx ecosystem"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.8"
 dependencies = [
-    "nwchemex-pluginplay",
-    "nwchemex-chemist",
+    "nwchemex-pluginplay @ git+https://github.com/ryanmrichard/PluginPlay",
+    "nwchemex-chemist @ git+https://github.com/ryanmrichard/Chemist",
 ]
 
 [tool.scikit-build]
