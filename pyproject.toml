@@ -27,9 +27,9 @@ license = { text = "Apache-2.0" }
 requires-python = ">=3.8"
 dependencies = [
     "pybind11",
-    "nwchemex-nwxcmake @ git+https://github.com/ryanmrichard/NWXCMake",
-    "nwchemex-pluginplay @ git+https://github.com/ryanmrichard/PluginPlay",
-    "nwchemex-chemist @ git+https://github.com/ryanmrichard/Chemist",
+    "nwchemex-nwxcmake>=0.1.0",
+    "nwchemex-pluginplay>=1.0.63",
+    "nwchemex-chemist>=1.3.44",
 ]
 
 [project.optional-dependencies]
