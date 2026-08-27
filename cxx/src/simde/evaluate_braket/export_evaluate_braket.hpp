@@ -22,8 +22,20 @@
 
 namespace simde {
 inline void export_evaluate_braket(python_module_reference m) {
+    // N.B. This list mirrors the EBK(...) table in evaluate_braket.hpp, and
+    // the BraKet instantiations exported by Chemist's
+    // cxx/src/chemist/quantum_mechanics/braket/export_braket_instantiations.cpp
+    // Python can only build the input for a property type exported here if
+    // Chemist exports the matching BraKet.
+    EXPORT_PROPERTY_TYPE(aos_op_base_aos, m);
+    EXPORT_PROPERTY_TYPE(aos_s_e_aos, m);
     EXPORT_PROPERTY_TYPE(aos_t_e_aos, m);
     EXPORT_PROPERTY_TYPE(aos_v_en_aos, m);
+    EXPORT_PROPERTY_TYPE(aos_h_e_aos, m);
+    EXPORT_PROPERTY_TYPE(aos_f_e_aos, m);
+    EXPORT_PROPERTY_TYPE(aos_j_e_aos, m);
+    EXPORT_PROPERTY_TYPE(aos_k_e_aos, m);
+    EXPORT_PROPERTY_TYPE(aos_xc_e_aos, m);
 
     using aos_rho_e_cmos_aos = aos_rho_e_aos<type::cmos>;
     EXPORT_PROPERTY_TYPE(aos_rho_e_cmos_aos, m);

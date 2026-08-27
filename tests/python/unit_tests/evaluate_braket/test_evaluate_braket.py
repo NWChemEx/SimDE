@@ -16,6 +16,55 @@ import simde
 from test_property_type import BaseTestPropertyType
 
 
+class Testaos_op_base_aos(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.aos_op_base_aos()
+        self.input_labels = ["BraKet"]
+        self.result_labels = ["tensor representation"]
+
+
+class Testaos_s_e_aos(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.aos_s_e_aos()
+        self.input_labels = ["BraKet"]
+        self.result_labels = ["tensor representation"]
+
+
+class Testaos_h_e_aos(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.aos_h_e_aos()
+        self.input_labels = ["BraKet"]
+        self.result_labels = ["tensor representation"]
+
+
+class Testaos_f_e_aos(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.aos_f_e_aos()
+        self.input_labels = ["BraKet"]
+        self.result_labels = ["tensor representation"]
+
+
+class Testaos_j_e_aos(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.aos_j_e_aos()
+        self.input_labels = ["BraKet"]
+        self.result_labels = ["tensor representation"]
+
+
+class Testaos_k_e_aos(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.aos_k_e_aos()
+        self.input_labels = ["BraKet"]
+        self.result_labels = ["tensor representation"]
+
+
+class Testaos_xc_e_aos(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.aos_xc_e_aos()
+        self.input_labels = ["BraKet"]
+        self.result_labels = ["tensor representation"]
+
+
 class Testaos_t_e_aos(BaseTestPropertyType):
     def setUp(self):
         self.pt = simde.aos_t_e_aos()
