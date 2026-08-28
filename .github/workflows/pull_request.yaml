@@ -33,6 +33,8 @@ jobs:
     uses: NWChemEx/.github/.github/workflows/test_nwx_cmake_build.yaml@master
     with:
       run_python_tests: "true"
+      # The Python tests build tensors from numpy arrays.
+      extra_pip_packages: "numpy"
 
   test_pip_build:
     uses: NWChemEx/.github/.github/workflows/test_nwx_pip_build.yaml@master
