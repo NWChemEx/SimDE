@@ -24,7 +24,8 @@ namespace simde {
 DECLARE_PROPERTY_TYPE(MolecularGrid);
 
 PROPERTY_TYPE_INPUTS(MolecularGrid) {
-    using input_type = chemist::ClassTraits<chemist::Molecule>::value_type;
+    using input_type =
+      chemist::ChemistClassTraits<chemist::Molecule>::value_type;
     return pluginplay::declare_input().add_field<input_type>("Molecule");
 }
 
