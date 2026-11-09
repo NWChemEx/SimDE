@@ -102,8 +102,8 @@ SimDE's build system.
 C++ Compiler
 ------------
 
-SimDE relies on the C++17 standard and should work with any C++17
-compliant compiler (GCC 9.x or newer). C++ compilers can often be installed by
+SimDE relies on the C++20 standard and should work with any C++20
+compliant compiler (GCC 10.x or newer). C++ compilers can often be installed by
 your OS's package manager. CMake detects your C++ compiler via the value of
 ``CMAKE_CXX_COMPILER``. So ensure ``CMAKE_CXX_COMPILER`` is set to the C++
 compiler you want to use.

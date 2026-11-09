@@ -25,4 +25,5 @@
 #include <simde/optimize/optimize.hpp>
 #include <simde/quantum_mechanics/quantum_mechanics.hpp>
 #include <simde/types.hpp>
+#include <simde/uncertainty/uncertainty.hpp>
 #include <simde/utils/convert.hpp>
