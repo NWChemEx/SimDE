@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['shell_0',['shell',['../types_8hpp.html#a6c5c40bb7ad10f1df40dab4a01611438',1,'simde::type']]]
+  ['point_0',['point',['../types_8hpp.html#a16e3b3cf9542820a8400b42d76caf5c0',1,'simde::type']]],
+  ['primitive_1',['primitive',['../types_8hpp.html#adfd2a407c8780610f1bfbd155c70ceaf',1,'simde::type']]]
 ];
