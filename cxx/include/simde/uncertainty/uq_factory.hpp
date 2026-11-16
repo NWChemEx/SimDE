@@ -34,7 +34,14 @@ namespace simde {
  *  `none` is plain `double`, i.e., no uncertainty. It lets a module that
  *  creates values from `double` values be told not to make them uncertain.
  */
-enum class UQKind { none, uncertain, interval, affine, thresholded_affine };
+enum class UQKind {
+    none,
+    uncertain,
+    interval,
+    affine,
+    thresholded_affine,
+    triplex
+};
 
 /** @brief Parses a "UQ Type" module-input string into a UQKind.
  *
@@ -50,6 +57,7 @@ inline UQKind uq_kind_from_string(const std::string& uq_type) {
     if(uq_type == "interval") return UQKind::interval;
     if(uq_type == "affine") return UQKind::affine;
     if(uq_type == "thresholded affine") return UQKind::thresholded_affine;
+    if(uq_type == "triplex") return UQKind::triplex;
     throw std::runtime_error(
       "simde::uq_kind_from_string: Invalid UQ type name " + uq_type);
 }
@@ -62,12 +70,13 @@ inline std::string to_string(UQKind kind) {
         case UQKind::interval: return "interval";
         case UQKind::affine: return "affine";
         case UQKind::thresholded_affine: return "thresholded affine";
+        case UQKind::triplex: return "triplex";
     }
     throw std::runtime_error("simde::to_string(UQKind): Unrecognized UQKind");
 }
 
 /** @brief Polymorphic base class for constructing a UQ scalar from a center
- *         and a radius.
+ *         and a radius, or from a nominal value and signed deviations.
  *
  *  The UQFactorBase class is used as a PIMPL for UQFactory (below) so that
  *
@@ -82,6 +91,11 @@ inline std::string to_string(UQKind kind) {
  *
  *  N.b., only `double` centers/radii are supported at present. If/when needed
  *  the API could be extended to other types.
+ *
+ *  The asymmetric overload builds a value in [nominal - minus, nominal + plus].
+ *  Only triplex can store that exactly. The other kinds store the tightest
+ *  value they can which contains it (see
+ *  tensorwrapper::types::construct_uq_type).
  */
 class UQFactoryBase {
 public:
@@ -91,6 +105,12 @@ public:
     /// Constructs a UQ scalar of *this's kind, centered at @p center with
     /// radius @p radius, type-erased into a wtf::fp::Float.
     virtual wtf::fp::Float operator()(double center, double radius) const = 0;
+
+    /// Constructs a UQ scalar of *this's kind in [nominal - minus,
+    /// nominal + plus] whose best estimate is @p nominal. Throws
+    /// std::domain_error if @p minus or @p plus is negative.
+    virtual wtf::fp::Float operator()(double nominal, double minus,
+                                      double plus) const = 0;
 
     /// Identifies which UQ representation *this constructs.
     virtual UQKind kind() const noexcept = 0;
@@ -120,6 +140,13 @@ public:
         return wtf::fp::Float(center);
     }
 
+    /// Returns @p nominal as a double after checking the deviations.
+    wtf::fp::Float operator()(double nominal, double minus,
+                              double plus) const override {
+        return wtf::fp::Float(tensorwrapper::types::construct_uq_type<double>(
+          nominal, minus, plus));
+    }
+
     /// Returns UQKind::none.
     UQKind kind() const noexcept override { return UQKind::none; }
 
@@ -140,6 +167,14 @@ public:
                                                                   radius));
     }
 
+    /// Dispatches to the asymmetric overload of construct_uq_type
+    wtf::fp::Float operator()(double nominal, double minus,
+                              double plus) const override {
+        return wtf::fp::Float(
+          tensorwrapper::types::construct_uq_type<UQType<double>>(nominal,
+                                                                  minus, plus));
+    }
+
     /// Returns the UQKind template parameter.
     UQKind kind() const noexcept override { return Kind; }
 
@@ -149,7 +184,7 @@ public:
     }
 };
 
-/// Convenience aliases for the 4 SimpleFactoryImpl specializations.
+/// Convenience aliases for the SimpleFactoryImpl specializations.
 using UncertainFactoryImpl =
   SimpleFactoryImpl<UQKind::uncertain, tensorwrapper::types::uncertain_type>;
 using IntervalFactoryImpl =
@@ -159,6 +194,8 @@ using AffineFactoryImpl =
 using ThresholdedAffineFactoryImpl =
   SimpleFactoryImpl<UQKind::thresholded_affine,
                     tensorwrapper::types::thresholded_affine_type>;
+using TriplexFactoryImpl =
+  SimpleFactoryImpl<UQKind::triplex, tensorwrapper::types::triplex_type>;
 
 } // namespace detail
 
@@ -184,6 +221,12 @@ public:
     /// Main API for building the UQ value
     wtf::fp::Float operator()(double center, double radius) const {
         return (*m_impl_)(center, radius);
+    }
+
+    /// Builds a UQ value in [nominal - minus, nominal + plus] whose best
+    /// estimate is @p nominal (see UQFactoryBase)
+    wtf::fp::Float operator()(double nominal, double minus, double plus) const {
+        return (*m_impl_)(nominal, minus, plus);
     }
 
     /// Returns the UQKind *this will build
@@ -212,6 +255,8 @@ private:
                 return std::make_shared<detail::AffineFactoryImpl>();
             case UQKind::thresholded_affine:
                 return std::make_shared<detail::ThresholdedAffineFactoryImpl>();
+            case UQKind::triplex:
+                return std::make_shared<detail::TriplexFactoryImpl>();
         }
         throw std::runtime_error("simde::UQFactory: Unrecognized UQKind");
     }
@@ -262,6 +307,8 @@ decltype(auto) visit_uq_kind(UQKind kind, VisitorType&& visitor) {
         case UQKind::thresholded_affine:
             return visitor(
               std::type_identity<thresholded_affine_type<FloatType>>{});
+        case UQKind::triplex:
+            return visitor(std::type_identity<triplex_type<FloatType>>{});
     }
     throw std::runtime_error("simde::visit_uq_kind: Unrecognized UQKind");
 }
