@@ -17,6 +17,7 @@
 #include <catch2/catch_approx.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <simde/uncertainty/uq_factory.hpp>
+#include <stdexcept>
 #include <type_traits>
 
 using namespace simde;
@@ -30,9 +31,9 @@ constexpr double radius = 0.0000010000000000;
 
 /// All of the kinds, in the order they're declared (which is also the order
 /// UQFactory::operator< sorts them in).
-const std::vector<UQKind> all_kinds{UQKind::none, UQKind::uncertain,
-                                    UQKind::interval, UQKind::affine,
-                                    UQKind::thresholded_affine};
+const std::vector<UQKind> all_kinds{
+  UQKind::none,   UQKind::uncertain,          UQKind::interval,
+  UQKind::affine, UQKind::thresholded_affine, UQKind::triplex};
 
 } // namespace
 
@@ -44,6 +45,7 @@ TEST_CASE("uq_kind_from_string") {
         REQUIRE(uq_kind_from_string("affine") == UQKind::affine);
         REQUIRE(uq_kind_from_string("thresholded affine") ==
                 UQKind::thresholded_affine);
+        REQUIRE(uq_kind_from_string("triplex") == UQKind::triplex);
     }
 
     SECTION("Invalid names throw") {
@@ -69,6 +71,7 @@ TEST_CASE("to_string(UQKind)") {
         REQUIRE(to_string(UQKind::interval) == "interval");
         REQUIRE(to_string(UQKind::affine) == "affine");
         REQUIRE(to_string(UQKind::thresholded_affine) == "thresholded affine");
+        REQUIRE(to_string(UQKind::triplex) == "triplex");
     }
 
     SECTION("Is the inverse of uq_kind_from_string") {
@@ -84,6 +87,7 @@ TEST_CASE("UQFactory") {
     UQFactory interval(UQKind::interval);
     UQFactory affine(UQKind::affine);
     UQFactory taffine(UQKind::thresholded_affine);
+    UQFactory triplex(UQKind::triplex);
 
     SECTION("Default ctor") { REQUIRE(defaulted.kind() == UQKind::uncertain); }
 
@@ -152,8 +156,69 @@ TEST_CASE("UQFactory") {
             REQUIRE(uq_lower(value) == Catch::Approx(center - radius));
             REQUIRE(uq_upper(value) == Catch::Approx(center + radius));
         }
+
+        SECTION("triplex") {
+            auto erased = triplex(center, radius);
+            auto value =
+              wtf::fp::float_cast<tensorwrapper::types::triplex_type<double>>(
+                erased);
+            REQUIRE(value.nominal() == center);
+            REQUIRE(uq_lower(value) == Catch::Approx(center - radius));
+            REQUIRE(uq_upper(value) == Catch::Approx(center + radius));
+        }
+    }
+
+    SECTION("operator()(nominal, minus, plus)") {
+        using tensorwrapper::types::uq_lower;
+        using tensorwrapper::types::uq_upper;
+        using namespace tensorwrapper::types;
+        const double minus = radius, plus = 3.0 * radius;
+
+        SECTION("none") {
+            auto erased = none(center, minus, plus);
+            REQUIRE(wtf::fp::float_cast<double>(erased) == center);
+        }
+
+        SECTION("uncertain takes the larger deviation") {
+            auto erased = uncertain(center, minus, plus);
+            auto value  = wtf::fp::float_cast<uncertain_type<double>>(erased);
+            REQUIRE(value.mean() == center);
+            REQUIRE(value.sd() == Catch::Approx(plus));
+        }
+
+        SECTION("interval-like kinds keep the exact bounds") {
+            auto check = [&](auto value) {
+                REQUIRE(uq_lower(value) == Catch::Approx(center - minus));
+                REQUIRE(uq_upper(value) == Catch::Approx(center + plus));
+            };
+            auto i_erased  = interval(center, minus, plus);
+            auto a_erased  = affine(center, minus, plus);
+            auto ta_erased = taffine(center, minus, plus);
+            check(wtf::fp::float_cast<interval_type<double>>(i_erased));
+            check(wtf::fp::float_cast<affine_type<double>>(a_erased));
+            check(
+              wtf::fp::float_cast<thresholded_affine_type<double>>(ta_erased));
+        }
+
+        SECTION("triplex keeps the nominal value too") {
+            auto erased = triplex(center, minus, plus);
+            auto value  = wtf::fp::float_cast<triplex_type<double>>(erased);
+            REQUIRE(value.lower() == center - minus);
+            REQUIRE(value.nominal() == center);
+            REQUIRE(value.upper() == center + plus);
+        }
     }
 #endif
+
+    SECTION("operator()(nominal, minus, plus) rejects negative deviations") {
+        for(auto kind : all_kinds) {
+            UQFactory factory(kind);
+            REQUIRE_THROWS_AS(factory(center, -radius, radius),
+                              std::domain_error);
+            REQUIRE_THROWS_AS(factory(center, radius, -radius),
+                              std::domain_error);
+        }
+    }
 
     SECTION("kind") {
         REQUIRE(defaulted.kind() == UQKind::uncertain);
@@ -210,6 +275,7 @@ TEST_CASE("UQFactoryBase") {
         REQUIRE(detail::AffineFactoryImpl{}.kind() == UQKind::affine);
         REQUIRE(detail::ThresholdedAffineFactoryImpl{}.kind() ==
                 UQKind::thresholded_affine);
+        REQUIRE(detail::TriplexFactoryImpl{}.kind() == UQKind::triplex);
     }
 
     SECTION("clone") {
@@ -250,6 +316,8 @@ TEST_CASE("visit_uq_kind") {
     REQUIRE(passes(UQKind::affine, std::type_identity<affine_type<double>>{}));
     REQUIRE(passes(UQKind::thresholded_affine,
                    std::type_identity<thresholded_affine_type<double>>{}));
+    REQUIRE(
+      passes(UQKind::triplex, std::type_identity<triplex_type<double>>{}));
 
     SECTION("FloatType") {
         auto is_float = visit_uq_kind<float>(UQKind::none, [](auto type) {
