@@ -125,7 +125,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1UQFactoryBase.html">simde::UQFactoryBase</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polymorphic base class for constructing a UQ scalar from a center and a radius.  <a href="classsimde_1_1UQFactoryBase.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal value and signed deviations.  <a href="classsimde_1_1UQFactoryBase.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1detail_1_1NoneFactoryImpl.html">simde::detail::NoneFactoryImpl</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classsimde_1_1UQFactory.html" title="A copyable, comparable factory for constructing UQ values of a caller-configured kind.">UQFactory</a> for UQKind::none, which drops the radius.  <a href="classsimde_1_1detail_1_1NoneFactoryImpl.html#details">More...</a><br /></td></tr>
@@ -141,7 +141,7 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a9af9f5a9f53b84fcd6ba10fa68ee4cec" id="r_a9af9f5a9f53b84fcd6ba10fa68ee4cec"><td class="memItemLeft" align="right" valign="top"><a id="a9af9f5a9f53b84fcd6ba10fa68ee4cec" name="a9af9f5a9f53b84fcd6ba10fa68ee4cec"></a>
 <a class="el" href="structsimde_1_1Derivative.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><b>simde::detail::UncertainFactoryImpl</b> = <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html">SimpleFactoryImpl</a>&lt; UQKind::uncertain, tensorwrapper::types::uncertain_type &gt;</td></tr>
-<tr class="memdesc:a9af9f5a9f53b84fcd6ba10fa68ee4cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience aliases for the 4 <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html" title="Implements UQFactory for all UQ kinds except none.">SimpleFactoryImpl</a> specializations. <br /></td></tr>
+<tr class="memdesc:a9af9f5a9f53b84fcd6ba10fa68ee4cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience aliases for the <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html" title="Implements UQFactory for all UQ kinds except none.">SimpleFactoryImpl</a> specializations. <br /></td></tr>
 <tr class="separator:a9af9f5a9f53b84fcd6ba10fa68ee4cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a596220db9f197771f97e93eae8f796b4" id="r_a596220db9f197771f97e93eae8f796b4"><td class="memItemLeft" align="right" valign="top"><a id="a596220db9f197771f97e93eae8f796b4" name="a596220db9f197771f97e93eae8f796b4"></a>
 <a class="el" href="structsimde_1_1Derivative.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><b>simde::detail::IntervalFactoryImpl</b> = <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html">SimpleFactoryImpl</a>&lt; UQKind::interval, tensorwrapper::types::interval_type &gt;</td></tr>
@@ -152,6 +152,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a2828f6ff05c57840c282196f01e3a507" id="r_a2828f6ff05c57840c282196f01e3a507"><td class="memItemLeft" align="right" valign="top"><a id="a2828f6ff05c57840c282196f01e3a507" name="a2828f6ff05c57840c282196f01e3a507"></a>
 <a class="el" href="structsimde_1_1Derivative.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><b>simde::detail::ThresholdedAffineFactoryImpl</b> = <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html">SimpleFactoryImpl</a>&lt; UQKind::thresholded_affine, tensorwrapper::types::thresholded_affine_type &gt;</td></tr>
 <tr class="separator:a2828f6ff05c57840c282196f01e3a507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae192c0c690f6b7b8165871adc3c0d395" id="r_ae192c0c690f6b7b8165871adc3c0d395"><td class="memItemLeft" align="right" valign="top"><a id="ae192c0c690f6b7b8165871adc3c0d395" name="ae192c0c690f6b7b8165871adc3c0d395"></a>
+<a class="el" href="structsimde_1_1Derivative.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><b>simde::detail::TriplexFactoryImpl</b> = <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html">SimpleFactoryImpl</a>&lt; UQKind::triplex, tensorwrapper::types::triplex_type &gt;</td></tr>
+<tr class="separator:ae192c0c690f6b7b8165871adc3c0d395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -162,6 +165,7 @@ Enumerations</h2></td></tr>
 , <b>affine</b>
 , <br />
 &#160;&#160;<b>thresholded_affine</b>
+, <b>triplex</b>
 <br />
  }</td></tr>
 <tr class="memdesc:a292fe76896368e9b992947d312c5796c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The UQ representations UQInitializer knows how to build a factory for.  <a href="uq__factory_8hpp.html#a292fe76896368e9b992947d312c5796c">More...</a><br /></td></tr>

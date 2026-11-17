@@ -80,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Polymorphic base class for constructing a UQ scalar from a center and a radius.  
+<p>Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal value and signed deviations.  
  <a href="classsimde_1_1UQFactoryBase.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="uq__factory_8hpp_source.html">uq_factory.hpp</a>&gt;</code></p>
@@ -89,7 +89,7 @@ Inheritance diagram for simde::UQFactoryBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classsimde_1_1UQFactoryBase__inherit__graph.png" border="0" usemap="#asimde_1_1UQFactoryBase_inherit__map" alt="Inheritance graph"/></div>
 <map name="asimde_1_1UQFactoryBase_inherit__map" id="asimde_1_1UQFactoryBase_inherit__map">
-<area shape="rect" title="Polymorphic base class for constructing a UQ scalar from a center and a radius." alt="" coords="153,5,323,31"/>
+<area shape="rect" title="Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal val..." alt="" coords="153,5,323,31"/>
 <area shape="rect" href="classsimde_1_1detail_1_1NoneFactoryImpl.html" title="Implements UQFactory for UQKind::none, which drops the radius." alt="" coords="5,86,231,111"/>
 <area shape="poly" title=" " alt="" coords="210,41,137,88,134,84,207,36"/>
 <area shape="rect" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html" title="Implements UQFactory for all UQ kinds except none." alt="" coords="255,79,461,119"/>
@@ -105,6 +105,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afa1338237abe034ad1e3beecede7e0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29469e415f445b660b7f8e7ea4a02fb1" id="r_a29469e415f445b660b7f8e7ea4a02fb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsimde_1_1Derivative.html">virtual</a> wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1UQFactoryBase.html#a29469e415f445b660b7f8e7ea4a02fb1">operator()</a> (<a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">center</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">radius</a>) <a class="el" href="structsimde_1_1Derivative.html">const</a> =0</td></tr>
 <tr class="separator:a29469e415f445b660b7f8e7ea4a02fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb35097eac68339fc2dfa60691857449" id="r_aeb35097eac68339fc2dfa60691857449"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsimde_1_1Derivative.html">virtual</a> wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1UQFactoryBase.html#aeb35097eac68339fc2dfa60691857449">operator()</a> (<a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">nominal</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">minus</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">plus</a>) <a class="el" href="structsimde_1_1Derivative.html">const</a> =0</td></tr>
+<tr class="separator:aeb35097eac68339fc2dfa60691857449"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96066e6ac21b9265d517bade67b9b0dc" id="r_a96066e6ac21b9265d517bade67b9b0dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsimde_1_1Derivative.html">virtual</a> <a class="el" href="uq__factory_8hpp.html#a292fe76896368e9b992947d312c5796c">UQKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1UQFactoryBase.html#a96066e6ac21b9265d517bade67b9b0dc">kind</a> () <a class="el" href="structsimde_1_1Derivative.html">const</a> <a class="el" href="structsimde_1_1Derivative.html">noexcept</a>=0</td></tr>
 <tr class="memdesc:a96066e6ac21b9265d517bade67b9b0dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies which UQ representation *this constructs.  <br /></td></tr>
 <tr class="separator:a96066e6ac21b9265d517bade67b9b0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,11 +122,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4860c57cf1c53c19b88372fe2be2951e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Polymorphic base class for constructing a UQ scalar from a center and a radius. </p>
+<div class="textblock"><p>Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal value and signed deviations. </p>
 <p>The UQFactorBase class is used as a PIMPL for <a class="el" href="classsimde_1_1UQFactory.html" title="A copyable, comparable factory for constructing UQ values of a caller-configured kind.">UQFactory</a> (below) so that</p>
 <p>Each UQ representation (sigma::Uncertain, sigma::Interval, sigma::Affine, sigma::ThresholdedAffine) is an independent template class with no shared base in <code>sigma</code>/<code>tensorwrapper</code> (they're unified only by compile-time traits). This class supplies the runtime-polymorphic base UQInitializer needs so it can hand back "a factory for whichever UQ kind
 the caller asked for" as a single result type, and so downstream code (UQAtomSymmBlockedDriver's Kernel) can construct UQ values without a compile-time dependence on which kind was selected.</p>
-<p>N.b., only <code>double</code> centers/radii are supported at present. If/when needed the API could be extended to other types. </p>
+<p>N.b., only <code>double</code> centers/radii are supported at present. If/when needed the API could be extended to other types.</p>
+<p>The asymmetric overload builds a value in [nominal - minus, nominal + plus]. Only triplex can store that exactly. The other kinds store the tightest value they can which contains it (see tensorwrapper::types::construct_uq_type). </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab0c54fdd19ac89f9994c6e17daee2e45" name="ab0c54fdd19ac89f9994c6e17daee2e45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0c54fdd19ac89f9994c6e17daee2e45">&#9670;&#160;</a></span>clone()</h2>
@@ -184,7 +187,7 @@ the caller asked for" as a single result type, and so downstream code (UQAtomSym
 </div>
 </div>
 <a id="a29469e415f445b660b7f8e7ea4a02fb1" name="a29469e415f445b660b7f8e7ea4a02fb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29469e415f445b660b7f8e7ea4a02fb1">&#9670;&#160;</a></span>operator()()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a29469e415f445b660b7f8e7ea4a02fb1">&#9670;&#160;</a></span>operator()() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,6 +222,51 @@ the caller asked for" as a single result type, and so downstream code (UQAtomSym
 <p>Constructs a UQ scalar of *this's kind, centered at <code>center</code> with radius <code>radius</code>, type-erased into a wtf::fp::Float. </p>
 
 <p>Implemented in <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html#a385da7bbef82741d552a93388aaede7e">simde::detail::SimpleFactoryImpl&lt; Kind, UQType &gt;</a>, and <a class="el" href="classsimde_1_1detail_1_1NoneFactoryImpl.html#aa3877bc5011a99f89422e8242e395a9c">simde::detail::NoneFactoryImpl</a>.</p>
+
+</div>
+</div>
+<a id="aeb35097eac68339fc2dfa60691857449" name="aeb35097eac68339fc2dfa60691857449"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb35097eac68339fc2dfa60691857449">&#9670;&#160;</a></span>operator()() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsimde_1_1Derivative.html">virtual</a> wtf::fp::Float simde::UQFactoryBase::operator() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>nominal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>minus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>plus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructs a UQ scalar of *this's kind in [nominal - minus, nominal + plus] whose best estimate is <code>nominal</code>. Throws std::domain_error if <code>minus</code> or <code>plus</code> is negative. </p>
+
+<p>Implemented in <a class="el" href="classsimde_1_1detail_1_1NoneFactoryImpl.html#a35da3851f34906a51df7b3196e048abb">simde::detail::NoneFactoryImpl</a>, and <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html#a22ec82d6645a6600e2ad2b7fecd07eb1">simde::detail::SimpleFactoryImpl&lt; Kind, UQType &gt;</a>.</p>
 
 </div>
 </div>

@@ -90,7 +90,7 @@ Inheritance diagram for simde::detail::SimpleFactoryImpl&lt; Kind, UQType &gt;:<
 <div class="center"><img src="classsimde_1_1detail_1_1SimpleFactoryImpl__inherit__graph.png" border="0" usemap="#asimde_1_1detail_1_1SimpleFactoryImpl_3_01Kind_00_01UQType_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="asimde_1_1detail_1_1SimpleFactoryImpl_3_01Kind_00_01UQType_01_4_inherit__map" id="asimde_1_1detail_1_1SimpleFactoryImpl_3_01Kind_00_01UQType_01_4_inherit__map">
 <area shape="rect" title="Implements UQFactory for all UQ kinds except none." alt="" coords="5,79,212,119"/>
-<area shape="rect" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius." alt="" coords="24,5,193,31"/>
+<area shape="rect" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal val..." alt="" coords="24,5,193,31"/>
 <area shape="poly" title=" " alt="" coords="111,44,111,79,106,79,106,44"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -100,7 +100,7 @@ Collaboration diagram for simde::detail::SimpleFactoryImpl&lt; Kind, UQType &gt;
 <div class="center"><img src="classsimde_1_1detail_1_1SimpleFactoryImpl__coll__graph.png" border="0" usemap="#asimde_1_1detail_1_1SimpleFactoryImpl_3_01Kind_00_01UQType_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="asimde_1_1detail_1_1SimpleFactoryImpl_3_01Kind_00_01UQType_01_4_coll__map" id="asimde_1_1detail_1_1SimpleFactoryImpl_3_01Kind_00_01UQType_01_4_coll__map">
 <area shape="rect" title="Implements UQFactory for all UQ kinds except none." alt="" coords="5,79,212,119"/>
-<area shape="rect" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius." alt="" coords="24,5,193,31"/>
+<area shape="rect" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal val..." alt="" coords="24,5,193,31"/>
 <area shape="poly" title=" " alt="" coords="111,44,111,79,106,79,106,44"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a385da7bbef82741d552a93388aaede7e" id="r_a385da7bbef82741d552a93388aaede7e"><td class="memItemLeft" align="right" valign="top">wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html#a385da7bbef82741d552a93388aaede7e">operator()</a> (<a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">center</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">radius</a>) <a class="el" href="structsimde_1_1Derivative.html">const</a> <a class="el" href="structsimde_1_1Derivative.html">override</a></td></tr>
 <tr class="memdesc:a385da7bbef82741d552a93388aaede7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatches to tensorwrapper::types::construct_uq_type&lt;UQType&gt;  <br /></td></tr>
 <tr class="separator:a385da7bbef82741d552a93388aaede7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22ec82d6645a6600e2ad2b7fecd07eb1" id="r_a22ec82d6645a6600e2ad2b7fecd07eb1"><td class="memItemLeft" align="right" valign="top">wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html#a22ec82d6645a6600e2ad2b7fecd07eb1">operator()</a> (<a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">nominal</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">minus</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">plus</a>) <a class="el" href="structsimde_1_1Derivative.html">const</a> <a class="el" href="structsimde_1_1Derivative.html">override</a></td></tr>
+<tr class="memdesc:a22ec82d6645a6600e2ad2b7fecd07eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatches to the asymmetric overload of construct_uq_type.  <br /></td></tr>
+<tr class="separator:a22ec82d6645a6600e2ad2b7fecd07eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac74ac99c7bb8b16fac8f0658db5c1285" id="r_ac74ac99c7bb8b16fac8f0658db5c1285"><td class="memItemLeft" align="right" valign="top"><a class="el" href="uq__factory_8hpp.html#a292fe76896368e9b992947d312c5796c">UQKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html#ac74ac99c7bb8b16fac8f0658db5c1285">kind</a> () <a class="el" href="structsimde_1_1Derivative.html">const</a> <a class="el" href="structsimde_1_1Derivative.html">noexcept</a> <a class="el" href="structsimde_1_1Derivative.html">override</a></td></tr>
 <tr class="memdesc:ac74ac99c7bb8b16fac8f0658db5c1285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UQKind template parameter.  <br /></td></tr>
 <tr class="separator:ac74ac99c7bb8b16fac8f0658db5c1285"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,7 +200,7 @@ template&lt;<a class="el" href="uq__factory_8hpp.html#a292fe76896368e9b992947d31
 </div>
 </div>
 <a id="a385da7bbef82741d552a93388aaede7e" name="a385da7bbef82741d552a93388aaede7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a385da7bbef82741d552a93388aaede7e">&#9670;&#160;</a></span>operator()()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a385da7bbef82741d552a93388aaede7e">&#9670;&#160;</a></span>operator()() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,6 +238,54 @@ template&lt;<a class="el" href="uq__factory_8hpp.html#a292fe76896368e9b992947d31
 <p>Dispatches to tensorwrapper::types::construct_uq_type&lt;UQType&gt; </p>
 
 <p>Implements <a class="el" href="classsimde_1_1UQFactoryBase.html#a29469e415f445b660b7f8e7ea4a02fb1">simde::UQFactoryBase</a>.</p>
+
+</div>
+</div>
+<a id="a22ec82d6645a6600e2ad2b7fecd07eb1" name="a22ec82d6645a6600e2ad2b7fecd07eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ec82d6645a6600e2ad2b7fecd07eb1">&#9670;&#160;</a></span>operator()() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="uq__factory_8hpp.html#a292fe76896368e9b992947d312c5796c">UQKind</a> Kind, <a class="el" href="structsimde_1_1Derivative.html">template</a>&lt; <a class="el" href="structsimde_1_1Derivative.html">typename</a> &gt; <a class="el" href="structsimde_1_1Derivative.html">typename</a> UQType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">wtf::fp::Float <a class="el" href="classsimde_1_1detail_1_1SimpleFactoryImpl.html">simde::detail::SimpleFactoryImpl</a>&lt; <a class="el" href="structsimde_1_1Derivative.html">Kind</a>, <a class="el" href="structsimde_1_1Derivative.html">UQType</a> &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>nominal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>minus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>plus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dispatches to the asymmetric overload of construct_uq_type. </p>
+
+<p>Implements <a class="el" href="classsimde_1_1UQFactoryBase.html#aeb35097eac68339fc2dfa60691857449">simde::UQFactoryBase</a>.</p>
 
 </div>
 </div>

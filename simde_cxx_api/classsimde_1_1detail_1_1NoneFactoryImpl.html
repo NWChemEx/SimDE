@@ -90,7 +90,7 @@ Inheritance diagram for simde::detail::NoneFactoryImpl:</div>
 <div class="center"><img src="classsimde_1_1detail_1_1NoneFactoryImpl__inherit__graph.png" border="0" usemap="#asimde_1_1detail_1_1NoneFactoryImpl_inherit__map" alt="Inheritance graph"/></div>
 <map name="asimde_1_1detail_1_1NoneFactoryImpl_inherit__map" id="asimde_1_1detail_1_1NoneFactoryImpl_inherit__map">
 <area shape="rect" title="Implements UQFactory for UQKind::none, which drops the radius." alt="" coords="5,79,231,104"/>
-<area shape="rect" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius." alt="" coords="33,5,203,31"/>
+<area shape="rect" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal val..." alt="" coords="33,5,203,31"/>
 <area shape="poly" title=" " alt="" coords="121,44,121,79,115,79,115,44"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -100,7 +100,7 @@ Collaboration diagram for simde::detail::NoneFactoryImpl:</div>
 <div class="center"><img src="classsimde_1_1detail_1_1NoneFactoryImpl__coll__graph.png" border="0" usemap="#asimde_1_1detail_1_1NoneFactoryImpl_coll__map" alt="Collaboration graph"/></div>
 <map name="asimde_1_1detail_1_1NoneFactoryImpl_coll__map" id="asimde_1_1detail_1_1NoneFactoryImpl_coll__map">
 <area shape="rect" title="Implements UQFactory for UQKind::none, which drops the radius." alt="" coords="5,79,231,104"/>
-<area shape="rect" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius." alt="" coords="33,5,203,31"/>
+<area shape="rect" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal val..." alt="" coords="33,5,203,31"/>
 <area shape="poly" title=" " alt="" coords="121,44,121,79,115,79,115,44"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa3877bc5011a99f89422e8242e395a9c" id="r_aa3877bc5011a99f89422e8242e395a9c"><td class="memItemLeft" align="right" valign="top">wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1detail_1_1NoneFactoryImpl.html#aa3877bc5011a99f89422e8242e395a9c">operator()</a> (<a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">center</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a>) <a class="el" href="structsimde_1_1Derivative.html">const</a> <a class="el" href="structsimde_1_1Derivative.html">override</a></td></tr>
 <tr class="memdesc:aa3877bc5011a99f89422e8242e395a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <code>center</code> as a double. <code>radius</code> is ignored.  <br /></td></tr>
 <tr class="separator:aa3877bc5011a99f89422e8242e395a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35da3851f34906a51df7b3196e048abb" id="r_a35da3851f34906a51df7b3196e048abb"><td class="memItemLeft" align="right" valign="top">wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1detail_1_1NoneFactoryImpl.html#a35da3851f34906a51df7b3196e048abb">operator()</a> (<a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">nominal</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">minus</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">plus</a>) <a class="el" href="structsimde_1_1Derivative.html">const</a> <a class="el" href="structsimde_1_1Derivative.html">override</a></td></tr>
+<tr class="memdesc:a35da3851f34906a51df7b3196e048abb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <code>nominal</code> as a double after checking the deviations.  <br /></td></tr>
+<tr class="separator:a35da3851f34906a51df7b3196e048abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7949a0e28de055947734bf787e69d2b2" id="r_a7949a0e28de055947734bf787e69d2b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="uq__factory_8hpp.html#a292fe76896368e9b992947d312c5796c">UQKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1detail_1_1NoneFactoryImpl.html#a7949a0e28de055947734bf787e69d2b2">kind</a> () <a class="el" href="structsimde_1_1Derivative.html">const</a> <a class="el" href="structsimde_1_1Derivative.html">noexcept</a> <a class="el" href="structsimde_1_1Derivative.html">override</a></td></tr>
 <tr class="memdesc:a7949a0e28de055947734bf787e69d2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns UQKind::none.  <br /></td></tr>
 <tr class="separator:a7949a0e28de055947734bf787e69d2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,7 +195,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="aa3877bc5011a99f89422e8242e395a9c" name="aa3877bc5011a99f89422e8242e395a9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3877bc5011a99f89422e8242e395a9c">&#9670;&#160;</a></span>operator()()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3877bc5011a99f89422e8242e395a9c">&#9670;&#160;</a></span>operator()() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,6 +231,52 @@ Public Member Functions</h2></td></tr>
 <p>Returns <code>center</code> as a double. <code>radius</code> is ignored. </p>
 
 <p>Implements <a class="el" href="classsimde_1_1UQFactoryBase.html#a29469e415f445b660b7f8e7ea4a02fb1">simde::UQFactoryBase</a>.</p>
+
+</div>
+</div>
+<a id="a35da3851f34906a51df7b3196e048abb" name="a35da3851f34906a51df7b3196e048abb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35da3851f34906a51df7b3196e048abb">&#9670;&#160;</a></span>operator()() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">wtf::fp::Float simde::detail::NoneFactoryImpl::operator() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>nominal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>minus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>plus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns <code>nominal</code> as a double after checking the deviations. </p>
+
+<p>Implements <a class="el" href="classsimde_1_1UQFactoryBase.html#aeb35097eac68339fc2dfa60691857449">simde::UQFactoryBase</a>.</p>
 
 </div>
 </div>

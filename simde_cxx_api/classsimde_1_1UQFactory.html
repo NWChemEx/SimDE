@@ -97,6 +97,8 @@ Public Member Functions</h2></td></tr>
 wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (<a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">center</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">radius</a>) <a class="el" href="structsimde_1_1Derivative.html">const</a></td></tr>
 <tr class="memdesc:a4b8f47412c108399c7b13e3bfe3f6491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main API for building the UQ value. <br /></td></tr>
 <tr class="separator:a4b8f47412c108399c7b13e3bfe3f6491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a721fd31d6665fe054f1089498797e02d" id="r_a721fd31d6665fe054f1089498797e02d"><td class="memItemLeft" align="right" valign="top">wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsimde_1_1UQFactory.html#a721fd31d6665fe054f1089498797e02d">operator()</a> (<a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">nominal</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">minus</a>, <a class="el" href="structsimde_1_1Derivative.html">double</a> <a class="el" href="structsimde_1_1Derivative.html">plus</a>) <a class="el" href="structsimde_1_1Derivative.html">const</a></td></tr>
+<tr class="separator:a721fd31d6665fe054f1089498797e02d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8368cc77973873f69b7a9b1ef804357e" id="r_a8368cc77973873f69b7a9b1ef804357e"><td class="memItemLeft" align="right" valign="top"><a id="a8368cc77973873f69b7a9b1ef804357e" name="a8368cc77973873f69b7a9b1ef804357e"></a>
 <a class="el" href="uq__factory_8hpp.html#a292fe76896368e9b992947d312c5796c">UQKind</a>&#160;</td><td class="memItemRight" valign="bottom"><b>kind</b> () <a class="el" href="structsimde_1_1Derivative.html">const</a> <a class="el" href="structsimde_1_1Derivative.html">noexcept</a></td></tr>
 <tr class="memdesc:a8368cc77973873f69b7a9b1ef804357e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the UQKind *this will build. <br /></td></tr>
@@ -138,6 +140,50 @@ wtf::fp::Float&#160;</td><td class="memItemRight" valign="bottom"><b>operator()<
 </table>
 </div><div class="memdoc">
 <p>Defaults to an "uncertain" factory so PluginPlay's requirement that results be default constructible is met without a null state. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a721fd31d6665fe054f1089498797e02d" name="a721fd31d6665fe054f1089498797e02d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a721fd31d6665fe054f1089498797e02d">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">wtf::fp::Float simde::UQFactory::operator() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>nominal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>minus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsimde_1_1Derivative.html">double</a>&#160;</td>
+          <td class="paramname"><em>plus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Builds a UQ value in [nominal - minus, nominal + plus] whose best estimate is <code>nominal</code> (see <a class="el" href="classsimde_1_1UQFactoryBase.html" title="Polymorphic base class for constructing a UQ scalar from a center and a radius, or from a nominal val...">UQFactoryBase</a>) </p>
 
 </div>
 </div>
