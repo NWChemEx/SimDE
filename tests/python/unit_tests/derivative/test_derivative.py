@@ -16,6 +16,13 @@ import simde
 from test_property_type import BaseTestPropertyType
 
 
+class TestEnergyNuclearGradientTensor(BaseTestPropertyType):
+    def setUp(self):
+        self.pt = simde.EnergyNuclearGradientTensor()
+        self.input_labels = ["Chemical System", "Arg 1"]
+        self.result_labels = ["Derivative"]
+
+
 class TestEnergyNuclearGradientStdVectorD(BaseTestPropertyType):
     def setUp(self):
         self.pt = simde.EnergyNuclearGradientStdVectorD()

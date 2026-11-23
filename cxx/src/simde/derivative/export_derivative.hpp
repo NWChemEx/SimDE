@@ -22,6 +22,7 @@
 namespace simde {
 
 inline void export_derivative(python_module_reference m) {
+    EXPORT_PROPERTY_TYPE(EnergyNuclearGradientTensor, m);
     EXPORT_PROPERTY_TYPE(EnergyNuclearGradientStdVectorD, m);
     EXPORT_PROPERTY_TYPE(EnergyNuclearHessianStdVectorD, m);
     EXPORT_PROPERTY_TYPE(AOEnergyNuclearGradientStdVectorD, m);
