@@ -61,6 +61,9 @@ template<typename TensorType>
 using AOEnergyNuclearHessian =
   NuclearDerivative<AOEnergyNuclearGradient<TensorType>, TensorType>;
 
+// -- Tensors are stored as type::tensor objects
+using EnergyNuclearGradientTensor = EnergyNuclearGradient<type::tensor>;
+
 // --  Assumes tensors are stored as std::vector objects
 using EnergyNuclearGradientStdVectorD =
   EnergyNuclearGradient<std::vector<double>>;

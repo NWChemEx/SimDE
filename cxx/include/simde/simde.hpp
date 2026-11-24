@@ -18,6 +18,7 @@
 #include <simde/basis_set/basis_set.hpp>
 #include <simde/chemical_system/chemical_system.hpp>
 #include <simde/density/density.hpp>
+#include <simde/derivative/derivative.hpp>
 #include <simde/energy/energy.hpp>
 #include <simde/evaluate_braket/evaluate_braket.hpp>
 #include <simde/integration_grids/integration_grids.hpp>
