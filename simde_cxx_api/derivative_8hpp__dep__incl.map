@@ -1,5 +1,7 @@
 <map id="cxx/include/simde/derivative/derivative.hpp" name="cxx/include/simde/derivative/derivative.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,216,45"/>
-<area shape="rect" id="Node000002" href="$export__derivative_8hpp_source.html" title=" " alt="" coords="19,93,202,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,59,113,93,108,93,108,59"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,5,327,45"/>
+<area shape="rect" id="Node000002" href="$simde_8hpp_source.html" title=" " alt="" coords="5,101,217,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,56,128,102,125,98,185,52"/>
+<area shape="rect" id="Node000003" href="$export__derivative_8hpp_source.html" title=" " alt="" coords="241,93,424,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="259,52,310,91,307,95,256,56"/>
 </map>
